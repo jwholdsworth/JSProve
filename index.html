@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>JSProve</title>
+		<link href="css/css.css" rel="stylesheet" type="text/css" media="screen" />
+		<!--link href="css/jsprove.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="css/jquery.css" rel="stylesheet" type="text/css" media="screen" />
+		<link href="css/jsprove-handheld.css" rel="stylesheet" type="text/css" media="handheld" /-->
+	</head>
+	<body>
+	<header>
+		<h1>JSProve</h1>
+	</header>
+	<section id="tabs">
+		<ul>
+			<li><a href="#methods">Methods and Composition</a></li>
+			<li><a href="#calls">Calls</a></li>
+			<li><a href="#musicInput">Music</a></li>
+			<li><a href="#aboutJsprove">About</a></li>
+		</ul>
+		<section id="input">
+			<section id="calls">
+				<h2>Calls</h2>
+				<table>
+					<tr>
+						<th>Symbol</th><th>Notation</th><th>Location</th>
+					</tr>
+					<tr>
+						<td><input type="text" size="1" maxlength="1" name="symbol0" id="symbol0" value="/" /></td>
+						<td><input type="text" size="3" name="callNtn0" id="callNtn0" value="14" /></td>
+						<td><select class="callLocation" name="callLocation0" id="callLocation0"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td>
+					</tr>
+					<tr>
+						<td><input type="text" size="1" maxlength="1" name="symbol1" id="symbol1" value=";" /></td>
+						<td><input type="text" size="3" name="callNtn1" id="callNtn1" value="1234" /></td>
+						<td><select class="callLocation" name="callLocation1" id="callLocation1"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td>
+					</tr>
+				</table>
+				<input type="button" value="Add more calls" id="btnAddMoreCalls" />
+			</section>
+			<section id="musicInput">
+				<h2>Music</h2>
+				Enter your own music, e.g. ****4678 for rows ending in 4678. One entry per line please.<br />JSProve will count the 4-bell runs for you.<br />
+				<textarea id="userMusicList" rows="5" cols="40"></textarea>
+			</section>
+			<section id="methods">
+				<h2>Methods</h2>
+				<div>
+					<select name="methodRank" id="methodRank">
+						<option value="6">Minor</option>
+						<option value="8" selected="selected">Major</option>
+						<option value="10">Royal</option>
+						<option value="12">Maximus</option>
+					</select>
+				<!--input type="button" value="Add Method" id="moreMethods" /-->
+					<select name="class" id="class">
+						<option value="D">Delight</option>
+						<option value="P">Plain</option>
+						<option value="S" selected="selected">Surprise</option>
+						<option value="TB">Treble Bob</option>
+					</select>
+					<input type="button" value="Load Method from Library" id="searchMethod" /> <input type="button" value="+" id="moreMethods" />
+				</div>
+				<div id="methodList"></div>
+
+				<h2>Composition</h2>
+				<div><label for="shorthand"><abbr title="For single method compositions only. E.g. mhwvf">Shorthand</abbr> (uses first method from selection above)</label><br /><input type="text" value="hhh" name="shorthand" id="shorthand" size="60" /> <input type="button" id="generateShorthand" value="Generate" /></div>
+				<div><label for="liveProve"><abbr title="Proves for every keystroke. Not great on slower machines.">Live Prove</abbr></label><input type="checkbox" name="liveProve" id="liveProve" checked="checked" /></div>
+				<div style="overflow:hidden;">
+					<textarea id="composition" rows="10" cols="40" style="float:left;">YYYYYYY</textarea>
+					<pre style="float:left; width:100px; margin:0; padding:0;" id="courseEnds"></pre>
+				</div>
+				<input type="button" id="prove" value="Prove" />
+			</section>
+			<section id="aboutJsprove">
+				<h2>About JSProve</h2>
+				<p>Created by Paul Brook and James Holdsworth, February-July 2011. Written in HTML5 and JavaScript.</p>
+			</section>
+		</section>
+		<section id="output">
+			<div id="results"></div>
+			<noscript>
+				<p class="error">This application requires JavaScript to be enabled within your browser. Please enable it before continuing.</p>
+			</noscript>
+			<div id="music"></div>
+		</section>
+	</section>
+
+	<section id="popup"></section>
+	<section id="warning"><h3>Oops...</h3><div></div></section>
+
+<!-- import javascript libraries and files -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script type="text/javascript" src="jquery/jquery-ui.js"></script>
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/pealprover.js"></script>
+<script type="text/javascript" src="js/methodlib.js"></script>
+<script type="text/javascript" src="js/frontend.js"></script-->
+<script type="text/javascript" src="js/js.js"></script>
+<script type="text/javascript" src="jquery/jquery.elastic.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,6 @@
+# Deflate EVERYTHING
+SetOutputFilter		DEFLATE
+
+# Cache the text files for 1 week (they won't get updated more often than that anyway)
+ExpiresByType	text/plain	"access plus 1 week"
+ExpiresByType	text/css	"access plus 1 week"

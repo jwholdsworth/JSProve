@@ -308,6 +308,7 @@ function Composition() {
 /**
  * Shorthand Object
  * @author James Holdsworth
+ * @todo Remove hard coding of symbols
  */
 function Shorthand(shorthand, method) {
 	var that = {
@@ -341,6 +342,7 @@ function Shorthand(shorthand, method) {
 	that.ringToNextCall = function(call, callType, fn, isSingle, c) {
 		var moreLeads = true;
 		var tenorPosition = this.rank-1;
+		call = call.toLowerCase();
 		switch(call) {
 			case "h":
 				tenorPosition = this.rank-1;
@@ -352,9 +354,12 @@ function Shorthand(shorthand, method) {
 				tenorPosition = this.rank-3;
 				break;
 			case "i":
+			    // won't this break if using n-2 place calls?
 				if(isSingle) {
+					// single 3rds
 					tenorPosition = 2;
 				} else {
+					// run in
 					tenorPosition = 1;
 				}
 				break;
@@ -560,6 +565,8 @@ function MusicBox() {
 	return that;
 }
 
+// JH Removed - don't think this has been used since early January :-)
+/*
 function do_stuff ()
 {
 	var rows = parse_method_microsiril(8, "b", "&-3-4-5-6-2-3-4-7");
@@ -627,7 +634,7 @@ var method_db = function () {
 	return {
 		get_method: function (id) {
 			if (!(id in methods)) {
-				/* TODO: look it up in method database.  */
+				// TODO: look it up in method database.  
 				throw "Bad method ID";
 			}
 			return methods[id];
@@ -636,3 +643,4 @@ var method_db = function () {
 		}
 	};
 } ();
+*/

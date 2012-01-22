@@ -48,9 +48,13 @@ $('.callLocation').change(function() {
 $("#generateShorthand").click(function() {
 	var firstMethod = $('#methodList').children(':first-child');
 	var mid = $(firstMethod[0]).attr('id');
-	generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
+	if(!mid) {
+		displayWarning('No methods defined.');
+	} else {
+		generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
 //	displayWarning('This feature is still experimental. Check the output in the composition box looks correct', 3000);
-	prove();
+		prove();
+	}
 });
 
 // add more call fields

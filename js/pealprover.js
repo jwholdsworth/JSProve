@@ -79,7 +79,6 @@ function do_prove() {
 	var changes = 0;
 	var rounds = 0;
 	var music = MusicBox();
-	var musicOutput;
 
 	function test_row(c, le) {
 		var r;
@@ -101,6 +100,7 @@ function do_prove() {
 	var gc = get_composition();
 	var comp = gc[0];
 	var txtCalls = gc[1];
+	var musicOutput;
 	
 	// add 4-bell run patterns whatever the stage (rank)
 	for(i=0; i < comp.rank; i++) {
@@ -217,6 +217,21 @@ function do_prove() {
 	musicOutput += "</pre>";
     
 	return [res, musicOutput, courses];
+}
+
+// parses a music pattern and converts it into jsprove format
+function readUserMusicPatterns(patternList) {
+	patternList = patternList.split("\n");
+	
+	for(j=0; j < patternList.length; j++) {	
+		var pattern = patternList[j].split("");
+		for(i=0; i < pattern.length; i++) {
+			// do the opposite of what we do in do_prove() - convert bell numbers into array items
+			pattern[i] = bell_index(pattern[i]);
+		}
+		patternList[j] = pattern;
+	}
+	return patternList;
 }
 
 function generateShorthand(methodID, bob, single) {

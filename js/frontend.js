@@ -129,21 +129,6 @@ function checkMethodLetterIsUnique(letter, method_name, method_symbol) {
 	return is_unique;
 }
 
-// parses a music pattern and converts it into jsprove format
-function readUserMusicPatterns(patternList) {
-	patternList = patternList.split("\n");
-	
-	for(j=0; j < patternList.length; j++) {	
-		var pattern = patternList[j].split("");
-		for(i=0; i < pattern.length; i++) {
-			// do the opposite of what we do in do_prove() - convert bell numbers into array items
-			pattern[i] = bell_index(pattern[i]);
-		}
-		patternList[j] = pattern;
-	}
-	return patternList;
-}
-
 function loadMethodsForStage(stage) {
 	switch (stage) {
 		case '6':

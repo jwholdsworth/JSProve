@@ -341,59 +341,50 @@ function Shorthand(shorthand, method) {
 	// returns number of leads until you insert the next call
 	that.ringToNextCall = function(call, callType, fn, isSingle, c) {
 		var moreLeads = true;
-		var tenorPosition = this.rank-1;
-		call = call.toLowerCase();
-		switch(call) {
-			case "h":
-				tenorPosition = this.rank-1;
-				break;
-			case "w":
-				tenorPosition = this.rank-2;
-				break;
-			case "m":
-				tenorPosition = this.rank-3;
-				break;
-			case "i":
-			    // won't this break if using n-2 place calls?
-				if(isSingle) {
-					// single 3rds
+		var tenorPosition = bell_index(call);
+		// couldn't find index
+		if(tenorPosition < 1) {
+			call = call.toLowerCase();
+			switch(call) {
+				case "h":
+					tenorPosition = this.rank-1;
+					break;
+				case "w":
+					tenorPosition = this.rank-2;
+					break;
+				case "m":
+					tenorPosition = this.rank-3;
+					break;
+				case "i":
+					// won't this break if using n-2 place calls?
+					if(isSingle) {
+						// single 3rds
+						tenorPosition = 2;
+					} else {
+						// run in
+						tenorPosition = 1;
+					}
+					break;
+				case "b":
+				case "o":
+					if(isSingle) {
+						tenorPosition = 1;
+					} else {
+						tenorPosition = 2;
+					}
+					break;
+				case "t":
 					tenorPosition = 2;
-				} else {
-					// run in
-					tenorPosition = 1;
-				}
-				break;
-			case "b":
-				if(isSingle) {
-					tenorPosition = 1;
-				} else {
-					tenorPosition = 2;
-				}
-				break;
-			case "t":
-				tenorPosition = 2;
-				break;
-			case "f":
-				tenorPosition = 3;
-				break;
-			case "v":
-				tenorPosition = 4;
-				break;
-			case "6":
-				tenorPosition = 5;
-				break;
-			case "7":
-				tenorPosition = 6;
-				break;
-			case "8":
-				tenorPosition = 7;
-				break;
-			case "9":
-				tenorPosition = 8;
-				break;
-
-			default:
-				throw "Calling Position " + call + " not found";
+					break;
+				case "f":
+					tenorPosition = 3;
+					break;
+				case "v":
+					tenorPosition = 4;
+				    break;
+				default:
+				    throw "Calling Position " + call + " not found";
+			}
 		}
 		
 		if(tenorPosition >= this.rank) {

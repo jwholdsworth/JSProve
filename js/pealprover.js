@@ -134,16 +134,6 @@ function do_prove() {
 
         spareBells, runs = null; // clean up - not sure this is necessary
     }
-    /* other good 8-bell specific music - hard coded for enhanced user "experience" :-) */
-    if(comp.rank === 8) {
-        music.add_pattern([-1,-1,-1,-1,6, 4, 5, 7]); // ****7568
-        music.add_pattern([-1,-1,-1,-1,5, 4, 6, 7]); // ****6578
-        music.add_pattern([-1,-1,-1,-1,1, 3, 5, 7]); // ****2468
-        music.add_pattern([0,2,4,6,1, 3, 5, 7]); // 13572468
-        music.add_pattern([6,4,2,0,1, 3, 5, 7]); // 75312468
-        music.add_pattern([0,4,1,5,2,6,3,7]); // 15263748
-        music.add_pattern([0,1,6,4,2,3,5,7]); // 12753468
-    }
 
     // add user specific music patterns
     //TODO: put this in a separate method and don't hard code #userMusicList you numpty

@@ -1,14 +1,10 @@
 /* VARIABLES */
 var numberOfMethods = 0; // the number of method input boxes (i.e. methods in current composition)
+var stage = $('#methodRank').val();
 
 /* ONLOAD function */
 $(document).ready(function() {
-    loadMethodsForStage($('#methodRank').val());
-
-    $('#methodRank').change(function () {
-        removeMethodBoxes();
-        loadMethodsForStage($('#methodRank').val());
-    });
+    setup();
 
     $("textarea").elastic();
 
@@ -17,22 +13,30 @@ $(document).ready(function() {
     checkLiveProve();
 
     $("#tabs").tabs();
-
-    $(".notation").blur(function() {
-        var not = $(this).val();
-        not = not.replace(/x/g, '-');
-        $(this).val(not);
-    });
 });
 
 /* EVENT HANDLERS */
+// Replace 'x' in place notation with '-'
+$(".notation").blur(function() {
+    var not = $(this).val();
+    not = not.replace(/x/g, '-');
+    $(this).val(not);
+});
+
+// Reset the user interface when stage changes
+$('#methodRank').change(function () {
+    setup();
+});
+
 // add a new method event handler
 $("#searchMethod").click(displayMethodLibraryPage);
 
+// Load the 'Insert new Method' menu
 $('#moreMethods').click(function(){
     insertMethodBox("", "");
 });
 
+// add the method to the UI
 $("#insertMethod").click(insertMethod);
 
 // enable / disable live proving
@@ -45,6 +49,7 @@ $('.callLocation').change(function() {
     displayWarning('Half-lead bobs are not implemented yet');
 });
 
+// generate the composition from the shorthand
 $("#generateShorthand").click(function() {
     var firstMethod = $('#methodList').children(':first-child');
     var mid = $(firstMethod[0]).attr('id');
@@ -52,7 +57,7 @@ $("#generateShorthand").click(function() {
         displayWarning('No methods defined.');
     } else {
         generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
-        //	displayWarning('This feature is still experimental. Check the output in the composition box looks correct', 3000);
+        // displayWarning('This feature is still experimental. Check the output in the composition box looks correct', 3000);
         prove();
     }
 });
@@ -64,14 +69,18 @@ $('#btnAddMoreCalls').click(function() {
 });
 
 /* FUNCTIONS */
+// reset the UI
+function setup() {
+    $('#methodList').html(""); // remove the method boxes
+    stage = $('#methodRank').val();
+    loadMethodsForStage(stage);
+    loadMusicForStage(stage);
+}
+
 // function to add a new input box into the method list section
 function insertMethodBox(code, pn) {
     $('#methodList').append('<div id="method' + numberOfMethods + '"><input type="text" id="shortcut' + numberOfMethods + '" maxlength="1" size="1" value="'+code+'" /><input type="text" class="notation" id="notation' + numberOfMethods + '" value="'+pn+'" size="35" /><input type="button" value="&dash;" class="removeMethod" onclick="removeParent(this);" /></div>');
     numberOfMethods++;
-}
-
-function removeMethodBoxes() {
-    $('#methodList').html("");
 }
 
 // insert the selected method into the methods list
@@ -152,8 +161,16 @@ function loadMethodsForStage(stage) {
             insertMethodBox("N", "-3-4-5-6-7-8-9-0-8-9-70-E,2");
             insertMethodBox("Y", "-3-4-5-6-27-38-49-50-6-7-8-E,2");
             break;
-
     }
+}
+
+/**
+ * Applies some default music for this stage
+ */
+function loadMusicForStage(stage) {
+    $.get('music/'+stage, function(data) {
+        $('#userMusicList').val(data);
+    }, 'text');
 }
 
 function prove() {

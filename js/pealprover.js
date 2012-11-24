@@ -69,7 +69,9 @@ function validate_method(id) {
     }
     rows = parse_method(rank, notation);
     method = Method(rank, shortcut, rows);
+    //methods[shortcut] = method;
     return [shortcut, method];
+//return true;
 }
 
 function do_prove() {

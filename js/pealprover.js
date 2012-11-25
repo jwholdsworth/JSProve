@@ -208,12 +208,29 @@ function do_prove() {
     atw.getAtw();
     outputAtw = formatAtw(atw);
 
-    return [res, musicOutput, courses, outputAtw];
+    return [res, musicOutput, courses, outputAtw, atw.com];
 }
 
 function formatAtw(atw) {
     var output = '';
-    return atw;
+    for (i in atw.positionsRung) {
+        // output the method key
+        output += i + ':\n'
+        // output the bell number
+        for (j=0; j < atw.comp.rank; j++) {
+            output += '  ' + bell_names.charAt(j) + ': ';
+            // find which positions it rings
+            for (k=0; k < atw.comp.rank; k++) {
+                if (atw.positionsRung[i][bell_names.charAt(j)][bell_names.charAt(k)] == true) {
+                    output += bell_names.charAt(k);
+                } else {
+                    output += ' ';
+                }
+            }
+            output += '\n';
+        }
+    }
+    return output;
 }
 
 // parses a music pattern and converts it into jsprove format

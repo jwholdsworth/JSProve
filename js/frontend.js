@@ -182,19 +182,8 @@ function prove() {
     $('#results').html(res[0]);
     $('#music').html(res[1]);
     $('#courseEnds').html(res[2]);
-    $('#com').html(res[3][0]);
-
-    var atwOut = '';
-    var atw = res[3][1];
-    for (i in atw) {
-        atwOut += i + ":\n";
-        for (j=0; j < i.length; j++) {
-            atwOut += '  ' + j + atw[i] + '\n';
-        }
-        console.log(atw[i]);
-    }
-    $('#atw').html(atwOut);
-    console.log(atw);
+    $('#atw pre').html(res[3]);
+    $('#com').html(res[4] + ' changes of method');
 }
 
 function displayMethodLibraryPage() {

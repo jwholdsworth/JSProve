@@ -206,57 +206,33 @@ function do_prove() {
     }
     musicOutput += "</pre>";
 
-    atw = check_atw(comp);
+    var atw = AtwChecker(comp);
+    atw.getAtw();
+    outputAtw = formatAtw(atw);
 
-    return [res, musicOutput, courses, atw];
+    return [res, musicOutput, courses, outputAtw, atw.com];
 }
 
-// checks ATW of composition
-/*
- build an array like
- Method[bellNo][position] = true
-*/
-function check_atw(comp) {
-    var methodList = '';
-    var positionsRung = {};
-    for (i=0; i < comp.methods.length; i++) {
-        // add the method symbol to the list
-        methodList += comp.methods[i].name;
-        positionsRung[comp.methods[i].name] = [];
-        // add the bell to the list
-        for (j=0; j < comp.rank; j++) {
-            positionsRung[comp.methods[i].name][j] = [];
-            // add the bell's position to the list
-            for (k=0; k < comp.rank; k++) {
-                positionsRung[comp.methods[i].name][j][k] = false;
+function formatAtw(atw) {
+    var output = '';
+    for (i in atw.positionsRung) {
+        // output the method key
+        output += i + ':\n'
+        // output the bell number
+        for (j=0; j < atw.comp.rank; j++) {
+            output += '  ' + bell_names.charAt(j) + ': ';
+            // find which positions it rings
+            for (k=0; k < atw.comp.rank; k++) {
+                if (atw.positionsRung[i][bell_names.charAt(j)][bell_names.charAt(k)] == true) {
+                    output += bell_names.charAt(k);
+                } else {
+                    output += ' ';
+                }
             }
+            output += '\n';
         }
     }
-
-    for (i=0; i < comp.methods.length; i++) {
-        // get the leadend
-        for (j=0; j < comp.rank; j++) {
-            bellAtPositionJ = comp.leadends[i][j]; // get the bell at that position
-            positionsRung[comp.methods[i].name][bellAtPositionJ][j] = true; // assign that position to the bell
-        }
-    }
-
-    var com = check_com(methodList);
-    return [com, positionsRung];
-}
-
-// checks changes of method in composition
-function check_com(methodList) {
-    var com = 0;
-    var previousLeadMethod = methodList.charAt(0);
-    // ends up comparing the first lead against the first lead - probably OK
-    for (i=0; i < methodList.length; i++) {
-        if (methodList.charAt(i) != previousLeadMethod) {
-            com++;
-        }
-        previousLeadMethod = methodList.charAt(i);
-    }
-    return com + ' changes of method';
+    return output;
 }
 
 // parses a music pattern and converts it into jsprove format

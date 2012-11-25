@@ -417,6 +417,65 @@ function Shorthand(shorthand, method) {
 }
 
 /**
+ * ATW checker object
+ * @author James Holdsworth
+ */
+function AtwChecker(comp) {
+    // build and array like Method[bellNo][position] = true
+    var that = {
+        comp:comp,
+        positionsRung:[],
+        methodList:'',
+        com:0
+    }
+
+    that.getAtw = function() {
+        for (i=0; i < this.comp.methods.length; i++) {
+            // add the method symbol to the list
+            this.methodList += this.comp.methods[i].name;
+            this.positionsRung[this.comp.methods[i].name] = [];
+            // add the bell to the list
+            for (j=0; j < this.comp.rank; j++) {
+                this.positionsRung[this.comp.methods[i].name][bell_names.charAt(j)] = [];
+                // add the bell's position to the list
+                for (k=0; k < this.comp.rank; k++) {
+                    this.positionsRung[this.comp.methods[i].name][bell_names.charAt(j)][bell_names.charAt(k)] = false;
+                }
+            }
+        }
+
+        // for each lead
+        for (i=0; i < this.comp.methods.length; i++) {
+            // loop through the number of bells
+            for (j=0; j < this.comp.rank; j++) {
+                // bell at this position in the lead
+                leadend = this.comp.leadends[i-1];
+                // note we can't use leadend-1 for the first lead, so generate a lead of rounds and use that
+                if (leadend === undefined) {
+                    leadend = [];//this.comp.leadends[this.comp.methods.length - 1];
+                    for (k=0; k < this.comp.rank; k++) {
+                        leadend.push(k);
+                    }
+                }
+                this.positionsRung[this.comp.methods[i].name][bell_names.charAt(leadend[j])][bell_names.charAt(j)] = true;
+            }
+        }
+
+        // count changes of method
+        var previousLeadMethod = this.methodList.charAt(0);
+        // ends up comparing the first lead against the first lead - probably OK
+        for (i=0; i < this.methodList.length; i++) {
+            if (this.methodList.charAt(i) != previousLeadMethod) {
+                this.com++;
+            }
+            previousLeadMethod = this.methodList.charAt(i);
+        }
+    };
+
+    return that;
+}
+
+/**
  * Prover Object - prove the rows are unique
  * @author Paul Brook
  */

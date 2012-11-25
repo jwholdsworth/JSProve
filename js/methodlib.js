@@ -449,7 +449,15 @@ function AtwChecker(comp) {
             // loop through the number of bells
             for (j=0; j < this.comp.rank; j++) {
                 // bell at this position in the lead
-                this.positionsRung[this.comp.methods[i].name][bell_names.charAt(this.comp.leadends[i][j])][bell_names.charAt(j)] = true;
+                leadend = this.comp.leadends[i-1];
+                // note we can't use leadend-1 for the first lead, so generate a lead of rounds and use that
+                if (leadend === undefined) {
+                    leadend = [];//this.comp.leadends[this.comp.methods.length - 1];
+                    for (k=0; k < this.comp.rank; k++) {
+                        leadend.push(k);
+                    }
+                }
+                this.positionsRung[this.comp.methods[i].name][bell_names.charAt(leadend[j])][bell_names.charAt(j)] = true;
             }
         }
 

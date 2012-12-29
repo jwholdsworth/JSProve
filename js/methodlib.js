@@ -331,9 +331,9 @@ function Shorthand(shorthand, method) {
             if(this.shorthandCalls.charAt(i) === "s") {
                 // it's a single
                 i++;
-                this.ringToNextCall(this.shorthandCalls.charAt(i), single, fn, true, c);
+                this.ringToNextCall(this.shorthandCalls[i], single, fn, true, c);
             } else {
-                this.ringToNextCall(this.shorthandCalls.charAt(i), bob, fn, false, c);
+                this.ringToNextCall(this.shorthandCalls[i], bob, fn, false, c);
             }
         }
     };
@@ -436,10 +436,10 @@ function AtwChecker(comp) {
             this.positionsRung[this.comp.methods[i].name] = [];
             // add the bell to the list
             for (j=0; j < this.comp.rank; j++) {
-                this.positionsRung[this.comp.methods[i].name][bell_names.charAt(j)] = [];
+                this.positionsRung[this.comp.methods[i].name][bell_names[j]] = [];
                 // add the bell's position to the list
                 for (k=0; k < this.comp.rank; k++) {
-                    this.positionsRung[this.comp.methods[i].name][bell_names.charAt(j)][bell_names.charAt(k)] = false;
+                    this.positionsRung[this.comp.methods[i].name][bell_names[j]][bell_names[k]] = false;
                 }
             }
         }
@@ -457,18 +457,18 @@ function AtwChecker(comp) {
                         leadend.push(k);
                     }
                 }
-                this.positionsRung[this.comp.methods[i].name][bell_names.charAt(leadend[j])][bell_names.charAt(j)] = true;
+                this.positionsRung[this.comp.methods[i].name][bell_names[leadend[j]]][bell_names[j]] = true;
             }
         }
 
         // count changes of method
-        var previousLeadMethod = this.methodList.charAt(0);
+        var previousLeadMethod = this.methodList[0];
         // ends up comparing the first lead against the first lead - probably OK
         for (i=0; i < this.methodList.length; i++) {
-            if (this.methodList.charAt(i) != previousLeadMethod) {
+            if (this.methodList[i] != previousLeadMethod) {
                 this.com++;
             }
-            previousLeadMethod = this.methodList.charAt(i);
+            previousLeadMethod = this.methodList[i];
         }
     };
 

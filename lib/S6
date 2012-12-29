@@ -1,4 +1,4 @@
-*** S6 Wed,05 Dec 2012.21:17:58 ***
+*** S6 Fri,14 Dec 2012.12:41:29 ***
 Abbessroding h &-34-4.2-2.23-4-3
 Abbotsleigh 2z &-3-45-5-3-4-1
 Aberdourcastle 4z &34-3.4-25-3.2-4.5
@@ -22,7 +22,6 @@ Allendale a &-34-4-2-3.2-2.3
 Allerbrook b &3-5.4.2-2.3-34-1
 Allsquare b &3-5.4-5-3-34-1
 Alnwick e &34-3.4-2-3.4-4.3
-Alresford 2z &-34-4.2-2.23-2-1
 Altonwater 2z &34-34.4-2-23.2-2.3
 Alverton 2z &-5-45-2-3.2-2.3
 Amble b &3-3.4.2-2.3.2-2.3
@@ -437,6 +436,7 @@ Eigg 2z &5-3.4.5-2.3.4-4.1
 Eileanleodhais 4z &3-5.4-5-3.4-2.5
 Eldersfield f &-34-4.5-2.3-4-1
 Elkesley l &-5-4-5-23-2-5
+Elmsteadmarket 2z &-34-4.2-2.23-2-1
 Elmswell 4z &-5-45-2-3.4-34.5
 Elton l &-5-4.5-2.3-2-5
 Emergency 4z &-5-4-5-23-4-5
@@ -1045,6 +1045,7 @@ Ripple 6z &-3-4-2-23-4-5
 Rivenhall h &-3-4-2-23-2.234.3
 Rivenhallend 2z &-3-4-2-23-2.234.5
 Riverclyst a &3-5.4-5-3.34-34.5
+Riverculm b &3-5.4.2-5.3.2-34.1
 Riverlemon e &3-5.4.2-2.3.34-4.5
 Robert 4z &-3-4.5-2.3.2-2.5
 Robin 2z &5-3.4-2-3.2-2.5
@@ -1297,6 +1298,7 @@ Thorney 6z &34-3.4-5-23-34-5
 Thornhill 4z &-3-4-2-3.4-4.5
 Thorntonlemoors 2z &34-5.4-2-3.2-2.3
 Thorpelesoken 2z &-34-4-2-3.2.234.34.5
+Thorrington 2z &-34-4.2-2.23-4-1
 Thurnscoe 4z &-3-4-2-3.2-4.3
 Thurrock 2z &-34-4-2-3.34-34.5
 Tilbury z +-34-4-2-23-234.34.25.34.234-3-2-4-34-2

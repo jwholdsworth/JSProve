@@ -45,6 +45,7 @@ etc.
 JSProve will prove as you type. If this is causing problems, untick the 'Live Prove' button. When you're ready to prove the composition, simply press the 'Prove' button.
 
 ### Specifying your own calls
+You may wish to change the default call type (from Plain Bob bobs and singles) or add your own. To do this, click the Calls tab. If you wish to continue using the Shorthand tool, make sure that you assign `/` for your bob and `;` for the single. You can have as many call types as you wish; though be sure to use unique symbols for them.
 
 ### Specifying your own music
 JSProve will, by default, tell you all the 4-bell runs contained in the composition (both off the front and at the back) in a format like:

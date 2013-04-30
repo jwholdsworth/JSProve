@@ -1,21 +1,31 @@
-/* VARIABLES */
+/*******************************************************************************
+* DECLARE FRONT-END VARIABLES
+*******************************************************************************/
 var numberOfMethods = 0; // the number of method input boxes (i.e. methods in current composition)
 var stage = $('#methodRank').val();
 
-/* ONLOAD function */
+/*******************************************************************************
+* ONLOAD FUNCTION
+*******************************************************************************/
 $(document).ready(function() {
     setup();
 
+    // Allow the textarea to expand with its contents, as the composition grows
     $("textarea").elastic();
 
+    // Enable as-you-type proving by adding a keyup event to the composition box
     $("#composition").trigger('keyup');
 
+    // Check whether live prove is enabled; if not, display the Prove button
     checkLiveProve();
 
+    // Enable the tabs
     $("#tabs").tabs();
 });
 
-/* EVENT HANDLERS */
+/*******************************************************************************
+* EVENT HANDLERS
+*******************************************************************************/
 // Replace 'x' in place notation with '-'
 $(".notation").blur(function() {
     var not = $(this).val();
@@ -45,21 +55,24 @@ $("#liveProve").click(checkLiveProve);
 // click the prove button
 $("#prove").click(prove);
 
+// Display a warning when you try to use half lead calls (not implemented yet)
 $('.callLocation').change(function() {
     displayWarning('Half-lead bobs are not implemented yet');
 });
 
 // generate the composition from the shorthand
 $("#generateShorthand").click(function() {
+    // select the first method from the method list to be used for the shorthand
     var firstMethod = $('#methodList').children(':first-child');
     var mid = $(firstMethod[0]).attr('id');
-    if(!mid) {
+
+    if (!mid) {
         displayWarning('No methods defined.');
-    } else {
-        generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
-        // displayWarning('This feature is still experimental. Check the output in the composition box looks correct', 3000);
-        prove();
+        return false;
     }
+
+    generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
+    prove();
 });
 
 // add more call fields
@@ -68,7 +81,9 @@ $('#btnAddMoreCalls').click(function() {
     $('#calls table').append('<tr><td><input type="text" size="1" maxlength="1" name="symbol'+children+'" id="symbol'+children+'" value="" /></td><td><input type="text" size="3" name="callNtn'+children+'" id="callNtn'+children+'" value="" /></td><td><select class="callLocation" name="callLocation'+children+'" id="callLocation'+children+'"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td></tr>');
 });
 
-/* FUNCTIONS */
+/*******************************************************************************
+* FUNCTIONS
+*******************************************************************************/
 // reset the UI
 function setup() {
     $('#methodList').html(""); // remove the method boxes
@@ -138,6 +153,7 @@ function checkMethodLetterIsUnique(letter, method_name, method_symbol) {
     return is_unique;
 }
 
+// Load some default methods for the particular stage (just for examples)
 function loadMethodsForStage(stage) {
     switch (stage) {
         case '6':
@@ -173,6 +189,9 @@ function loadMusicForStage(stage) {
     }, 'text');
 }
 
+/**
+ * Prove the composition
+ */
 function prove() {
     try {
         res = do_prove();
@@ -186,11 +205,17 @@ function prove() {
     $('#com').html(res[4] + ' changes of method');
 }
 
+/**
+ * Load the methods from the method file
+ */
 function displayMethodLibraryPage() {
     var method_file = $('#class').val() + $('#methodRank').val();
     loadMethods(method_file);
 }
 
+/**
+ * Display the Load Method from File box
+ */
 function loadMethods(file) {
     $.get('lib/'+file, function(data) {
         var methods = "<label for=\"methodSymbol\">Shortcut</label><input type=\"text\" size=\"2\" maxlength=\"1\" name=\"methodSymbol\" id=\"methodSymbol\" />";
@@ -207,6 +232,9 @@ function loadMethods(file) {
     }, "text");
 }
 
+/**
+ * Display a warning
+ */
 function displayWarning(warning, timeout) {
     if(timeout === undefined) {
         timeout = 2000;

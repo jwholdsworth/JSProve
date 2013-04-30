@@ -60,6 +60,7 @@ function validate_method(id) {
         return false;
     }
     notation = $('#notation' + id).val();
+    notation = notation.replace(/x/gi, '-');
     if (notation == "") {
         return false;
     }

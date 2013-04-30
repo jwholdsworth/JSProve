@@ -26,13 +26,6 @@ $(document).ready(function() {
 /*******************************************************************************
 * EVENT HANDLERS
 *******************************************************************************/
-// Replace 'x' in place notation with '-'
-$(".notation").blur(function() {
-    var not = $(this).val();
-    not = not.replace(/x/g, '-');
-    $(this).val(not);
-});
-
 // Reset the user interface when stage changes
 $('#methodRank').change(function () {
     setup();

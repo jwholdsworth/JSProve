@@ -30,8 +30,8 @@
 
         <noscript><p class="error">This application requires JavaScript to be enabled within your browser. Please enable it before continuing.</p></noscript>
 
-        <section id="tabs">
-            <ul class="nav nav-tabs">
+        <section id="navigation">
+            <ul class="nav nav-tabs" id="tabs">
                 <li><a href="#methods" data-toggle="tab">Methods and Composition</a></li>
                 <li><a href="#calls" data-toggle="tab">Calls</a></li>
                 <li><a href="#musicInput" data-toggle="tab">Music</a></li>
@@ -84,8 +84,8 @@
                         <div id="methodList" class="form-horizontal"></div>
 
                         <h2>Composition</h2>
-                        <div class="form-horizontal"><label for="shorthand"><abbr title="For single method compositions only. E.g. mhwvf">Shorthand</abbr> (uses first method from selection above)</label><input type="text" value="hhh" name="shorthand" id="shorthand" size="60" /> <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" /></div>
-                        <div><label class="checkbox"><abbr title="Proves for every keystroke. Not great on slower machines.">Live Prove</abbr><input type="checkbox" name="liveProve" id="liveProve" checked="checked" /></label></div>
+                        <div class="form-horizontal"><label for="shorthand"><span data-toggle="tooltip" title="For single method compositions only (uses first method from selection above). E.g. mhwvf">Shorthand</span></label><input type="text" value="hhh" name="shorthand" id="shorthand" size="60" /> <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" /></div>
+                        <div class="form-horizontal"><label class="checkbox"><abbr title="Proves for every keystroke. Not great on slower machines.">Live Prove</abbr><input type="checkbox" name="liveProve" id="liveProve" checked="checked" /></label></div>
                         <div style="overflow:hidden;">
                             <textarea id="composition" rows="10" cols="40" style="float:left;">YYYYYYY</textarea>
                             <pre style="float:left; width:100px; margin:0; padding:0;" id="courseEnds"></pre>
@@ -144,6 +144,5 @@
         <script type="text/javascript" src="js/pealprover.js" defer></script>
         <script type="text/javascript" src="js/methodlib.js" defer></script>
         <script type="text/javascript" src="js/frontend.js" defer></script>
-        <script type="text/javascript" src="jquery/jquery.elastic.js" defer></script>
     </body>
 </html>

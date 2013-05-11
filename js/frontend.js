@@ -11,7 +11,7 @@ $(document).ready(function() {
     setup();
 
     // Allow the textarea to expand with its contents, as the composition grows
-    $("textarea").elastic();
+    //$("textarea").elastic();
 
     // Enable as-you-type proving by adding a keyup event to the composition box
     $("#composition").trigger('keyup');
@@ -20,13 +20,11 @@ $(document).ready(function() {
     checkLiveProve();
 
     // Enable the tabs
-    //$("#tabs").tabs();
-    $('#tabs a').click(function (e) {
-        e.preventDefault();
-        $(this).tab('show');
-    });
-    $('#tabs a:first').tab('show');
+    $('#tabs').tabs();
 });
+
+$('#tabs a:first').trigger('click');
+$('body').tooltip();
 
 /*******************************************************************************
 * EVENT HANDLERS

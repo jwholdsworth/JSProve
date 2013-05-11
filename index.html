@@ -4,24 +4,42 @@
         <meta charset="utf-8" />
         <meta name="description" content="Browser based Peal proving program by Paul Brook and James Holdsworth" />
         <title>JSProve</title>
-        <link href="css/jsprove.css" rel="stylesheet" type="text/css" media="screen" />
-        <link href="css/jquery.css" rel="stylesheet" type="text/css" media="screen" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen" />
+        <link href="css/jsprove.css" rel="stylesheet" media="screen" />
+
+        <!--link href="css/jquery.css" rel="stylesheet" type="text/css" media="screen" /-->
     </head>
     <body>
-        <header>
-            <h1>JSProve</h1>
-        </header>
+        <section class="alert">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <div></div>
+        </section>
+
+        <div class="navbar">
+            <div class="navbar-inner">
+                <h1><a class="brand" href="#">JSProve</a></h1>
+                <ul class="nav">
+                    <li><a href="https://github.com/jwholdsworth/JSProve">GitHub</a></li>
+                    <li><a href="https://github.com/jwholdsworth/JSProve/archive/master.zip">Download</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <noscript><p class="error">This application requires JavaScript to be enabled within your browser. Please enable it before continuing.</p></noscript>
+
         <section id="tabs">
-            <ul>
-                <li><a href="#methods">Methods and Composition</a></li>
-                <li><a href="#calls">Calls</a></li>
-                <li><a href="#musicInput">Music</a></li>
-                <li><a href="#aboutJsprove">About</a></li>
+            <ul class="nav nav-tabs">
+                <li><a href="#methods" data-toggle="tab">Methods and Composition</a></li>
+                <li><a href="#calls" data-toggle="tab">Calls</a></li>
+                <li><a href="#musicInput" data-toggle="tab">Music</a></li>
+                <li><a href="#about" data-toggle="tab">About</a></li>
             </ul>
-            <section id="input">
-                <section id="calls">
+            <section class="tab-content">
+                <section id="calls" class="tab-pane">
                     <h2>Calls</h2>
-                    <table>
+                    <table class="form-horizontal">
                         <tr>
                             <th>Symbol</th><th>Notation</th><th>Location</th>
                         </tr>
@@ -36,43 +54,52 @@
                             <td><select class="callLocation" name="callLocation1" id="callLocation1"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td>
                         </tr>
                     </table>
-                    <input type="button" value="Add more calls" id="btnAddMoreCalls" />
+                    <input type="button" value="Add more calls" id="btnAddMoreCalls" class="btn btn-primary" />
                 </section>
-                <section id="musicInput">
+                <section id="musicInput" class="tab-pane">
                     <h2>Music</h2>
                     Enter your own music, e.g. ****4678 for rows ending in 4678. One entry per line please.<br />JSProve will count the 4-bell runs for you.<br />
                     <textarea id="userMusicList" rows="5" cols="40"></textarea>
                 </section>
-                <section id="methods">
-                    <h2>Methods</h2>
-                    <div>
-                        <select name="methodRank" id="methodRank">
-                            <option value="6">Minor</option>
-                            <option value="8" selected="selected">Major</option>
-                            <option value="10">Royal</option>
-                            <option value="12">Maximus</option>
-                        </select>
-                        <!--input type="button" value="Add Method" id="moreMethods" /-->
-                        <select name="class" id="class">
-                            <option value="D">Delight</option>
-                            <option value="P">Plain</option>
-                            <option value="S" selected="selected">Surprise</option>
-                            <option value="T">Treble Bob</option>
-                        </select>
-                        <input type="button" value="Load Method from Library" id="searchMethod" /> <input type="button" value="+" id="moreMethods" />
-                    </div>
-                    <div id="methodList"></div>
+                <section id="methods" class="tab-pane">
+                    <section id="input">
+                        <h2>Methods</h2>
+                        <div class="form-horizontal">
+                            <select name="methodRank" id="methodRank">
+                                <option value="6">Minor</option>
+                                <option value="8" selected="selected">Major</option>
+                                <option value="10">Royal</option>
+                                <option value="12">Maximus</option>
+                            </select>
+                            <!--input type="button" value="Add Method" id="moreMethods" /-->
+                            <select name="class" id="class">
+                                <option value="D">Delight</option>
+                                <option value="P">Plain</option>
+                                <option value="S" selected="selected">Surprise</option>
+                                <option value="T">Treble Bob</option>
+                            </select>
+                            <input type="button" value="Load Method from Library" id="searchMethod" class="btn btn-primary" /> <input type="button" value="+" id="moreMethods" class="btn btn-success" />
+                        </div>
+                        <div id="methodList" class="form-horizontal"></div>
 
-                    <h2>Composition</h2>
-                    <div><label for="shorthand"><abbr title="For single method compositions only. E.g. mhwvf">Shorthand</abbr> (uses first method from selection above)</label><br /><input type="text" value="hhh" name="shorthand" id="shorthand" size="60" /> <input type="button" id="generateShorthand" value="Generate" /></div>
-                    <div><label for="liveProve"><abbr title="Proves for every keystroke. Not great on slower machines.">Live Prove</abbr></label><input type="checkbox" name="liveProve" id="liveProve" checked="checked" /></div>
-                    <div style="overflow:hidden;">
-                        <textarea id="composition" rows="10" cols="40" style="float:left;">YYYYYYY</textarea>
-                        <pre style="float:left; width:100px; margin:0; padding:0;" id="courseEnds"></pre>
-                    </div>
-                    <input type="button" id="prove" value="Prove" />
+                        <h2>Composition</h2>
+                        <div><label for="shorthand"><abbr title="For single method compositions only. E.g. mhwvf">Shorthand</abbr> (uses first method from selection above)</label><br /><input type="text" value="hhh" name="shorthand" id="shorthand" size="60" /> <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" /></div>
+                        <div><label for="liveProve"><abbr title="Proves for every keystroke. Not great on slower machines.">Live Prove</abbr></label><input type="checkbox" name="liveProve" id="liveProve" checked="checked" /></div>
+                        <div style="overflow:hidden;">
+                            <textarea id="composition" rows="10" cols="40" style="float:left;">YYYYYYY</textarea>
+                            <pre style="float:left; width:100px; margin:0; padding:0;" id="courseEnds"></pre>
+                        </div>
+                        <input type="button" id="prove" value="Prove" class="btn btn-success" />
+                    </section>
+
+                    <section id="output">
+                        <h3 id="results"></h3>
+                        <div id="music"></div>
+                        <h3 id="com"></h3>
+                        <div id="atw"><pre></pre></div>
+                    </section>
                 </section>
-                <section id="aboutJsprove">
+                <section id="about" class="tab-pane">
                     <h2>About JSProve</h2>
                     <p>Created by Paul Brook and James Holdsworth. Written in HTML5 and JavaScript.</p>
                     <h3>Feature Requests</h3>
@@ -93,23 +120,14 @@
                     </ul>
                 </section>
             </section>
-            <section id="output">
-                <h3 id="results"></h3>
-                <noscript>
-                <p class="error">This application requires JavaScript to be enabled within your browser. Please enable it before continuing.</p>
-                </noscript>
-                <div id="music"></div>
-                <h3 id="com"></h3>
-                <div id="atw"><pre></pre></div>
-            </section>
         </section>
 
         <section id="popup"></section>
-        <section id="warning"><h3>Oops...</h3><div></div></section>
 
         <!-- import javascript libraries and files -->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" defer></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" defer></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.24/jquery-ui.min.js" defer></script>
+        <script type="text/javascript" src="js/bootstrap.min.js" defer></script>
         <script type="text/javascript" src="js/pealprover.js" defer></script>
         <script type="text/javascript" src="js/methodlib.js" defer></script>
         <script type="text/javascript" src="js/frontend.js" defer></script>

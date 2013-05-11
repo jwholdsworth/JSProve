@@ -20,7 +20,12 @@ $(document).ready(function() {
     checkLiveProve();
 
     // Enable the tabs
-    $("#tabs").tabs();
+    //$("#tabs").tabs();
+    $('#tabs a').click(function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
+    $('#tabs a:first').tab('show');
 });
 
 /*******************************************************************************
@@ -50,7 +55,7 @@ $("#prove").click(prove);
 
 // Display a warning when you try to use half lead calls (not implemented yet)
 $('.callLocation').change(function() {
-    displayWarning('Half-lead bobs are not implemented yet');
+    displayWarning('Half-lead calls are not implemented yet');
 });
 
 // generate the composition from the shorthand
@@ -87,7 +92,7 @@ function setup() {
 
 // function to add a new input box into the method list section
 function insertMethodBox(code, pn) {
-    $('#methodList').append('<div id="method' + numberOfMethods + '"><input type="text" id="shortcut' + numberOfMethods + '" maxlength="1" size="1" value="'+code+'" /><input type="text" class="notation" id="notation' + numberOfMethods + '" value="'+pn+'" size="35" /><input type="button" value="&dash;" class="removeMethod" onclick="removeParent(this);" /></div>');
+    $('#methodList').append('<div id="method' + numberOfMethods + '"><input type="text" id="shortcut' + numberOfMethods + '" maxlength="1" size="1" value="'+code+'" /><input type="text" class="notation" id="notation' + numberOfMethods + '" value="'+pn+'" size="35" /><input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeParent(this);" /></div>');
     numberOfMethods++;
 }
 
@@ -228,16 +233,20 @@ function loadMethods(file) {
 /**
  * Display a warning
  */
-function displayWarning(warning, timeout) {
-    if(timeout === undefined) {
-        timeout = 2000;
+function displayWarning(message, level, timeout) {
+    if (level === undefined) {
+        level = 'error';
     }
-    $('#warning div').html(warning);
-    $('#warning').fadeIn('slow').delay(timeout).fadeOut('slow');
+    if (timeout === undefined) {
+        timeout = 4000;
+    }
+    $('.alert').addClass('alert-' + level);
+    $('.alert div').html(message);
+    $('.alert').fadeIn('slow').delay(timeout).fadeOut('slow');
 }
 
 function hideWarning() {
-    $('#warning').fadeOut('slow');
+    $('.alert').fadeOut('slow');
 }
 
 function closePopup() {

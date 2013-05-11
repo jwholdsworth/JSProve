@@ -78,6 +78,16 @@ function do_prove() {
     var changes = 0;
     var rounds = 0;
     var music = MusicBox();
+    var result = {
+        trueTouch: false,
+        complete: false,
+        length: 0,
+        status: 'No touch entered',
+        courses: '',
+        music: '',
+        atw: '',
+        com: 0
+    };
 
     function test_row(c, le) {
         var r;
@@ -171,6 +181,7 @@ function do_prove() {
         leads[i] = lead;
     }
 
+    // get the course ends for displaying
     var courses = "";
     var leadNo = 0;
     for(c = 0; c < comptext.length; c++) {
@@ -179,17 +190,28 @@ function do_prove() {
             courses += leads[leadNo-1] + "\n";
         }
     }
+    result.courses = courses;
 
     if (rounds > 0) {
+        result.trueTouch = true;
+        result.length = (changes - rounds);
+        result.complete = true;
+
         if (rounds != changes) {
-            res = "<span class=\"true\">Touch is true: " + rounds + " changes (" + (changes - rounds) + " before last course end)</span>";
+            result.status = "Touch is true: " + rounds + " changes (" + (changes - rounds) + " before last course end)";
         } else {
-            res = "<span class=\"true\">Touch is true: " + rounds + " changes</span>";
+            result.status = "Touch is true: " + rounds + " changes";
         }
     } else if (rounds < 0) {
-        res = "<span class=\"false\">Touch is false: false after " + (-rounds) + " changes</span>";
+        result.complete = true;
+        result.trueTouch = false;
+        result.length = (-rounds);
+        result.status = "Touch is false: false after " + (-rounds) + " changes";
     } else {
-        res = "<span class=\"incomplete\">Incomplete touch (" + changes + " changes)</span>";
+        result.complete = false;
+        result.trueTouch = true;
+        result.length = changes;
+        result.status = "Incomplete touch (" + changes + " changes)";
     }
 
     musicOutput = "<pre>";
@@ -204,12 +226,14 @@ function do_prove() {
         }
     }
     musicOutput += "</pre>";
+    result.music = musicOutput;
 
     var atw = AtwChecker(comp);
     atw.getAtw();
-    outputAtw = formatAtw(atw);
+    result.atw = formatAtw(atw);
+    result.com = atw.com;
 
-    return [res, musicOutput, courses, outputAtw, atw.com];
+    return result;
 }
 
 function formatAtw(atw) {
@@ -253,11 +277,7 @@ function generateShorthand(methodID, bob, single) {
     var vm = validate_method(methodID);
     var s = Shorthand($('#shorthand').val(), vm[1]);
 
-    try {
-        s.run(nothing, bob, single);
-    } catch (er) {
-        displayWarning(er);
-    }
+    s.run(nothing, bob, single);
     $('#composition').val(s.compText);
 
     function nothing() {}

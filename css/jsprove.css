@@ -13,23 +13,23 @@ h1 {
     padding:10px;
 }
 
-.error, .false {
-    font-weight:bold;
-    color:#900;
-}
-
 .small {
     font-size:0.8em;
 }
 
-.true {
+.success {
     color:#090;
     font-weight: bold;
 }
 
-.incomplete {
+.info {
     color:#009;
     font-weight:bold;
+}
+
+.error, .false {
+    font-weight:bold;
+    color:#900;
 }
 
 input, select, button {

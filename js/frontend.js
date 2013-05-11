@@ -69,8 +69,12 @@ $("#generateShorthand").click(function() {
         return false;
     }
 
-    generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
-    prove();
+    try {
+        generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
+        prove();
+    } catch (e) {
+        displayWarning(e, 'error');
+    }
 });
 
 // add more call fields
@@ -193,14 +197,26 @@ function loadMusicForStage(stage) {
 function prove() {
     try {
         res = do_prove();
+
+        if (res.trueTouch === true) {
+            if (res.complete === true) {
+                messageType = 'success';
+            } else {
+                messageType = 'info';
+            }
+        } else {
+            messageType = 'error';
+        }
+
+        displayWarning(res.status, messageType);
+        $('#results').html(res.status).attr('class', messageType);
+        $('#music').html(res.music);
+        $('#courseEnds').html(res.courses);
+        $('#atw pre').html(res.atw);
+        $('#com').html(res.com + ' changes of method');
     } catch (e) {
-        res = "Error: " + e;
+        displayWarning(e, 'error');
     }
-    $('#results').html(res[0]);
-    $('#music').html(res[1]);
-    $('#courseEnds').html(res[2]);
-    $('#atw pre').html(res[3]);
-    $('#com').html(res[4] + ' changes of method');
 }
 
 /**
@@ -240,7 +256,7 @@ function displayWarning(message, level, timeout) {
     if (timeout === undefined) {
         timeout = 4000;
     }
-    $('.alert').addClass('alert-' + level);
+    $('.alert').attr('class', 'alert alert-' + level);
     $('.alert div').html(message);
     $('.alert').fadeIn('slow').delay(timeout).fadeOut('slow');
 }

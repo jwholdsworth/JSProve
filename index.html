@@ -8,11 +8,9 @@
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen" />
         <link href="css/jsprove.css" rel="stylesheet" media="screen" />
-
-        <!--link href="css/jquery.css" rel="stylesheet" type="text/css" media="screen" /-->
     </head>
     <body>
-        <section class="alert">
+        <section class="alert" id="alert">
             <button type="button" class="close" data-dismiss="alert">&times;</button>
             <div></div>
         </section>
@@ -24,6 +22,9 @@
                     <li><a href="https://github.com/jwholdsworth/JSProve">GitHub</a></li>
                     <li><a href="https://github.com/jwholdsworth/JSProve/archive/master.zip">Download</a></li>
                 </ul>
+                <div class="nav-collapse collapse">
+                    <p class="navbar-text" style="float:right;"><em>Browser-based peal prover</em></p>
+                </div>
             </div>
         </div>
 
@@ -83,13 +84,13 @@
                         <div id="methodList" class="form-horizontal"></div>
 
                         <h2>Composition</h2>
-                        <div class="form-horizontal"><label for="shorthand"><abbr title="For single method compositions only. E.g. mhwvf">Shorthand</abbr> (uses first method from selection above)</label><br /><input type="text" value="hhh" name="shorthand" id="shorthand" size="60" /> <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" /></div>
-                        <div><label for="liveProve"><abbr title="Proves for every keystroke. Not great on slower machines.">Live Prove</abbr></label><input type="checkbox" name="liveProve" id="liveProve" checked="checked" /></div>
+                        <div class="form-horizontal"><label for="shorthand"><abbr title="For single method compositions only. E.g. mhwvf">Shorthand</abbr> (uses first method from selection above)</label><input type="text" value="hhh" name="shorthand" id="shorthand" size="60" /> <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" /></div>
+                        <div><label class="checkbox"><abbr title="Proves for every keystroke. Not great on slower machines.">Live Prove</abbr><input type="checkbox" name="liveProve" id="liveProve" checked="checked" /></label></div>
                         <div style="overflow:hidden;">
                             <textarea id="composition" rows="10" cols="40" style="float:left;">YYYYYYY</textarea>
                             <pre style="float:left; width:100px; margin:0; padding:0;" id="courseEnds"></pre>
                         </div>
-                        <input type="button" id="prove" value="Prove" class="btn btn-success" />
+                        <input type="button" id="btnProve" value="Prove" class="btn btn-success" />
                     </section>
 
                     <section id="output">
@@ -122,7 +123,19 @@
             </section>
         </section>
 
-        <section id="popup"></section>
+        <section id="popup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3 id="myModalLabel">Insert Method</h3>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+                <button class="btn btn-success" id="insertMethod">Insert Method</button>
+            </div>
+        </section>
 
         <!-- import javascript libraries and files -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" defer></script>

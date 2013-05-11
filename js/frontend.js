@@ -51,7 +51,7 @@ $("#insertMethod").click(insertMethod);
 $("#liveProve").click(checkLiveProve);
 
 // click the prove button
-$("#prove").click(prove);
+$("#btnProve").click(prove);
 
 // Display a warning when you try to use half lead calls (not implemented yet)
 $('.callLocation').change(function() {
@@ -111,7 +111,7 @@ function insertMethod() {
             insertMethodBox(method_symbol, $("#methodSelect").val());
         }
     }
-    closePopup();
+    $('#popup').modal('hide');
 }
 
 // removes an element's parent from the dom
@@ -125,10 +125,10 @@ function checkLiveProve() {
         $('#composition').keyup(function() {
             prove();
         });
-        $('#prove').hide();
+        $('#btnProve').hide();
     } else {
         $('#composition').unbind('keyup');
-        $('#prove').show();
+        $('#btnProve').show();
     }
 }
 
@@ -239,10 +239,10 @@ function loadMethods(file) {
             var n = m[i].split(" ");
             methods += "<option value='"+n[1]+" "+n[2]+"'>" + n[0] + "</option>"
         }
-        methods += "</select><input type=\"button\" id=\"insertMethod\" value=\"Insert Method\" onclick=\"insertMethod();\" />";
+        methods += "</select>";
 
-        $('#popup').html(methods + "<span style=\"float:right\"><a href=\"javascript:closePopup();\">close</a></span>");
-        $('#popup').fadeIn('slow');
+        $('#popup .modal-body').html(methods);
+        $('#popup').modal();
     }, "text");
 }
 
@@ -256,15 +256,7 @@ function displayWarning(message, level, timeout) {
     if (timeout === undefined) {
         timeout = 4000;
     }
-    $('.alert').attr('class', 'alert alert-' + level);
-    $('.alert div').html(message);
-    $('.alert').fadeIn('slow').delay(timeout).fadeOut('slow');
-}
-
-function hideWarning() {
-    $('.alert').fadeOut('slow');
-}
-
-function closePopup() {
-    $('#popup').fadeOut('slow');
+    $('#alert').attr('class', 'alert alert-' + level);
+    $('#alert div').html(message);
+    $('#alert').fadeIn('slow').delay(timeout).fadeOut('slow');
 }

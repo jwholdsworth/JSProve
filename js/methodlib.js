@@ -421,7 +421,7 @@ function Shorthand(shorthand, method) {
  * @author James Holdsworth
  */
 function AtwChecker(comp) {
-    // build and array like Method[bellNo][position] = true
+    // build an array like Method[bellNo][position] = true
     var that = {
         comp:comp,
         positionsRung:[],

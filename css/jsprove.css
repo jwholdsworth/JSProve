@@ -40,25 +40,9 @@ abbr {
     border:0;
 }
 
-pre {
-    padding:0px 2px;
-    font-size:12px;
-}
-
-textarea {
-    font-size:12px;
-}
-
-#popup {
-    border:2px solid #090;
-    border-radius:5px;
-    background:#fff;
-    position:fixed;
-    width:50%;
-    left: 25%;
-    top:30%;
-    display:none;
-    padding:4px;
+pre, textarea {
+    padding: 4px;
+    font: normal 14px 'Courier New', monospace;
 }
 
 .alert {

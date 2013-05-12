@@ -46,7 +46,7 @@ $("#insertMethod").click(insertMethod);
 
 // Display a warning when you try to use half lead calls (not implemented yet)
 $('.callLocation').change(function() {
-    displayWarning('Half-lead calls are not implemented yet');
+    displayMessage('Half-lead calls are not implemented yet');
 });
 
 // add event handler to composition box - on change, prove the composition
@@ -61,7 +61,7 @@ $("#generateShorthand").click(function() {
     var mid = $(firstMethod[0]).attr('id');
 
     if (!mid) {
-        displayWarning('No methods defined.');
+        displayMessage('No methods defined.');
         return false;
     }
 
@@ -69,7 +69,7 @@ $("#generateShorthand").click(function() {
         generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
         prove();
     } catch (e) {
-        displayWarning(e, 'error');
+        displayMessage(e, 'error');
     }
 });
 
@@ -130,7 +130,7 @@ function checkMethodLetterIsUnique(letter, method_name, method_symbol) {
             }
         }
         if(is_unique === false) {
-            displayWarning("A method with shortcut <strong>" + letter + "</strong> already exists. " + method_name + " has not been added.");
+            displayMessage("A method with shortcut <strong>" + letter + "</strong> already exists. " + method_name + " has not been added.");
             return is_unique;
             break;
         }
@@ -191,14 +191,14 @@ function prove() {
             messageType = 'error';
         }
 
-        displayWarning(res.status, messageType);
+        displayMessage(res.status, messageType);
         $('#results').html(res.status).attr('class', messageType);
         $('#music').html(res.music);
         $('#courseEnds').html(res.courses);
         $('#atw pre').html(res.atw);
         $('#com').html(res.com + ' changes of method');
     } catch (e) {
-        displayWarning(e, 'error');
+        displayMessage(e, 'error');
     }
 }
 
@@ -230,9 +230,12 @@ function loadMethods(file) {
 }
 
 /**
- * Display a warning
+ * Display a message
+ * @param message
+ * @param level
+ * @param timeout
  */
-function displayWarning(message, level, timeout) {
+function displayMessage(message, level, timeout) {
     if (level === undefined) {
         level = 'error';
     }

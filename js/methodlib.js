@@ -572,7 +572,6 @@ function MusicBox() {
         var rank = c.rank;
         var i;
         var node;
-        //var next_node;
 
         i = 0;
         node = objtree;

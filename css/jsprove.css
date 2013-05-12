@@ -8,6 +8,11 @@ h1 {
     width: 600px;
 }
 
+#shorthand {
+    max-width: 450px;
+    width: 100%;
+}
+
 #output {
     float: left;
     padding: 10px;

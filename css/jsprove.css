@@ -1,35 +1,35 @@
 h1 {
     line-height: 1;
-    float:none;
+    float: none;
 }
 
 #input {
-    float:left;
-    width:60%;
+    float: left;
+    width: 600px;
 }
 
 #output {
-    float:left;
-    padding:10px;
+    float: left;
+    padding: 10px;
 }
 
 .small {
-    font-size:0.8em;
+    font-size: 0.8em;
 }
 
 .success {
-    color:#090;
+    color: #090;
     font-weight: bold;
 }
 
 .info {
-    color:#009;
-    font-weight:bold;
+    color: #009;
+    font-weight: bold;
 }
 
 .error, .false {
-    font-weight:bold;
-    color:#900;
+    font-weight: bold;
+    color: #900;
 }
 
 input, select, button, textarea, pre {
@@ -38,7 +38,7 @@ input, select, button, textarea, pre {
 }
 
 abbr {
-    border:0;
+    border: 0;
 }
 
 pre, textarea {

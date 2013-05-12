@@ -1,5 +1,6 @@
-*** A8 Fri,14 Dec 2012.12:41:31 ***
+*** A8 Sat,11 May 2013.18:00:34 ***
 Abbeyfields h &-5-4.5-5.6-4-3-5
+Advent d &-3-456-256-6-34-45-2.7
 Alans70thbirthdaylittle m &-45-25-4
 Amptonbog a &-5-4.5-5.6-4-3.6.7
 Anniversary a &-5-4.5-5.36-4-5-7
@@ -17,6 +18,7 @@ Bledlowridge b &-36-4-5-36-4-5-36.7
 Bobbydazzlerlittle m &-456-2-4
 Boston a &-5-4.5-5.36-5-4-7
 Bradman f &-5-4.5.36.4.5-4.7
+Brinklowtump f &-3-4-36.4.3.4-4.5
 Bristol k &-5-4.5.36.4.5-4-1
 Brumaire l &-5-4.5-5.36-34-23-3
 Brunley d &-3-1.56.1.36.1-5.4-4.7
@@ -36,6 +38,7 @@ Catmose f &-3-4-5-6-4-3.4.3
 Centenarian b &-3-4-5-6-2-3-4-34-7
 Century b &-3-4-5-6-4-5-36.7
 Checkendonlittle h &56-56.1.56-56.1-6
+Chesterlecat b &-3-4-5-6-2-3-456.7
 Chippingcampden b &-3-4-5-6-4-25-236.7
 Chuckkey e &-5-4.5.36-5-1
 Circularsaw a &34-5.6-6-5.6.7
@@ -62,6 +65,7 @@ Deddingtonlittle d &-5-6-3.4-5
 Dewsbury m &-5-5-4.5-5-5.36.4-4.5-4-1
 Dextersheppard f &-3-4-5-6-4-3-3456-56-1
 Diamond d &-3-4-56-6-34-3-7
+Donington d &-3-456-2-6-34-1-56.7
 Dordrecht b &-3-456-56-1-34-5.6.7
 Dore c &34-3.4-2-6-1-5
 Dorridge c &-3-4-36-45-2-1
@@ -93,6 +97,7 @@ Hallow m &-56-4.56-5.36.4.5-1
 Hampshire b &-3-4-5-6-23-4.7
 Harborne m &-5-45-5-36.4.5-1
 Harrowweald a &-3-4-5-6-1-4-1
+Harwell b &-3-4-2-1-4-1-256.7
 Haselbech f &-3-456-56-6-34-1-5
 Headstone b &-3-4-256-6-34-1-6-34-5
 Heckingtonfen b &-3-4-2-1-4-1-56.7
@@ -112,6 +117,8 @@ Idtd b &-1-2-1-4-3-7
 Ightenhill e &5.36-4.56.3.6.3.4.5.6-6.5
 Iltios b &-3-4-25-6-4-3-34.7
 Ionian d &-3-4-1-5-2-5
+Irchester b &-5-6-2-3.4-4.3-34.7
+Islay b &-36-4-5-36-4-25-236.7
 Jonah b &-3-4-25-6-4-3-256.7
 Jorvik b &-3-4-2-3.4-2.5.6.7
 June b &-3-4-5-6-2-3.4.7
@@ -129,15 +136,20 @@ Leewood f &-5-4.5.2-1-4-5-5
 Leicester b &-5-4.5-56.3-4-45-1
 Leighsinton c &-3-4-6-25-1
 Malaya b &-3-4-25-6-5-6-7
+Manchestermarble a &5-5.4-5-36.4-4.5-4.7
 Mendip f &-5-4.5.36.4.5-4-7
 Messidor g &-5-4.5-5.36.4-4.3.6.3
+Milltown d &-3-4.5.2-1-2-5.6-7
 Miltonmanor b &-3-4-25-6-4-3-2.7
 Missuswoo b &-3-4-1-2-1-7
+Mitchell d &-3-456-2-6-2-5.6-7
 Morland b &-1-2-3-4-5-6-7
 Mortonfen d &-3-4-256-6-34-1-56.7
 Newbury m &-56-4.5.36.4-34.5-34-1
 Newchurch m &-5-45-5-3.4.3.6.3
 Newinn b &-3-4-5-6-4-25-36.7
+Newtown f &-4-3-4-5-4-5
+Newyearsevelittle f &-3-4-56-36-4.5
 Nivose a &-5-4.5-5.36-4-25-7
 Noon b &-3-4-5-6.34-34.1-2.7
 Normanton m &-1-2-1-2-1-2-1
@@ -213,6 +225,7 @@ Ventose c &-5-4.5-5.6-4-3-5
 Venus e &-3-4-6-5-3456-1
 Vickerstown a &-5-4.5-5.36.4-4.5.4-7
 Vitznau b &-3-4-5-36-4-1-256.7
+Wainwright b &-34.5.6-36.1.36.4.5-2-1
 Walkden f &5-5.4.5-5.36.4.5.4.7
 Warwickshire b &-3-4-2-3-2-5-6.7
 Wealdstone b &-3-4-5-6-1-7
@@ -224,6 +237,8 @@ Westhoughton d &-5-4-56-36-1-7
 Whetstone b &-3-56-4-56-1-2-1-34-7
 White b &-3-4-5-36-4-1.56.34.7
 Whittington m &-5-4.5-5.6-34-5.2.3
+Willsneck d &-3-4-2-6.34-2.3.6-7
+Winchester b &-3-4-5-6.34-34.1-34.7
 Windsor m &-5-4.5-5.36-34-25-1
 Wingrave b &-3-4-5-6-2-3-456-56-7
 Xocourt d &-3-4.5.2-1-2-5.6.7

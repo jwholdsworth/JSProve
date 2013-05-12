@@ -1,4 +1,4 @@
-*** S6 Fri,14 Dec 2012.12:41:29 ***
+*** S6 Sat,11 May 2013.18:00:31 ***
 Abbessroding h &-34-4.2-2.23-4-3
 Abbotsleigh 2z &-3-45-5-3-4-1
 Aberdourcastle 4z &34-3.4-25-3.2-4.5
@@ -166,6 +166,7 @@ Birks 4z &-3-45-2-23-2-5
 Bishopstawton l &-34-45-2-3-4-1
 Blabheinn 2z &-34-45-25-3.2-34.5
 Black g &-3-4-2-3.234.4-5
+Blackatonbrook a &3-5.4.2-5.3.2-34.5
 Blackfriars 2z &-3-4-5-3-2-3
 Blackmoor m &34-3.4-5-3.4-4.3
 Blacknotley h &-3-4-2-3.2-34.3
@@ -205,6 +206,7 @@ Brentford l &34-3.4-2-23-34-3
 Bressay 4z &-3-4-5-3-34-5
 Bretford g &-3-4.2-2.23-4.234.5
 Bridgemarshisland z +-34-4-2-23.2-234.25.234-2.3-2-4-34-2
+Brightlingsea 2z &-34-4.2-2.23-2.234.5
 Brightwalton 2z &3-3.4.5-2.3.2-2.3
 Brimpton z +-3-4-2-23-2-25-2-3-2-4-3-2
 Brisley e +-3-4-2-23-234-23-234-3-2-4-3-
@@ -381,6 +383,7 @@ Deprofundis 2z &345.5.345.4.5.25.2.3.234.2.234.5
 Derbylonsdale 4z &-5-4-2-23-34-5
 Dersingham 2z &34-5.4-5-3.2-2.5
 Diccon 2z &5-3.4-2-3-2-5
+Dickfordwater a &3-5.4.2-5.3.4-4.5
 Dickleburgh a &34-5.4-5-23-2-3
 Dipton l &5-5.4-2-3.2-34.5
 Ditchingham b &5-5.4-5-23-4-3
@@ -696,7 +699,9 @@ Kwekwe b &-3-4-2-3.4.234.34.5
 Kynochtown a +-34-4-2-23.2-2.23-2-23-2-4-34-
 Ladharbheinn f &-34-45-25-23-4-5
 Lakeerie 4z &5-5.4-5-3-34-5
+Lakehuron 4z &-3-4-5-3-34-1
 Lakemichigan 4z &5-5.4-5-3.4-4.5
+Lakeontario 4z &3-3.4-5-3-34-5
 Lambley 6z &-3-45-2-3-2-5
 Lancot 4z &5-3.4-5-3-34-1
 Landulph 2z &-5-45-5-23-4-1
@@ -853,6 +858,7 @@ Monxton f &-5-45.2-2.23-2-5
 Moorhouse l &-5-4.5-2.3.2-34.5
 Mork e &5-3.4-5-3.4-2.5
 Morpeth h &34-3.4-2-3.4-34.1
+Morrellroding l &-34-4.2-2.3-4-5
 Mortoncastle a &-34-4-25-3.4-4.5
 Mountleinster 6z &34-3.4-25-3.2-34.5
 Mountnessing a &-34-4.2-2.23.2-2.3
@@ -889,6 +895,7 @@ Nationalstud 4z &5-5.4-2-3.4-34.5
 Nativity a &-5-45-5-3.4-2.5
 Naunton 2z &-34-45-2-3-4-3
 Navestock f &34-3.4-5-23-34-3
+Navestockheath a +-34-4.2-2.23-2-23-2-3.2-2.4-34-
 Necton 6z &-5-45-2-3-34-3
 Needhammarket 4z &-5-45-2-3.4-2.5
 Needhamstreet 4z &-3-4-2-23.34-2.5
@@ -1097,6 +1104,7 @@ Scottow h &-3-45-5-3-34-3
 Screveton 2z &-34-4-5-3-2-3
 Sculthorpe h &-3-4-5-23-34-3
 Seaforth 6z &34-3.4.5-2.3.4-4.5
+Secretsanta 6z &-3-45.2-2.23-4-1
 Sedlescombe f &-34-4-2-23-4-5
 Seil 2z &3-3.4.5-2.3-4-3
 Selgovae 2z &3-34.4-2-3.2-4.3

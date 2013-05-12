@@ -9,8 +9,8 @@ var stage = $('#methodRank').val();
 *******************************************************************************/
 $(document).ready(function() {
     setup();
-    // Enable autosizing of composition textbox
-    $("#composition").autosize();
+    // Enable autosizing of all text areas
+    $('textarea').autosize();
 
     // Enable as-you-type proving by adding a keyup event to the composition box
     $("#composition").trigger('keyup');
@@ -170,7 +170,7 @@ function loadMethodsForStage(stage) {
  */
 function loadMusicForStage(stage) {
     $.get('music/'+stage, function(data) {
-        $('#userMusicList').val(data);
+        $('#userMusicList').val(data).trigger('autosize');
     }, 'text');
 }
 

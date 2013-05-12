@@ -1,10 +1,10 @@
 function get_composition() {
     var methods = {};
-
     var comptext = $('#composition').val();
     var comp = Composition();
     var done_call = true;
     var last_method;
+    var txtCalls = new Object();
 
     // TODO: warn about failures
     $('#methodList').each(function() {
@@ -14,20 +14,14 @@ function get_composition() {
         }
     });
 
-    var txtCalls = new Object();
     for (n = 0; n < $('#calls table tr').size()-1; n++) {
         var symbol = $("#symbol"+n).val();
         var not = $("#callNtn"+n).val();
         txtCalls[symbol] = parse_bell_list(comp.rank, 0, not);
     }
 
-    var first = true;
-    var is_ce = false;
-    var last_call = -1;
-
     for (i = 0; i < comptext.length; i++) {
         c = comptext.charAt(i);
-
         if (c in methods) {
             if (!done_call) {
                 comp.append_lead(last_method, -1);
@@ -37,15 +31,17 @@ function get_composition() {
         } else if (c in txtCalls) {
             comp.append_lead(last_method, txtCalls[c].mask);
             done_call = true;
-        } else if (c === '\n') {
-            is_ce = true;
         }
     }
+
     if (!done_call) {
         comp.append_lead(last_method, -1);
     }
 
-    return [comp, txtCalls];
+    return {
+        comp:comp,
+        calls:txtCalls
+    };
 }
 
 function validate_method(id) {
@@ -88,6 +84,9 @@ function do_prove() {
         atw: '',
         com: 0
     };
+    composition = get_composition();
+    var comp = composition.comp;
+    var txtCalls = composition.calls;
 
     function test_row(c, le) {
         var r;
@@ -106,11 +105,6 @@ function do_prove() {
         }
     }
 
-    var gc = get_composition();
-    var comp = gc[0];
-    var txtCalls = gc[1];
-    var musicOutput;
-
     // add 4-bell run patterns whatever the stage (rank)
     for(i=0; i < comp.rank; i++) {
         // fill up the rest of the music array with the correct number of -1's
@@ -119,8 +113,6 @@ function do_prove() {
         for(j=0; j < (comp.rank-4); j++) {
             spareBells[j] = -1;
         }
-
-        // music for all numbers of bells
 
         // forward run off the front (ie 1234.... etc)
         runs = runs.concat([i, i+1, i+2, i+3], spareBells);
@@ -140,8 +132,6 @@ function do_prove() {
         // backward run at the back (ie ....4321)
         runs = runs.concat(spareBells, [i+3, i+2, i+1, i]);
         music.add_pattern(runs);
-
-        spareBells, runs = null; // clean up - not sure this is necessary
     }
 
     // add user specific music patterns
@@ -169,7 +159,6 @@ function do_prove() {
         var regex = new RegExp(i, 'g');
         comptext = comptext.replace(regex, '');
     }
-
     comptext = comptext.split("\n");
 
     var leads = [];
@@ -182,15 +171,13 @@ function do_prove() {
     }
 
     // get the course ends for displaying
-    var courses = "";
     var leadNo = 0;
     for(c = 0; c < comptext.length; c++) {
         if(comptext.length > 0) {
             leadNo = comptext[c].length + leadNo;
-            courses += leads[leadNo-1] + "\n";
+            result.courses += leads[leadNo-1] + "\n";
         }
     }
-    result.courses = courses;
 
     if (rounds > 0) {
         result.trueTouch = true;
@@ -214,7 +201,7 @@ function do_prove() {
         result.status = "Incomplete touch (" + changes + " changes)";
     }
 
-    musicOutput = "<pre>";
+    result.music = "<pre>";
     for (i = 0; i < music.counts.length; i++) {
         var pattern = "";
         // add run count to music output array only if those runs exist
@@ -222,11 +209,10 @@ function do_prove() {
             for(j=0; j < music.patterns[i].length; j++) {
                 pattern += bell_name(music.patterns[i][j]);
             }
-            musicOutput += "<strong>" + music.counts[i] + "</strong>\t" + pattern + "\n";
+            result.music += "<strong>" + music.counts[i] + "</strong>\t" + pattern + "\n";
         }
     }
-    musicOutput += "</pre>";
-    result.music = musicOutput;
+    result.music += "</pre>";
 
     var atw = AtwChecker(comp);
     atw.getAtw();
@@ -236,6 +222,9 @@ function do_prove() {
     return result;
 }
 
+/**
+ * Create a human-friendly all-the-work table by bell numbers
+ */
 function formatAtw(atw) {
     var output = '';
     for (i in atw.positionsRung) {
@@ -258,7 +247,9 @@ function formatAtw(atw) {
     return output;
 }
 
-// parses a music pattern and converts it into jsprove format
+/**
+ * Convert the user's music preferences into JSProve format
+ */
 function readUserMusicPatterns(patternList) {
     patternList = patternList.split("\n");
 
@@ -273,6 +264,9 @@ function readUserMusicPatterns(patternList) {
     return patternList;
 }
 
+/**
+ * Convert the user's shorthand into JSProve input format, and update the text box
+ */
 function generateShorthand(methodID, bob, single) {
     var vm = validate_method(methodID);
     var s = Shorthand($('#shorthand').val(), vm[1]);
@@ -280,5 +274,6 @@ function generateShorthand(methodID, bob, single) {
     s.run(nothing, bob, single);
     $('#composition').val(s.compText);
 
+    // empty function required here by the Shorthand class
     function nothing() {}
 }

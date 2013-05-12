@@ -273,7 +273,7 @@ function parse_method_cc(rank, notation) {
 
 /**
  * Composition Object
- * @author Paul Brook, modified by James Holdsworth to allow multiple methods in a composition (spliced)
+ * @author Paul Brook, modified by James Holdsworth to allow spliced
  */
 function Composition() {
     var that = {
@@ -572,7 +572,7 @@ function MusicBox() {
         var rank = c.rank;
         var i;
         var node;
-        var next_node;
+        //var next_node;
 
         i = 0;
         node = objtree;

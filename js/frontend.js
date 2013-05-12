@@ -23,7 +23,10 @@ $(document).ready(function() {
     $('#tabs').tabs();
 });
 
+// set the "methods" tab as the default one
 $('#tabs a:first').trigger('click');
+
+// enable tooltips
 $('body').tooltip();
 
 /*******************************************************************************

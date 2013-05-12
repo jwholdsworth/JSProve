@@ -240,7 +240,7 @@ function displayMessage(message, level, timeout) {
         level = 'error';
     }
     if (timeout === undefined) {
-        timeout = 4000;
+        timeout = 1000;
     }
     $('#alert').attr('class', 'alert alert-' + level);
     $('#alert div').html(message);

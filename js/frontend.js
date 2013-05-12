@@ -9,15 +9,11 @@ var stage = $('#methodRank').val();
 *******************************************************************************/
 $(document).ready(function() {
     setup();
-
-    // Allow the textarea to expand with its contents, as the composition grows
-    //$("textarea").elastic();
+    // Enable autosizing of composition textbox
+    $("#composition").autosize();
 
     // Enable as-you-type proving by adding a keyup event to the composition box
     $("#composition").trigger('keyup');
-
-    // Check whether live prove is enabled; if not, display the Prove button
-    checkLiveProve();
 
     // Enable the tabs
     $('#tabs').tabs();
@@ -48,15 +44,14 @@ $('#moreMethods').click(function(){
 // add the method to the UI
 $("#insertMethod").click(insertMethod);
 
-// enable / disable live proving
-$("#liveProve").click(checkLiveProve);
-
-// click the prove button
-$("#btnProve").click(prove);
-
 // Display a warning when you try to use half lead calls (not implemented yet)
 $('.callLocation').change(function() {
     displayWarning('Half-lead calls are not implemented yet');
+});
+
+// add event handler to composition box - on change, prove the composition
+$("#composition").keyup(function() {
+    prove();
 });
 
 // generate the composition from the shorthand
@@ -118,19 +113,6 @@ function insertMethod() {
 // removes an element's parent from the dom
 function removeParent(me) {
     $(me).parent().remove();
-}
-
-// either enable live proving or disable it and give a prove button
-function checkLiveProve() {
-    if($('#liveProve').attr('checked')) {
-        $('#composition').keyup(function() {
-            prove();
-        });
-        $('#btnProve').hide();
-    } else {
-        $('#composition').unbind('keyup');
-        $('#btnProve').show();
-    }
 }
 
 // checks if a letter is unique - gives an error if not.

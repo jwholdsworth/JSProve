@@ -85,12 +85,10 @@
 
                         <h2>Composition</h2>
                         <div class="form-horizontal"><label for="shorthand"><span data-toggle="tooltip" title="For single method compositions only (uses first method from selection above). E.g. mhwvf">Shorthand</span></label><input type="text" value="hhh" name="shorthand" id="shorthand" size="60" /> <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" /></div>
-                        <div class="form-horizontal"><label class="checkbox"><abbr title="Proves for every keystroke. Not great on slower machines.">Live Prove</abbr><input type="checkbox" name="liveProve" id="liveProve" checked="checked" /></label></div>
                         <div style="overflow:hidden;">
                             <textarea id="composition" rows="10" cols="40" style="float:left;">YYYYYYY</textarea>
-                            <pre style="float:left; width:100px; margin:0; padding:0;" id="courseEnds"></pre>
+                            <pre style="float:left; width:100px;" id="courseEnds"></pre>
                         </div>
-                        <input type="button" id="btnProve" value="Prove" class="btn btn-success" />
                     </section>
 
                     <section id="output">
@@ -144,5 +142,6 @@
         <script type="text/javascript" src="js/pealprover.js" defer></script>
         <script type="text/javascript" src="js/methodlib.js" defer></script>
         <script type="text/javascript" src="js/frontend.js" defer></script>
+        <script type="text/javascript" src="jquery/jquery.autosize-min.js" defer></script>
     </body>
 </html>

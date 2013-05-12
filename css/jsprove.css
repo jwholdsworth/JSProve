@@ -32,8 +32,9 @@ h1 {
     color:#900;
 }
 
-input, select, button {
+input, select, button, textarea, pre {
     width: auto;
+    margin-right: 2px;
 }
 
 abbr {

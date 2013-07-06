@@ -170,7 +170,7 @@ function loadMethodsForStage(stage) {
  */
 function loadMusicForStage(stage) {
     $.get('music/'+stage, function(data) {
-        $('#userMusicList').val(data).trigger('autosize');
+        $('#userMusicList').val(data).trigger('autosize.resize');
     }, 'text');
 }
 
@@ -191,7 +191,7 @@ function prove() {
             messageType = 'error';
         }
 
-        displayMessage(res.status, messageType);
+/*        displayMessage(res.status, messageType);*/
         $('#results').html(res.status).attr('class', messageType);
         $('#music').html(res.music);
         $('#courseEnds').html(res.courses);

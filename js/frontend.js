@@ -4,49 +4,6 @@
 var numberOfMethods = 0; // the number of method input boxes (i.e. methods in current composition)
 var stage = $('#methodRank').val();
 
-collections = {
-    "collections": [
-        {"stage": "8", "collections":
-                    [
-                        {"key": "pitmans4", "name": "Pitman's 4", "methods":
-                                    [
-                                        {"key": "B", "notation": "m &-5-4.5-5.36.4-4.5-4-1"},
-                                        {"key": "C", "notation": "b &-3-4-25-36-4-5-6-7"},
-                                        {"key": "L", "notation": "f &3-3.4-2-3.4-4.5.6-6.5"},
-                                        {"key": "S", "notation": "b &-36-4-5-36-4-5-36-7"}
-                                    ]
-                        },
-                        {"key": "std8", "name": "Standard 8", "methods":
-                                    [
-                                        {"key": "B", "notation": "m &-5-4.5-5.36.4-4.5-4-1"},
-                                        {"key": "C", "notation": "b &-3-4-25-36-4-5-6-7"},
-                                        {"key": "L", "notation": "f &3-3.4-2-3.4-4.5.6-6.5"},
-                                        {"key": "N", "notation": "b &-3-4-5-6-4-5-36-7"},
-                                        {"key": "P", "notation": "b &-5-6-2-3-4-5-6-7"},
-                                        {"key": "R", "notation": "f &-3-4-5-6-4-3-34-1"},
-                                        {"key": "S", "notation": "b &-36-4-5-36-4-5-36-7"},
-                                        {"key": "Y", "notation": "b &-3-4-5-6-2-3-4-7"},
-                                    ]
-                        }
-                    ]
-        },
-        {"stage": "10", "collections":
-                    [
-                        {"key": "kippins4", "name": "Kippin's 4", "methods":
-                                    [
-                                        {"key": "B", "notation": "m &-5-4.5-5.36.4-4.5-4-1"}
-                                    ]
-                        },
-                        {"key": "std8", "name": "Standard 8", "methods":
-                                    [
-                                        {"key": "B", "notation": "m &-5-4.5-5.36.4-4.5-4-1"}
-                                    ]
-                        }
-                    ]
-        }
-    ]
-}
-
 /*******************************************************************************
  * ONLOAD FUNCTION
  *******************************************************************************/
@@ -78,7 +35,6 @@ $('#methodRank').change(function() {
 
 $('#collectionChoice').change(function() {
     insertCollection(stage, $('option:selected', this).val());
-    console.log($('option:selected', this).val());
 });
 
 // add a new method event handler
@@ -136,6 +92,7 @@ function setup() {
     stage = $('#methodRank').val();
     loadCollectionsForStage(stage);
     loadMusicForStage(stage);
+    insertCollection(stage, $("#collectionChoice option:selected").val());
 }
 
 // function to add a new input box into the method list section
@@ -149,7 +106,7 @@ function insertMethod() {
     var method_name = $("#methodSelect option:selected").text();
     var method_symbol = $("#methodSymbol").val();
     if (checkMethodLetterIsUnique(method_name.charAt(0), method_name, method_symbol)) {
-        if (method_symbol == "") {
+        if (method_symbol === "") {
             insertMethodBox(method_name.charAt(0), $("#methodSelect").val());
         } else {
             insertMethodBox(method_symbol, $("#methodSelect").val());
@@ -184,31 +141,6 @@ function checkMethodLetterIsUnique(letter, method_name, method_symbol) {
         }
     }
     return is_unique;
-}
-
-// Load some default methods for the particular stage (just for examples)
-function loadMethodsForStage(stage) {
-    switch (stage) {
-        case '6':
-            insertMethodBox("C", "-3-4-2-3-4-5,2");
-            break;
-
-        case '8':
-            loadCollectionsForStage(stage);
-            break;
-
-        case '10':
-            insertMethodBox("B", "-5-4.5-5.36.4-7.58.6-6.7-6-1,1");
-            insertMethodBox("C", "-3-4-25-36-47-58-6-7-8-9,2");
-            insertMethodBox("Y", "-3-4-5-6-27-38-4-5-6-9,2");
-            break;
-
-        case '12':
-            insertMethodBox("C", "-3-4-25-36-47-58-69-70-8-9-0-E,2");
-            insertMethodBox("N", "-3-4-5-6-7-8-9-0-8-9-70-E,2");
-            insertMethodBox("Y", "-3-4-5-6-27-38-49-50-6-7-8-E,2");
-            break;
-    }
 }
 
 /**

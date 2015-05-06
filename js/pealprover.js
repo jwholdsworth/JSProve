@@ -173,10 +173,11 @@ function do_prove() {
     // get the course ends for displaying
     var leadNo = 0;
     for(c = 0; c < comptext.length; c++) {
-        if(comptext.length > 0) {
+        if(comptext[c].length > 0) {
             leadNo = comptext[c].length + leadNo;
-            result.courses += leads[leadNo-1] + "\n";
+            result.courses += leads[leadNo-1];
         }
+        result.courses += "\n";
     }
 
     if (rounds > 0) {

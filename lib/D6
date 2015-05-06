@@ -1,4 +1,4 @@
-*** D6 Sat,11 May 2013.18:00:33 ***
+*** D6 Fri,01 May 2015.13:41:12 ***
 Abbeycwmhir l &34-5.4-5-1.34-4.5
 Abbeyville a &3-3.4-2-1.34-34.1
 Aberaeron h &-5-45-5-1-2-1
@@ -7,6 +7,7 @@ Acdc f &-3-4-2-1.34-34.3
 Achristmascarol l +-34-4-2-1-34-345.34-34.1-2-4-34-
 Actinium a &-5-45-25-1.34-34.5
 Adamsiphone z +-34-45-2-1-34.2.345.234-34.1-2-45-34-2
+Afternoon 4z &-3-1-2-23-4-3
 Agate 2z &-5-1-25-3.2-4.3
 Aida 4z &5-3.4-2-1-34-5
 Air 6z &-5-45-2-1.34-4.5
@@ -31,6 +32,7 @@ Anstonpleasure h &-34-4-5-1.34-34.1
 Antarctica f &-3-45-2-1-2-5
 Antimony 4z &5-5.4-5-1-34-5
 Anzab b +-3-45-5-1.234.34-345.34-2.1-5-45-3-
+Anzac g +-3-45-5-1-34-345.34-34.1-5-45-3-
 Aonacheagach 4z &5-34.1-25-3.4-2.5
 Aquamarine 2z &-5-45-25-1-4-5
 Arbroath e &-5-4-2-1-4-3
@@ -45,6 +47,7 @@ Arsenic 2z &34-34.1-5-23-4-5
 Ashbocking 2z &-34-4-2-1-2-3
 Ashchurch 6z &-5-4-5-1.34-34.5
 Ashford m &34-5.4.2-5.1.2-34.1
+Ashfordinthewater a &-34-1-2-3.2.34-3
 Ashleworth 2z &-5-45-2-1.34-34.5
 Ashted 2z &-34-1-5-3.4-4.5
 Askham 6z &34-34.1-5-3.2-2.3
@@ -61,7 +64,9 @@ Badby f &34-5.45-2-1-34-5
 Badenpowell 6z &34-34.1-2-3-34-1
 Badgeworth 2z &5-5.4-2-1.34-34.5
 Bagborough l &-34-4-5-1-4-1
+Bakers h &34-34.1-2-3-234-1
 Balmoral h &-3-1-2-3-2-5
+Bannockburn h &3-34.1-2-3-4-3
 Barham b &34-34.1-2-3-4-5
 Barium 2z &5-34.1-5-23-4-5
 Barnbyinthewillows 2z &3-34.1-2-23-34-3
@@ -98,6 +103,7 @@ Beryl 4z &5-34.1-25-3.4-34.5
 Beryllium 4z &5-3.4-2-1.34-2.5
 Besthorpe b &3-34.1-5-3-2-3
 Bethersden 2z &-3-45-5-1.4-2.5
+Bibbulmuntrack a +-5-4-2-1.34-34.345-34-1-2-4-5-
 Bigben 6z &-3-45-2-1-4-5
 Bigyorkhangover 4z &-5-1-2-3-34-1
 Bingley l &-3-45-5-1-4-1
@@ -115,6 +121,7 @@ Bolingbroke m &-3-1-5-23-34-1
 Booker 2z &-34-1-5-3-34-1
 Bootle f &-5-1-5-3-34-3
 Boron 4z &-5-45-2-1.34-4.5
+Bosham 2z &-5-1-5-3.4-2.3
 Boston 6z &34-34.1-2-3-2-5
 Boughton 2z &-3-1-5-23-2-5
 Bozeat 2z &-34-45-5-1.34-34.1
@@ -141,6 +148,7 @@ Brothwells 4z &-3-4-5-1-4-5
 Bucklandbrewer b &-34-45-5-1-2-1
 Bucknall f &3-34.1-2-3.2-4.3
 Bunionsbeenngone 2z &-34-4-2-1-4.234.5
+Bunionsbegone 2z &-34-4-2-1-4.34.5
 Burghclere 6z &-34-1-5-3-4-5
 Burnaby a &-3-4-2-1-4-3
 Burrell 4z &3-34.1-5-3-34-5
@@ -155,6 +163,7 @@ Calcium 4z &5-34.1-5-3.4-34.5
 Californium a &5-5.4-25-1-34-5
 Callum a &34-34.4-2-1-2-3
 Cambridge g &-3-1-2-3-4-1
+Caminodesantiago a +-5-4-2-1-2-25.2-2.1-2-4-5-
 Canshakensa b +-3-45-5-1-34-345.34-34.1-5-45-3-
 Cansvesforthnowethwarwheghclogh z +-5-45-2-1.2-2.25-2-1-2-45-5-2
 Canterbury a &3-3.4-2-1.34-4.3
@@ -206,21 +215,25 @@ Cleeveprior g &-3-45-5-1-34-5
 Cliffordchambers 6z &-34-45-5-1.34-2.5
 Clipston 2z &-34-1-5-3.2-2.5
 Clwyd 2z &-5-1-2-3.4-2.5
+Coasttocoast a +-5-4-2-1-34-345.34-34.1-2-4-5-
 Cobalt 4z &-5-4-5-1-34-5
 Coddington 2z &34-34.1-2-23-34-3
 Cogenhoe f &-3-1-2-23-4-3
+Coldashby a &-3-45-5-1.34-4.1
 Colgan 6z &-34-45-2-1-34-3
 College 4z &-34-1-2-3-4-3
 Collegebobiv f &-34-4-2-1-34-5
 Collegegreen b &-3-45-5-1-2-5
 Collegenew 4z &34-34.1-2-3-4-3
 Collingsgolden z +-34-45-2-1.34-34.345-34-1-2-45-34-2
+Collinson a &-5-4-2-1-2.234.5
 Combeflorey 6z &-34-1-5-3.4-2.5
 Combeinteignhead 2z &-34-1-5-23-4-3
 Combermere e &3-3.4-2-1-2-5
 Computersaysno 4z &-34-4-2-1.2-34.5
 Confirmation a &3-3.4-5-1.34-4.3
 Conisborough e &-34-1-2-3.2-4.5
+Conspicuoushill 2z &34-34.4-2-1.34.234.2.5
 Conway h &34-34.1-2-3.2-4.3
 Copper 4z &-5-4-5-1.34-34.5
 Corby f &-5-45-2-1.4-2.5
@@ -256,6 +269,7 @@ Day b &-3-45-5-1.2-2.5
 Dband m &-5-45-5-1.34-2.3
 Deepcar 2z &34-3.4-2-1-4-5
 Dengie 2z &-3-45-5-1-2-3
+Deniliquin e &34-34.1-2-3-234-1
 Dingertor b &3-3.1-2-3.34-2.3
 Dinting 4z &-3-1-2-3.2-2.3
 Dioptase f &34-5.4-25-1-34-5
@@ -272,7 +286,9 @@ Doncaster h &-5-1-2-3-2-1
 Donottar f &34-34.1-2-3.2-2.3
 Donovan a &34-5.4-2-1-4-5
 Dopey f &-34-4-2-1.234.34.234.5
+Dot 2z &3-3.1-2-3-2-3
 Dover m &-3-1-2-3-34-1
+Dprk a &-5-4-2-1.2-2.5
 Drogocastle f &-3-4.2-2.1-4-1
 Droitwich b &-3-1-5-3.4-2.5
 Dubnium 4z &-34-1-25-23-4-5
@@ -306,7 +322,9 @@ Elmore 2z &5-5.4-2-1-34-5
 Elston f &-3-4-2-1-2-3
 Ely a &-3-1-2-3-2-1
 Emerald 2z &-5-1-25-3-2-5
+Emilymay g &-34-4.2-2.1-2-1
 Emmacaroline 4z &3-5.4-2-1.34-4.3
+Emu 2z &5-5.4-5-1.34-4.3
 Enderby 4z &-3-1-2-3.4-4.3
 Englandexpectsthateverymanwilldohisduty 4z &-34-4-2-1-34.234.5
 Enoggera f +-34-4-2-1-34.2.345.234-34.1-2-4-34-
@@ -398,11 +416,13 @@ Halse f &-34-4-5-1-4-1
 Hamlet b &-3-45-2-1-4-1
 Hammerwood f &-3-45-2-1.34-2.5
 Handsomeprince 2z &-34-4-2-1.2-2.3
+Handyloop a &34-34.45-2-1.34-34.5
 Hanginghoughton f &-34-4.2-2.1.2-4.5
 Hangover h &-34-4-5-1.34-4.3
 Hanleycastle 6z &-3-1-2-23-4-5
 Hanleyswan 6z &-3-1-2-23-34-3
 Happy f &-34-4-2-1.2-2.5
+Happybirthday g +-3-45-5-1.2-34.345-34.234.1-5-45-3-
 Harbledown 2z &34-3.4-2-1.34-2.3
 Harecastle 2z &5-34.1-5-3-34-3
 Harlestone f &-34-1-5-3.2-4.5
@@ -423,6 +443,7 @@ Hellhoundhill 2z &34-34.4-2-1.34-2.5
 Hempsted 2z &5-5.4-2-1.34-2.5
 Hepworth 6z &34-3.4-2-1-2-1
 Hertfordshire f &3-34.1-2-23-34-1
+Highhalden 6z &-3-4-5-1.4-2.5
 Highhoyland 4z &-34-4-2-1-2-3
 Hilda a &5-34.1-5-3.2-2.5
 Hinckley 4z &-34-4-5-1-34-5
@@ -482,8 +503,10 @@ Invergordon 2z &-5-4-5-1-2-1
 Invicta 2z &3-34.1-5-3-34-3
 Invisible f &5-34.1-2-3.4-4.1
 Iodine 4z &-34-45-5-1-2-5
+Irenesbirthday 2z &-34-1-5-3.34-34.5
 Iridium b &-3-1-25-3.2-4.5
 Iron 6z &-3-1-5-3.2-4.5
+Isabelle l +-34-4-2-1.34-34.345-34-1-2-4-34-
 Isham f &-5-45-2-1.4-34.5
 Ismail 4z &-34-4-2-1.2-2.3
 Ittlebeer b +-3-45-5-1.34.234.2.345.234.2-1-5-45-3-
@@ -527,6 +550,7 @@ Kingsley 2z &3-34.1-2-3.4-2.5
 Kingsnewnham g &-3-4-2-1.34.234.4.5
 Kingsnorth f &34-34.1-5-3-2-5
 Kingsway 2z &-5-1-5-3-34-5
+Kirdford e &3-34.1-5-3-4-3
 Kirkburton 2z &34-3.4-2-1-4-1
 Kirkheaton 2z &34-3.4-2-1-34-3
 Kirkstall e &-3-4-2-1-34-1
@@ -542,6 +566,7 @@ Kurchatovium f &-34-45-25-1.34-2.5
 Ladycharlotte e &-3-45-5-1-34-1
 Lancelin f +-34-4-2-1-2.234.345.2.234.34.1-2-4-34-
 Landrace 4z &3-34.1-2-3.2-2.3
+Landscove 6z &3-34.1-5-3-34-3
 Langford l &34-3.4-2-1.4-2.3
 Langsett 2z &3-3.4-2-1-4-5
 Lanthanum 4z &5-34.1-5-3-4-5
@@ -550,6 +575,7 @@ Lapislazuli a &34-34.1-25-3-4-3
 Largewhite 4z &3-34.1-2-3-34-1
 Laughton 2z &-34-45-2-1.34-2.5
 Lauraivey l &-34-4-2-1.2-2.5
+Laurasfacebookpage z +-34-45-2-1.34-234.345.2.34-1-2-45-34-2
 Lawrencium f &-34-45-25-1-34-5
 Lead 2z &-34-1-25-23-2-5
 Leapyear e &3-5.4-2-1.34-4.5
@@ -576,6 +602,7 @@ Lodestone 4z &34-3.4-25-1-2-5
 London 2z &-34-1-2-3-2-3
 Londonvictory h &-3-4-2-1-34-1
 Longhope 2z &-3-4-5-1-34-5
+Longtailedtit f &5-34.1-2-23-4-3
 Longtimbertor a &3-3.1.2-2.3-4-5
 Lordelgin e &-5-1-2-3-2-1
 Lordherschell 4z &-5-4-2-1-4-1
@@ -584,6 +611,7 @@ Lucas b &-3-4.2-2.1.34.234.2.5
 Luda 4z &-3-1-2-3-34-3
 Ludlow h &34-34.1-2-3.2-34.1
 Lutetium a &-34-4-25-1-4-5
+Lutton l &3-34.1-2-3.2-34.1
 Lydiate e &-34-4-5-1.34-34.1
 Lyreofairedale 4z &-34-4-2-1-2-5
 Magnesium 4z &-34-45-5-1-34-5
@@ -595,6 +623,7 @@ Manorbier m &-3-1-5-3.2-34.1
 Marble 2z &5-3.4-25-1.34-2.3
 March 6z &34-34.1-2-3-34-5
 Mardenash b &34-3.4-5-1.34-4.5
+Marisco g &3-34.1-2-3.2-2.5
 Markanmo 2z &-34-45-2-1-4-3
 Markham 6z &-34-4-2-1.34-4.5
 Marple e &-34-4-2-1.34-34.1
@@ -645,6 +674,7 @@ Mountdestruction z +34-34.4-2-1.34-234.345.2.34-1-2-4.34-34.2
 Mountexertion z +34-34.4-2-1-2-25.2-2.1-2-4.34-34.2
 Mountfatigue z +34-34.4-2-1.2-2.25-2-1-2-4.34-34.2
 Mountgroper z +34-34.4-2-1-2.34.25.234-2.1-2-4.34-34.2
+Mounthighandmighty z +34-34.4-2-1.2-234.25.34.2-1-2-4.34-34.2
 Mrsjim l &-34-4-2-1.234.34-5
 Mtnameless 2z &34-34.4-2-1-2.234.5
 Muffinthecat 6z &-34-45-2-1.34-4.3
@@ -676,11 +706,13 @@ Neptunium f &34-34.1-25-23-2-5
 Netherheyford f &34-5.45-2-1.34-34.5
 Nettleton e &-3-45-2-1-34-1
 Newdigate f &-34-4-2-1.34-2.5
+Newhighhalden 6z &-3-4-5-1.4-34.5
 Newmill 4z &-34-1-2-3-4-1
 Newmillvictory 4z &5-5.4-2-1-2-1
 Newnham f &34-5.45-2-1-2-5
 Newstead 2z &-34-1-5-3-2-5
 Newwath 4z &-3-1-2-3.2-34.1
+Newyear a &-5-4-2-1-34.234.5
 Nickel 2z &-5-4-5-1.34-4.5
 Nielsbohrium 4z &-34-1-25-3-4-5
 Niobium 2z &3-34.1-5-3-4-5
@@ -689,14 +721,17 @@ Nobelium 2z &-34-45-25-1-4-5
 Noel 4z &-5-45-5-1-34-5
 Normans 2z &-5-1-5-3-4-1
 North 4z &-5-1-5-3-4-5
+Northchapel f &3-34.1-5-3-34-1
 Northmuskham 6z &34-34.1-2-23-34-5
 Norwich e &3-3.4-2-1.4-4.5
 Nostell 2z &-34-1-2-3.4-34.5
+Notsoremarkablecave 2z &34-34.4-2-1.2.234.34.5
 Oakwell 2z &34-5.4-2-1-2-5
 Obsidian 4z &3-34.1-25-23-4-5
 Offenham g &-3-45-5-1-2-5
 Oldmanofhoy e &34-34.1-5-3-34-1
 Oldoxford f &-34-4-2-1-2-5
+Oldstpauls 4z &3-3.4-5-1-34-1
 Ollerton 2z &-3-1-5-23-34-5
 Ombersley b &-3-4-5-1-2-3
 Ompton e &-3-1-5-3-2-3
@@ -712,6 +747,7 @@ Oxygen 4z &34-3.4-2-1-34-5
 Oystermouth 4z &34-3.4-2-1-2-5
 Packhorse 2z &34-5.4-2-1-34-5
 Paddock 2z &-34-4-2-1-4-5
+Pagham 6z &-5-1-5-3.4-2.3
 Palladium 6z &3-3.4-5-1.34-2.5
 Pamsretirement 2z &-5-1-2-3.2-34.1
 Papplewick l &34-34.1-5-3.2-34.5
@@ -797,6 +833,7 @@ Rockcrystal 4z &-5-1-25-23-4-3
 Roentgenium 2z &-34-1-25-3.4-4.5
 Rorahead h &34-34.1-5-3-34-1
 Rosemarysreturn 6z &-5-1-2-3.2-34.1
+Rosie z +-34-45-2-1-2.34.345-234.34.1-2-45-34-2
 Rosliston g &-5-4-2-1.34-34.1
 Rostherne e &-3-1-2-3.2-2.5
 Rottenbay 2z &34-34.4-2-1.2-2.5
@@ -839,6 +876,7 @@ Sibthorpe 6z &-5-1-5-3-2-3
 Silicon 4z &-5-4-5-1.34-2.5
 Silkstone 4z &-3-1-5-3-34-1
 Silkstonemillennium 4z &3-5.4-2-1.34-34.1
+Silverstream 6z &3-34.1-2-3-34-3
 Simon f &34-34.1-5-23-34-5
 Sirfrancisdrakesstbudeaux f &-34-45-5-1.34-4.5
 Sirronaldmatthews 6z &-5-45-5-1-4-3
@@ -846,6 +884,7 @@ Skipton h &-3-1-2-3.2-34.5
 Sleepy f &-34-4-2-1.34.234.34.5
 Slievekimalta a &5-34.1-25-23-2-5
 Slipperywhenwet 4z &-3-1-5-3-4-5
+Sm z +-34-45-2-1.34.234-345.34.2-1-2-45-34-2
 Smarden 2z &-3-45-5-1.4-34.5
 Snaefell b &3-3.4-25-1-4-5
 Sneezy f &-34-4-2-1.234.34-5
@@ -864,6 +903,7 @@ Spionkop 2z &-34-1-2-3.2-34.1
 Springstone 2z &-5-1-5-3.2-34.5
 Sprotborough 2z &-3-4-2-1-4-1
 Stalbans l &-34-4-2-1-34-5
+Stalebeer 6z &-3-45-5-1-34-3
 Standrews b &3-3.4-5-1-4-5
 Stanedge 2z &5-34.1-5-23-34-3
 Stanhope 2z &-3-4-2-1-34-3
@@ -924,6 +964,7 @@ Tellurium 4z &5-5.4-5-1.34-34.5
 Terbium 4z &34-34.1-5-3-4-5
 Tewkesbury f &34-3.4-2-1-34-1
 Thallium 2z &-34-4-25-1.34-34.5
+Thebigone a &-5-4-2-1.34.234.34.5
 Thorium 2z &-5-1-25-23-2-5
 Thornworthytor a &3-3.1.2-5.3-4-1
 Thoroton l &34-34.1-5-3.2-2.5
@@ -943,6 +984,7 @@ Tollerton 2z &-5-1-2-23-2-3
 Tollesbury b &3-34.1-2-23-2-5
 Tomschristening 2z &-5-1-5-3-34-1
 Tonne f &-34-4-2-1-2.234.5
+Tooheys b &5-5.1-2-3.4-34.5
 Topaz f &34-34.1-25-3.2-2.5
 Tor e &3-3.1.2-5.3.4-34.5
 Tourmaline 4z &3-34.1-25-3-2-5
@@ -954,6 +996,7 @@ Trwilliamsstereo f &-3-4-2-1.2-2.3
 Trystan 6z &-5-45-5-1-34-1
 Tulip 2z &-3-1-2-3-4-3
 Tungsten 2z &-3-45-25-1-4-5
+Turfmoor g &3-34.1-2-3-34-5
 Turkish b &-3-45-5-1.34-2.5
 Turnon b &-3-45-5-1-34-5
 Turquoise f &34-34.1-25-3.4-4.5
@@ -1000,6 +1043,7 @@ Victorious g &-5-4-2-1.34-4.3
 Victoryheights z +-5-45-2-1.34-234.345.2.34-1-2-45-5-2
 Vinoba f &34-34.1-5-3-2.234.5
 Viskaldix f &-5-45-2-1-4-5
+Visualmethodarchive a &-5-4-2-1.2.234.34.5
 Vixentor b &3-3.1.2-5.3-34-3
 Walesby 6z &34-34.1-5-3-2-3
 Walkeringham 6z &-5-1-2-23-34-5
@@ -1013,11 +1057,13 @@ Warwick e &34-34.1-2-3.2-34.1
 Water 4z &-5-4-2-1.34-4.3
 Waterntor e &3-3.1.2-5.3.4-2.5
 Wath l &34-34.1-2-3-2-3
+Watneysredbarrel 6z &3-3.4-2-1.4-4.3
 Waunfach 2z &3-3.4-25-1-2-5
 Wax 2z &-5-1-25-3.2-34.5
 Welbeck 6z &34-34.1-2-3-4-1
 Welford 6z &-34-45-5-1-2-5
 Wellington 4z &3-34.1-2-3-34-5
+Wellingtoncathedral a &3-3.4-5-1.34-34.1
 Wellow l &34-34.1-5-23-2-5
 Wenessa 6z &-5-4-5-1-34-1
 Werestillsingleanditsa a &-5-1-5-23-4-5
@@ -1071,6 +1117,7 @@ Youthsexercise m &-34-1-5-3-2-1
 Ytterbium 2z &-34-4-25-1-2-5
 Yttrium 6z &34-5.4-5-1.34-2.5
 Yule h &-3-45-2-1-34-1
+Yuletide g &-3-45-5-1.2-2.5
 Yusuf 4z &-34-4-2-1.234.34-3
 Zanthus f +-34-4-2-1.2-2.25-2-1-2-4-34-
 Zeals f &-34-4-2-1.34.234.2.5
@@ -1081,4 +1128,5 @@ Zincite 2z &5-3.4-25-1.34-4.5
 Zircon 4z &3-34.1-25-3.2-4.5
 Zirconium 6z &34-5.4-5-1.34-34.5
 Zuzzex b &-5-4-5-1.34-4.3
+Zyzzyva f &34-34.1-2-3.34-34.3
 Zzz 2z +1

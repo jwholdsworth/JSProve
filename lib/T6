@@ -1,4 +1,4 @@
-*** T6 Sat,11 May 2013.18:00:33 ***
+*** T6 Fri,01 May 2015.13:41:13 ***
 Affric 4z &3-34.1-25-1-2-5
 Albatross 2z &5-34.1-5-1.34-2.5
 Albion 2z &-34-1-5-1-4-5
@@ -13,6 +13,7 @@ Armitagebridge h &3-34.1-2-1.34-34.1
 Armleypleasure 6z &-5-1-2-1-34-3
 Arnoldsvictory 4z &-3-1-2-1-34-3
 Arthingworth a &34-34.1.2-2.1.34-34.1
+Arthur h &-34-1-2-1.2-2.5
 Arthurdent a &3-34.1-5-1.34-34.5
 Ascensionday 2z &-34-1-2-1.34-2.3
 Ashfordinthewater m &3-3.1.5-2.1.4-4.3
@@ -67,6 +68,7 @@ Cotswold a &3-34.1-2-1-4-1
 Cranford f &-3.345.1-5-1.4-2.5
 Cressbrook 4z &-34-1-2-1-4-1
 Crofton 2z &-3-1-2-1.34-2.5
+Crowsnest 6z &-345-1-25-1-234-1
 Cuillin m &-3-1-5-1.34-2.3
 Dallington f &5-5.1-5-1.4-34.5
 Darfield 4z &-3-1-5-1-34-1
@@ -119,8 +121,10 @@ Glossop 4z &-3-1-2-1-34-1
 Gloucesteroldspot 2z &3-34.1-5-1-34-1
 Gonvillelittle m &34-34.2
 Goodall a &34-3.1.2-5.1.4-4.5
+Gorehill 6z &34.5.34.1-25-1.34.2.34.1
 Greatlakes b &34-34.1-5-1-2-3
 Greatwingletang b &-5-1-2-1.34.234.34.5
+Greenwich 6z &-5.34.1-25-1.34.2-1
 Gregynog a &-3-1-5-1-2-1
 Guilsborough b &34-34.1-2-1.2-4.5
 Handley 2z &5-34.1-2-1-34-1
@@ -132,6 +136,7 @@ Havercroft 2z &34-34.1-2-1.34-2.5
 Hellsmouth b &-5-1-2-1.2.234.34.5
 Helvellyn e &5-34.1-5-1-2-3
 Hemsworth 2z &-3-1-2-1.34-34.5
+Heptonstall h &3-34.1-2-1.34-4.3
 Holmedyke 2z &-5-1-2-1-34-3
 Holmfirth m &-5-1-2-1-2-1
 Holothesic e &-34-1-2-1.34.234.2.5
@@ -152,8 +157,10 @@ Jubilee f &34-34.1-5-1.4.234.34.5
 Jura 6z &-3-1-5-1.34-34.5
 Kalamazoo l &-34-1-5-1-34-5
 Kangaroo 2z &-5-1-5-1-4-5
+Kenhall h &-34-1-2-1.234.2-5
 Kensadygemusur e +-34-1-2-1.2-2.25-2-1-2-1-34-
 Kent m &34-34.1-2-1-2-1
+Keyham b &34-34.1.2-2.1.34.234.2.5
 Killamarsh h &34-34.1-2-1-34-3
 Kingie 6z &34-34.1-25-1.34-2.5
 Kingston h &-34-1-2-1.34-34.5
@@ -175,6 +182,7 @@ Lundy 6z &-3-1-5-1.34-2.5
 Luston 2z &-34-1-5-1-2-3
 Lutton l &3-34.1-2-1.34-2.3
 Lytchettmatravers 2z &34-34.1-5-1-34-5
+Macksville m &-3-1-2-1-234-1
 Maidwell f &34-34.1-5-1.234.4-5
 Martley 2z &34-34.1-5-1-2-1
 Marvintheparanoidandroid 4z &3-34.1-5-1-4-5
@@ -251,11 +259,14 @@ Ringers 6z &-3-1-5-1-34-1
 Robinson 2z &5-34.1-2-1-4-1
 Rochester f &-34-1-2-1-4-1
 Rodneysvictory a &-34-1-5-1-34-1
+Rogerbugler h &-34-1-2-1.34.234.34.5
+Ronandrew h &-34-1-2-1-2.234.5
 Roseofengland 2z &34-34.1-2-1-4-1
 Roy b &-3-1-25-1-34-5
 Royalalbert 6z &-5-1-5-1-4-3
 Royalsovereign 4z &-3-1-2-1-2-3
 Rushton f &-3.345.1-5-1.234.4-5
+Ruthsmith h &-34-1-2-1.2-34.5
 Sailanchor b +-5-1-2-1-2.234.345.2.234.34.1-2-1-5-
 Sandal h &-34-1-2-1-2-5
 Scafell b &5-34.1-2-1.34-2.3
@@ -292,6 +303,7 @@ Stjoseph 6z &-3-1-5-1-34-5
 Stockbridge 6z &34-34.1-2-1-4-5
 Stourpaine 2z &34-34.1-5-1.34-2.5
 Sturminsternewton 2z &34-34.1-5-1-2-5
+Sully f &-5-1.2-2.1-34-1
 Swindonvillage b &-5-1-2-1.34-34.5
 Tarvin b &5-34.1-2-1-34-3
 Tattenhall 2z &5-34.1-2-1-34-5
@@ -341,6 +353,7 @@ Westernhussar m &34-5.1.2-5.1.4-34.1
 Westerninvader a &5-3.1-5-1.4-34.3
 Westernlancer m &34-3.1.2-5.1.2-34.1
 Westernlegionnaire m &34-5.1-2-1-2-1
+Westernleviathan a &5-3.1-2-1.4-2.5
 Westernpathfinder m &3-3.1.2-5.1.4-4.3
 Westernpioneer e &-3-1-2-1.4-2.5
 Westernranger m &34-3.1-2-1.2-34.1
@@ -354,7 +367,9 @@ Westray 6z &3-34.1-2-1-2-5
 Wheghesdygemusur e +-34-1-2-1.34.234.2.345.234.2-1-2-1-34-
 Whernside g &-3-1-5-1.34-4.5
 Whitfield b &34-34.1.2-2.1-2-5
+Whiting h &-34-1-2-1.234.34.234.5
 Whyarentweinthetavern f &345.34-1-5-1.4-2.3
+Wollstonecraft 6z &34.5-1-25-1-2.34.1
 Woodcocksvictory h &-3-1-2-1-4-5
 Woolwich f &-5-1-5-1-34-1
 Wrekin 2z &5-34.1-5-1-34-1

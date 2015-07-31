@@ -1,4 +1,4 @@
-*** P5 Fri,01 May 2015.13:41:12 ***
+*** P5 Sat,25 Jul 2015.14:23:27 ***
 Abbeyplace 1z &5.1.2.23.34
 Abingtonbob p +3.1.5.1.4.3.5.4.3
 Abthorpebob z +5.1.5.3.2.3.2.4.34.23
@@ -115,6 +115,7 @@ Catesbybob q +5.1.5.23.4.3.5.1.3
 Cathedralplace 23z &34.4.2.1.5
 Catthorpebob s +5.4.5.3.5.23.5.4.3
 Catwomanbob z +5.1.2.3.34.3.2.4.5.23
+Centaurplace 45z &34.1.5.3.5
 Chadstonebob s +34.4.2.3.34.1.2.1.3
 Chapelbramptonbob s +5.4.2.1.34.3.2.4.5
 Chapelenlefrithbob 1z &34.4.5.1.4
@@ -168,6 +169,7 @@ Crosbydifferentialplace 23z &34.1.2.23.34
 Croughtonbob p +34.1.5.1.4.3.5.1.3
 Culworthbob p +3.1.2.23.5.3.5.1.3
 Cumberlandbob 45z &3.1.5.1.2
+Cyclopsplace 45z &34.1.2.3.5
 Cyrilejainebob z +5.4.5.3.5.3.5.4.34.23
 Datchetbob 1z &3.4.5.1.2
 Daventrybob z +5.4.2.23.5.3.5.4.5.23
@@ -206,6 +208,7 @@ Eastfarndonbob s +3.1.2.23.5.3.2.1.5
 Eastonmauditbob s +5.4.5.23.5.23.2.4.3
 Eastononthehillbob s +5.4.5.3.5.3.2.4.3
 Echarlesbiggsbob z +3.4.5.23.5.23.5.4.5.23
+Elfplace 45z &3.4.2.3.5
 Elkingtonbob z +5.1.5.3.2.3.2.1.3.23
 Ellesmerestmarysbob r +5.4.5.3.5.1.5.1.5
 Ellinghambob 25z &3.1.5.23.34
@@ -221,6 +224,7 @@ Everdonbob z +5.4.5.3.5.3.5.1.34.23
 Eynesburybob q &5.1.2.23.5
 Farthinghoebob p +3.4.5.1.4.3.5.1.3
 Farthingstonebob p +34.1.2.23.5.3.5.4.3
+Faunplace 45z &34.1.2.23.5
 Fawsleybob p +34.1.2.23.34.23.2.1.3
 Fennydraytonbob z +5.1.5.3.2.23.5.1.5.23
 Fifieldbob 23z &5.1.2.3.5
@@ -243,6 +247,7 @@ Glamorganslowcourse 23z &5.4.2.3.2
 Glapthornbob p +3.1.2.23.34.23.2.4.3
 Glasburyplace z +34.4.2.23.5.23.2.4.5.23
 Gnuplace z +3.4.5.1.5.1.5.1.5.1
+Goblinplace 45z &3.4.5.3.5
 Graftonregisbob z +5.4.5.3.4.1.5.1.3.23
 Graftonunderwoodbob q +3.1.5.1.34.1.2.1.5
 Grandsire a +3.1.5.1.5.1.5.1.5.1
@@ -378,6 +383,7 @@ Martinplace z +5.1.5.1.5.1.5.4.34.23
 Mawsleybob s +3.1.5.3.2.3.5.1.5
 Melvinplace q +3.4.5.1.5.1.5.1.34
 Merionethshirebob 23z &5.4.2.3.34
+Mermaidplace 45z &34.1.5.23.5
 Mertonslowcourse 25z &5.1.2.3.2
 Michaelvpowellbob z +5.4.5.23.5.23.5.1.3.23
 Middlesexplace 1z &5.4.2.3.2
@@ -426,6 +432,7 @@ Pensthorpebob 23z &5.1.5.1.4
 Percypreecebob z +5.1.2.23.5.3.5.4.3.23
 Percyspleasureplace z +5.1.2.23.5.23.2.1.34.23
 Percywatkinsbob z +34.1.2.3.5.23.5.4.5.23
+Periplace 45z &3.4.5.23.5
 Perryoaksbob 25z &3.1.5.23.4
 Peterboroughbob q +5.1.5.23.5.3.2.1.5
 Peterlhughesbob z +3.1.5.3.5.3.5.4.5.23
@@ -434,6 +441,7 @@ Piltonbob p +34.1.5.3.4.1.5.1.3
 Pinchbeckslowcourse 23z &5.4.5.3.4
 Pipewellbob z +5.1.2.23.5.3.5.1.3.23
 Pitsfordplace r +5.1.5.1.2.23.5.4.5
+Pixieplace 45z &3.4.2.23.5
 Plainbob p &5.1.5.1.5
 Plantagenetbob r +3.1.2.1.5.1.5.1.5
 Plumptonbob s +3.4.5.23.5.3.5.4.5
@@ -443,6 +451,7 @@ Poyleslowcourse 23z &3.1.5.1.34
 Presteigneplace z +5.1.2.1.34.1.2.1.34.23
 Prestoncapesbob z +5.1.2.3.5.3.2.4.34.23
 Princegeorgealexanderlouisslowcourse g +5.1.5.1.34.1.5.1.3.23
+Princesscharlotteelizabethdianaslowcourse m +5.1.5.1.34.1.5.1.3.2
 Princessjasminebob z +34.4.5.3.5.3.5.1.5.23
 Puryendbob z +5.4.5.23.34.23.5.1.3.23
 Pytchleybob z +5.1.2.3.5.23.5.1.5.23

@@ -10,7 +10,7 @@ var stage = $('#methodRank').val();
 $(document).ready(function() {
     setup();
     // Enable autosizing of all text areas
-    $('textarea').autosize();
+    autosize($('textarea'));
 
     // Enable as-you-type proving by adding a keyup event to the composition box
     $("#composition").trigger('keyup');
@@ -70,7 +70,9 @@ $("#generateShorthand").click(function() {
     }
 
     try {
-        generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
+        comp = generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
+        $('#composition').val(comp);
+        autosize.update($('#composition'));
         prove();
     } catch (e) {
         displayMessage(e, 'error');
@@ -191,8 +193,9 @@ function insertCollection(stage, key) {
  */
 function loadMusicForStage(stage) {
     $.get('music/' + stage, function(data) {
-        $('#userMusicList').val(data).trigger('autosize.resize');
+        $('#userMusicList').val(data);
     }, 'text');
+    autosize.update($('#userMusicList'));
 }
 
 /**

@@ -273,8 +273,9 @@ function generateShorthand(methodID, bob, single) {
     var s = Shorthand($('#shorthand').val(), vm[1]);
 
     s.run(nothing, bob, single);
-    $('#composition').val(s.compText).trigger('autosize.resize');
 
     // empty function required here by the Shorthand class
     function nothing() {}
+
+    return s.compText
 }

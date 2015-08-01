@@ -1,41 +1,31 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="JSProve : Web-Based Peal proving program for even-bell methods from Minor to Maximus, single and spliced." />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>JSProve</title>
+    <meta charset="UTF-8">
+    <title>JSProve by jwholdsworth</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">JSProve</h1>
+      <h2 class="project-tagline">Web-Based Peal proving program for even-bell methods from Minor to Maximus, single and spliced.</h2>
+      <a href="https://github.com/jwholdsworth/JSProve" class="btn">View on GitHub</a>
+      <a href="https://github.com/jwholdsworth/JSProve/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jwholdsworth/JSProve/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/jwholdsworth/JSProve">View on GitHub</a>
-
-          <h1 id="project_title">JSProve</h1>
-          <h2 id="project_tagline">Web-Based Peal proving program for even-bell methods from Minor to Maximus, single and spliced.</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/jwholdsworth/JSProve/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/jwholdsworth/JSProve/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>JSProve</h1>
+    <section class="main-content">
+      <h1>
+<a id="jsprove" class="anchor" href="#jsprove" aria-hidden="true"><span class="octicon octicon-link"></span></a>JSProve</h1>
 
 <p>JSProve is a web-based peal proving program for even bell methods (single methods and spliced) from Minor to Maximus.</p>
 
-<h2>Features</h2>
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
 <li>Load methods in from the MicroSiril Libraries (or specify new methods yourself)</li>
@@ -43,35 +33,48 @@
 <li>All the work checker and change of method counter</li>
 <li>Detailed music output</li>
 <li>Music can be specified, if the particular row or row type is not already included by JSProve</li>
-</ul><h2>Usage</h2>
+<li>Works in most modern browsers</li>
+</ul>
 
-<h3>Getting JSProve</h3>
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
-<p>Either visit <a href="http://james.theholdsworths.org.uk/projects/jsprove/">http://james.theholdsworths.org.uk/projects/jsprove/</a> for a hosted version, or download this source code as a Zip file (from the link above) and open 'index.html' in your favourite browser (NOT Internet Explorer please!).</p>
+<h3>
+<a id="getting-jsprove" class="anchor" href="#getting-jsprove" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting JSProve</h3>
 
-<h3>Proving a Single Method</h3>
+<p>Either visit <a href="http://james.theholdsworths.org.uk/projects/jsprove/">http://james.theholdsworths.org.uk/projects/jsprove/</a> to use the online version, or download the source code as a Zip file (from the link above) and open 'index.html' in your favourite browser (NOT Internet Explorer please!).</p>
+
+<h3>
+<a id="proving-a-single-method" class="anchor" href="#proving-a-single-method" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proving a Single Method</h3>
 
 <p>On the 'Methods and Composition' tab:</p>
 
 <ol>
-<li>Remove any existing methods declared (the default ones are Bristol, Cambridge and Yorkshire respectively)</li>
+<li>Remove any existing methods declared (the default ones are the methods in Mark Davies's 10-Spliced Surprise Major, though other collections are available too)</li>
 <li>Select the stage (i.e. Minor/Major/Royal/Maximus)</li>
 <li>Select the class (i.e. Surprise/Delight etc.)</li>
 <li>Click 'Load Method from Library' and find the method you want (hint: just start typing the name and it should appear)</li>
-</ol><p>OK, now you're all set to start proving. Notice that the method you have selected will have been given a symbol (most likely its initial; e.g B for Bristol, C for Cambridge etc).</p>
+</ol>
+
+<p>OK, now you're all set to start proving. Notice that the method you have selected will have been given a symbol (most likely its initial; e.g B for Bristol, C for Cambridge etc).</p>
 
 <ol>
-<li>In the 'Shorthand' box start typing some calls in (hhh is defined for you - click 'Generate' and see what it does...)</li>
-</ol><p>I'll leave you to play with that for a bit. Note that you can manually tinker withe the composition in the main box below. Indeed, that's how you will need to prove spliced, which leads me nicely on to...</p>
+<li>In the 'Shorthand' box start typing some calls in (hhh is defined for you - click 'Generate' and see what it does...). Note that the shorthand tool uses the first method in the list.</li>
+</ol>
 
-<h3>Proving Spliced</h3>
+<p>I'll leave you to play with that for a bit. Note that you can manually tinker withe the composition in the main box below. Indeed, that's how you will need to prove spliced, which leads me nicely on to...</p>
+
+<h3>
+<a id="proving-spliced" class="anchor" href="#proving-spliced" aria-hidden="true"><span class="octicon octicon-link"></span></a>Proving Spliced</h3>
 
 <p>Much like proving single methods, except that the Shorthand facility isn't of much use here (unless all your methods are in the same group, in which case you could use it to build the composition template, before swapping the methods in).</p>
 
 <ol>
 <li>Start by adding methods using the 'Load Method from Library' tool. Note that all the method symbols must be unique, so if you're proving a composition which has two methods starting with the same letter (London and Lincolnshire for example), denote a different letter to one of them, otherwise you'll get an error.</li>
 <li>Type out the composition in the main box. A standard 14 bob is denoted by a <code>/</code> and a 1234 single by a <code>;</code>.</li>
-</ol><p>Example:</p>
+</ol>
+
+<p>Example:</p>
 
 <pre><code>NNNN/BB/
 BNNWN/BBBB/
@@ -79,13 +82,15 @@ BNNWN/BBBB/
 etc.
 </code></pre>
 
-<p>JSProve will prove as you type. If this is causing problems, untick the 'Live Prove' button. When you're ready to prove the composition, simply press the 'Prove' button.</p>
+<p>JSProve will prove the composition as you type.</p>
 
-<h3>Specifying your own calls</h3>
+<h3>
+<a id="specifying-your-own-calls" class="anchor" href="#specifying-your-own-calls" aria-hidden="true"><span class="octicon octicon-link"></span></a>Specifying your own calls</h3>
 
 <p>You may wish to change the default call type (from Plain Bob bobs and singles) or add your own. To do this, click the Calls tab. If you wish to continue using the Shorthand tool, make sure that you assign <code>/</code> for your bob and <code>;</code> for the single. You can have as many call types as you wish; though be sure to use unique symbols for them.</p>
 
-<h3>Specifying your own music</h3>
+<h3>
+<a id="specifying-your-own-music" class="anchor" href="#specifying-your-own-music" aria-hidden="true"><span class="octicon octicon-link"></span></a>Specifying your own music</h3>
 
 <p>JSProve will, by default, tell you all the 4-bell runs contained in the composition (both off the front and at the back) in a format like:</p>
 
@@ -94,27 +99,40 @@ etc.
 18:  ****8765
 </code></pre>
 
-<p>as well as telling you if you've achieved some well-known changes (if it's an 8-bell composition), i.e. Backrounds, Queens, Kings, Tittums and Whittingtons.</p>
+<p>as well as telling you if you've achieved some well-known changes if it's an 8-bell composition, i.e. Backrounds, Queens, Kings, Tittums and Whittingtons.</p>
 
 <p>Of course, you will want to specify your own tastes in music, rather than just settle with my own; so if, for example, you like CRU's, then we'd best get them added for you...</p>
 
 <ol>
 <li>Click the Music tab</li>
 <li>Start adding music patterns (one per line) in the box. As the example states, if you want a row ending with 4678, add <code>****4678</code> on one line.</li>
-<li>At present, there is no save functionality within JSProve, so if you want to keep your music preferences, I would suggest copying them and pasting them into  a text file somewhere on your machine, and then load them in from that when you use JSProve.</li>
+<li>At present, there is no save functionality within JSProve, so if you want to keep your music preferences, I would suggest copying them and pasting them into a text file somewhere on your machine, and then load them in from that when you use JSProve.</li>
 </ol>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">JSProve maintained by <a href="https://github.com/jwholdsworth">jwholdsworth</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+<h2>
+<a id="participating" class="anchor" href="#participating" aria-hidden="true"><span class="octicon octicon-link"></span></a>Participating</h2>
+
+<p>Please fork the code from the GitHub repository (<a href="https://github.com/jwholdsworth/JSProve">https://github.com/jwholdsworth/JSProve</a>) and submit a pull request, specifiying what your change does.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jwholdsworth/JSProve">JSProve</a> is maintained by <a href="https://github.com/jwholdsworth">jwholdsworth</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-    
+    </section>
+
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-4055572-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
 
   </body>
 </html>
+

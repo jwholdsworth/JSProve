@@ -106,36 +106,9 @@ function do_prove() {
     }
 
     // add 4-bell run patterns whatever the stage (rank)
-    for(i=0; i < comp.rank; i++) {
-        // fill up the rest of the music array with the correct number of -1's
-        var spareBells = new Array();
-        var runs = new Array();
-        for(j=0; j < (comp.rank-4); j++) {
-            spareBells[j] = -1;
-        }
-
-        // forward run off the front (ie 1234.... etc)
-        runs = runs.concat([i, i+1, i+2, i+3], spareBells);
-        music.add_pattern(runs);
-        runs = new Array();
-
-        // backward run off the front (ie 4321....)
-        runs = runs.concat([i+3, i+2, i+1, i], spareBells);
-        music.add_pattern(runs);
-        runs = new Array();
-
-        // forward run at the back (ie ....1234)
-        runs = runs.concat(spareBells, [i, i+1, i+2, i+3]);
-        music.add_pattern(runs);
-        runs = new Array();
-
-        // backward run at the back (ie ....4321)
-        runs = runs.concat(spareBells, [i+3, i+2, i+1, i]);
-        music.add_pattern(runs);
-    }
+    addFourBellRuns(comp.rank, music);
 
     // add user specific music patterns
-    //TODO: put this in a separate method and don't hard code #userMusicList you numpty
     var userInputPatterns = $('#userMusicList').val();
     if(userInputPatterns.length != 0) {
         var userPatterns = readUserMusicPatterns(userInputPatterns);
@@ -221,6 +194,39 @@ function do_prove() {
     result.com = atw.com;
 
     return result;
+}
+
+/**
+ * Add some basic music (four bell runs)
+ */
+function addFourBellRuns(stage, music) {
+    for(i=0; i < stage; i++) {
+        // fill up the rest of the music array with the correct number of -1's
+        var spareBells = new Array();
+        var runs = new Array();
+        for(j=0; j < (stage-4); j++) {
+            spareBells[j] = -1;
+        }
+
+        // forward run off the front (ie 1234.... etc)
+        runs = runs.concat([i, i+1, i+2, i+3], spareBells);
+        music.add_pattern(runs);
+        runs = new Array();
+
+        // backward run off the front (ie 4321....)
+        runs = runs.concat([i+3, i+2, i+1, i], spareBells);
+        music.add_pattern(runs);
+        runs = new Array();
+
+        // forward run at the back (ie ....1234)
+        runs = runs.concat(spareBells, [i, i+1, i+2, i+3]);
+        music.add_pattern(runs);
+        runs = new Array();
+
+        // backward run at the back (ie ....4321)
+        runs = runs.concat(spareBells, [i+3, i+2, i+1, i]);
+        music.add_pattern(runs);
+    }
 }
 
 /**

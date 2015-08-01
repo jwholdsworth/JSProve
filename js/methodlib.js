@@ -161,9 +161,7 @@ function parse_method(rank, notation) {
     if((notation.indexOf("&") === -1) && (notation.indexOf("+") === -1)) {
         return parse_method_cc(rank, notation);
     } else {
-        var group = notation.charAt(0);
-        var not = notation.substring(2);
-        return parse_method_microsiril(rank, group, not);
+        return parse_method_microsiril(rank, notation.split(" ")[0], notation.split(" ")[1]);
     }
 }
 

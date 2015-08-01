@@ -14,9 +14,6 @@ $(document).ready(function() {
 
     // Enable as-you-type proving by adding a keyup event to the composition box
     $("#composition").trigger('keyup');
-
-    // Enable the tabs
-    $('#tabs').tabs();
 });
 
 // set the "methods" tab as the default one

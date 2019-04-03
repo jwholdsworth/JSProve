@@ -129,7 +129,7 @@ function do_prove() {
     // now remove the calls from the comp text (look up from call list)
     // split the composition up at the carriage returns.
     for(i in txtCalls) {
-        var regex = new RegExp(i, 'g');
+        var regex = new RegExp('['+i+']', 'g');
         comptext = comptext.replace(regex, '');
     }
     comptext = comptext.split("\n");

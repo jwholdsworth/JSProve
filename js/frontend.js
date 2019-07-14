@@ -79,7 +79,7 @@ $("#generateShorthand").click(function() {
 // add more call fields
 $('#btnAddMoreCalls').click(function() {
     var children = $('#calls table tr').size() - 1;
-    $('#calls table').append('<tr><td><input type="text" size="1" maxlength="1" name="symbol' + children + '" id="symbol' + children + '" value="" /></td><td><input type="text" size="3" name="callNtn' + children + '" id="callNtn' + children + '" value="" /></td><td><select class="callLocation" name="callLocation' + children + '" id="callLocation' + children + '"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td></tr>');
+    $('#calls table').append('<tr class="callRow"><td><input type="text" size="1" maxlength="1" class="callSymbol" name="symbol' + children + '" id="symbol' + children + '" value="" /></td><td><input type="text" size="3" class="callNtn" name="callNtn' + children + '" id="callNtn' + children + '" value="" /></td><td><select class="callLocation" name="callLocation' + children + '" id="callLocation' + children + '"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td></tr>');
 });
 
 /*******************************************************************************
@@ -257,6 +257,7 @@ function loadMethods(file) {
  * @param timeout
  */
 function displayMessage(message, level, timeout) {
+    console.log(message)
     if (level === undefined) {
         level = 'error';
     }

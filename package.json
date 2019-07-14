@@ -1,0 +1,28 @@
+{
+  "name": "jsprove",
+  "version": "1.0.0",
+  "description": "JSProve ======= JSProve is a web-based peal proving program for even bell methods (single methods and spliced) from Minor to Maximus.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "nyc mocha -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwholdsworth/JSProve.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jwholdsworth/JSProve/issues"
+  },
+  "homepage": "https://github.com/jwholdsworth/JSProve#readme",
+  "devDependencies": {
+    "chai": "4.2.0",
+    "eslint": "6.0.1",
+    "mocha": "6.1.4",
+    "nyc": "14.1.1"
+  }
+}

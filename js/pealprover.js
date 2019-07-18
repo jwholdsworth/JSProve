@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
-// "use strict"; // removing this until the whole thing has been improved
+'use strict';
 
-const MAX_RANK = 24;
+const MAX_STAGE = 24;
 const BELL_NAMES = '1234567890ET';
 
 const loadUserInput = () => {
@@ -84,7 +84,7 @@ const validateMethod = (shortcut, notation, stage) => {
   if (!Number.isInteger(stage)) {
     return false;
   }
-  if (stage <= 0 || stage > MAX_RANK) {
+  if (stage <= 0 || stage > MAX_STAGE) {
     return false;
   }
 
@@ -97,7 +97,7 @@ const validateMethod = (shortcut, notation, stage) => {
 function validate_method(id) {
   let shortcut;
   let rows;
-  let rank;
+  let stage;
   let method;
   let notation;
 
@@ -110,17 +110,17 @@ function validate_method(id) {
   if (notation == '') {
     return false;
   }
-  rank = parseInt($('#methodRank').val(), 10);
-  if (rank <= 0 || rank > MAX_RANK) {
+  stage = parseInt($('#methodRank').val(), 10);
+  if (stage <= 0 || stage > MAX_STAGE) {
     return false;
   }
-  rows = parse_method(rank, notation);
-  method = Method(rank, shortcut, rows);
+  rows = parse_method(stage, notation);
+  method = Method(stage, shortcut, rows);
 
   return [shortcut, method];
 }
 
-function do_prove() {
+function doProve() {
   let p = Prover();
   let changes = 0;
   let rounds = 0;
@@ -156,8 +156,8 @@ function do_prove() {
     }
   }
 
-  // add 4-bell run patterns whatever the stage (rank)
-  addFourBellRuns(comp.rank, music);
+  // add 4-bell run patterns whatever the stage
+  addFourBellRuns(comp.stage, music);
 
   // add user specific music patterns
   let userInputPatterns = $('#userMusicList').val();
@@ -171,7 +171,7 @@ function do_prove() {
     }
   }
 
-  music.setup(comp.rank);
+  music.setup(comp.stage);
   comp.run(test_row);
 
   // display course ends
@@ -289,10 +289,10 @@ function formatAtw(atw) {
     // output the method key
     output += i + ':\n';
     // output the bell number
-    for (let j=0; j < atw.comp.rank; j++) {
+    for (let j=0; j < atw.comp.stage; j++) {
       output += '  ' + BELL_NAMES.charAt(j) + ': ';
       // find which positions it rings
-      for (let k=0; k < atw.comp.rank; k++) {
+      for (let k=0; k < atw.comp.stage; k++) {
         if (atw.positionsRung[i][BELL_NAMES.charAt(j)][BELL_NAMES.charAt(k)] == true) {
           output += BELL_NAMES.charAt(k);
         } else {
@@ -342,10 +342,10 @@ function generateShorthand(methodID, bob, single) {
  * Method Object
  * @author Paul Brook
  */
-function Method(rank, name, rows) {
+function Method(stage, name, rows) {
   let lead_end = rows.pop();
   let that = {
-    rank: rank,
+    stage: stage,
     name: name,
     rows: rows,
     lead_end: lead_end,
@@ -357,20 +357,20 @@ function Method(rank, name, rows) {
  * Change Object - represents a row and advances to the next row or next lead
  * @author Paul Brook
  */
-function Change(rank) {
+function Change(stage) {
   let i;
   let that = {
-    rank: rank,
+    stage: stage,
   };
-  that.row = new Array(rank);
-  for (i = 0; i < rank; i++) {
+  that.row = new Array(stage);
+  for (i = 0; i < stage; i++) {
     that.row[i] = i;
   }
 
   that.advance = function(mask) {
     let i = 0;
     let tmp;
-    while (i < rank) {
+    while (i < stage) {
       // if the notation is 'x', swap the pair of bells over
       if ((mask & 1) === 0) {
         tmp = this.row[i];
@@ -404,7 +404,7 @@ function Change(rank) {
 
   that.pp = function() {
     let s = '';
-    for (i = 0; i < this.rank; i++) {
+    for (i = 0; i < this.stage; i++) {
       s += BELL_NAMES[this.row[i]];
     }
     return s;
@@ -469,7 +469,7 @@ function bellName(index) {
  * Generate a row
  * @author Paul Brook
  */
-function parse_bell_list(rank, n, notation) {
+function parse_bell_list(stage, n, notation) {
   let mask = 0;
   let last_bell = -1;
   let c;
@@ -493,7 +493,7 @@ function parse_bell_list(rank, n, notation) {
     n++;
   }
   if ((last_bell & 1) === 0) {
-    mask |= 1 << (rank - 1);
+    mask |= 1 << (stage - 1);
   }
 
   return {
@@ -503,11 +503,11 @@ function parse_bell_list(rank, n, notation) {
 }
 
 // function to decide which parsing method to use
-function parse_method(rank, notation) {
+function parse_method(stage, notation) {
   if ((notation.indexOf('&') === -1) && (notation.indexOf('+') === -1)) {
-    return parse_method_cc(rank, notation);
+    return parse_method_cc(stage, notation);
   } else {
-    return parse_method_microsiril(rank, notation.split(' ')[0], notation.split(' ')[1]);
+    return parse_method_microsiril(stage, notation.split(' ')[0], notation.split(' ')[1]);
   }
 }
 
@@ -515,15 +515,15 @@ function parse_method(rank, notation) {
  * Parse method notation as used by MicroSIRIL libraries
  * @author Paul Brook
  */
-function parse_method_microsiril(rank, group, notation) {
-  function get_mask(rank, n, notation) {
+function parse_method_microsiril(stage, group, notation) {
+  function get_mask(stage, n, notation) {
     if (notation.charAt(n) === '-') {
       return {
         n: n+1,
         mask: 0,
       };
     }
-    return parse_bell_list(rank, n, notation);
+    return parse_bell_list(stage, n, notation);
   }
   let symmetric;
   let c;
@@ -541,7 +541,7 @@ function parse_method_microsiril(rank, group, notation) {
   let lead_end;
 
   while (n < notation.length) {
-    res = get_mask(rank, n, notation);
+    res = get_mask(stage, n, notation);
     if (res.n === n) {
       throw 'Bad place notation';
     }
@@ -556,7 +556,7 @@ function parse_method_microsiril(rank, group, notation) {
 
   c = group.charAt(0);
   if (group.charAt(group.length - 1) === 'z') {
-    res = parse_bell_list(rank, 0, group);
+    res = parse_bell_list(stage, 0, group);
     if (res.n !== res.length) {
       throw 'Bad method group: ' + group;
     }
@@ -566,7 +566,7 @@ function parse_method_microsiril(rank, group, notation) {
     lead_end = 3;
   } else if ((c >= 'g' && c <= 'm')
         || c === 'r' || c === 's') {
-    lead_end = 1 | (1 << (rank - 1));
+    lead_end = 1 | (1 << (stage - 1));
   } else {
     throw 'Bad method group: ' + group;
   }
@@ -578,15 +578,15 @@ function parse_method_microsiril(rank, group, notation) {
  * Parse method notation as used in Central Council XML files
  * @author Paul Brook
  */
-function parse_method_cc(rank, notation) {
-  function get_mask(rank, n, notation) {
+function parse_method_cc(stage, notation) {
+  function get_mask(stage, n, notation) {
     if (notation.charAt(n) === '-') {
       return {
         n: n+1,
         mask: 0,
       };
     }
-    return parse_bell_list(rank, n, notation);
+    return parse_bell_list(stage, n, notation);
   }
   let res;
   let n = 0;
@@ -598,7 +598,7 @@ function parse_method_cc(rank, notation) {
   if (sep === -1)
     {sep = notation.length;}
   while (n < sep) {
-    res = get_mask(rank, n, notation);
+    res = get_mask(stage, n, notation);
     if (res.n === n) {
       throw 'Bad place notation';
     }
@@ -609,7 +609,7 @@ function parse_method_cc(rank, notation) {
     for (n = rows.length - 2; n >= 0; n--) {
       rows.push(rows[n]);
     }
-    res = parse_bell_list(rank, sep + 1, notation);
+    res = parse_bell_list(stage, sep + 1, notation);
     rows.push(res.mask);
   }
   return rows;
@@ -624,19 +624,19 @@ function Composition() {
     methods: [],
     calls: [],
     leadends: [],
-    rank: 0,
+    stage: 0,
   };
 
   that.append_lead = function(method, call) {
     this.methods.push(method);
     this.calls.push(call);
-    if (method.rank > this.rank) {
-      this.rank = method.rank;
+    if (method.stage > this.stage) {
+      this.stage = method.stage;
     }
   };
 
   that.run = function(fn) {
-    let ch = Change(this.rank);
+    let ch = Change(this.stage);
     let method;
     let call;
     for (let a = 0; a < this.methods.length; a++) {
@@ -657,7 +657,7 @@ function Composition() {
 function Shorthand(shorthand, method) {
   let that = {
     shorthandCalls: shorthand,
-    rank: method.rank,
+    stage: method.stage,
     compText: '',
     method: method,
     bob: null,
@@ -667,9 +667,9 @@ function Shorthand(shorthand, method) {
   that.run = function(fn, b, s) {
     this.bob = b;
     this.single = s;
-    let bob = parse_bell_list(this.rank, 0, b[1]);
-    let single = parse_bell_list(this.rank, 0, s[1]);
-    let c = Change(this.rank);
+    let bob = parse_bell_list(this.stage, 0, b[1]);
+    let single = parse_bell_list(this.stage, 0, s[1]);
+    let c = Change(this.stage);
     // loop through the calls and for each one, work out its meaning
     for (let i=0; i<this.shorthandCalls.length; i++) {
       if (this.shorthandCalls.charAt(i) === 's') {
@@ -691,13 +691,13 @@ function Shorthand(shorthand, method) {
       call = call.toLowerCase();
       switch (call) {
         case 'h':
-          tenorPosition = this.rank-1;
+          tenorPosition = this.stage-1;
           break;
         case 'w':
-          tenorPosition = this.rank-2;
+          tenorPosition = this.stage-2;
           break;
         case 'm':
-          tenorPosition = this.rank-3;
+          tenorPosition = this.stage-3;
           break;
         case 'i':
           // won't this break if using n-2 place calls?
@@ -731,8 +731,8 @@ function Shorthand(shorthand, method) {
       }
     }
 
-    if (tenorPosition >= this.rank) {
-      throw 'Tenor doesn\'t get to this position in a '+this.rank+'-bell method';
+    if (tenorPosition >= this.stage) {
+      throw 'Tenor doesn\'t get to this position in a '+this.stage+'-bell method';
     }
     while (moreLeads === true) {
       let previousLeadHead = c.row.slice(0);
@@ -740,7 +740,7 @@ function Shorthand(shorthand, method) {
       let thisLeadhead = c.row.slice(0);
       this.compText += this.method.name;
       // if tenor's in that position with a call
-      if (thisLeadhead[tenorPosition] === (this.rank-1)) {
+      if (thisLeadhead[tenorPosition] === (this.stage-1)) {
         moreLeads = false;
         if (isSingle === false) {
           this.compText += this.bob[0];
@@ -752,7 +752,7 @@ function Shorthand(shorthand, method) {
         c.advance_lead(this.method, this.method.lead_end, fn);
       }
       // if the tenor's home, put a line break in
-      if (c.row.indexOf(this.rank-1) === (this.rank-1)) {
+      if (c.row.indexOf(this.stage-1) === (this.stage-1)) {
         this.compText += '\n';
       }
     }
@@ -762,7 +762,7 @@ function Shorthand(shorthand, method) {
 
 /**
  * ATW checker object
- * @author James Holdsworth
+ * @param {Composition} comp The composition
  */
 function AtwChecker(comp) {
   // build an array like Method[bellNo][position] = true
@@ -779,10 +779,10 @@ function AtwChecker(comp) {
       this.methodList += this.comp.methods[i].name;
       this.positionsRung[this.comp.methods[i].name] = [];
       // add the bell to the list
-      for (let j=0; j < this.comp.rank; j++) {
+      for (let j=0; j < this.comp.stage; j++) {
         this.positionsRung[this.comp.methods[i].name][BELL_NAMES[j]] = [];
         // add the bell's position to the list
-        for (let k=0; k < this.comp.rank; k++) {
+        for (let k=0; k < this.comp.stage; k++) {
           this.positionsRung[this.comp.methods[i].name][BELL_NAMES[j]][BELL_NAMES[k]] = false;
         }
       }
@@ -791,13 +791,13 @@ function AtwChecker(comp) {
     // for each lead
     for (let i=0; i < this.comp.methods.length; i++) {
       // loop through the number of bells
-      for (let j=0; j < this.comp.rank; j++) {
+      for (let j=0; j < this.comp.stage; j++) {
         // bell at this position in the lead
         let leadend = this.comp.leadends[i-1];
         // note we can't use leadend-1 for the first lead, so generate a lead of rounds and use that
         if (leadend === undefined) {
           leadend = [];// this.comp.leadends[this.comp.methods.length - 1];
-          for (let k=0; k < this.comp.rank; k++) {
+          for (let k=0; k < this.comp.stage; k++) {
             leadend.push(k);
           }
         }
@@ -830,21 +830,21 @@ function Prover() {
 
   that.check_row = function(c) {
     let val = 0;
-    let rank = c.rank;
-    let row = new Array(rank);
+    let stage = c.stage;
+    let row = new Array(stage);
     let n;
     let i;
     let j;
     let bell;
     let seen = false;
 
-    for (i = 0; i < rank; i++) {
+    for (i = 0; i < stage; i++) {
       row[i] = c.row[i];
     }
-    n = rank;
-    for (i = 0; i < rank; i++) {
+    n = stage;
+    for (i = 0; i < stage; i++) {
       bell = row[i];
-      for (j = i + 1; j < rank; j++) {
+      for (j = i + 1; j < stage; j++) {
         if (row[j] > bell) {
           row[j]--;
         }
@@ -883,22 +883,22 @@ function MusicBox() {
     this.counts.push(0);
   };
 
-  that.setup = function(rank) {
+  that.setup = function(stage) {
     let pattern;
     let node;
     let bell;
 
-    node_done = new Array(rank);
-    stack = new Array(rank);
+    node_done = new Array(stage);
+    stack = new Array(stage);
     objtree = {};
 
     for (let n = 0; n < this.patterns.length; n++) {
       pattern = this.patterns[n];
-      if (pattern.length != rank) {
+      if (pattern.length != stage) {
         continue;
       }
       node = objtree;
-      for (let i = 0; i < rank; i++) {
+      for (let i = 0; i < stage; i++) {
         bell = pattern[i];
         let next_node;
         if (bell in node) {
@@ -914,7 +914,7 @@ function MusicBox() {
   };
 
   that.match_row = function(c) {
-    let rank = c.rank;
+    let stage = c.stage;
     let i;
     let node;
 
@@ -930,7 +930,7 @@ function MusicBox() {
         node_done[i] = !(-1 in node);
       }
       // Check if this is an end node
-      if (i == rank) {
+      if (i == stage) {
         this.counts[node.pattern]++;
       }
       // Try right shuffle along wildcard

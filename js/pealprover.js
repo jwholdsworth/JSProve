@@ -36,7 +36,7 @@ const loadUserInput = () => {
 
 const createComposition = (userInput) => {
   const selectedMethods = {};
-  const comp = Composition();
+  const comp = new Composition();
   const txtCalls = {};
   let done_call = true;
   let last_method;
@@ -54,18 +54,18 @@ const createComposition = (userInput) => {
     const c = userInput.composition.charAt(i);
     if (c in selectedMethods) {
       if (!done_call) {
-        comp.append_lead(last_method, -1);
+        comp.appendLead(last_method, -1);
       }
       last_method = selectedMethods[c];
       done_call = false;
     } else if (c in txtCalls) {
-      comp.append_lead(last_method, txtCalls[c].mask);
+      comp.appendLead(last_method, txtCalls[c].mask);
       done_call = true;
     }
   }
 
   if (!done_call) {
-    comp.append_lead(last_method, -1);
+    comp.appendLead(last_method, -1);
   }
 
   return {
@@ -120,12 +120,15 @@ function validate_method(id) {
   return [shortcut, method];
 }
 
-function doProve() {
-  let p = Prover();
+/**
+ * @param {Composition} composition The composition
+ */
+function doProve(composition) {
+  const p = new Prover();
   let changes = 0;
   let rounds = 0;
-  let music = MusicBox();
-  let result = {
+  const music = MusicBox();
+  const result = {
     trueTouch: false,
     complete: false,
     length: 0,
@@ -135,9 +138,9 @@ function doProve() {
     atw: '',
     com: 0,
   };
-  const composition = get_composition();
-  let comp = composition.comp;
-  let txtCalls = composition.calls;
+
+  const comp = composition.comp;
+  const txtCalls = composition.calls;
 
   function test_row(c, le) {
     let r;
@@ -147,7 +150,7 @@ function doProve() {
       return;
     }
     music.match_row(c);
-    r = p.check_row(c);
+    r = p.checkRow(c);
 
     if (r < 0) {
       rounds = -changes;
@@ -160,9 +163,9 @@ function doProve() {
   addFourBellRuns(comp.stage, music);
 
   // add user specific music patterns
-  let userInputPatterns = $('#userMusicList').val();
+  const userInputPatterns = $('#userMusicList').val();
   if (userInputPatterns.length != 0) {
-    let userPatterns = readUserMusicPatterns(userInputPatterns);
+    const userPatterns = readUserMusicPatterns(userInputPatterns);
     for (let i = 0; i < userPatterns.length; i++) {
       // ignore empty values (ie line feeds)
       if (userPatterns[i].length != 0) {
@@ -180,12 +183,12 @@ function doProve() {
   // now remove the calls from the comp text (look up from call list)
   // split the composition up at the carriage returns.
   for (const i in txtCalls) {
-    let regex = new RegExp(i, 'g');
+    const regex = new RegExp(i, 'g');
     comptext = comptext.replace(regex, '');
   }
   comptext = comptext.split('\n');
 
-  let leads = [];
+  const leads = [];
   for (let i=0; i<comp.leadends.length; i++) {
     let lead = '';
     for (let j=0; j<comp.leadends[i].length; j++) {
@@ -239,7 +242,7 @@ function doProve() {
   }
   result.music += '</pre>';
 
-  let atw = AtwChecker(comp);
+  const atw = AtwChecker(comp);
   atw.getAtw();
   result.atw = formatAtw(atw);
   result.com = atw.com;
@@ -253,7 +256,7 @@ function doProve() {
 function addFourBellRuns(stage, music) {
   for (let i=0; i < stage; i++) {
     // fill up the rest of the music array with the correct number of -1's
-    let spareBells = new Array();
+    const spareBells = new Array();
     let runs = new Array();
     for (let j=0; j < (stage-4); j++) {
       spareBells[j] = -1;
@@ -312,7 +315,7 @@ function readUserMusicPatterns(patternList) {
   patternList = patternList.split('\n');
 
   for (let j=0; j < patternList.length; j++) {
-    let pattern = patternList[j].split('');
+    const pattern = patternList[j].split('');
     for (let i=0; i < pattern.length; i++) {
       // do the opposite of what we do in do_prove() - convert bell numbers into array items
       pattern[i] = bellIndex(pattern[i]);
@@ -326,8 +329,8 @@ function readUserMusicPatterns(patternList) {
  * Convert the user's shorthand into JSProve input format, and update the text box
  */
 function generateShorthand(methodID, bob, single) {
-  let vm = validate_method(methodID);
-  let s = Shorthand($('#shorthand').val(), vm[1]);
+  const vm = validate_method(methodID);
+  const s = Shorthand($('#shorthand').val(), vm[1]);
 
   s.run(nothing, bob, single);
 
@@ -343,8 +346,8 @@ function generateShorthand(methodID, bob, single) {
  * @author Paul Brook
  */
 function Method(stage, name, rows) {
-  let lead_end = rows.pop();
-  let that = {
+  const lead_end = rows.pop();
+  const that = {
     stage: stage,
     name: name,
     rows: rows,
@@ -359,7 +362,7 @@ function Method(stage, name, rows) {
  */
 function Change(stage) {
   let i;
-  let that = {
+  const that = {
     stage: stage,
   };
   that.row = new Array(stage);
@@ -537,7 +540,7 @@ function parse_method_microsiril(stage, group, notation) {
   }
   let res;
   let n = 1;
-  let rows = [];
+  const rows = [];
   let lead_end;
 
   while (n < notation.length) {
@@ -592,11 +595,12 @@ function parse_method_cc(stage, notation) {
   let n = 0;
   let sep;
   let lead_end;
-  let rows = [];
+  const rows = [];
 
   sep = notation.indexOf(',');
-  if (sep === -1)
-    {sep = notation.length;}
+  if (sep === -1) {
+    sep = notation.length;
+  }
   while (n < sep) {
     res = get_mask(stage, n, notation);
     if (res.n === n) {
@@ -619,24 +623,29 @@ function parse_method_cc(stage, notation) {
  * Composition Object
  * @author Paul Brook, modified by James Holdsworth to allow spliced
  */
-function Composition() {
-  let that = {
-    methods: [],
-    calls: [],
-    leadends: [],
-    stage: 0,
-  };
+class Composition {
+  /**
+   * Initialise
+   */
+  constructor() {
+    this.methods = [];
+    this.calls = [];
+    this.leadends = [];
+    this.stage = 0;
+  }
 
-  that.append_lead = function(method, call) {
+  // eslint-disable-next-line require-jsdoc
+  appendLead(method, call) {
     this.methods.push(method);
     this.calls.push(call);
     if (method.stage > this.stage) {
       this.stage = method.stage;
     }
-  };
+  }
 
-  that.run = function(fn) {
-    let ch = Change(this.stage);
+  // eslint-disable-next-line require-jsdoc
+  run(fn) {
+    const ch = Change(this.stage);
     let method;
     let call;
     for (let a = 0; a < this.methods.length; a++) {
@@ -645,8 +654,7 @@ function Composition() {
       ch.advance_lead(method, call, fn);
       this.leadends[a] = ch.row.slice(0);
     }
-  };
-  return that;
+  }
 }
 
 /**
@@ -655,7 +663,7 @@ function Composition() {
  * @todo Remove hard coding of symbols
  */
 function Shorthand(shorthand, method) {
-  let that = {
+  const that = {
     shorthandCalls: shorthand,
     stage: method.stage,
     compText: '',
@@ -667,9 +675,9 @@ function Shorthand(shorthand, method) {
   that.run = function(fn, b, s) {
     this.bob = b;
     this.single = s;
-    let bob = parse_bell_list(this.stage, 0, b[1]);
-    let single = parse_bell_list(this.stage, 0, s[1]);
-    let c = Change(this.stage);
+    const bob = parse_bell_list(this.stage, 0, b[1]);
+    const single = parse_bell_list(this.stage, 0, s[1]);
+    const c = Change(this.stage);
     // loop through the calls and for each one, work out its meaning
     for (let i=0; i<this.shorthandCalls.length; i++) {
       if (this.shorthandCalls.charAt(i) === 's') {
@@ -735,9 +743,9 @@ function Shorthand(shorthand, method) {
       throw 'Tenor doesn\'t get to this position in a '+this.stage+'-bell method';
     }
     while (moreLeads === true) {
-      let previousLeadHead = c.row.slice(0);
+      const previousLeadHead = c.row.slice(0);
       c.advance_lead(this.method, callType.mask, fn);
-      let thisLeadhead = c.row.slice(0);
+      const thisLeadhead = c.row.slice(0);
       this.compText += this.method.name;
       // if tenor's in that position with a call
       if (thisLeadhead[tenorPosition] === (this.stage-1)) {
@@ -766,7 +774,7 @@ function Shorthand(shorthand, method) {
  */
 function AtwChecker(comp) {
   // build an array like Method[bellNo][position] = true
-  let that = {
+  const that = {
     comp: comp,
     positionsRung: [],
     methodList: '',
@@ -823,33 +831,36 @@ function AtwChecker(comp) {
  * Prover Object - prove the rows are unique
  * @author Paul Brook
  */
-function Prover() {
-  const that = {
-    changes: {},
-  };
+class Prover {
+  // eslint-disable-next-line require-jsdoc
+  constructor() {
+    this.changes = {};
+  }
 
-  that.check_row = function(c) {
+  /**
+   * Checks the row
+   * @param {Composition} c The composition
+   * @return {number} Whether the row has been seen before or not
+   */
+  checkRow(c) {
     let val = 0;
-    let stage = c.stage;
-    let row = new Array(stage);
-    let n;
+    const row = new Array(c.stage);
     let i;
     let j;
     let bell;
     let seen = false;
 
-    for (i = 0; i < stage; i++) {
+    for (i = 0; i < c.stage; i++) {
       row[i] = c.row[i];
     }
-    n = stage;
-    for (i = 0; i < stage; i++) {
+    for (i = 0; i < c.stage; i++) {
       bell = row[i];
-      for (j = i + 1; j < stage; j++) {
+      for (j = i + 1; j < c.stage; j++) {
         if (row[j] > bell) {
           row[j]--;
         }
       }
-      val = val * n + bell;
+      val = val * c.stage + bell;
     }
     seen = this.changes[val] === true;
     this.changes[val] = true;
@@ -860,9 +871,7 @@ function Prover() {
       return 1;
     }
     return 0;
-  };
-
-  return that;
+  }
 }
 
 /**
@@ -870,7 +879,7 @@ function Prover() {
  * @author Paul Brook
  */
 function MusicBox() {
-  let that = {
+  const that = {
     patterns: [],
     counts: [],
   };
@@ -914,7 +923,7 @@ function MusicBox() {
   };
 
   that.match_row = function(c) {
-    let stage = c.stage;
+    const stage = c.stage;
     let i;
     let node;
 

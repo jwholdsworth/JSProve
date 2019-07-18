@@ -215,7 +215,8 @@ function loadMusicForStage(stage) {
  */
 function prove() {
   try {
-    res = doProve();
+    const composition = get_composition();
+    res = doProve(composition);
 
     if (res.trueTouch === true) {
       if (res.complete === true) {

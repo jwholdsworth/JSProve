@@ -1,7 +1,7 @@
 // "use strict"; // removing this until the whole thing has been improved
 
-const MAX_RANK = 24
-const bell_names = "1234567890ET"
+const MAX_RANK = 24;
+const bell_names = '1234567890ET';
 
 const loadUserInput = () => {
     const input = {
@@ -9,47 +9,45 @@ const loadUserInput = () => {
         methods: [],
         stage: 0,
         calls: [],
-    }
+    };
 
-    input.composition = document.getElementById('composition').value
-    input.stage = parseInt(document.getElementById('methodRank').value, 10)
+    input.composition = document.getElementById('composition').value;
+    input.stage = parseInt(document.getElementById('methodRank').value, 10);
 
-    const htmlMethods = document.getElementById('methodList').childNodes
+    const htmlMethods = document.getElementById('methodList').childNodes;
     htmlMethods.forEach((element) => {
         input.methods.push({
             shorthand: element.childNodes[0].value,
             notation: element.childNodes[1].value,
-        })
-    })
+        });
+    });
 
-    const htmlCalls = Array.from(document.getElementsByClassName('callRow'))
+    const htmlCalls = Array.from(document.getElementsByClassName('callRow'));
     input.calls = htmlCalls.map((element) => {
         return {
             symbol: element.getElementsByClassName('callSymbol')[0].value,
             notation: element.getElementsByClassName('callNtn')[0].value
-        }
-    })
+        };
+    });
 
-    console.debug(input)
-
-    return input
-}
+    return input;
+};
 
 const createComposition = (userInput) => {
-    const selectedMethods = {}
-    const comp = Composition()
-    const txtCalls = {}
-    let done_call = true
-    let last_method
+    const selectedMethods = {};
+    const comp = Composition();
+    const txtCalls = {};
+    let done_call = true;
+    let last_method;
 
     userInput.methods.forEach((method) => {
-        const validatedMethod = validateMethod(method.shorthand, method.notation, userInput.stage)
-        selectedMethods[method.shorthand] = validatedMethod
-    })
+        const validatedMethod = validateMethod(method.shorthand, method.notation, userInput.stage);
+        selectedMethods[method.shorthand] = validatedMethod;
+    });
 
     userInput.calls.forEach((call) => {
-        txtCalls[call.symbol] = parse_bell_list(userInput.stage, 0, call.notation)
-    })
+        txtCalls[call.symbol] = parse_bell_list(userInput.stage, 0, call.notation);
+    });
 
     for (let i = 0; i < userInput.composition.length; i++) {
         let c = userInput.composition.charAt(i);
@@ -73,27 +71,27 @@ const createComposition = (userInput) => {
         comp:comp,
         calls:txtCalls
     };
-}
+};
 
 function get_composition() {
-    const input = loadUserInput()
-    return createComposition(input)
+    const input = loadUserInput();
+    return createComposition(input);
 }
 
 const validateMethod = (shortcut, notation, stage) => {
     let rows;
     const parsedNotation = notation.replace(/x/gi, '-');
     if (!Number.isInteger(stage)) {
-        return false
+        return false;
     }
     if (stage <= 0 || stage > MAX_RANK) {
-        return false
+        return false;
     }
 
     rows = parse_method(stage, parsedNotation);
 
     return Method(stage, shortcut, rows);
-}
+};
 
 function validate_method(id) {
     var shortcut;
@@ -103,12 +101,12 @@ function validate_method(id) {
     var notation;
 
     shortcut = $('#shortcut' + id).val();
-    if (shortcut == "") {
+    if (shortcut == '') {
         return false;
     }
     notation = $('#notation' + id).val();
     notation = notation.replace(/x/gi, '-');
-    if (notation == "") {
+    if (notation == '') {
         return false;
     }
     rank = parseInt($('#methodRank').val(), 10);
@@ -136,7 +134,7 @@ function do_prove() {
         atw: '',
         com: 0
     };
-    composition = get_composition();
+    let composition = get_composition();
     var comp = composition.comp;
     var txtCalls = composition.calls;
 
@@ -164,7 +162,7 @@ function do_prove() {
     var userInputPatterns = $('#userMusicList').val();
     if(userInputPatterns.length != 0) {
         var userPatterns = readUserMusicPatterns(userInputPatterns);
-        for(i = 0; i < userPatterns.length; i++) {
+        for(let i = 0; i < userPatterns.length; i++) {
             // ignore empty values (ie line feeds)
             if(userPatterns[i].length != 0) {
                 music.add_pattern(userPatterns[i]);
@@ -180,16 +178,16 @@ function do_prove() {
 
     // now remove the calls from the comp text (look up from call list)
     // split the composition up at the carriage returns.
-    for(i in txtCalls) {
+    for(let i in txtCalls) {
         var regex = new RegExp(i, 'g');
         comptext = comptext.replace(regex, '');
     }
-    comptext = comptext.split("\n");
+    comptext = comptext.split('\n');
 
     var leads = [];
-    for(i=0; i<comp.leadends.length; i++) {
-        var lead = "";
-        for(j=0; j<comp.leadends[i].length; j++) {
+    for(let i=0; i<comp.leadends.length; i++) {
+        var lead = '';
+        for(let j=0; j<comp.leadends[i].length; j++) {
             lead += bell_name(comp.leadends[i][j]);
         }
         leads[i] = lead;
@@ -197,12 +195,12 @@ function do_prove() {
 
     // get the course ends for displaying
     var leadNo = 0;
-    for(c = 0; c < comptext.length; c++) {
+    for(let c = 0; c < comptext.length; c++) {
         if(comptext[c].length > 0) {
             leadNo = comptext[c].length + leadNo;
             result.courses += leads[leadNo-1];
         }
-        result.courses += "\n";
+        result.courses += '\n';
     }
 
     if (rounds > 0) {
@@ -211,34 +209,34 @@ function do_prove() {
         result.complete = true;
 
         if (rounds != changes) {
-            result.status = "Touch is true: " + rounds + " changes (" + (changes - rounds) + " before last course end)";
+            result.status = 'Touch is true: ' + rounds + ' changes (' + (changes - rounds) + ' before last course end)';
         } else {
-            result.status = "Touch is true: " + rounds + " changes";
+            result.status = 'Touch is true: ' + rounds + ' changes';
         }
     } else if (rounds < 0) {
         result.complete = true;
         result.trueTouch = false;
         result.length = (-rounds);
-        result.status = "Touch is false: false after " + (-rounds) + " changes";
+        result.status = 'Touch is false: false after ' + (-rounds) + ' changes';
     } else {
         result.complete = false;
         result.trueTouch = true;
         result.length = changes;
-        result.status = "Incomplete touch (" + changes + " changes)";
+        result.status = 'Incomplete touch (' + changes + ' changes)';
     }
 
-    result.music = "<pre>";
-    for (i = 0; i < music.counts.length; i++) {
-        var pattern = "";
+    result.music = '<pre>';
+    for (let i = 0; i < music.counts.length; i++) {
+        var pattern = '';
         // add run count to music output array only if those runs exist
         if(music.counts[i] != 0 ) {
-            for(j=0; j < music.patterns[i].length; j++) {
+            for(let j=0; j < music.patterns[i].length; j++) {
                 pattern += bell_name(music.patterns[i][j]);
             }
-            result.music += "<strong>" + music.counts[i] + "</strong>\t" + pattern + "\n";
+            result.music += '<strong>' + music.counts[i] + '</strong>\t' + pattern + '\n';
         }
     }
-    result.music += "</pre>";
+    result.music += '</pre>';
 
     var atw = AtwChecker(comp);
     atw.getAtw();
@@ -252,11 +250,11 @@ function do_prove() {
  * Add some basic music (four bell runs)
  */
 function addFourBellRuns(stage, music) {
-    for(i=0; i < stage; i++) {
+    for(let i=0; i < stage; i++) {
         // fill up the rest of the music array with the correct number of -1's
         var spareBells = new Array();
         var runs = new Array();
-        for(j=0; j < (stage-4); j++) {
+        for(let j=0; j < (stage-4); j++) {
             spareBells[j] = -1;
         }
 
@@ -286,14 +284,14 @@ function addFourBellRuns(stage, music) {
  */
 function formatAtw(atw) {
     var output = '';
-    for (i in atw.positionsRung) {
+    for (let i in atw.positionsRung) {
         // output the method key
-        output += i + ':\n'
+        output += i + ':\n';
         // output the bell number
-        for (j=0; j < atw.comp.rank; j++) {
+        for (let j=0; j < atw.comp.rank; j++) {
             output += '  ' + bell_names.charAt(j) + ': ';
             // find which positions it rings
-            for (k=0; k < atw.comp.rank; k++) {
+            for (let k=0; k < atw.comp.rank; k++) {
                 if (atw.positionsRung[i][bell_names.charAt(j)][bell_names.charAt(k)] == true) {
                     output += bell_names.charAt(k);
                 } else {
@@ -310,11 +308,11 @@ function formatAtw(atw) {
  * Convert the user's music preferences into JSProve format
  */
 function readUserMusicPatterns(patternList) {
-    patternList = patternList.split("\n");
+    patternList = patternList.split('\n');
 
-    for(j=0; j < patternList.length; j++) {
-        var pattern = patternList[j].split("");
-        for(i=0; i < pattern.length; i++) {
+    for(let j=0; j < patternList.length; j++) {
+        var pattern = patternList[j].split('');
+        for(let i=0; i < pattern.length; i++) {
             // do the opposite of what we do in do_prove() - convert bell numbers into array items
             pattern[i] = bell_index(pattern[i]);
         }
@@ -335,13 +333,9 @@ function generateShorthand(methodID, bob, single) {
     // empty function required here by the Shorthand class
     function nothing() {}
 
-    return s.compText
+    return s.compText;
 }
 
-module.exports = {
-    validateMethod,
-    createComposition,
-}
 
 
 
@@ -379,8 +373,6 @@ function Change(rank) {
     }
 
     that.advance = function (mask) {
-        console.debug('mask', mask)
-        console.debug('row', this.row)
         var i = 0;
         var tmp;
         while (i < rank) {
@@ -417,7 +409,7 @@ function Change(rank) {
     };
 
     that.pp = function () {
-        var s = "";
+        var s = '';
         for (i = 0; i < this.rank; i++) {
             s += bell_names[this.row[i]];
         }
@@ -426,7 +418,7 @@ function Change(rank) {
 
     that.setRow = function (newRow) {
         this.row = newRow;
-    }
+    };
 
     return that;
 }
@@ -454,7 +446,7 @@ function bell_index(name) {
 // map bell indexes to human bell names
 function bell_name(index) {
     if(index === -1) {
-        return "*";
+        return '*';
     }
     if(index > -1 && index < 9) {
         return (index+1).toString();
@@ -510,10 +502,10 @@ function parse_bell_list(rank, n, notation) {
 
 // function to decide which parsing method to use
 function parse_method(rank, notation) {
-    if((notation.indexOf("&") === -1) && (notation.indexOf("+") === -1)) {
+    if((notation.indexOf('&') === -1) && (notation.indexOf('+') === -1)) {
         return parse_method_cc(rank, notation);
     } else {
-        return parse_method_microsiril(rank, notation.split(" ")[0], notation.split(" ")[1]);
+        return parse_method_microsiril(rank, notation.split(' ')[0], notation.split(' ')[1]);
     }
 }
 
@@ -523,7 +515,7 @@ function parse_method(rank, notation) {
  */
 function parse_method_microsiril(rank, group, notation) {
     function get_mask(rank, n, notation) {
-        if (notation.charAt(n) === "-") {
+        if (notation.charAt(n) === '-') {
             return {
                 n:n+1,
                 mask:0
@@ -539,7 +531,7 @@ function parse_method_microsiril(rank, group, notation) {
     } else if (c === '+') {
         symmetric = false;
     } else {
-        throw "Unexpected notation (expected + or &):" + notation;
+        throw 'Unexpected notation (expected + or &):' + notation;
     }
     var res;
     var n = 1;
@@ -549,7 +541,7 @@ function parse_method_microsiril(rank, group, notation) {
     while (n < notation.length) {
         res = get_mask(rank, n, notation);
         if (res.n === n) {
-            throw "Bad place notation";
+            throw 'Bad place notation';
         }
         n = res.n;
         rows.push(res.mask);
@@ -564,7 +556,7 @@ function parse_method_microsiril(rank, group, notation) {
     if (group.charAt(group.length - 1) === 'z') {
         res = parse_bell_list(rank, 0, group);
         if (res.n !== res.length) {
-            throw "Bad method group: " + group;
+            throw 'Bad method group: ' + group;
         }
         lead_end = res.mask;
     } else if ((c >= 'a' && c <= 'f')
@@ -574,7 +566,7 @@ function parse_method_microsiril(rank, group, notation) {
         || c === 'r' || c === 's') {
         lead_end = 1 | (1 << (rank - 1));
     } else {
-        throw "Bad method group: " + group;
+        throw 'Bad method group: ' + group;
     }
     rows.push(lead_end);
     return rows;
@@ -586,7 +578,7 @@ function parse_method_microsiril(rank, group, notation) {
  */
 function parse_method_cc(rank, notation) {
     function get_mask(rank, n, notation) {
-        if (notation.charAt(n) === "-") {
+        if (notation.charAt(n) === '-') {
             return {
                 n:n+1,
                 mask:0
@@ -600,13 +592,13 @@ function parse_method_cc(rank, notation) {
     var lead_end;
     var rows = [];
 
-    sep = notation.indexOf(",");
+    sep = notation.indexOf(',');
     if (sep === -1)
         sep = notation.length;
     while (n < sep) {
         res = get_mask(rank, n, notation);
         if (res.n === n) {
-            throw "Bad place notation";
+            throw 'Bad place notation';
         }
         n = res.n;
         rows.push(res.mask);
@@ -664,7 +656,7 @@ function Shorthand(shorthand, method) {
     var that = {
         shorthandCalls:shorthand,
         rank:method.rank,
-        compText:"",
+        compText:'',
         method:method,
         bob:null,
         single:null
@@ -677,8 +669,8 @@ function Shorthand(shorthand, method) {
         var single = parse_bell_list(this.rank, 0, s[1]);
         var c = Change(this.rank);
         // loop through the calls and for each one, work out its meaning
-        for(i=0; i<this.shorthandCalls.length; i++) {
-            if(this.shorthandCalls.charAt(i) === "s") {
+        for(let i=0; i<this.shorthandCalls.length; i++) {
+            if(this.shorthandCalls.charAt(i) === 's') {
                 // it's a single
                 i++;
                 this.ringToNextCall(this.shorthandCalls[i], single, fn, true, c);
@@ -696,16 +688,16 @@ function Shorthand(shorthand, method) {
         if(tenorPosition < 1) {
             call = call.toLowerCase();
             switch(call) {
-                case "h":
+                case 'h':
                     tenorPosition = this.rank-1;
                     break;
-                case "w":
+                case 'w':
                     tenorPosition = this.rank-2;
                     break;
-                case "m":
+                case 'm':
                     tenorPosition = this.rank-3;
                     break;
-                case "i":
+                case 'i':
                     // won't this break if using n-2 place calls?
                     if(isSingle) {
                         // single 3rds
@@ -715,30 +707,30 @@ function Shorthand(shorthand, method) {
                         tenorPosition = 1;
                     }
                     break;
-                case "b":
-                case "o":
+                case 'b':
+                case 'o':
                     if(isSingle) {
                         tenorPosition = 1;
                     } else {
                         tenorPosition = 2;
                     }
                     break;
-                case "t":
+                case 't':
                     tenorPosition = 2;
                     break;
-                case "f":
+                case 'f':
                     tenorPosition = 3;
                     break;
-                case "v":
+                case 'v':
                     tenorPosition = 4;
                     break;
                 default:
-                    throw "Calling Position " + call + " not found";
+                    throw 'Calling Position ' + call + ' not found';
             }
         }
 
         if(tenorPosition >= this.rank) {
-            throw "Tenor doesn't get to this position in a "+this.rank+"-bell method";
+            throw 'Tenor doesn\'t get to this position in a '+this.rank+'-bell method';
         }
         while(moreLeads === true) {
             var previousLeadHead = c.row.slice(0);
@@ -759,7 +751,7 @@ function Shorthand(shorthand, method) {
             }
             // if the tenor's home, put a line break in
             if(c.row.indexOf(this.rank-1) === (this.rank-1)) {
-                this.compText += "\n";
+                this.compText += '\n';
             }
         }
     };
@@ -777,33 +769,33 @@ function AtwChecker(comp) {
         positionsRung:[],
         methodList:'',
         com:0
-    }
+    };
 
     that.getAtw = function() {
-        for (i=0; i < this.comp.methods.length; i++) {
+        for (let i=0; i < this.comp.methods.length; i++) {
             // add the method symbol to the list
             this.methodList += this.comp.methods[i].name;
             this.positionsRung[this.comp.methods[i].name] = [];
             // add the bell to the list
-            for (j=0; j < this.comp.rank; j++) {
+            for (let j=0; j < this.comp.rank; j++) {
                 this.positionsRung[this.comp.methods[i].name][bell_names[j]] = [];
                 // add the bell's position to the list
-                for (k=0; k < this.comp.rank; k++) {
+                for (let k=0; k < this.comp.rank; k++) {
                     this.positionsRung[this.comp.methods[i].name][bell_names[j]][bell_names[k]] = false;
                 }
             }
         }
 
         // for each lead
-        for (i=0; i < this.comp.methods.length; i++) {
+        for (let i=0; i < this.comp.methods.length; i++) {
             // loop through the number of bells
-            for (j=0; j < this.comp.rank; j++) {
+            for (let j=0; j < this.comp.rank; j++) {
                 // bell at this position in the lead
-                leadend = this.comp.leadends[i-1];
+                let leadend = this.comp.leadends[i-1];
                 // note we can't use leadend-1 for the first lead, so generate a lead of rounds and use that
                 if (leadend === undefined) {
                     leadend = [];//this.comp.leadends[this.comp.methods.length - 1];
-                    for (k=0; k < this.comp.rank; k++) {
+                    for (let k=0; k < this.comp.rank; k++) {
                         leadend.push(k);
                     }
                 }
@@ -814,7 +806,7 @@ function AtwChecker(comp) {
         // count changes of method
         var previousLeadMethod = this.methodList[0];
         // ends up comparing the first lead against the first lead - probably OK
-        for (i=0; i < this.methodList.length; i++) {
+        for (let i=0; i < this.methodList.length; i++) {
             if (this.methodList[i] != previousLeadMethod) {
                 this.com++;
             }
@@ -830,7 +822,7 @@ function AtwChecker(comp) {
  * @author Paul Brook
  */
 function Prover() {
-    that = {
+    let that = {
         changes:{}
     };
 
@@ -898,14 +890,15 @@ function MusicBox() {
         stack = new Array(rank);
         objtree = {};
 
-        for (n = 0; n < this.patterns.length; n++) {
+        for (let n = 0; n < this.patterns.length; n++) {
             pattern = this.patterns[n];
             if (pattern.length != rank) {
                 continue;
             }
             node = objtree;
-            for (i = 0; i < rank; i++) {
+            for (let i = 0; i < rank; i++) {
                 bell = pattern[i];
+                let next_node;
                 if (bell in node) {
                     next_node = node[bell];
                 } else {

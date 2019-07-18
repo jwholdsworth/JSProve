@@ -1,4 +1,5 @@
 nbproject
+.nyc_output
 Capfile
 config
 node_modules

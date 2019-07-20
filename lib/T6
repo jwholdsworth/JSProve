@@ -1,4 +1,4 @@
-*** T6 Sat,25 Jul 2015.14:23:32 ***
+*** T6 Fri,17 Aug 2018.12:53:21 ***
 Affric 4z &3-34.1-25-1-2-5
 Albatross 2z &5-34.1-5-1.34-2.5
 Albion 2z &-34-1-5-1-4-5
@@ -23,6 +23,7 @@ Badgeworth g &-34-1-5-1-2-1
 Barnoldswick l &3-34.1-2-1-34-3
 Barnsley 2z &34-34.1-2-1-2-5
 Barrslieveanroy 6z &34-34.1-25-1-2-5
+Basilsmum 2z &-3-1-2-1-34.234.5
 Beaufort 4z &-34-1-2-1.34-4.3
 Beestoncastle 2z &34-34.1-5-1-4-1
 Beg 4z &3-34.1-25-1-4-5
@@ -58,6 +59,7 @@ Chiltern e &3-34.1-2-1.34-4.3
 Claremont 2z &34-34.1-2-1.2-2.5
 Clockmakers e &3-34.1-5-1.34-4.3
 Clwydian l &-34-1-5-1.34-34.5
+Cnut e &34-34.1-5-1-234-1
 Coe 4z &-34-1-25-1-34-5
 College l &-34-1-5-1-2-5
 Collegeexercise e &-34-1-2-1-34-5
@@ -82,6 +84,7 @@ Diamond 4z &3-34.1-25-1-34-5
 Diesirae 2z &34-3.1.5-2.1.4-34.5
 Dontpanic 4z &3-34.1-5-1.34-2.3
 Doomsday 2z &34-3.1.2-5.1.4-34.5
+Doublebob b &---1---1---5
 Doublelocks m &3-34.1.2-5.1.34-4.1
 Drayton 2z &-34-1-2-1.34-4.5
 Drsyntaxshead b &-5-1-2-1.2-34.5
@@ -100,6 +103,7 @@ Eothesic e &-34-1-2-1.234.34-5
 Etive 4z &-34-1-25-1.34-34.5
 Eveningpleasure 4z &-3-1-2-1-4-3
 Evershot a &-5-1-5-1.34-2.5
+Ewelme 4z &34-34.1-2-1-2-3
 Exford f &-34-1-5-1-2-5
 Eye e &-34-1-5-1-4-1
 Felkirk 2z &34-34.1-2-1.34-34.5
@@ -133,6 +137,7 @@ Harringworth b &34-34.1.2-2.1.34-34.5
 Harrisdifferential 6z &-5-1-25-1.34-34.5
 Hasley 2z &-3-1-2-1.34-4.3
 Havercroft 2z &34-34.1-2-1.34-2.5
+Heatwave 2z &-3-1-2-1.2-2.5
 Hellsmouth b &-5-1-2-1.2.234.34.5
 Helvellyn e &5-34.1-5-1-2-3
 Hemsworth 2z &-3-1-2-1.34-34.5
@@ -142,6 +147,7 @@ Holmfirth m &-5-1-2-1-2-1
 Holothesic e &-34-1-2-1.34.234.2.5
 Holycross 4z &-3-1-2-1.34-2.3
 Hurich 4z &-5-1-25-1.34-34.3
+Iafydstta h &34-34.1-25-1-34-3
 Idratherbeinthetavern 2z &5-34.1-5-1.4-2.3
 Imperial a &-5-1-5-1-34-5
 Ingleborough b &-3-1-5-1.34-4.5
@@ -157,11 +163,13 @@ Jubilee f &34-34.1-5-1.4.234.34.5
 Jura 6z &-3-1-5-1.34-34.5
 Kalamazoo l &-34-1-5-1-34-5
 Kangaroo 2z &-5-1-5-1-4-5
+Karmelita 6z &34-34.1-2-1-234-1
 Kenhall h &-34-1-2-1.234.2-5
 Kensadygemusur e +-34-1-2-1.2-2.25-2-1-2-1-34-
 Kent m &34-34.1-2-1-2-1
 Keyham b &34-34.1.2-2.1.34.234.2.5
 Killamarsh h &34-34.1-2-1-34-3
+Killamockingbird h &34-34.1-2-1-234-3
 Kingie 6z &34-34.1-25-1.34-2.5
 Kingston h &-34-1-2-1.34-34.5
 Kirkheaton 4z &3-34.1-2-1-2-1
@@ -187,6 +195,7 @@ Maidwell f &34-34.1-5-1.234.4-5
 Martley 2z &34-34.1-5-1-2-1
 Marvintheparanoidandroid 4z &3-34.1-5-1-4-5
 Matildabay b +-5-1-2-1.2-2.25-2-1-2-1-5-
+Maxthecollie g &-5-1-2-1.2-2.5
 Mayday e &-5-1-5-1-2-1
 Mendip b &3-34.1-2-1-4-5
 Milbornestandrew a &-5-1-5-1-2-5
@@ -195,6 +204,7 @@ Moidart 4z &-34-1-25-1-2-5
 Monkbretton 2z &3-34.1-2-1-2-3
 Morningpleasure 4z &-34-1-2-1-2-3
 Morningstar a &-34-1-2-1-34-1
+Muchbindinginthemarsh e &34-34.1-2-1-34.2.3
 Mustardhill 6z &-5-1-2-1.34-34.1
 Naremburn 6z &-5-1-25-1-2-1
 Navigation l &-5-1-5-1-34-1
@@ -224,9 +234,12 @@ Oligothesic e &-34-1-2-1.2-34.5
 Orchy 4z &-34-1-25-1.34-4.5
 Orkney 4z &-5-1-5-1.34-4.5
 Orlingbury 2z &-5-1-5-1-2-3
+Osra b &-3-1-2-1.2-2.3
 Oudemaas g &3-34.1-2-1-4-5
 Overfauscoum a &34-34.1-25-1.34-4.3
+Owhirobay e &34-34.1-2-1-234-3
 Oxford m &-34-1-2-1-2-1
+Paddysday 2z &-3-1-2-1-2.234.5
 Palmsunday 2z &-3-1-5-1-4-5
 Pangalacticgargleblaster a &3-34.1-5-1.34-2.5
 Peak a &3-3.1-2-1.34-2.5
@@ -236,11 +249,14 @@ Penistone 6z &-3-1-2-1.34-34.5
 Pennine f &3-34.1-2-1-34-3
 Pentland 6z &-34-1-5-1-2-3
 Pesweradygemusur e +-34-1-2-1-34-345.34-34.1-2-1-34-
+Peterboroughstmary e &34-34.1-25-1-34-3
 Piddletrenthide 2z &34-34.1-5-1.34-34.5
 Pinhoe l &-34-1-5-1.34-2.5
 Pitsford f &34-34.1-5-1.4-34.5
 Pityaboutthe65s m &-3-1-5-1-34-3
 Pizpotgargravarr 2z &3-34.1-5-1-2-3
+Plain a &---1---1---1
+Platinumrose b &34-34.1-25-1-4-1
 Pleistothesic e &-34-1-2-1.2.234.34.5
 Pliothesic e &-34-1-2-1.234.2-5
 Plynlimon g &-5-1-5-1-4-1
@@ -271,6 +287,7 @@ Sailanchor b +-5-1-2-1-2.234.345.2.234.34.1-2-1-5-
 Sandal h &-34-1-2-1-2-5
 Scafell b &5-34.1-2-1.34-2.3
 Selworthy f &-34-1-5-1-34-5
+Seytegvesdygemusur e +-34-1-2-1.34.234.34.25.234.34.234.1-2-1-34-
 Seythvesdygemusur e +-34-1-2-1.234.34.234.25.34.234.34.1-2-1-34-
 Sgornamfiannaidh a &3-34.1-25-1.34-4.5
 Sgurrmhor 4z &5-34.1-25-1-2-5
@@ -280,6 +297,7 @@ Silkstone 4z &34-34.1-2-1.34-4.3
 Silver 2z &-5-1-25-1.34-4.3
 Silverbells 6z &-3-1-5-1-2-5
 Skiddaw a &5-34.1-5-1-4-5
+Sky 4z &-34-1-5-1-34-5
 Slaithwaite 2z &-3-1-2-1-4-3
 Slartibartfast a &3-34.1-5-1-2-5
 Slievesnaght 4z &5-34.1-25-1-34-5
@@ -313,6 +331,7 @@ Thomas e &3-3.1.2-2.1.34.234.2.3
 Thornton b &-3-1-2-1.34-34.3
 Titterstoneclee 4z &5-34.1-5-1-34-3
 Tivydale g &-5-1-2-1.34-34.5
+Tomhughes g &-5-1-2-1.2-34.5
 Torridon f &-3-1-25-1.34-4.3
 Tressadygemusur e +-34-1-2-1.34-34.345-34-1-2-1-34-
 Trillion 4z &3-34.1-5-1-34-3
@@ -331,6 +350,7 @@ Vatersay 6z &3-34.1-2-1-34-5
 Venturi 6z &34-34.1-5-1-34-3
 Victoria 4z &-5-1-5-1-4-1
 Violet 4z &-3-1-2-1-2-1
+Walkinstownshortcourse 2z &34-34.1-2-1-2-25
 Waterford g &34-34.1-2-1.34-4.5
 Wenlockedge 4z &5-34.1-5-1.34-2.3
 Westernbuccaneer g &34-5.1-5-1.2-34.1
@@ -369,6 +389,7 @@ Whernside g &-3-1-5-1.34-4.5
 Whitfield b &34-34.1.2-2.1-2-5
 Whiting h &-34-1-2-1.234.34.234.5
 Whyarentweinthetavern f &345.34-1-5-1.4-2.3
+Willoughbylittle a &-34-1-2-34
 Wollstonecraft 6z &34.5-1-25-1-2.34.1
 Woodcocksvictory h &-3-1-2-1-4-5
 Woolwich f &-5-1-5-1-34-1

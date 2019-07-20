@@ -3,3 +3,5 @@ nbproject
 Capfile
 config
 node_modules
+cypress
+!cypress/integration

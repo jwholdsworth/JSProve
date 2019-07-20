@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
-// / <reference types="Cypress" />
+// eslint-disable-next-line spaced-comment
+/// <reference types="Cypress" />
 
 context('Actions', () => {
   beforeEach(() => {
@@ -32,7 +33,7 @@ context('Actions', () => {
     });
   });
 
-  describe('Proving a sample Major method', () => {
+  describe('Proving 8-bell methods', () => {
     it('Can use the shorthand to generate and prove a method', () => {
       cy.get('#shorthand').clear();
       cy.get('#shorthand').type('whwh');
@@ -55,14 +56,67 @@ context('Actions', () => {
           .should('contain.text', 'Touch is false');
     });
 
-    it('Can handle multiple methods', () => {
+    it('Can handle multiple methods using a collection', () => {
+      cy.get('#collectionChoice select').select('Pitman\'s 4');
+      const composition = 'LSL/\nL/B/B/S/CSC/\nLSCSC/\nL/B/B/S/CSC/\nLCL/\nL/BBBBBBB/\nCS/CS\nSSS/B/S/CSC/\nLS/L\nL/B/LLLLL/B/L\nL/SL/\nCSC/S/B/SSS\nSC/SC/\nBBBBBBB/L/\nLCL/\nCSC/S/B/B/L/\nCSCSL/\nCSC/S/B/B/L/\nLS/L/B/B/\nLC/SSS\nLC/L/\nLC/B/B/L/\nCSC/CL \nCSC/SL/\nCS/BBBB/\nBBBB/SC/\nLS/CSC\nLC/CSC/\nL/B/B/CL/';
       cy.get('#composition')
           .clear()
-          .type('B/\nDDDL/\nDDCL/\nBDDDDB/\n');
+          .type(composition);
       cy.get('#results')
-          .should('have.class', 'info');
+          .should('have.class', 'success')
+          .should('contain.text', '5024 changes');
       cy.get('#com')
-          .should('contain.text', '8 changes of method');
+          .should('contain.text', '109 changes of method');
+    });
+  });
+
+  describe('Calls and Music', () => {
+    it('Can handle different calls in the shorthand', () => {
+      // Arrange
+      cy.get('#callsTab').click();
+      cy.get('#callNtn0').clear().type('16');
+      cy.get('#callNtn1').clear().type('1678');
+      cy.get('#methodsTab').click();
+
+      cy.get('.removeMethod').click({
+        multiple: true,
+      });
+      cy.get('#searchMethod').click();
+      cy.get('#methodSelect').select('Madurai');
+      cy.get('#insertMethod').click();
+      cy.get('#shorthand').clear().type('oooi8oi768is3s3ivvvs4s7iiis6vs2ooos2vvs4o64i');
+
+      // Act
+      cy.get('#generateShorthand').click();
+      cy.get('#composition').type('MM');
+
+      // Assert
+      cy.get('#results').should('have.class', 'success');
+      cy.get('#music')
+          .should('contain.text', '21\t8765****')
+          .should('contain.text', '24\t****5678');
+    });
+
+    it('Can handle more than 2 call types', () => {
+      // Arrange
+      cy.get('#callsTab').click();
+      cy.get('#btnAddMoreCalls').click();
+      cy.get('#symbol2').clear().type('#');
+      cy.get('#callNtn2').clear().type('18');
+      cy.get('#methodsTab').click();
+
+      cy.get('#methodRank').select('Maximus');
+      cy.get('#method10 .removeMethod').click();
+      cy.get('#method11 .removeMethod').click();
+
+      // Act
+      const composition = 'CCC#CCC\nCCCCCC;CCCCC\nCCCCC;C/CCCCC/';
+      cy.get('#composition').clear().type(composition);
+
+      // Assert
+      cy.get('#results')
+          .should('contain.text', 'Touch is true: 1344 changes')
+          .should('have.class', 'success');
     });
   });
 });

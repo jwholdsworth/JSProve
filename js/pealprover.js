@@ -183,7 +183,7 @@ function doProve(composition) {
   // now remove the calls from the comp text (look up from call list)
   // split the composition up at the carriage returns.
   for (const i in txtCalls) {
-    const regex = new RegExp(i, 'g');
+    const regex = new RegExp('['+i+']', 'g');
     comptext = comptext.replace(regex, '');
   }
   comptext = comptext.split('\n');

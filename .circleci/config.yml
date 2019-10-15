@@ -1,0 +1,10 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: cypress/base:10
+    steps:
+      - checkout
+      - run: npm ci
+      - run: npm run cypress

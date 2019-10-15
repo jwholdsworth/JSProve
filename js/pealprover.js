@@ -169,7 +169,7 @@ function doProve(composition) {
     for (let i = 0; i < userPatterns.length; i++) {
       // ignore empty values (ie line feeds)
       if (userPatterns[i].length != 0) {
-        music.add_pattern(userPatterns[i]);
+        music.addPattern(userPatterns[i]);
       }
     }
   }
@@ -254,23 +254,23 @@ function doProve(composition) {
  * Add some basic music (four bell runs)
  */
 function addFourBellRuns(stage, music) {
-  for (let i=0; i < stage; i++) {
+  for (let i = 0; i <= stage - 4; i++) {
     // fill up the rest of the music array with the correct number of -1's
     const spareBells = Array.from({length: stage - 4}, () => -1);
     const forwardRun = [i, i+1, i+2, i+3];
     const backwardRun = [i+3, i+2, i+1, i];
 
     // forward run off the front (ie 1234.... etc)
-    music.add_pattern([].concat(forwardRun, spareBells));
+    music.addPattern([].concat(forwardRun, spareBells));
 
     // backward run off the front (ie 4321....)
-    music.add_pattern([].concat(backwardRun, spareBells));
+    music.addPattern([].concat(backwardRun, spareBells));
 
     // forward run at the back (ie ....1234)
-    music.add_pattern([].concat(spareBells, forwardRun));
+    music.addPattern([].concat(spareBells, forwardRun));
 
     // backward run at the back (ie ....4321)
-    music.add_pattern([].concat(spareBells, backwardRun));
+    music.addPattern([].concat(spareBells, backwardRun));
   }
 }
 
@@ -878,7 +878,7 @@ function MusicBox() {
   let stack;
   let objtree;
 
-  that.add_pattern = function(pattern) {
+  that.addPattern = function(pattern) {
     this.patterns.push(pattern);
     this.counts.push(0);
   };

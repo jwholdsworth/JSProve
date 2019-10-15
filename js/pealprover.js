@@ -38,8 +38,8 @@ const createComposition = (userInput) => {
   const selectedMethods = {};
   const comp = new Composition();
   const txtCalls = {};
-  let done_call = true;
-  let last_method;
+  let doneCall = true;
+  let lastMethod;
 
   userInput.methods.forEach((method) => {
     const validatedMethod = validateMethod(method.shorthand, method.notation, userInput.stage);
@@ -53,19 +53,19 @@ const createComposition = (userInput) => {
   for (let i = 0; i < userInput.composition.length; i++) {
     const c = userInput.composition.charAt(i);
     if (c in selectedMethods) {
-      if (!done_call) {
-        comp.appendLead(last_method, -1);
+      if (!doneCall) {
+        comp.appendLead(lastMethod, -1);
       }
-      last_method = selectedMethods[c];
-      done_call = false;
+      lastMethod = selectedMethods[c];
+      doneCall = false;
     } else if (c in txtCalls) {
-      comp.appendLead(last_method, txtCalls[c].mask);
-      done_call = true;
+      comp.appendLead(lastMethod, txtCalls[c].mask);
+      doneCall = true;
     }
   }
 
-  if (!done_call) {
-    comp.appendLead(last_method, -1);
+  if (!doneCall) {
+    comp.appendLead(lastMethod, -1);
   }
 
   return {

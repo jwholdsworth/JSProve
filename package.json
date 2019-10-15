@@ -22,7 +22,7 @@
   "homepage": "https://github.com/jwholdsworth/JSProve#readme",
   "devDependencies": {
     "chai": "4.2.0",
-    "cypress": "3.4.0",
+    "cypress": "^3.4.1",
     "eslint": "6.0.1",
     "eslint-config-google": "0.13.0",
     "mocha": "6.1.4",

@@ -883,7 +883,7 @@ function MusicBox() {
     patterns: [],
     counts: [],
   };
-  let node_done;
+  let nodeDone;
   let stack;
   let objtree;
 
@@ -897,7 +897,7 @@ function MusicBox() {
     let node;
     let bell;
 
-    node_done = new Array(stage);
+    nodeDone = new Array(stage);
     stack = new Array(stage);
     objtree = {};
 
@@ -909,14 +909,14 @@ function MusicBox() {
       node = objtree;
       for (let i = 0; i < stage; i++) {
         bell = pattern[i];
-        let next_node;
+        let nextNode;
         if (bell in node) {
-          next_node = node[bell];
+          nextNode = node[bell];
         } else {
-          next_node = {};
-          node[bell] = next_node;
+          nextNode = {};
+          node[bell] = nextNode;
         }
-        node = next_node;
+        node = nextNode;
       }
       node.pattern = n;
     }
@@ -929,38 +929,38 @@ function MusicBox() {
 
     i = 0;
     node = objtree;
-    node_done[0] = !(-1 in node);
+    nodeDone[0] = !(-1 in node);
     while (true) {
       // walk left along exact matches
       while (c.row[i] in node) {
         stack[i] = node;
         node = node[c.row[i]];
         i++;
-        node_done[i] = !(-1 in node);
+        nodeDone[i] = !(-1 in node);
       }
       // Check if this is an end node
       if (i == stage) {
         this.counts[node.pattern]++;
       }
       // Try right shuffle along wildcard
-      if (!node_done[i]) {
+      if (!nodeDone[i]) {
         stack[i] = node;
-        node_done[i] = true;
+        nodeDone[i] = true;
         node = node[-1];
         i++;
-        node_done[i] = !(-1 in node);
+        nodeDone[i] = !(-1 in node);
       } else {
         // backtrack until we find another right branch
-        while (i > 0 && node_done[i]) {
+        while (i > 0 && nodeDone[i]) {
           i--;
         }
-        if (node_done[i]) {
+        if (nodeDone[i]) {
           break;
         }
-        node_done[i] = true;
+        nodeDone[i] = true;
         node = stack[i][-1];
         i++;
-        node_done[i] = !(-1 in node);
+        nodeDone[i] = !(-1 in node);
       }
     }
   };

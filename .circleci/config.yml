@@ -7,4 +7,5 @@ jobs:
     steps:
       - checkout
       - run: npm ci
+      - run: npm run start:ci
       - run: npm run cypress

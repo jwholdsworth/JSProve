@@ -9,7 +9,7 @@
   "scripts": {
     "test": "nyc mocha -w",
     "cypress": "cypress run",
-    "start:ci": "serve --listen ${PORT:-3000}"
+    "start:ci": "serve --listen ${PORT:-8080}"
   },
   "repository": {
     "type": "git",

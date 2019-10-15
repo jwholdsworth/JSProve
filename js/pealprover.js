@@ -256,30 +256,21 @@ function doProve(composition) {
 function addFourBellRuns(stage, music) {
   for (let i=0; i < stage; i++) {
     // fill up the rest of the music array with the correct number of -1's
-    const spareBells = new Array();
-    let runs = new Array();
-    for (let j=0; j < (stage-4); j++) {
-      spareBells[j] = -1;
-    }
+    const spareBells = Array.from({length: stage - 4}, () => -1);
+    const forwardRun = [i, i+1, i+2, i+3];
+    const backwardRun = [i+3, i+2, i+1, i];
 
     // forward run off the front (ie 1234.... etc)
-    runs = runs.concat([i, i+1, i+2, i+3], spareBells);
-    music.add_pattern(runs);
-    runs = new Array();
+    music.add_pattern([].concat(forwardRun, spareBells));
 
     // backward run off the front (ie 4321....)
-    runs = runs.concat([i+3, i+2, i+1, i], spareBells);
-    music.add_pattern(runs);
-    runs = new Array();
+    music.add_pattern([].concat(backwardRun, spareBells));
 
     // forward run at the back (ie ....1234)
-    runs = runs.concat(spareBells, [i, i+1, i+2, i+3]);
-    music.add_pattern(runs);
-    runs = new Array();
+    music.add_pattern([].concat(spareBells, forwardRun));
 
     // backward run at the back (ie ....4321)
-    runs = runs.concat(spareBells, [i+3, i+2, i+1, i]);
-    music.add_pattern(runs);
+    music.add_pattern([].concat(spareBells, backwardRun));
   }
 }
 

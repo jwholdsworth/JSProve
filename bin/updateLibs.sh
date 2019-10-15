@@ -13,7 +13,7 @@ cwd=$(cd $(dirname "${BASH_SOURCE[0]}")/.. && pwd)
 cd /tmp/ && wget http://www.ringsoft.co.uk/change-ringers/ringing-programs/microsiril/method-libraries/mslibs.zip > /dev/null 2>&1 || logError 'Could not download the MicroSiril libraries'
 
 # extract them into the lib folder
-unzip -u /tmp/mslibs.zip -d $cwd/lib/ > /dev/null 2>&1 || logError 'Something went wrong unzipping the MicroSiril libraries'
+unzip -o -u /tmp/mslibs.zip -d $cwd/lib/ > /dev/null 2>&1 || logError 'Something went wrong unzipping the MicroSiril libraries'
 
 # remove ridiculous windows characters
 dos2unix $cwd/lib/* > /dev/null 2>&1 || logError 'There was a problem converting the libraries to Unix format'

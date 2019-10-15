@@ -25,7 +25,7 @@
                 </a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li><a href="http://jwholdsworth.github.io/JSProve/">Documentation</a></li>
+                        <li><a href="https://github.com/jwholdsworth/JSProve/blob/master/README.md">Documentation</a></li>
                         <li><a href="https://github.com/jwholdsworth/JSProve">GitHub Project</a></li>
                     </ul>
                     <p class="navbar-text" style="float:right;"><em>Browser-based peal prover</em></p>
@@ -37,10 +37,10 @@
 
         <section id="navigation">
             <ul class="nav nav-tabs" id="tabs">
-                <li><a href="#methods" data-toggle="tab">Methods</a></li>
-                <li><a href="#calls" data-toggle="tab">Calls</a></li>
-                <li><a href="#musicInput" data-toggle="tab">Music</a></li>
-                <li><a href="#about" data-toggle="tab">About</a></li>
+                <li><a href="#methods" data-toggle="tab" id="methodsTab">Methods</a></li>
+                <li><a href="#calls" data-toggle="tab" id="callsTab">Calls</a></li>
+                <li><a href="#musicInput" data-toggle="tab" id="musicInputTab">Music</a></li>
+                <li><a href="#about" data-toggle="tab" id="aboutTab">About</a></li>
             </ul>
             <section class="tab-content">
                 <section id="calls" class="tab-pane">
@@ -49,14 +49,14 @@
                         <tr>
                             <th>Symbol</th><th>Notation</th><th>Location</th>
                         </tr>
-                        <tr>
-                            <td><input type="text" size="1" maxlength="1" name="symbol0" id="symbol0" value="/" /></td>
-                            <td><input type="text" size="3" name="callNtn0" id="callNtn0" value="14" /></td>
+                        <tr class="callRow">
+                            <td><input class="callSymbol" type="text" size="1" maxlength="1" name="symbol0" id="symbol0" value="/" /></td>
+                            <td><input class="callNtn" type="text" size="3" name="callNtn0" id="callNtn0" value="14" /></td>
                             <td><select class="callLocation" name="callLocation0" id="callLocation0"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td>
                         </tr>
-                        <tr>
-                            <td><input type="text" size="1" maxlength="1" name="symbol1" id="symbol1" value=";" /></td>
-                            <td><input type="text" size="3" name="callNtn1" id="callNtn1" value="1234" /></td>
+                        <tr class="callRow">
+                            <td><input class="callSymbol" type="text" size="1" maxlength="1" name="symbol1" id="symbol1" value=";" /></td>
+                            <td><input class="callNtn" type="text" size="3" name="callNtn1" id="callNtn1" value="1234" /></td>
                             <td><select class="callLocation" name="callLocation1" id="callLocation1"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td>
                         </tr>
                     </table>
@@ -152,7 +152,6 @@
         <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/2.3.2/js/bootstrap.min.js" defer></script>
         <script type="text/javascript" src="js/autosize.min.js" defer></script>
         <script type="text/javascript" src="js/pealprover.js" defer></script>
-        <script type="text/javascript" src="js/methodlib.js" defer></script>
         <script type="text/javascript" src="js/collections.js" defer></script>
         <script type="text/javascript" src="js/frontend.js" defer></script>
         <script type="text/javascript">

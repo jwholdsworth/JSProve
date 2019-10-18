@@ -16,6 +16,7 @@ jobs:
     machine:
       enabled: true
     steps:
+      - checkout
       - run:
           name: Archive
           command: git archive --format=tar.gz --prefix=jsprove -o jsprove-${CIRCLE_SHA1}.tar.gz HEAD

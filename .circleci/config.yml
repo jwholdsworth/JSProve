@@ -11,3 +11,39 @@ jobs:
           command: npm run start:ci
           background: true
       - run: npm run cypress
+
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run:
+          name: Archive
+          command: git archive --format=tar.gz --prefix=jsprove -o jsprove-${CIRCLE_SHA1}.tar.gz HEAD
+      - run:
+          name: Upload
+          command: |
+            ssh -p $SSH_PORT $SSH_USER@$SSH_HOST 'mkdir -p $SSH_DEPLOY_PATH/$CIRCLE_SHA1'
+            scp -P $SSH_PORT jsprove-${CIRCLE_SHA1}.tar.gz $SSH_USER@$SSH_HOST:$SSH_DEPLOY_PATH/$CIRCLE_SHA1
+
+      - run:
+          name: Extract
+          command: |
+            ssh -p $SSH_PORT $SSH_USER@$SSH_HOST 'tar zxf $SSH_DEPLOY_PATH/$CIRCLE_SHA1/jsprove-${CIRCLE_SHA1}.tar.gz -C $SSH_DEPLOY_PATH/$CIRCLE_SHA1'
+
+      - run:
+          name: Activate
+          command: |
+            ssh -p $SSH_PORT $SSH_USER@$SSH_HOST 'ln -sf $SSH_DEPLOY_PATH/$CIRCLE_SHA1/jsprove $SSH_DEPLOY_PATH/live'
+
+workflows:
+  version: 2
+  deploy-to-production:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

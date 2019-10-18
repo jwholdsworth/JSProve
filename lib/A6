@@ -1,4 +1,4 @@
-*** A6 Fri,17 Aug 2018.12:53:21 ***
+*** A6 Sun,13 Oct 2019.22:52:00 ***
 Adwick l &34-34.1-3.2.3
 Albury g &-4-1.34-4.3
 Alderbourne f &-1-2-23-2-3
@@ -20,9 +20,11 @@ Aveburylittle 6z &-4-2-34
 Avening 2z &-4-5-23-34-5
 Avon 2z &34-3.4-3.2.5
 Balcombe m &-1-3.4-34.1
+Ballcock a &3-3.4-2-3.2-4-4.1
 Barking 2z &-1-3-34-3
 Barnard 2z &-1-23-34-3
 Bassingham f &-4-2-1-4-5
+Battleofbritain a &-3-4-1-2-1
 Beckford f &-4-23-2-5
 Belton a &3.4-2-3.4-4.5
 Beltoninrutland f &-4-23.2-2.5
@@ -63,8 +65,10 @@ Clappergate l &-45-5-3.2-2.5
 Clewer a &34.1-2-3-34-3
 Clyst m &-4-1-34-3
 Coate f &-1-2-23-3
+Colegate 2z &3.4-2-3.4-4.3
 Coptoak e &34.1-2-3.2-4.5
 Cornhilllittle f &34-3.4-34
+Coslany 2z &3.4-2-3.4-34.1
 Cotgrave b &-4-1.34-34.1
 Cottenham b &3.4-3-34-1
 Covingham 6z &34-34.1-3-5
@@ -93,6 +97,7 @@ Ellacombe l &-1-3-2-3
 Elsham l &-4-2-3.4-4.5
 Emley l &-1-5-3.2-2.5
 Empingham f &-4-23.2-34.5
+Evil z +-4-3.2-3-4.3
 Explorers 2z &-4-3-4-5
 Exton 2z &-4-23-4-3
 Farleigh m &34.1-3.4-4.3
@@ -114,7 +119,9 @@ Gamston a &-4-2-3-4-1
 Gedney h &34.1-2-1-2-5
 Glaston f &-4-23.234.2-5
 Godspeed m &-4-1-3-5
+Good z +-4-3-5.25-3-4-2.23
 Gosberton a &34.1-2-1-34-1
+Greatfransham a &34.1-1-1-1.34
 Greatsomerford e &-4-23-2-1
 Greenhammerton 6z &-1-2-23-34-5
 Guist f &34-3.4-3-23-5
@@ -143,6 +150,7 @@ Kelling f &-1-3-23-3-3
 Kelly a &34.1-3-34-3
 Kemble 2z &-4-5-3.2-34.5
 Kempsford 2z &-4-2-3.2-2.3
+Kemsing h &-34-4-2-1-1
 Kennet 2z &-4-3-2-3
 Kilndown m &34.1-1-4-3
 Kimberley m &-1-3.4-4.3
@@ -156,12 +164,15 @@ Langham f &-4-23.34-2.5
 Langton l &-4-2-3.2-34.5
 Lavington m &-4-1.34-2.3
 Leake h &-4-2-3-2-1
+Leapyearsday f &-1-5-3-2-5
 Lechlade f &-4-5-3-2-3
 Leyland h &-1-3.4-2.3
 Liden l &34-34.1-23-3
 Limpsfield e &-1-2-3.2-4.3
 Littledunhamlittle a &-34-1.34
 Llanelly g &34.1-2-3-2-1
+Londonovers2differentiallittle z +3-3.4-2-3-345-25
+Londonovers6differentiallittle z +3-3.4-2-23-345-5
 Lupset l &-45-5-3-2-5
 Lyddington f &-4-23-2.234.5
 Lytchett f &3.4-2-1.34-34.1
@@ -173,6 +184,7 @@ Mendlesham f &34.1-1-2-3
 Merrow a &3.4-3.2-2.5
 Merstham a &3.4-3.4-4.5
 Mildenhall l &-4-23-34-5
+Millennial g &-3-4-2-3-4.5
 Milton 6z &-4-1.34-2.5
 Minchinhampton l &-1-23-2-3
 Minety 2z &-4-5-3.2-2.5
@@ -180,6 +192,8 @@ Mitcham l &-4-3.2-2.5
 Monkfryston 6z &-1-2-23-2-5
 Morland b &-1-2-3-4-5
 Newburn b &3.4-2-1.34-2.3
+Newcentury l &-1-3-25-3-34
+Newmillennium f &-1-3-25-3-34
 Normanton m &-1-2-1-2-1
 Northaw g &-1-3.2-4.5
 Norwood m &-4-3.2-4.3
@@ -195,10 +209,12 @@ Penhill l &-4-2-23-2-5
 Penshurst b &-1-3.2-4.5
 Perivale b &-4-3-4-3
 Perran a &3.4-2-3-34-5
+Phyllosan f &-4-3-25-5
 Pinchbeck e &34.1-2-1.34-34.5
 Poynton l &-1-2-3.2-2.3
 Preshute 2z &-4-23-2-3
 Preston 2z &34.1-1.34-2.5
+Quintus b &-1-1-25.5
 Ramsbury f &-1-23-2-3
 Renhold f &-1-1.234.4-3
 Ringstead f &-4-3.2-2.5
@@ -242,6 +258,7 @@ Tannington 6z &34.1-1.34-2.5
 Tattershall l &-4-2-3-2-5
 Taylor 2z &-1-3.4-34.5
 Thames 2z &34-3.4-3-5
+Thewellingtonhundredth 6z &-1-2-1-2-3
 Thornham b &3.4-3.4-2.3
 Thrybergh l &34-34.1-3-3
 Thurlby b &-1-1-2.234.5
@@ -252,6 +269,7 @@ Tonbridge l &34.1-1-2-3
 Wainfleet e &34.1-2-1.34-2.5
 Walcot l &-4-2-23-34-5
 Walsingham b &-1-1-2-5
+Weldon f &-4-23-25-5
 Westerton l &-1-5-23-34-5
 Weston g &-4-1.34-34.1
 Whaplode m &-4-2-3-34-1

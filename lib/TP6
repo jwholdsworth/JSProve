@@ -1,4 +1,4 @@
-*** TP6 Fri,17 Aug 2018.12:53:21 ***
+*** TP6 Sun,13 Oct 2019.22:52:00 ***
 Abbotsann f &-34-1-1-25-3-34
 Aberfeldy 6z &-3-4-2-1-25-5
 Aberlour 2z &-3-4-2-1-45-5
@@ -18,6 +18,7 @@ Annsbirthday b &-4-1-345-1-1-4
 Apollo a &-34-4-5-23-345-5
 Ardbeg f &-3-45-2-1-345-5
 Ardmore 4z &34-3.4-2-1-25-5
+Armistice g &-4-1-345-1-1-4
 Armstrong a &-34-4-5-3-25-5
 Arreton a &-34-4-23-25-23-34
 Arthingworth b &-3-4-2-3.4.25.34.5
@@ -60,6 +61,7 @@ Benwell 2z &3-3.4-2-3-25-5
 Benwyvis f &-5-45-2-1-45-5
 Berkshireboy h &-3-4-3.2.345.2.3-34
 Bernadette f &-3-1-1-25-1-34
+Berricksalome 4z &34-34.1-2-1-25-5
 Blackwood 2z &-34-4-2-1-45-5
 Bladnoch e &3-3.4-2-1-25-5
 Blairathol e &3-3.4-2-1-345-5
@@ -173,6 +175,7 @@ Elton l &-5-4.5-2.3-25-5
 Emil a &-3-4-3-23-1-34
 Epiphany 2z &-34-1-3-23-3-3
 Essexgirl h &-3-4-3-345-3-34
+Ethel b &-3-4.34.2.34.3-4-5
 Evelyn 2z &-5-45-1-45-3-3
 Everest 6z &-5-4-3-345-3-34
 Eversley b &-34-4-3-45-1-34
@@ -221,12 +224,14 @@ Highhalden b &-3-45-5-23-45-5
 Hilsea h &34-34.1-2-1-23-5
 Hobart 6z &-34-4-2-1-3.2.5
 Hobson l &5-5.4-2-23-25-5
+Holywell l &-34-4-2-1-345.234.5
 Honey 2z &-5-4-2-3-345-5
 Horbury a &-3-1-1-45-1-3
 Icantbelieveitsnotplainbob z +-1-1-1-1-1-234-1-1-1-1-1-234-1-1-1-1-1-2-1-1-1-1-1-234-1-1-1-1-1-234-1-1-1-1-1-234-1-1-1-1-1-234-1-1-1-1-1-2-1-1-1-1-1-234-1-1-1-1-1-2-1-1-1-1-1-2-1-1-1-1-1-234
 Iden b &-34-1-3-25-1-34
 Illstononthehill b &-3-4.2-2.1-25-5
 Immaculateconception m &-3-4-1-25-1-3
+Impedimenta 2z &34-34.1-2-1-345.234.5
 Isleofarran 2z &34-3.4-2-1-45-5
 Isleofstroma a &-34-45-2-3.2.345.2.5
 Istanbul e &3-34.1-1-23-1-34
@@ -237,6 +242,7 @@ Janeandpaulsweddingday a &-34-4-3-25-3-34
 Jannu b &-5-4-1-45-1-34
 Jeremy h &-3-4-5-23-23-5
 Jersey b &-34-4-3-23-1-34
+Jetthedog 2z &-34-1-3-25-3-34
 Joachim f &34-5.4-5-3-45-5
 Joanna l &-3-1-1.34.25.34.1-34
 Johnpaulii e &-5-1-3-25-1-34
@@ -311,6 +317,7 @@ Neasden l &-34-4-2-1-25-5
 Neath h &-34-1-2-23-45-5
 Neptune l &34-3.4-5-3-23-5
 Nessamylvledhen b &-3-45-5-1-345-5
+Nettlebed 4z &34-34.1-2-3.2.5.4.5
 Newcentury l &-5-1-23-345-23-34
 Newstead 2z &-34-1-5-3-25-5
 Newtonstacey g &-34-4-1-45-3-3
@@ -354,7 +361,7 @@ Philip a &-34-1-3.2.345.2.3-34
 Piellabakewell a &-34-4-25-3-345-5
 Pixie 2z &-34-45-2-23-45-5
 Plain a &-1-1-45-1-1-1
-Plainshortcourse 2z &-1-1-1-1-1-23
+Plainshortcourse r &-1-1-1-1-1-23
 Plumtree 2z &-5-45-5-3-345-5
 Poolio a &-34-45-2-23-345-5
 Popgoestheweasel m &-34-1.34.2.34.1-2-1
@@ -502,5 +509,5 @@ Yuletide e &5-5.4-23-45-23-3
 Zanzibar 2z &5-34.1-2-1-25-5
 Zelah f &34-3.1-2-1.4.345.2.5
 Zoe 2z &-34-1-3-345-3-3
-Zzz 2z +1
 Zzz a &-34-4-23-345-23-3
+Zzz 2z +1

@@ -1,4 +1,4 @@
-*** T6 Fri,17 Aug 2018.12:53:21 ***
+*** T6 Sun,13 Oct 2019.22:52:00 ***
 Affric 4z &3-34.1-25-1-2-5
 Albatross 2z &5-34.1-5-1.34-2.5
 Albion 2z &-34-1-5-1-4-5
@@ -25,13 +25,16 @@ Barnsley 2z &34-34.1-2-1-2-5
 Barrslieveanroy 6z &34-34.1-25-1-2-5
 Basilsmum 2z &-3-1-2-1-34.234.5
 Beaufort 4z &-34-1-2-1.34-4.3
+Beerrules 6z &-34-1-5-1-4-3
 Beestoncastle 2z &34-34.1-5-1-4-1
 Beg 4z &3-34.1-25-1-4-5
 Benhall b &-5-1-2-1-34-5
 Benklibreck 4z &5-34.1-25-1.34-4.5
+Berricksalome 4z &34-34.1-2-1-2-5
 Berwyn b &34-34.1-2-1.34-4.5
 Blencathra e &5-34.1-2-1.34-4.5
 Blur 6z &5-34.1-2-1-4-3
+Bobsmith h &-34-1-2-1.234.34-5
 Bolsterstone g &-5-1-2-1-34-5
 Boltonabbey 6z &-3-1-2-1.34-2.5
 Bootleg b +-5-1-2-1-2.34.345-234.34.1-2-1-5-
@@ -40,6 +43,7 @@ Boyle a &34-3.1.2-5.1.2-34.5
 Bradfield 4z &-3-1-5-1-4-3
 Brafield b &34-34.1.2-2.1.4-4.5
 Breconbeacons g &34-34.1-5-1-2-3
+Brightwellbaldwin 4z &34-34.1-2-1-34-5
 Britishscholarspleasure e &-3-1-2-1-4-5
 Brownclee 4z &5-34.1-5-1-4-3
 Burton l &-34-1-2-1-4-1
@@ -56,6 +60,7 @@ Chadkirk b &-3-1-2-1-2-3
 Charnwood l &34-34.1-5-1-4-5
 Cheviot e &3-34.1-2-1.34-34.1
 Chiltern e &3-34.1-2-1.34-4.3
+Christmas 2z &-34-1-2-1-2-25
 Claremont 2z &34-34.1-2-1.2-2.5
 Clockmakers e &3-34.1-5-1.34-4.3
 Clwydian l &-34-1-5-1.34-34.5
@@ -76,6 +81,7 @@ Dallington f &5-5.1-5-1.4-34.5
 Darfield 4z &-3-1-5-1-34-1
 Darton 2z &-3-1-2-1.34-34.1
 Dartonnewpleasure 6z &-3-1-2-1-34-5
+David h +-34-1-2-1-2.234.345.2.234.34.1-2-1-34-
 Denby 4z &34-34.1-2-1.34-34.1
 Dessary 4z &-34-1-25-1.34-2.5
 Dewsbury 6z &-3-1-5-1-4-1
@@ -87,10 +93,12 @@ Doomsday 2z &34-3.1.2-5.1.4-34.5
 Doublebob b &---1---1---5
 Doublelocks m &3-34.1.2-5.1.34-4.1
 Drayton 2z &-34-1-2-1.34-4.5
+Draytonstleonard 4z &34-34.1-2-1.34-34.5
 Drsyntaxshead b &-5-1-2-1.2-34.5
 Duchessofyork 6z &-5-1-2-1-4-5
 Duckstein b +-5-1-2-1-34-345.34-34.1-2-1-5-
 Dukeofnorfolk e &-34-1-2-1-2-5
+Dukeofockley e &-34-1-2-1.34.2-5
 Dunblane m &3-3.1-2-1-2-1
 Durweston a &-5-1-5-1.34-34.5
 Earlofkimberley 4z &-5-1-5-1-34-3
@@ -110,14 +118,14 @@ Felkirk 2z &34-34.1-2-1.34-34.5
 Feral b +-5-1-2-1.34.234-345.34.2-1-2-1-5-
 Ferndale 4z &-5-1-2-1-2-3
 Fiddich 2z &-5-1-25-1-34-3
-Finnandifferential 6z &-5-1-25-1-34-5
+Finnan 6z &-5-1-25-1-34-5
 Focus 2z &5-34.1-2-1.34-2.5
 Fordprefect a &3-34.1-5-1-34-5
 Fostersbooth f &34-3.1.2-2.1.4-2.5
 Foula 4z &-34-1-5-1.34-4.5
 Fragglerock b &-5-1-2-1.234.34.234.5
 Gageroads b +-5-1-2-1.34.234.2.345.234.2-1-2-1-5-
-Garrydifferential 6z &-5-1-25-1.34-2.5
+Garry 6z &-5-1-25-1.34-2.5
 Gayton f &-3.345.1-5-1.4-34.5
 Gladstone 2z &-3-1-2-1-34-5
 Glass 2z &-5-1-25-1.34-2.3
@@ -134,7 +142,7 @@ Guilsborough b &34-34.1-2-1.2-4.5
 Handley 2z &5-34.1-2-1-34-1
 Harlestone f &34-3.1-2-1.234.4-5
 Harringworth b &34-34.1.2-2.1.34-34.5
-Harrisdifferential 6z &-5-1-25-1.34-34.5
+Harris 6z &-5-1-25-1.34-34.5
 Hasley 2z &-3-1-2-1.34-4.3
 Havercroft 2z &34-34.1-2-1.34-2.5
 Heatwave 2z &-3-1-2-1.2-2.5
@@ -146,6 +154,7 @@ Holmedyke 2z &-5-1-2-1-34-3
 Holmfirth m &-5-1-2-1-2-1
 Holothesic e &-34-1-2-1.34.234.2.5
 Holycross 4z &-3-1-2-1.34-2.3
+Horspath 4z &34-34.1-2-1-34-1
 Hurich 4z &-5-1-25-1.34-34.3
 Iafydstta h &34-34.1-25-1-34-3
 Idratherbeinthetavern 2z &5-34.1-5-1.4-2.3
@@ -175,6 +184,7 @@ Kingston h &-34-1-2-1.34-34.5
 Kirkheaton 4z &3-34.1-2-1-2-1
 Knockboy a &5-34.1-25-1-4-5
 Lausdeo b &34-34.1-2-1.34.234.4.5
+Lestweforget 4z &-34-1-5-1-2-5
 Liathach 4z &5-34.1-25-1.34-2.5
 Linda g &34-3.1.2-2.1.34-4.3
 Littlecreatures b +-5-1-2-1-2-25.2-2.1-2-1-5-
@@ -249,6 +259,7 @@ Penistone 6z &-3-1-2-1.34-34.5
 Pennine f &3-34.1-2-1-34-3
 Pentland 6z &-34-1-5-1-2-3
 Pesweradygemusur e +-34-1-2-1-34-345.34-34.1-2-1-34-
+Peter h +-34-1-2-1-2.34.345-234.34.1-2-1-34-
 Peterboroughstmary e &34-34.1-25-1-34-3
 Piddletrenthide 2z &34-34.1-5-1.34-34.5
 Pinhoe l &-34-1-5-1.34-2.5

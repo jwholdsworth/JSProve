@@ -3,21 +3,28 @@ h1 {
     float: none;
 }
 
-#input {
+/* #input {
     float: left;
     width: 600px;
-}
+} */
 
 #shorthand {
     max-width: 450px;
     width: 100%;
 }
 
-#output {
+/* #output {
     float: left;
     padding: 10px;
+} */
+
+.btn {
+    padding: auto;
 }
 
+.form-row {
+    margin: 0;
+}
 .small {
     font-size: 0.8em;
 }
@@ -49,6 +56,16 @@ abbr {
 pre, textarea {
     padding: 4px;
     font: normal 14px 'Courier New', monospace;
+}
+
+pre {
+    background-color: #f5f5f5;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+.method {
+    margin-bottom: 5px;
 }
 
 .alert {

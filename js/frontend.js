@@ -104,7 +104,7 @@ function setup() {
  * @param {string} pn Place notation
  */
 function insertMethodBox(code, pn) {
-  $('#methodList').append('<div id="method' + numberOfMethods + '"><input type="text" id="shortcut' + numberOfMethods + '" maxlength="1" size="1" value="' + code + '" /><input type="text" class="notation" id="notation' + numberOfMethods + '" value="' + pn + '" size="35" /><input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeParent(this);" /></div>');
+  $('#methodList').append('<div id="method' + numberOfMethods + '" class="method form-row"><input type="text" id="shortcut' + numberOfMethods + '" maxlength="1" size="1" value="' + code + '" class="form-control col-sm-1" /><input type="text" class="notation form-control col-sm-10" id="notation' + numberOfMethods + '" value="' + pn + '" size="35" /><input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeParent(this);" /></div>');
   numberOfMethods++;
 }
 
@@ -177,7 +177,7 @@ function getCollectionsForStage(stage) {
  */
 function loadCollectionsForStage(stage) {
   stageCollections = getCollectionsForStage(stage);
-  options = '<select name="collection">';
+  options = '<select name="collection" class="form-control">';
   for (let i = 0; i < stageCollections.length; i++) {
     options += '<option value="' + stageCollections[i].key + '">' + stageCollections[i].name + '</option>';
   }
@@ -252,8 +252,8 @@ function displayMethodLibraryPage() {
  */
 function loadMethods(file) {
   $.get('lib/' + file, function(data) {
-    let methods = '<label for="methodSymbol">Shortcut</label><input type="text" size="2" maxlength="1" name="methodSymbol" id="methodSymbol" />';
-    methods += '<select name="method" id="methodSelect">';
+    let methods = '';
+    methods += '<select name="method" id="methodSelect" data-live-search="true" class="form-control">';
     const m = data.split('\n');
     for (i = 1; i < m.length; i++) {
       const n = m[i].split(' ');
@@ -261,8 +261,9 @@ function loadMethods(file) {
     }
     methods += '</select>';
 
-    $('#popup .modal-body').html(methods);
+    $('#methodDropDown').html(methods);
     $('#popup').modal();
+    $('#methodSelect').selectpicker();
   }, 'text');
 }
 

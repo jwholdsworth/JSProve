@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Upload
           command: |
-            ssh -p $SSH_PORT $SSH_USER@$SSH_HOST 'mkdir -p $SSH_DEPLOY_PATH/$CIRCLE_SHA1'
+            ssh -p $SSH_PORT $SSH_USER@$SSH_HOST 'mkdir -p $SSH_DEPLOY_PATH/$CIRCLE_SHA1' &&
             scp -P $SSH_PORT jsprove-${CIRCLE_SHA1}.tar.gz $SSH_USER@$SSH_HOST:$SSH_DEPLOY_PATH/$CIRCLE_SHA1
 
       - run:

@@ -11,3 +11,6 @@ test:
 
 cypress:
 	npm run cypress
+
+update-libs:
+	./bin/updateLibs.sh

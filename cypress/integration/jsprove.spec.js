@@ -18,7 +18,7 @@ context('Actions', () => {
 
     it('Adds Methods to the method selector', () => {
       cy.get('#searchMethod').click();
-      cy.get('#methodSelect').select('Jovium');
+      cy.get('#methodDropDown .bs-searchbox input:first').type('Jovium');
       cy.get('#insertMethod').click();
       cy.get('#notation10').should('have.value', 'd &-3-4-2.5.6-34-5-6-5');
     });
@@ -40,7 +40,7 @@ context('Actions', () => {
       cy.get('#generateShorthand').click();
       cy.get('#composition').should('have.value', 'AAAAA/AA/\nAAAAA/AA/\n');
       cy.get('#courseEnds').should('have.text', '14523678\n12345678\n\n');
-      cy.get('#results').should('have.class', 'success');
+      cy.get('#results').should('have.class', 'text-success');
     });
 
     it('Proves an obvious touch as false', () => {
@@ -52,7 +52,7 @@ context('Actions', () => {
               'AAAAAAA/\nAAAAAAA/\nAAAAAAA;\nAAAAAAA/\nAAAAAAA/\nAAAAAAA;\n'
           );
       cy.get('#results')
-          .should('have.class', 'error')
+          .should('have.class', 'text-error')
           .should('contain.text', 'Touch is false');
     });
 
@@ -63,7 +63,7 @@ context('Actions', () => {
           .clear()
           .type(composition);
       cy.get('#results')
-          .should('have.class', 'success')
+          .should('have.class', 'text-success')
           .should('contain.text', '5024 changes');
       cy.get('#com')
           .should('contain.text', '109 changes of method');
@@ -91,7 +91,7 @@ context('Actions', () => {
       cy.get('#composition').type('MM');
 
       // Assert
-      cy.get('#results').should('have.class', 'success');
+      cy.get('#results').should('have.class', 'text-success');
       cy.get('#music')
           .should('contain.text', '21\t8765****')
           .should('contain.text', '24\t****5678');
@@ -116,7 +116,7 @@ context('Actions', () => {
       // Assert
       cy.get('#results')
           .should('contain.text', 'Touch is true: 1344 changes')
-          .should('have.class', 'success');
+          .should('have.class', 'text-success');
     });
   });
 });

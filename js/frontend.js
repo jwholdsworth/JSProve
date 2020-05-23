@@ -229,7 +229,7 @@ function prove() {
     }
 
     /*        displayMessage(res.status, messageType);*/
-    $('#results').html(res.status).attr('class', messageType);
+    $('#results').html(res.status).attr('class', 'text-' + messageType);
     $('#music').html(res.music);
     $('#courseEnds').html(res.courses);
     $('#atw pre').html(res.atw);

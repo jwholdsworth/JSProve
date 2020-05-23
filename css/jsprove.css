@@ -18,6 +18,10 @@ h1 {
     padding: 10px;
 } */
 
+#navigation {
+    margin: 10px 0;
+}
+
 .btn {
     padding: auto;
 }

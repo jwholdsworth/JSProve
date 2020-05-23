@@ -7,8 +7,7 @@
     <title>JSProve</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css"
-        rel="stylesheet" media="screen" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css" rel="stylesheet" media="screen" />
     <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen" /> -->
     <link href="css/jsprove.css" rel="stylesheet" media="screen" />
 </head>
@@ -23,16 +22,15 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <h1><a class="navbar-brand" href="#">JSProve</a></h1>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class=" nav-item"><a class="nav-link"
-                        href="https://github.com/jwholdsworth/JSProve/blob/master/README.md">Documentation</a>
+                    <li class=" nav-item"><a class="nav-link" href="https://github.com/jwholdsworth/JSProve/blob/master/README.md">Documentation</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="https://github.com/jwholdsworth/JSProve">GitHub Project</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/jwholdsworth/JSProve">GitHub
+                            Project</a></li>
                 </ul>
                 <p class="justify-content-right" style="float:right;"><em>Browser-based peal prover</em></p>
             </div>
@@ -50,131 +48,121 @@
                 <li class="nav-item"><a href="#methods" data-toggle="tab" id="methodsTab" class="nav-link">Methods</a>
                 </li>
                 <li class="nav-item"><a href="#calls" data-toggle="tab" id="callsTab" class="nav-link">Calls</a></li>
-                <li class="nav-item"><a href="#musicInput" data-toggle="tab" id="musicInputTab"
-                        class="nav-link">Music</a>
+                <li class="nav-item"><a href="#musicInput" data-toggle="tab" id="musicInputTab" class="nav-link">Music</a>
                 </li>
                 <li class="nav-item"><a href="#about" data-toggle="tab" id="aboutTab" class="nav-link">About</a></li>
             </ul>
-            <section class="tab-content">
-                <section id="calls" class="tab-pane">
-                    <h2>Calls</h2>
-                    <table class="form-horizontal">
-                        <tr>
-                            <th>Symbol</th>
-                            <th>Notation</th>
-                            <th>Location</th>
-                        </tr>
-                        <tr class="callRow">
-                            <td><input class="callSymbol" type="text" size="1" maxlength="1" name="symbol0" id="symbol0"
-                                    value="/" /></td>
-                            <td><input class="callNtn" type="text" size="3" name="callNtn0" id="callNtn0" value="14" />
-                            </td>
-                            <td><select class="callLocation" name="callLocation0" id="callLocation0">
-                                    <option value="le">Lead End</option>
-                                    <option value="hl">Half Lead</option>
-                                </select></td>
-                        </tr>
-                        <tr class="callRow">
-                            <td><input class="callSymbol" type="text" size="1" maxlength="1" name="symbol1" id="symbol1"
-                                    value=";" /></td>
-                            <td><input class="callNtn" type="text" size="3" name="callNtn1" id="callNtn1"
-                                    value="1234" />
-                            </td>
-                            <td><select class="callLocation" name="callLocation1" id="callLocation1">
-                                    <option value="le">Lead End</option>
-                                    <option value="hl">Half Lead</option>
-                                </select></td>
-                        </tr>
-                    </table>
-                    <input type="button" value="Add more calls" id="btnAddMoreCalls" class="btn btn-primary" />
-                </section>
-                <section id="musicInput" class="tab-pane">
-                    <h2>Music</h2>
-                    Enter your own music, e.g. ****4678 for rows ending in 4678. One entry per line please.<br />JSProve
-                    will count the 4-bell runs for you.<br />
-                    <textarea id="userMusicList" rows="5" cols="40"></textarea>
-                </section>
-                <section id="methods" class="tab-pane">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <section id="input">
-                                <h2>Methods</h2>
-                                <div class="form-group form-row">
-                                    <select name="methodRank" id="methodRank" class="form-control col-sm-3">
-                                        <option value="6">Minor</option>
-                                        <option value="8" selected="selected">Major</option>
-                                        <option value="10">Royal</option>
-                                        <option value="12">Maximus</option>
-                                    </select>
-                                    <!--input type="button" value="Add Method" id="moreMethods" /-->
-                                    <select name="class" id="class" class="form-control col-sm-3">
-                                        <option value="D">Delight</option>
-                                        <option value="P">Plain</option>
-                                        <option value="S" selected="selected">Surprise</option>
-                                        <option value="T">Treble Bob</option>
-                                    </select>
-                                    <input type="button" value="Load Method from Library" id="searchMethod"
-                                        class="btn btn-primary" />
-                                </div>
-                                <div class="form-group">
-                                    <h4>Load a collection</h4>
-                                    <div id="collectionChoice"></div>
-                                </div>
-                                <div class="form-group">
-                                    <div id="methodList"></div>
-                                    <input type="button" value="Add Another" id="moreMethods" class="btn btn-success" />
-                                </div>
+        </section>
+        <section class="tab-content">
+            <section id="calls" class="tab-pane">
+                <h2 class="display-4">Calls</h2>
+                <table class="form-horizontal">
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Notation</th>
+                        <th>Location</th>
+                    </tr>
+                    <tr class="callRow">
+                        <td><input class="callSymbol" type="text" size="1" maxlength="1" name="symbol0" id="symbol0" value="/" /></td>
+                        <td><input class="callNtn" type="text" size="3" name="callNtn0" id="callNtn0" value="14" />
+                        </td>
+                        <td><select class="callLocation" name="callLocation0" id="callLocation0">
+                                <option value="le">Lead End</option>
+                                <option value="hl">Half Lead</option>
+                            </select></td>
+                    </tr>
+                    <tr class="callRow">
+                        <td><input class="callSymbol" type="text" size="1" maxlength="1" name="symbol1" id="symbol1" value=";" /></td>
+                        <td><input class="callNtn" type="text" size="3" name="callNtn1" id="callNtn1" value="1234" />
+                        </td>
+                        <td><select class="callLocation" name="callLocation1" id="callLocation1">
+                                <option value="le">Lead End</option>
+                                <option value="hl">Half Lead</option>
+                            </select></td>
+                    </tr>
+                </table>
+                <input type="button" value="Add more calls" id="btnAddMoreCalls" class="btn btn-primary" />
+            </section>
+            <section id="musicInput" class="tab-pane">
+                <h2 class="display-4">Music</h2>
+                Enter your own music, e.g. ****4678 for rows ending in 4678. One entry per line please.<br />JSProve will count the 4-bell runs for you.<br />
+                <textarea id="userMusicList" rows="5" cols="40"></textarea>
+            </section>
+            <section id="methods" class="tab-pane">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <section id="input">
+                            <h2 class="display-4">Methods</h2>
+                            <div class="form-group form-row">
+                                <select name="methodRank" id="methodRank" class="form-control col-sm-3">
+                                    <option value="6">Minor</option>
+                                    <option value="8" selected="selected">Major</option>
+                                    <option value="10">Royal</option>
+                                    <option value="12">Maximus</option>
+                                </select>
+                                <!--input type="button" value="Add Method" id="moreMethods" /-->
+                                <select name="class" id="class" class="form-control col-sm-3">
+                                    <option value="D">Delight</option>
+                                    <option value="P">Plain</option>
+                                    <option value="S" selected="selected">Surprise</option>
+                                    <option value="T">Treble Bob</option>
+                                </select>
+                                <input type="button" value="Load Method from Library" id="searchMethod" class="btn btn-primary" />
+                            </div>
+                            <div class="form-group">
+                                <h4>Load a collection</h4>
+                                <div id="collectionChoice"></div>
+                            </div>
+                            <div class="form-group">
+                                <div id="methodList"></div>
+                                <input type="button" value="Add Another" id="moreMethods" class="btn btn-success" />
+                            </div>
 
-                                <h2>Composition</h2>
-                                <div class="form-group form-row">
-                                    <input type="text" value="hhh" name="shorthand" id="shorthand" class="form-control"
-                                        placeholder="Shorthand (e.g. whwh)" />
-                                    <input type="button" id="generateShorthand" value="Generate"
-                                        class="btn btn-primary" />
-                                </div>
-                                <div style="overflow:hidden;">
-                                    <textarea id="composition" rows="10" cols="40"
-                                        style="float:left;">YYYYYYY</textarea>
-                                    <pre style="float:left; width:105px;" id="courseEnds"></pre>
-                                </div>
-                            </section>
-                        </div>
-                        <div class="col-lg-6">
-
-                            <section id="output">
-                                <h3 id="results"></h3>
-                                <div id="music"></div>
-                                <h3 id="com"></h3>
-                                <div id="atw">
-                                    <pre></pre>
-                                </div>
-                            </section>
-                        </div>
+                            <h2 class="display-4">Composition</h2>
+                            <div class="form-group form-row">
+                                <input type="text" value="hhh" name="shorthand" id="shorthand" class="form-control" placeholder="Shorthand (e.g. whwh)" />
+                                <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" />
+                            </div>
+                            <div style="overflow:hidden;">
+                                <textarea id="composition" rows="10" cols="40" style="float:left;">YYYYYYY</textarea>
+                                <pre style="float:left; width:105px;" id="courseEnds"></pre>
+                            </div>
+                        </section>
                     </div>
-                </section>
-                <section id="about" class="tab-pane">
-                    <h2>About JSProve</h2>
-                    <p>Created by Paul Brook and James Holdsworth. Written in HTML5 and JavaScript.</p>
-                    <h3>Feature Requests</h3>
-                    <ul>
-                        <li><del>Parse place notations and generate rows</del> PB Feb 2011</li>
-                        <li><del>Prove truth of a composition at all stages from place notation and user input</del> PB
-                            Feb
-                            2011</li>
-                        <li><del>Informative Music output for all stages</del> PB/JH Feb/Mar 2011</li>
-                        <li><del>Variety of Call Types</del> JH Mar 2011</li>
-                        <li><del>Shorthand generation of composition</del> JH Jun 2011</li>
-                        <li>Central Council (standard) formatting of true compositions</li>
-                        <li><del>Method loader - using XHR from CC library files</del> JH Apr 2011</li>
-                        <li><del>Use more than one method (spliced)</del> JH Jun 2011</li>
-                        <li><del>Snap start - user can just create a "new method" by inputing full lead place notation,
-                                missing off first 2 changes</del></li>
-                        <li>Half lead calls</li>
-                        <li><del>All the work checker for spliced compositions</del> JH Nov 2012</li>
-                        <li><del>Change of method counter</del> JH Nov 2012</li>
-                        <li>Stage beyond Maximus</li>
-                    </ul>
-                </section>
+                    <div class="col-lg-6">
+
+                        <section id="output">
+                            <h3 id="results"></h3>
+                            <div id="music"></div>
+                            <h3 id="com"></h3>
+                            <div id="atw">
+                                <pre></pre>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </section>
+            <section id="about" class="tab-pane">
+                <h2 class="display-4">About JSProve</h2>
+                <p>Created by Paul Brook and James Holdsworth. Written in HTML5 and JavaScript.</p>
+                <h3>Feature Requests</h3>
+                <ul>
+                    <li><del>Parse place notations and generate rows</del> PB Feb 2011</li>
+                    <li><del>Prove truth of a composition at all stages from place notation and user input</del> PB Feb 2011
+                    </li>
+                    <li><del>Informative Music output for all stages</del> PB/JH Feb/Mar 2011</li>
+                    <li><del>Variety of Call Types</del> JH Mar 2011</li>
+                    <li><del>Shorthand generation of composition</del> JH Jun 2011</li>
+                    <li>Central Council (standard) formatting of true compositions</li>
+                    <li><del>Method loader - using XHR from CC library files</del> JH Apr 2011</li>
+                    <li><del>Use more than one method (spliced)</del> JH Jun 2011</li>
+                    <li><del>Snap start - user can just create a "new method" by inputing full lead place notation,
+                            missing off first 2 changes</del></li>
+                    <li>Half lead calls</li>
+                    <li><del>All the work checker for spliced compositions</del> JH Nov 2012</li>
+                    <li><del>Change of method counter</del> JH Nov 2012</li>
+                    <li>Stage beyond Maximus</li>
+                </ul>
             </section>
         </section>
 
@@ -192,8 +180,7 @@
                                     <label for="methodSymbol">Symbol</label>
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="text" size="2" maxlength="1" name="methodSymbol" id="methodSymbol"
-                                        class="form-control" />
+                                    <input type="text" size="2" maxlength="1" name="methodSymbol" id="methodSymbol" class="form-control" />
                                 </div>
                                 <div class="col-sm-8">
                                     <div id="methodDropDown"></div>
@@ -212,12 +199,9 @@
 
     <!-- import javascript libraries and files -->
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" defer></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js" defer></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js" defer></script>
     <script type="text/javascript" src="js/autosize.min.js" defer></script>
     <script type="text/javascript" src="js/pealprover.js" defer></script>
     <script type="text/javascript" src="js/collections.js" defer></script>

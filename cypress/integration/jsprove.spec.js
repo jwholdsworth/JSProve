@@ -18,14 +18,16 @@ context('Actions', () => {
 
     it('Adds Methods to the method selector', () => {
       cy.get('#searchMethod').click();
-      cy.get('#methodDropDown .bs-searchbox input:first').type('Jovium');
+      cy.get('#methodDropDown .bs-searchbox input:first').type('Jovium', {'force': true});
+      cy.get('#methodDropDown li.active a').click();
       cy.get('#insertMethod').click();
       cy.get('#notation10').should('have.value', 'd &-3-4-2.5.6-34-5-6-5');
     });
 
     it('Keeps the letters unique', () => {
       cy.get('#searchMethod').click();
-      cy.get('#methodSelect').select('Belfast');
+      cy.get('#methodDropDown .bs-searchbox input:first').type('Belfast', {'force': true});
+      cy.get('#methodDropDown li.active a').click();
       cy.get('#insertMethod').click();
       cy.get('#notation10').should('not.exist');
       cy.get('#alert')
@@ -82,7 +84,8 @@ context('Actions', () => {
         multiple: true,
       });
       cy.get('#searchMethod').click();
-      cy.get('#methodSelect').select('Madurai');
+      cy.get('#methodDropDown .bs-searchbox input:first').type('Madurai', {'force': true});
+      cy.get('#methodDropDown li.active a').click();
       cy.get('#insertMethod').click();
       cy.get('#shorthand').clear().type('oooi8oi768is3s3ivvvs4s7iiis6vs2ooos2vvs4o64i');
 

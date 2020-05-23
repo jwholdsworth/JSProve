@@ -15,13 +15,13 @@ const loadUserInput = () => {
   input.composition = document.getElementById('composition').value;
   input.stage = parseInt(document.getElementById('methodRank').value, 10);
 
-  const htmlMethods = document.getElementById('methodList').childNodes;
-  htmlMethods.forEach((element) => {
+  const htmlMethods = document.getElementsByClassName('js-method')
+  for (let element of htmlMethods) {
     input.methods.push({
-      shorthand: element.childNodes[0].value,
-      notation: element.childNodes[1].value,
+      shorthand: element.children[0].value,
+      notation: element.children[1].value,
     });
-  });
+  }
 
   const htmlCalls = Array.from(document.getElementsByClassName('callRow'));
   input.calls = htmlCalls.map((element) => {
@@ -221,7 +221,7 @@ function doProve(composition) {
     result.complete = true;
     result.trueTouch = false;
     result.length = (-rounds);
-    result.status = 'Touch is false: false after ' + (-rounds) + ' changes';
+    result.status = 'Touch is false after ' + (-rounds) + ' changes';
   } else {
     result.complete = false;
     result.trueTouch = true;
@@ -537,7 +537,7 @@ function parse_method_microsiril(stage, group, notation) {
   while (n < notation.length) {
     res = get_mask(stage, n, notation);
     if (res.n === n) {
-      throw 'Bad place notation';
+      throw 'Bad place notation ' + notation;
     }
     n = res.n;
     rows.push(res.mask);
@@ -595,7 +595,7 @@ function parse_method_cc(stage, notation) {
   while (n < sep) {
     res = get_mask(stage, n, notation);
     if (res.n === n) {
-      throw 'Bad place notation';
+      throw 'Bad place notation ' + notation;
     }
     n = res.n;
     rows.push(res.mask);

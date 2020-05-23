@@ -73,7 +73,7 @@ $('#generateShorthand').click(function() {
     autosize.update($('#composition'));
     prove();
   } catch (e) {
-    displayMessage(e, 'error');
+    displayMessage(e, 'danger');
   }
 });
 
@@ -104,7 +104,14 @@ function setup() {
  * @param {string} pn Place notation
  */
 function insertMethodBox(code, pn) {
-  $('#methodList').append('<div id="method' + numberOfMethods + '" class="method form-row"><input type="text" id="shortcut' + numberOfMethods + '" maxlength="1" size="1" value="' + code + '" class="form-control col-sm-1" /><input type="text" class="notation form-control col-sm-10" id="notation' + numberOfMethods + '" value="' + pn + '" size="35" /><input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeParent(this);" /></div>');
+  const methodRow = `
+    <div id="method${numberOfMethods}" class="mb-1 form-row js-method">
+      <input type="text" class="shortcut form-control" id="shortcut${numberOfMethods}" maxlength="1" size="1" value="${code}" />
+      <input type="text" class="notation form-control" id="notation${numberOfMethods}" value="${pn}" size="35" />
+      <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeParent(this);" />
+    </div>
+  `
+  $('#methodList').append(methodRow);
   numberOfMethods++;
 }
 
@@ -225,17 +232,16 @@ function prove() {
         messageType = 'info';
       }
     } else {
-      messageType = 'error';
+      messageType = 'danger';
     }
 
-    /*        displayMessage(res.status, messageType);*/
     $('#results').html(res.status).attr('class', 'text-' + messageType);
     $('#music').html(res.music);
     $('#courseEnds').html(res.courses);
     $('#atw pre').html(res.atw);
     $('#com').html(res.com + ' changes of method');
   } catch (e) {
-    displayMessage(e, 'error');
+    displayMessage(e, 'danger');
   }
 }
 
@@ -276,7 +282,7 @@ function loadMethods(file) {
 function displayMessage(message, level, timeout) {
   console.log(message);
   if (level === undefined) {
-    level = 'error';
+    level = 'danger';
   }
   if (timeout === undefined) {
     timeout = 1000;

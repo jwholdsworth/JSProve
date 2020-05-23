@@ -6,9 +6,7 @@
     <meta name="description" content="Browser based Peal proving program by Paul Brook and James Holdsworth" />
     <title>JSProve</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css" rel="stylesheet" media="screen" />
-    <!-- <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen" /> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css" rel="stylesheet" media="screen" />
     <link href="css/jsprove.css" rel="stylesheet" media="screen" />
 </head>
 
@@ -19,7 +17,7 @@
             <div></div>
         </section>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <h1><a class="navbar-brand" href="#">JSProve</a></h1>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -113,10 +111,14 @@
                                 <h4>Load a collection</h4>
                                 <div id="collectionChoice"></div>
                             </div>
-                            <div class="form-group">
-                                <div id="methodList"></div>
-                                <input type="button" value="Add Another" id="moreMethods" class="btn btn-success" />
-                            </div>
+                            <form>
+                                <div class="form-row mb-1">
+                                    <input type="button" value="Add Another" id="moreMethods" class="btn btn-success" />
+                                </div>
+                                <div class="form-inline">
+                                    <div id="methodList"></div>
+                                </div>
+                            </form>
 
                             <h2 class="display-4">Composition</h2>
                             <div class="form-group form-row">
@@ -134,7 +136,7 @@
                         <section id="output">
                             <h3 id="results"></h3>
                             <div id="music"></div>
-                            <h3 id="com"></h3>
+                            <h3 id="com" class="text-info"></h3>
                             <div id="atw">
                                 <pre></pre>
                             </div>
@@ -198,9 +200,9 @@
     </div>
 
     <!-- import javascript libraries and files -->
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js" defer></script>
     <script type="text/javascript" src="js/autosize.min.js" defer></script>
     <script type="text/javascript" src="js/pealprover.js" defer></script>

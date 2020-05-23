@@ -54,7 +54,7 @@ context('Actions', () => {
               'AAAAAAA/\nAAAAAAA/\nAAAAAAA;\nAAAAAAA/\nAAAAAAA/\nAAAAAAA;\n'
           );
       cy.get('#results')
-          .should('have.class', 'text-error')
+          .should('have.class', 'text-danger')
           .should('contain.text', 'Touch is false');
     });
 

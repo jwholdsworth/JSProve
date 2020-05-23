@@ -68,10 +68,6 @@ pre {
     border-radius: 4px;
 }
 
-.method {
-    margin-bottom: 5px;
-}
-
 .alert {
     display: none;
     position: fixed;

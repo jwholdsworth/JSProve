@@ -23,7 +23,7 @@ const loadUserInput = () => {
     });
   }
 
-  const htmlCalls = Array.from(document.getElementsByClassName('callRow'));
+  const htmlCalls = Array.from(document.getElementsByClassName('js-call'));
   input.calls = htmlCalls.map((element) => {
     return {
       symbol: element.getElementsByClassName('callSymbol')[0].value,

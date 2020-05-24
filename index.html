@@ -64,7 +64,7 @@
                     <div class="form-row">
                         <input type="button" value="Add more calls" id="btnAddMoreCalls" class="btn btn-primary" />
                     </div>
-                    <div class="form-row">
+                    <div class="form-row js-call">
                         <div class="col-1">
                             <input type="text" class="form-control callSymbol" maxlength="1" name="symbol0" id="symbol0"
                                 value="/" />
@@ -73,11 +73,13 @@
                             <input type="text" class="form-control callNtn" name="callNtn0" id="callNtn0" value="14" />
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group col-auto">
-                            <input class="callSymbol" type="text" class="form-control" maxlength="1" name="symbol1" id="symbol1"
+                    <div class="form-row js-call">
+                        <div class="col-1">
+                            <input class="form-control callSymbol" type="text" maxlength="1" name="symbol1" id="symbol1"
                                 value=";" />
-                            <input class="callNtn" type="text" class="form-control" name="callNtn1" id="callNtn1" value="1234" />
+                        </div>
+                        <div class="col">
+                            <input class="form-control callNtn" type="text" name="callNtn1" id="callNtn1" value="1234" />
                         </div>
                     </div>
                 </form>
@@ -144,14 +146,27 @@
                             </div>
 
                             <h2 class="display-4">Composition</h2>
-                            <div class="form-group form-row">
-                                <input type="text" value="hhh" name="shorthand" id="shorthand" class="form-control"
-                                    placeholder="Shorthand (e.g. whwh)" />
-                                <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" />
+                            <div class="form-row mb-2">
+                                <div class="col">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="shorthandPrepend">Shorthand</span>
+                                        </div>
+                                        <input type="text" value="hhh" name="shorthand" id="shorthand" class="form-control"
+                                            placeholder="Shorthand (e.g. whwh)" aria-describedby="shorthandPrepend" />
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <input type="button" id="generateShorthand" value="Generate" class="form-control btn btn-primary" />
+                                </div>
                             </div>
-                            <div style="overflow:hidden;">
-                                <textarea id="composition" rows="10" cols="40" style="float:left;">YYYYYYY</textarea>
-                                <pre style="float:left; width:105px;" id="courseEnds"></pre>
+                            <div class="form-row">
+                                <div class="col">
+                                    <textarea class="form-control" id="composition" rows="10">YYYYYYY</textarea>
+                                </div>
+                                <div class="col-3">
+                                    <pre class="form-control" style="overflow: hidden;" id="courseEnds"></pre>
+                                </div>
                             </div>
                         </section>
                     </div>

@@ -60,6 +60,7 @@ $('#composition').keyup(function() {
 $('#generateShorthand').click(function() {
   // select the first method from the method list to be used for the shorthand
   const firstMethod = $('#methodList').children(':first-child');
+  console.log(firstMethod)
   const mid = $(firstMethod[0]).attr('id');
 
   if (!mid) {
@@ -113,7 +114,7 @@ function insertMethodBox(code, pn) {
         <input type="text" class="js-notation form-control" id="notation${numberOfMethods}" value="${pn}"  />
       </div>
       <div class="col-1">
-        <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeParent(this);" />
+        <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeMethod('method${numberOfMethods}');" />
       </div>
     </div>
   `
@@ -138,11 +139,10 @@ function insertMethod() {
 }
 
 /**
- * removes an element's parent from the dom
- * @param {HTMLElement} me Thing who's parent to remove
+ * Removes a method from the Method List
  */
-function removeParent(me) {
-  $(me).parent().remove();
+function removeMethod(methodId) {
+  document.getElementById(methodId).remove()
 }
 
 /**

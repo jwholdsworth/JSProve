@@ -3,6 +3,7 @@
  * DECLARE FRONT-END VARIABLES
  *******************************************************************************/
 let numberOfMethods = 0; // the number of method input boxes (i.e. methods in current composition)
+let numberOfCalls = 2;
 let stage = $('#methodRank').val();
 
 /** *****************************************************************************
@@ -80,8 +81,7 @@ $('#generateShorthand').click(function() {
 
 // add more call fields
 $('#btnAddMoreCalls').click(function() {
-  const children = $('#calls table tr').length - 1;
-  $('#calls table').append('<tr class="callRow"><td><input type="text" size="1" maxlength="1" class="callSymbol" name="symbol' + children + '" id="symbol' + children + '" value="" /></td><td><input type="text" size="3" class="callNtn" name="callNtn' + children + '" id="callNtn' + children + '" value="" /></td><td><select class="callLocation" name="callLocation' + children + '" id="callLocation' + children + '"><option value="le">Lead End</option><option value="hl">Half Lead</option></select></td></tr>');
+  insertCallBox()
 });
 
 /** *****************************************************************************
@@ -97,6 +97,24 @@ function setup() {
   loadCollectionsForStage(stage);
   loadMusicForStage(stage);
   insertCollection(stage, $('#collectionChoice option:selected').val());
+}
+
+function insertCallBox() {
+  const callId = numberOfCalls
+  const callRow = `
+    <div class="form-row mb-1 js-call">
+        <div class="col-2">
+            <input class="form-control callSymbol" type="text" maxlength="1" name="symbol1"
+                id="symbol${callId}" value="" placeholder="Symbol" />
+        </div>
+        <div class="col">
+            <input class="form-control callNtn" type="text" name="callNtn${callId}" id="callNtn${callId}"
+                value="" placeholder="Notation" />
+        </div>
+    </div>
+  `
+  $('#js-calls-form').append(callRow);
+  numberOfCalls++;
 }
 
 /**

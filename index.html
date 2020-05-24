@@ -59,30 +59,36 @@
         </section>
         <section class="tab-content">
             <section id="calls" class="tab-pane">
-                <h2 class="display-4">Calls</h2>
-                <form>
-                    <div class="form-row">
-                        <input type="button" value="Add more calls" id="btnAddMoreCalls" class="btn btn-primary" />
-                    </div>
-                    <div class="form-row js-call">
-                        <div class="col-1">
-                            <input type="text" class="form-control callSymbol" maxlength="1" name="symbol0" id="symbol0"
-                                value="/" />
+                <div class="col-lg-6">
+                    <h2 class="display-4">Calls</h2>
+                    <form id="js-calls-form">
+                        <div class="form-row mb-1">
+                            <div class="col-2">
+                                <input type="button" value="Add more calls" id="btnAddMoreCalls" class="form-control btn btn-primary" />
+                            </div>
                         </div>
-                        <div class="col">
-                            <input type="text" class="form-control callNtn" name="callNtn0" id="callNtn0" value="14" />
+                        <div class="form-row mb-1 js-call">
+                            <div class="col-2">
+                                <input type="text" class="form-control callSymbol" maxlength="1" name="symbol0"
+                                    id="symbol0" value="/" />
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control callNtn" name="callNtn0" id="callNtn0"
+                                    value="14" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-row js-call">
-                        <div class="col-1">
-                            <input class="form-control callSymbol" type="text" maxlength="1" name="symbol1" id="symbol1"
-                                value=";" />
+                        <div class="form-row mb-1 js-call">
+                            <div class="col-2">
+                                <input class="form-control callSymbol" type="text" maxlength="1" name="symbol1"
+                                    id="symbol1" value=";" />
+                            </div>
+                            <div class="col">
+                                <input class="form-control callNtn" type="text" name="callNtn1" id="callNtn1"
+                                    value="1234" />
+                            </div>
                         </div>
-                        <div class="col">
-                            <input class="form-control callNtn" type="text" name="callNtn1" id="callNtn1" value="1234" />
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </section>
 
             <section id="musicInput" class="tab-pane">
@@ -152,12 +158,14 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="shorthandPrepend">Shorthand</span>
                                         </div>
-                                        <input type="text" value="hhh" name="shorthand" id="shorthand" class="form-control"
-                                            placeholder="Shorthand (e.g. whwh)" aria-describedby="shorthandPrepend" />
+                                        <input type="text" value="hhh" name="shorthand" id="shorthand"
+                                            class="form-control" placeholder="Shorthand (e.g. whwh)"
+                                            aria-describedby="shorthandPrepend" />
                                     </div>
                                 </div>
                                 <div class="col-3">
-                                    <input type="button" id="generateShorthand" value="Generate" class="form-control btn btn-primary" />
+                                    <input type="button" id="generateShorthand" value="Generate"
+                                        class="form-control btn btn-primary" />
                                 </div>
                             </div>
                             <div class="form-row">

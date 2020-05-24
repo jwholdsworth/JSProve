@@ -95,23 +95,40 @@
                     <div class="col-lg-6">
                         <section id="input">
                             <h2 class="display-4">Methods</h2>
-                            <div class="form-group form-row">
-                                <select name="methodRank" id="methodRank" class="form-control col-sm-3">
-                                    <option value="6">Minor</option>
-                                    <option value="8" selected="selected">Major</option>
-                                    <option value="10">Royal</option>
-                                    <option value="12">Maximus</option>
-                                </select>
-                                <!--input type="button" value="Add Method" id="moreMethods" /-->
-                                <select name="class" id="class" class="form-control col-sm-3">
-                                    <option value="D">Delight</option>
-                                    <option value="P">Plain</option>
-                                    <option value="S" selected="selected">Surprise</option>
-                                    <option value="T">Treble Bob</option>
-                                </select>
-                                <input type="button" value="Load Method from Library" id="searchMethod"
-                                    class="btn btn-primary" />
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="stagePrepend">Stage</span>
+                                    </div>
+
+                                    <select name="methodRank" id="methodRank" class="form-control"
+                                        aria-describedby="stagePrepend">
+                                        <option value="6">Minor</option>
+                                        <option value="8" selected="selected">Major</option>
+                                        <option value="10">Royal</option>
+                                        <option value="12">Maximus</option>
+                                    </select>
+                                </div>
                             </div>
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="classPrepend">Class</span>
+                                    </div>
+                                    <select name="class" id="class" class="form-control"
+                                        aria-describedby="classPrepend">
+                                        <option value="D">Delight</option>
+                                        <option value="P">Plain</option>
+                                        <option value="S" selected="selected">Surprise</option>
+                                        <option value="T">Treble Bob</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <input type="button" value="Load Method from Library" id="searchMethod"
+                                    class="form-control btn btn-primary" />
+                            </div>
+
                             <div class="form-group">
                                 <h4>Load a collection</h4>
                                 <div id="collectionChoice"></div>
@@ -119,7 +136,7 @@
                             <div class="form-group">
                                 <form>
                                     <div class="form-row mb-1">
-                                        <input type="button" value="Add Another" id="moreMethods"
+                                        <input type="button" value="Add Another Method" id="moreMethods"
                                             class="btn btn-success" />
                                     </div>
                                     <div id="methodList"></div>

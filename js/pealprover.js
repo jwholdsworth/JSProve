@@ -18,8 +18,8 @@ const loadUserInput = () => {
   const htmlMethods = document.getElementsByClassName('js-method')
   for (let element of htmlMethods) {
     input.methods.push({
-      shorthand: element.children[0].value,
-      notation: element.children[1].value,
+      shorthand: element.getElementsByClassName('js-shortcut')[0].value,
+      notation: element.getElementsByClassName('js-notation')[0].value,
     });
   }
 

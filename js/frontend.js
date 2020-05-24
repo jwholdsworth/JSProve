@@ -105,10 +105,16 @@ function setup() {
  */
 function insertMethodBox(code, pn) {
   const methodRow = `
-    <div id="method${numberOfMethods}" class="mb-1 form-row js-method">
-      <input type="text" class="shortcut form-control" id="shortcut${numberOfMethods}" maxlength="1" size="1" value="${code}" />
-      <input type="text" class="notation form-control" id="notation${numberOfMethods}" value="${pn}"  />
-      <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeParent(this);" />
+    <div id="method${numberOfMethods}" class="form-row js-method">
+      <div class="col-1">
+        <input type="text" class="js-shortcut form-control" id="shortcut${numberOfMethods}" maxlength="1" value="${code}" />
+      </div>
+      <div class="col">
+        <input type="text" class="js-notation form-control" id="notation${numberOfMethods}" value="${pn}"  />
+      </div>
+      <div class="col-1">
+        <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeParent(this);" />
+      </div>
     </div>
   `
   $('#methodList').append(methodRow);

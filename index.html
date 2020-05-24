@@ -6,7 +6,10 @@
     <meta name="description" content="Browser based Peal proving program by Paul Brook and James Holdsworth" />
     <title>JSProve</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css" rel="stylesheet" media="screen" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/css/bootstrap-select.min.css"
+        rel="stylesheet" media="screen" />
     <link href="css/jsprove.css" rel="stylesheet" media="screen" />
 </head>
 
@@ -20,12 +23,14 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <h1><a class="navbar-brand" href="#">JSProve</a></h1>
 
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    <li class=" nav-item"><a class="nav-link" href="https://github.com/jwholdsworth/JSProve/blob/master/README.md">Documentation</a>
+                    <li class=" nav-item"><a class="nav-link"
+                            href="https://github.com/jwholdsworth/JSProve/blob/master/README.md">Documentation</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="https://github.com/jwholdsworth/JSProve">GitHub
                             Project</a></li>
@@ -46,7 +51,8 @@
                 <li class="nav-item"><a href="#methods" data-toggle="tab" id="methodsTab" class="nav-link">Methods</a>
                 </li>
                 <li class="nav-item"><a href="#calls" data-toggle="tab" id="callsTab" class="nav-link">Calls</a></li>
-                <li class="nav-item"><a href="#musicInput" data-toggle="tab" id="musicInputTab" class="nav-link">Music</a>
+                <li class="nav-item"><a href="#musicInput" data-toggle="tab" id="musicInputTab"
+                        class="nav-link">Music</a>
                 </li>
                 <li class="nav-item"><a href="#about" data-toggle="tab" id="aboutTab" class="nav-link">About</a></li>
             </ul>
@@ -54,36 +60,34 @@
         <section class="tab-content">
             <section id="calls" class="tab-pane">
                 <h2 class="display-4">Calls</h2>
-                <table class="form-horizontal">
-                    <tr>
-                        <th>Symbol</th>
-                        <th>Notation</th>
-                        <th>Location</th>
-                    </tr>
-                    <tr class="callRow">
-                        <td><input class="callSymbol" type="text" size="1" maxlength="1" name="symbol0" id="symbol0" value="/" /></td>
-                        <td><input class="callNtn" type="text" size="3" name="callNtn0" id="callNtn0" value="14" />
-                        </td>
-                        <td><select class="callLocation" name="callLocation0" id="callLocation0">
-                                <option value="le">Lead End</option>
-                                <option value="hl">Half Lead</option>
-                            </select></td>
-                    </tr>
-                    <tr class="callRow">
-                        <td><input class="callSymbol" type="text" size="1" maxlength="1" name="symbol1" id="symbol1" value=";" /></td>
-                        <td><input class="callNtn" type="text" size="3" name="callNtn1" id="callNtn1" value="1234" />
-                        </td>
-                        <td><select class="callLocation" name="callLocation1" id="callLocation1">
-                                <option value="le">Lead End</option>
-                                <option value="hl">Half Lead</option>
-                            </select></td>
-                    </tr>
-                </table>
-                <input type="button" value="Add more calls" id="btnAddMoreCalls" class="btn btn-primary" />
+                <form>
+                    <div class="form-row">
+                        <input type="button" value="Add more calls" id="btnAddMoreCalls" class="btn btn-primary" />
+                    </div>
+                    <div class="form-row">
+                        <div class="col-1">
+                            <input type="text" class="form-control callSymbol" maxlength="1" name="symbol0" id="symbol0"
+                                value="/" />
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control callNtn" name="callNtn0" id="callNtn0" value="14" />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-auto">
+                            <input class="callSymbol" type="text" class="form-control" maxlength="1" name="symbol1" id="symbol1"
+                                value=";" />
+                            <input class="callNtn" type="text" class="form-control" name="callNtn1" id="callNtn1" value="1234" />
+                        </div>
+                    </div>
+                </form>
             </section>
+
             <section id="musicInput" class="tab-pane">
                 <h2 class="display-4">Music</h2>
-                Enter your own music, e.g. ****4678 for rows ending in 4678. One entry per line please.<br />JSProve will count the 4-bell runs for you.<br />
+                Enter your own music, e.g. ****4678 for rows ending in 4678. One entry per line please.<br />JSProve
+                will count
+                the 4-bell runs for you.<br />
                 <textarea id="userMusicList" rows="5" cols="40"></textarea>
             </section>
             <section id="methods" class="tab-pane">
@@ -105,7 +109,8 @@
                                     <option value="S" selected="selected">Surprise</option>
                                     <option value="T">Treble Bob</option>
                                 </select>
-                                <input type="button" value="Load Method from Library" id="searchMethod" class="btn btn-primary" />
+                                <input type="button" value="Load Method from Library" id="searchMethod"
+                                    class="btn btn-primary" />
                             </div>
                             <div class="form-group">
                                 <h4>Load a collection</h4>
@@ -114,17 +119,17 @@
                             <div class="form-group">
                                 <form>
                                     <div class="form-row mb-1">
-                                        <input type="button" value="Add Another" id="moreMethods" class="btn btn-success" />
+                                        <input type="button" value="Add Another" id="moreMethods"
+                                            class="btn btn-success" />
                                     </div>
-                                    <div class="form-inline">
-                                        <div id="methodList"></div>
-                                    </div>
+                                    <div id="methodList"></div>
                                 </form>
                             </div>
 
                             <h2 class="display-4">Composition</h2>
                             <div class="form-group form-row">
-                                <input type="text" value="hhh" name="shorthand" id="shorthand" class="form-control" placeholder="Shorthand (e.g. whwh)" />
+                                <input type="text" value="hhh" name="shorthand" id="shorthand" class="form-control"
+                                    placeholder="Shorthand (e.g. whwh)" />
                                 <input type="button" id="generateShorthand" value="Generate" class="btn btn-primary" />
                             </div>
                             <div style="overflow:hidden;">
@@ -152,7 +157,8 @@
                 <h3>Feature Requests</h3>
                 <ul>
                     <li><del>Parse place notations and generate rows</del> PB Feb 2011</li>
-                    <li><del>Prove truth of a composition at all stages from place notation and user input</del> PB Feb 2011
+                    <li><del>Prove truth of a composition at all stages from place notation and user input</del> PB Feb
+                        2011
                     </li>
                     <li><del>Informative Music output for all stages</del> PB/JH Feb/Mar 2011</li>
                     <li><del>Variety of Call Types</del> JH Mar 2011</li>
@@ -184,7 +190,8 @@
                                     <label for="methodSymbol">Symbol</label>
                                 </div>
                                 <div class="col-sm-2">
-                                    <input type="text" size="2" maxlength="1" name="methodSymbol" id="methodSymbol" class="form-control" />
+                                    <input type="text" size="2" maxlength="1" name="methodSymbol" id="methodSymbol"
+                                        class="form-control" />
                                 </div>
                                 <div class="col-sm-8">
                                     <div id="methodDropDown"></div>
@@ -203,9 +210,14 @@
 
     <!-- import javascript libraries and files -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.11/js/bootstrap-select.min.js" defer></script>
     <script type="text/javascript" src="js/autosize.min.js" defer></script>
     <script type="text/javascript" src="js/pealprover.js" defer></script>
     <script type="text/javascript" src="js/collections.js" defer></script>

@@ -15,15 +15,15 @@ const loadUserInput = () => {
   input.composition = document.getElementById('composition').value;
   input.stage = parseInt(document.getElementById('methodRank').value, 10);
 
-  const htmlMethods = document.getElementById('methodList').childNodes;
-  htmlMethods.forEach((element) => {
+  const htmlMethods = document.getElementsByClassName('js-method')
+  for (let element of htmlMethods) {
     input.methods.push({
-      shorthand: element.childNodes[0].value,
-      notation: element.childNodes[1].value,
+      shorthand: element.getElementsByClassName('js-shortcut')[0].value,
+      notation: element.getElementsByClassName('js-notation')[0].value,
     });
-  });
+  }
 
-  const htmlCalls = Array.from(document.getElementsByClassName('callRow'));
+  const htmlCalls = Array.from(document.getElementsByClassName('js-call'));
   input.calls = htmlCalls.map((element) => {
     return {
       symbol: element.getElementsByClassName('callSymbol')[0].value,
@@ -221,7 +221,7 @@ function doProve(composition) {
     result.complete = true;
     result.trueTouch = false;
     result.length = (-rounds);
-    result.status = 'Touch is false: false after ' + (-rounds) + ' changes';
+    result.status = 'Touch is false after ' + (-rounds) + ' changes';
   } else {
     result.complete = false;
     result.trueTouch = true;
@@ -229,7 +229,7 @@ function doProve(composition) {
     result.status = 'Incomplete touch (' + changes + ' changes)';
   }
 
-  result.music = '<pre>';
+  result.music = '<pre class="form-control output">';
   for (let i = 0; i < music.counts.length; i++) {
     let pattern = '';
     // add run count to music output array only if those runs exist
@@ -537,7 +537,7 @@ function parse_method_microsiril(stage, group, notation) {
   while (n < notation.length) {
     res = get_mask(stage, n, notation);
     if (res.n === n) {
-      throw 'Bad place notation';
+      throw 'Bad place notation ' + notation;
     }
     n = res.n;
     rows.push(res.mask);
@@ -595,7 +595,7 @@ function parse_method_cc(stage, notation) {
   while (n < sep) {
     res = get_mask(stage, n, notation);
     if (res.n === n) {
-      throw 'Bad place notation';
+      throw 'Bad place notation ' + notation;
     }
     n = res.n;
     rows.push(res.mask);

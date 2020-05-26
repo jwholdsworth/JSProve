@@ -3,20 +3,10 @@ h1 {
     float: none;
 }
 
-/* #input {
-    float: left;
-    width: 600px;
-} */
-
 #shorthand {
     max-width: 450px;
     width: 100%;
 }
-
-/* #output {
-    float: left;
-    padding: 10px;
-} */
 
 #navigation {
     margin: 10px 0;
@@ -26,9 +16,6 @@ h1 {
     padding: auto;
 }
 
-.form-row {
-    margin: 0;
-}
 .small {
     font-size: 0.8em;
 }
@@ -63,9 +50,13 @@ pre, textarea {
 }
 
 pre {
-    background-color: #f5f5f5;
     border: 1px solid #aaa;
     border-radius: 4px;
+}
+
+.output {
+    height: auto;
+    overflow: hidden;
 }
 
 .alert {

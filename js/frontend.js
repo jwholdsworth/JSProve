@@ -3,7 +3,7 @@
  * DECLARE FRONT-END VARIABLES
  *******************************************************************************/
 let numberOfMethods = 0; // the number of method input boxes (i.e. methods in current composition)
-let numberOfCalls = 2;
+let numberOfCalls = 0;
 let stage = $('#methodRank').val();
 
 /** *****************************************************************************
@@ -61,7 +61,6 @@ $('#composition').keyup(function() {
 $('#generateShorthand').click(function() {
   // select the first method from the method list to be used for the shorthand
   const firstMethod = $('#methodList').children(':first-child');
-  console.log(firstMethod)
   const mid = $(firstMethod[0]).attr('id');
 
   if (!mid) {
@@ -96,20 +95,23 @@ function setup() {
   stage = $('#methodRank').val();
   loadCollectionsForStage(stage);
   loadMusicForStage(stage);
+  loadCalls();
   insertCollection(stage, $('#collectionChoice option:selected').val());
 }
 
-function insertCallBox() {
-  const callId = numberOfCalls
+function insertCallBox(symbol, notation) {
   const callRow = `
-    <div class="form-row mb-1 js-call">
+    <div class="form-row mb-1 js-call" id="call${numberOfCalls}">
         <div class="col-2">
             <input class="form-control callSymbol" type="text" maxlength="1" name="symbol1"
-                id="symbol${callId}" value="" placeholder="Symbol" />
+                id="symbol${numberOfCalls}" value="${symbol}" placeholder="Symbol" />
         </div>
         <div class="col">
-            <input class="form-control callNtn" type="text" name="callNtn${callId}" id="callNtn${callId}"
-                value="" placeholder="Notation" />
+            <input class="form-control callNtn" type="text" name="callNtn${numberOfCalls}" id="callNtn${numberOfCalls}"
+                value="${notation}" placeholder="Notation" />
+        </div>
+        <div class="col-1">
+            <input type="button" value="&dash;" class="removeCall btn btn-danger" onclick="removeElement('call${numberOfCalls}');" />
         </div>
     </div>
   `
@@ -132,7 +134,7 @@ function insertMethodBox(code, pn) {
         <input type="text" class="js-notation form-control" id="notation${numberOfMethods}" value="${pn}"  />
       </div>
       <div class="col-1">
-        <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeMethod('method${numberOfMethods}');" />
+        <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeElement('method${numberOfMethods}');" />
       </div>
     </div>
   `
@@ -159,8 +161,8 @@ function insertMethod() {
 /**
  * Removes a method from the Method List
  */
-function removeMethod(methodId) {
-  document.getElementById(methodId).remove()
+function removeElement(domId) {
+  document.getElementById(domId).remove()
 }
 
 /**
@@ -229,6 +231,12 @@ function insertCollection(stage, key) {
       }
     }
   }
+}
+
+function loadCalls() {
+  calls.forEach((call) => {
+    insertCallBox(call.symbol, call.notation)
+  })
 }
 
 /**

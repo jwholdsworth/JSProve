@@ -229,7 +229,7 @@ function doProve(composition) {
     result.status = 'Incomplete touch (' + changes + ' changes)';
   }
 
-  result.music = '<pre>';
+  result.music = '<pre class="form-control output">';
   for (let i = 0; i < music.counts.length; i++) {
     let pattern = '';
     // add run count to music output array only if those runs exist

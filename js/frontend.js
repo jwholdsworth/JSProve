@@ -320,7 +320,7 @@ function displayMessage(message, level, timeout) {
     level = 'danger';
   }
   if (timeout === undefined) {
-    timeout = 1000;
+    timeout = 2000;
   }
   $('#alert').attr('class', 'alert alert-' + level);
   $('#alert div').html(message);

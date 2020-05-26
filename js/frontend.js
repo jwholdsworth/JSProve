@@ -80,7 +80,7 @@ $('#generateShorthand').click(function() {
 
 // add more call fields
 $('#btnAddMoreCalls').click(function() {
-  insertCallBox()
+  insertCallBox('', '')
 });
 
 /** *****************************************************************************

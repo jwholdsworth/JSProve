@@ -204,18 +204,16 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     </div>
                     <div class="modal-body">
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-sm-2">
-                                    <label for="methodSymbol">Symbol</label>
+                        <div class="form-row">
+                            <div class="col-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="symbolPrepend">Symbol</span>
                                 </div>
-                                <div class="col-sm-2">
-                                    <input type="text" size="2" maxlength="1" name="methodSymbol" id="methodSymbol"
-                                        class="form-control" />
-                                </div>
-                                <div class="col-sm-8">
-                                    <div id="methodDropDown"></div>
-                                </div>
+                                <input type="text" size="2" maxlength="1" name="methodSymbol" id="methodSymbol"
+                                    class="form-control" aria-describedby="symbolPrepend" />
+                            </div>
+                            <div class="col">
+                                <div id="methodDropDown"></div>
                             </div>
                         </div>
                     </div>

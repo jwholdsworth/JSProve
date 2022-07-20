@@ -24,7 +24,7 @@
   "devDependencies": {
     "cypress": "^4.6.0",
     "eslint": "8.20.0",
-    "eslint-config-google": "0.13.0",
+    "eslint-config-google": "0.14.0",
     "serve": "^11.2.0"
   }
 }

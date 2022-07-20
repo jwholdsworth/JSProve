@@ -1,4 +1,4 @@
-*** P7 Sun,13 Oct 2019.22:52:00 ***
+*** P7 Wed,20 Jul 2022.00:05:11 ***
 Abbabob p &345.1.5.23.7.5.7
 Aberdarestelvanplace q &3456.1.7.1.7.1.7
 Achillesbob p &3.6.5.36.7.2345.7
@@ -50,11 +50,13 @@ Ballifieldbob p &345.1.25.3.7.345.7
 Bansteadbob 25z &56.1.7.1.7.1.7
 Barnsleybob p &3456.1.5.3.2.2345.7
 Barrowuponhumberbob z +3.1.7.1.7.1.7.1.7.1.7.1.7.2
+Bastowlittlebob m +7.1.3.1.3.1
 Batterseabob z +7.1.5.1.7.3.7.3.7.3.7.1.7.1
 Beedingbob p &3.6.25.3.2.25.7
 Beresfordbob p &36.1.56.3.7.5.7
 Beresforddalebob z +7.1.7.1.7.1.7.5.7.1.7.1.5.1
 Bicycleringbob 27z &56.1.7.3.2.3.7
+Bicycleringontourbob 27z &56.1.7.3.2.23.7
 Billingshurstbob p &345.6.5.3.2.25.7
 Birchbob p &36.1.5.3.2.25.7
 Biryanibob p &345.1.5.3.2.345.7
@@ -82,6 +84,7 @@ Brilligbob z +3.1.7.1.7.5.7.5.7.1.5.1.7.1
 Brottonbob p &3.1.256.3.2.345.7
 Bruebob q &7.1.56.3.7.25.7
 Brunswickbob p &3456.1.5.3.7.25.7
+Buckleburybob 25z &5.1.7.23.7.5.7
 Buddleiabob p &36.1.5.3.2.345.7
 Bunterbob p &36.1.5.23.7.5.7
 Burghillbob p &3.1.25.3.7.5.7
@@ -101,6 +104,7 @@ Centurybob p &3.6.5.3.2.5.7
 Centurylittlebob p &5.1.5.1.5
 Cevichebob p &345.6.5.3.2.345.7
 Chalfontbob p &36.1.56.23.7.25.7
+Charlottebob p &3456.1.2.3.7.3.7
 Charltonsbob p &345.1.256.3.7.345.7
 Cheddarbob p &36.1.5.236.7.5.7
 Chieveleybob 25z &5.1.7.23.7.2345.7
@@ -115,6 +119,7 @@ Clavisbob q &5.4.5.3.7.3.7
 Cleisthenesbob p &3.6.25.36.7.345.7
 Clevelandbob p &36.1.56.3.7.2345.7
 Cliffordbob p &3.1.25.3.7.25.7
+Clunbob q +7.1.7.3.2.3.7.3.7.23.7.1.7
 Codsallbob p &3456.1.5.36.2.345.7
 Coldashbob 25z &5.1.7.3.7.5.7
 Collegebob l +7.1.7.1.7.3.7.3.7.3.7.1.7.1
@@ -143,7 +148,9 @@ Darnallbob p &345.1.56.3.2.5.7
 Dastainesuponthamesmassivebob 23z &345.1.7.1.7.1.56
 Ddaybob 27z &7.1.7.1.7.23.7
 Debrogliebob p &3456.6.25.3.2.5.7
+Dejavuplace 45z &7.45.7.1.7.45.7
 Derehambob p &5.1.5.1.34.5.7
+Devonportnavalbasebob q &56.1.7.23.7.25.7
 Dewbysbellsbob p &3456.1.7.23.2.3.7
 Dewsburybob z +7.1.7.1.7.3.7.5.7.3.7.1.7.1
 Diamondbob q &7.45.7.3.7.23.7
@@ -169,6 +176,7 @@ Downtonbob p &34.1.7.3.7.25.7
 Drellingoreplace 25z &34.1.7.1.7.23.7
 Dunstablebob z +5.1.5.1.7.1.7.5.7.1.7.1.5.1
 Eardislandbob p &345.1.25.3.7.5.7
+Eastilsleybob 25z &345.1.2.23.7.2345.7
 Ebernoebob p &3.6.5.3.2.2345.7
 Ecclefechanbob p &3.1.56.23.7.25.7
 Ecclesbob p &345.6.5.36.7.25.7
@@ -183,6 +191,7 @@ Ellwoodiibob p &345.6.5.3.7.345.7
 Elmhambob p &3.1.5.3.2.5.7
 Enfieldbob z +3.1.7.1.7.1.7.3.7.3.7.1.7.1
 Enterprisebob p &345.1.5.36.7.25.7
+Ericamagnisbob 27z &56.1.7.23.2.3.7
 Esterhazybob p &3456.1.5.36.7.25.7
 Etwallbob z +7.1.5.1.7.3.7.1.7.3.7.1.7.1
 Eveningdelightbob g +7.1.7.1.7.1.7.1.7.3.7.1.5.1
@@ -224,6 +233,7 @@ Glastonburybob z +3.1.7.1.7.5.7.5.7.3.5.1.5.1
 Gleedlessbob p &3456.1.25.3.2.2345.7
 Gnosallbob p &3456.1.25.36.2.345.7
 Goldengatebob 25z &5.1.7.3.34.3.7
+Goldenyearbob p &3456.1.2.3.7.23.7
 Grandsire a +3.1.7.1.7.1.7.1.7.1.7.1.7.1
 Grandsirefivelittlebob z +3.1.5.1.5.1.5.1.5.1
 Grangetownbob p &3456.1.56.3.7.345.7
@@ -231,6 +241,7 @@ Greataytonbob p &345.1.256.3.2.2345.7
 Greatnorthernbob p &345.1.5.36.2.25.7
 Greenfinchbob 27z &7.1.7.23.7.5.7
 Greenwichbob z +3.1.5.1.7.1.7.5.7.3.7.1.5.1
+Groundhogdaybob 27z &34.1.2.23.2.3.7
 Guisboroughplace p &3456.1.56.23.7.2345.7
 Hackneybob z +3.1.5.1.7.3.7.3.7.1.7.1.5.1
 Hamiltonbob p &36.6.5.3.2.345.7
@@ -249,12 +260,14 @@ Hebrideslittleplace 345z &256.236
 Henrybob p &36.6.25.3.7.345.7
 Heraclesbob p &3.6.25.36.7.2345.7
 Herewardbob e +3.1.5.1.7.3.7.1.7.3.7.1.5.1
+Hermitagebob 27z &56.1.2.3.7.3.7
 Hermitbob p &345.1.25.36.7.25.7
 Heronbob 27z &7.1.7.3.2.5.7
 Heverlittlebob q &7.1.5.3.5
 Heywoodbob p &345.6.5.236.7.5.7
 Highclerenewbob 25z &345.1.7.23.7.2345.7
 Hinderwellbob p &36.1.56.3.2.25.7
+Hokumtodebob s &7.1.5.3.7.3.4
 Holmelacybob p &345.1.25.3.7.25.7
 Holyordersbob z +7.1.7.1.7.1.7.1.7.1.7.1.3.23
 Holytrinitybob p &3456.1.7.3.7.3.7
@@ -268,6 +281,7 @@ Humberbob p &345.6.5.23.7.5.7
 Humouristbob p &345.1.25.36.2.5.7
 Hunsletbob 27z &56.1.7.1.7.1.7
 Huntspillbob p &3.1.7.23.7.23.7
+Hurstbournepriorsbob 25z &5.1.5.3.7.3.7
 Hyperionbob p &345.1.25.36.2.25.7
 Ianbob p &345.1.5.3.7.345.7
 Ibisbob q &5.1.5.23.7.23.7
@@ -330,6 +344,7 @@ Lundybob p &3.6.5.3.7.25.7
 Lunebob p &345.6.5.23.7.2345.7
 Lurgashallbob p &345.6.25.3.7.345.7
 Lyminsterbob p &345.6.5.3.2.2345.7
+Madeiraislandbob 27z &34.1.2.3.2.23.7
 Magnacartabob p &56.1.7.1.7.23.7
 Magniscampanisplace p &3456.1.7.23.2.23.7
 Maisondieubob 25z &34.1.7.3.7.3.7
@@ -368,6 +383,7 @@ Number20thbirthdaybob q &56.1.7.3.7.345.7
 Number90thbirthdaybob p &3456.1.7.3.7.23.7
 Nyquistbob p &3456.6.5.3.2.2345.7
 Ockbrookcyclicbob z +7.1.5.1.7.1.7.1.7.3.7.1.5.1
+Octopodlittlebob p &345.1.5.3.5
 Odysseusbob p &345.6.5.36.7.2345.7
 Oedipusbob p &345.6.5.236.7.345.7
 Ohmbob p &3456.6.25.3.7.345.7
@@ -411,6 +427,7 @@ Polhamptonlittlebob 1z &3.456.7.45
 Pontifexmaximusbob p &345.1.25.36.2.2345.7
 Poylebob 23z &3.1.7.1.7.1.56
 Pudseybob 25z &56.6.7.1.7.1.7
+Pukeruabaybob p &3456.1.7.3.2.3.7
 Pushkinbob p &3456.1.5.3.7.2345.7
 Pyecombebob p &36.6.5.3.7.25.7
 Pythagoreanbob p &3.6.5.23.7.25.7
@@ -418,6 +435,7 @@ Quadrupledoubleextremebob 27z &7.1.7.3.7.45.7
 Quasimodobob 27z &7.1.7.1.7.3.7
 Quodlibetbob p &36.1.25.36.7.345.7
 Randolphplace p &3456.1.256.3.2.2345.7
+Raveninghambob 27z &34.1.7.1.7.1.56
 Rawmarshbob p &3.1.256.3.7.5.7
 Raymorganbob 25z &7.1.7.1.7.5.7
 Readingoldbob s1 &7.1.7.3.7.3.7
@@ -430,6 +448,7 @@ Reversegrandsire g +7.1.7.1.7.1.7.5.7.1.7.1.7.1
 Reverseunion z +7.1.7.1.7.3.7.5.7.1.7.1.7.1
 Rhododendronbob p &36.1.5.3.7.2345.7
 Riftsbob p &3456.1.256.3.7.25.7
+Ringingroombob 27z &56.1.2.3.2.3.7
 Robertbob p &345.1.5.23.7.345.7
 Robinbob q &56.1.7.3.2.345.7
 Robinhoodbob p &3456.1.256.3.2.5.7
@@ -445,6 +464,7 @@ Rotherhambob p &3.1.256.3.7.25.7
 Rottingdeanbob p &36.6.5.23.7.5.7
 Roundwoodbob p &345.1.56.3.7.5.7
 Royalhollowaycollegebob 25z &7.1.7.3.7.3.7
+Rugbybob 27z &7.1.7.3.7.3.2
 Runswickbaybob p &36.1.56.3.2.2345.7
 Rusholmebob p &36.1.25.3.7.5.7
 Rusperbob p &36.6.5.23.7.25.7
@@ -507,6 +527,7 @@ Stbernadettebob 27z &34.1.7.23.7.3.7
 Stbridesmajorbob p &345.1.25.36.7.2345.7
 Stclementscollegebob f +3.1.7.1.7.3.7.3.7.3.7.1.7.1
 Stcolumbminorbob p &345.1.25.36.7.345.7
+Stdavidsdaybob 27z &34.1.2.3.2.3.7
 Stdunstansoldbob 1z &3.1.5.3.7.1.7
 Stedmundsburybob q &5.1.5.3.7.3.7
 Stenchpipebob z +7.45.7.3.7.1.7.1.7.1.5.1.34.1
@@ -517,15 +538,19 @@ Stethelwoodbob q &5.1.5.23.7.3.7
 Sthelenabob q &7.1.2.3.2.23.7
 Sthughbob z +3.1.7.1.7.1.7.1.7.1.7.1.7.23
 Stiltonbob p &36.1.5.236.7.25.7
+Stiltshirebob 25z &3.45.7.1.7.1.7
 Stirlingbob p &345.1.256.3.2.25.7
 Stjohnthebaptistbob q &7.1.2.23.7.3.7
+Stlawrencesbob 27z &34.1.2.3.7.23.7
 Stlukebob 27z &34.1.7.23.2.23.7
 Stmargaretbob 27z &34.1.7.3.7.23.7
 Stmartinsbob q &7.1.7.23.7.23.7
 Stmarybournebob z +5.1.5.1.7.1.7.5.7.1.7.1.7.1
 Stmarysbob p &56.1.7.1.7.3.7
 Stmarythevirginbob q &7.1.7.3.2.23.7
+Stmatthewbob 27z &34.1.7.23.2.3.7
 Stmerwennabob p &34.1.7.3.7.5.7
+Stmichaelandallangelsbob 27z &34.1.2.23.2.23.7
 Stnicholasbob 27z &34.1.7.3.7.3.7
 Stokeminsterbob 27z &56.1.7.3.7.23.7
 Stosmundbob q &7.1.2.3.7.3.7
@@ -533,6 +558,7 @@ Stpancrasbob q &7.1.5.3.7.5.7
 Stpatricksbob q &7.1.2.3.2.3.7
 Stpeterbob q &7.1.7.3.7.23.7
 Stpeterportbob 25z &345.1.7.1.7.1.7
+Stpeterscollegebob q &56.1.7.1.7.45.7
 Stphilipbob 27z &34.1.2.23.7.23.7
 Stpiranbob q &7.1.2.3.7.23.7
 Strabobob p &345.6.25.36.7.345.7
@@ -566,22 +592,26 @@ Tracerybob p &345.1.5.236.7.345.7
 Trafalgarbob p &345.1.5.3.7.5.7
 Tranquilbob p &345.1.5.236.7.2345.7
 Treetonbob p &345.1.56.3.2.25.7
+Treetopsbob 27z &56.1.2.3.2.23.7
 Trentbob p &345.6.5.3.2.5.7
 Trergobob p &345.1.5.36.2.345.7
 Triflebob p &3456.1.25.36.2.5.7
 Triplealliancebob p &36.1.5.36.7.5.7
 Trottonbob p &36.6.25.3.2.25.7
+Twertonlittlebob p2 &7.1.7.1.5
 Twotowersbob s1 &7.1.5.3.7.5.7
 Tynebob p &345.1.56.23.7.2345.7
 Ugthorpebob p &3456.1.56.3.2.2345.7
 Uigbob p &3456.1.25.36.7.25.7
 Union z +3.1.7.1.7.1.7.1.7.1.7.1.5.1
+Unionflagdaybob 27z &56.1.2.23.2.3.7
 Vikinglittleplace s &3456.2
 Voltabob p &3.1.5.36.7.25.7
 Vysokabob p &3456.1.5.236.7.5.7
 Wakemansbob 27z &34.1.2.23.7.3.7
 Wallersgoodwillbob z +5.1.5.1.7.3.7.1.7.1.7.1.7.1
 Wallersmaggotbob z +5.1.5.1.7.3.7.5.7.3.7.1.7.1
+Wardenhillbob 27z &34.1.7.3.2.23.7
 Waterfootbob p &345.6.25.36.2.5.7
 Watergatebob p &36.1.5.236.7.2345.7
 Waterloobob p &3.1.5.3.7.5.7
@@ -603,6 +633,7 @@ Willenhallbob p &3.6.25.36.7.5.7
 Willoughbywaterleysbob p &3456.1.5.3.7.5.7
 Wimseybob p &36.1.5.3.7.25.7
 Winchendonbob 27z &34.1.7.23.7.23.7
+Windsorplatinumplace p &3456.1.2.3.2.23.7
 Winfordbob z +3.1.7.3.7.3.7.1.7.1.5.1.5.1
 Winscombelittlebob 27z &5.1.25.3.5
 Withycombeplace 25z &3456.1.7.1.7.1.7
@@ -621,6 +652,7 @@ Xiangkhouangbob p &3456.1.5.36.2.25.7
 Xiquexiquebob p &3456.1.5.236.7.25.7
 Xochimilcobob p &3456.1.5.36.2.5.7
 Yorkshirecourtbob b +3.1.5.1.7.3.7.1.7.1.7.1.7.1
+Yorkshirewoldsbob 47z &3.1.5.1.7.1.7
 Yoxallbob p &3.6.25.36.7.25.7
 Ysbob p &3456.1.25.36.7.5.7
 Zenoplace p &345.6.25.36.2.2345.7

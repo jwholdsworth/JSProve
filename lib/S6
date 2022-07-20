@@ -1,7 +1,8 @@
-*** S6 Sun,13 Oct 2019.22:52:00 ***
+*** S6 Wed,20 Jul 2022.00:05:11 ***
 Abbessroding h &-34-4.2-2.23-4-3
 Abbotsleigh 2z &-3-45-5-3-4-1
 Aberdourcastle 4z &34-3.4-25-3.2-4.5
+Absinthe 2z &-34-45-2-3.4-2.5
 Achralaig 6z &-34-45-25-3.4-2.5
 Ackworth 4z &-3-4-2-3.4-2.3
 Acle a &3-5.4-5-3-2-5
@@ -48,6 +49,7 @@ Appleford 2z &5-5.4-5-3-2-5
 Arandomthought f &-5-45.5.25.2.23-2-5
 Aranfawddwy 4z &-5-4-25-3-4-5
 Arborfield 2z &5-5.4.5-2.3-2-5
+Arch g &-345-4-2-3-2-1
 Archbrook a &3-5.4.2-5.3-34-5
 Archway b &3-3.4-5-3.2-2.5
 Archystyrigg 4z &-3-45-2-3.4-4.5
@@ -76,6 +78,7 @@ Attackoftheclones 6z &34-5.4.5-2.3-4-5
 Audley 2z &34-3.4.5-2.3.4-34.5
 Audleyend b &-3-4.2-2.23-4-5
 Auskerrylighthouse 6z &-34-45-2-3.2-34.1
+Aussieheroes 2z &-34-4-2-23-4-345
 Averham a &-34-45-2-3-2-5
 Babworth a &-34-45-2-3-34-5
 Baconend l &-34-4.2-2.23.2-4.5
@@ -149,6 +152,7 @@ Belfastish 6z &34-5.4-2-3.2-4.3
 Bellfast m &34-5.4-2-3.4-2.3
 Bellrocklighthouse 4z &-34-45-2-3.4-34.1
 Belstead 6z &34-34.4-2-3-34-3
+Benandellensweddingday 2z &3-3.4-2-3-4-5
 Benbaun 2z &5-3.4-25-3.4-4.1
 Benchonzie 6z &3-3.4-25-3.4-2.5
 Benclibrig 2z &5-5.4-25-3.2-2.5
@@ -207,6 +211,7 @@ Bleasby 6z &-3-4-5-3-2-5
 Blofield a &34-5.4-5-3.2-2.3
 Bloomsbury b &3-3.4-5-3-34-5
 Blueline 6z &-34-45-2-23-2-1
+Bluemonkey f &-5-4.5.2-3.2-2.5
 Bluemoon 2z &3-3.4-5-3.4-2.5
 Blunsdon f &34-3.4-2-23-34-3
 Bobbingworth 2z &-34-4-2-23-34.234.5
@@ -235,12 +240,14 @@ Brantham 6z &34-34.4-2-3.4-34.5
 Bratislava m &-5-4.5-2.3-34-1
 Braunston b &-3-45-5-23.4-34.5
 Braunstoninrutland g &-3-45-5-23.4-34.5
+Braye a &-345-4-2-3-2-5
 Bredonsnorton f &-34-4-5-23-4-1
 Brentford l &34-3.4-2-23-34-3
 Bressay 4z &-3-4-5-3-34-5
 Bressaylighthouse 6z &-34-45-5-3.2-4.5
 Bretford g &-3-4.2-2.23-4.234.5
 Bridgemarshisland z +-34-4-2-23.2-234.25.234-2.3-2-4-34-2
+Bridgetowndifferential 234z &-3-4-2-3-4-1
 Brightlingsea 2z &-34-4.2-2.23-2.234.5
 Brightwalton 2z &3-3.4.5-2.3.2-2.3
 Brimpton z +-3-4-2-23-2-25-2-3-2-4-3-2
@@ -280,6 +287,7 @@ Burtonjoyce 2z &-34-4-5-3.2-2.3
 Bushley 2z &-5-4-5-3-4-5
 Bute 6z &3-3.4-5-3.2-4.5
 Butlersmarston 2z &-3-4.5-2.3.2-4.3
+Buttercup a &-34-4.5.2-3-34-5
 Butterley a &-34-4.5-2.23-34-5
 Buttoflewislighthouse 6z &-34-45-5-3.4-4.3
 Buttsbury z +-34-4-2-23.34.2-25-2.34.3-2-4-34-2
@@ -297,6 +305,7 @@ Calverton 6z &-3-4-5-23-2-5
 Cambridge b &-3-4-2-3-4-5
 Cambron m &-5-45-5-23-34-1
 Camden m &-5-4-2-23-234-1
+Canary g &-34-4-25-3-2-1
 Canewdon h &34-3.4.2-2.23.4-4.3
 Canisp a &3-5.4-25-3.4-4.5
 Canna e &5-3.4.5-2.3.2-4.5
@@ -309,6 +318,7 @@ Capelstandrew h &-3-4-2-23.2-34.3
 Capelstmary e &-3-4-2-23.2-34.3
 Capewrathlighthouse 4z &-3-4-5-3.2-2.3
 Caractacus 2z &3-34.4-2-23.2-4.5
+Caradhras g &3-3.4-25-3-34-5
 Carbrooke 2z &34-5.4-5-3.2-34.5
 Carburton 2z &-5-4-5-3-2-3
 Carcolston 2z &-34-4-5-23-2-3
@@ -330,6 +340,7 @@ Cattawade 6z &34-34.4-2-3-4-5
 Cawdorcastle 4z &-3-4-25-3-2-5
 Cawthorne 6z &-3-4-2-3-2-3
 Caythorpe 6z &34-3.4-5-3.2-34.5
+Cecilia a &-34-4.2.25.5.23.234.34-3
 Celerycity 6z &-3-45.5.25.2.23-4-1
 Cesarino 4z &3-3.4.2-2.23.4-4.3
 Cessland z +-34-4.2-2.23-234-25-234-23-2-4-34-2
@@ -342,6 +353,7 @@ Chattisham 6z &-3-4.2-2.3-4-5
 Chawton f &34-5.4-5-3.4-2.5
 Cheadle 2z &5-5.4.5-2.3.2-2.5
 Cheddleton m &-34-4.5-2.3-34-1
+Cheekylittle l &34-3.4-2-34
 Chelmondiston 2z &34-34.4-2-3.2-2.3
 Cheriton 2z &34-5.4.5-2.3-2-1
 Chester a &34-3.4-2-3.4-34.5
@@ -394,6 +406,7 @@ Complete z +-34-4-2-23-2-25.2-2.23-2-4-34-2
 Compton 2z &5-5.4.5-2.3-34-5
 Copinsaylighthouse 4z &-3-4-5-3.4-34.5
 Coquetlighthouse 4z &-3-4.5-2.3-2-3
+Corblets a &-345-4-2-3.2-34.5
 Corieltavi 2z &3-34.4-2-3.4-2.5
 Cornishknockers 6z &-5-4-2-23-4-1
 Corrybrook b &3-5.4.2-5.3.2-4.3
@@ -409,6 +422,7 @@ Coventgarden a &345-5.4-2-3-2-3
 Coverleigh 6z &-3-4-2-3.2-4.5
 Coveseaskerrieslighthouse 4z &-3-4.5-2.3.2-2.3
 Covfefe m &-34-4.2.25.2.3-34-1
+Crabby b &-345-4-2-3-2-1
 Crammagheadlighthouse 4z &-3-4.5-2.3.2-4.3
 Cranford h &-3-4-2-23-34-3
 Crayshill 2z &-34-4.2-2.23.2-2.5
@@ -438,6 +452,8 @@ Cunecastre a &3-3.4-2-3-4-3
 Curdworth 6z &5-3.4.5-2.3.4-4.3
 Cwmbran 4z &34-5.4.5-2.3.4-34.5
 Daggettthedog b &5-5.4-2-23-4-3
+Dambusters m &-34-4---23-34-1
+Dandelion a &-34-4.5.2-3-2-5
 Daphne f &34-5.4.5-2.3.2-4.5
 Darfield 2z &-3-4-2-3.2-34.1
 Darlton 6z &-3-45-2-23-2-5
@@ -484,8 +500,10 @@ Dun 4z &-5-4.5-2.3.4-2.5
 Duncansbyheadlighthouse 6z &-3-4.5-2.3.4-2.3
 Dundaghaoithe 6z &34-5.4-25-3-4-5
 Dunelm 4z &3-3.4.5-2.3.4-4.5
+Dungenesslighthouse 4z &-3-4.5-2.3.4-4.3
 Dunhamontrent e &34-3.4.5-2.3-2-1
 Dunkerton f &3-5.4-2-23-4-3
+Dunnetheadlighthouse 4z &-3-4.5-2.3.4-2.3
 Dunning 2z &34-5.4-2-3-2-3
 Dunsfold h &34-5.4.5-2.3-4-3
 Dunsley 6z &3-3.4.5-2.3.4-2.5
@@ -508,6 +526,7 @@ Eastwoodbury z +-34-4.2-2.23.34.2-25-2.34.3.2-2.4-34-2
 Eaubrink 2z &-3-4.2-2.3.2-2.5
 Ebchester l &5-5.4-2-3-2-5
 Ebor 4z &-3-4-2-3-4-5
+Eddystonelighthouse 4z &-3-4.5-2.3.4-34.1
 Edenale l &-34-4.5-2.3-4-1
 Edgwarecrunch 2z &34-5.4-2-3.4-34.1
 Edinburghcastle 4z &-3-45-25-3-4-5
@@ -518,9 +537,11 @@ Edwalton g &34-5.4-2-3-2-1
 Edwinstowe 2z &-5-4-2-3.2-34.5
 Egloskerry f +-5-45-2-3-234-25-234-23-2-45-5-
 Eigg 2z &5-3.4.5-2.3.4-4.1
+Eileanglaslighthouse 4z &-3-45-2-3.2-2.3
 Eileanleodhais 4z &3-5.4-5-3.4-2.5
 Ekoori 4z &-34-45-5-23-2-1
 Eldersfield f &-34-4.5-2.3-4-1
+Elienesslighthouse 4z &-3-45-2-3.2-4.3
 Elkesley l &-5-4-5-23-2-5
 Elmsteadmarket 2z &-34-4.2-2.23-2-1
 Elmswell 4z &-5-45-2-3.4-34.5
@@ -539,7 +560,9 @@ Ermintrude l &-34-45-5-3-4-5
 Erpingham e +-3-4-2-3-234-23-234-23-2-4-3-
 Errigal 4z &5-3.4-25-3-34-1
 Erwarton l &34-34.4-2-23-34-5
+Eshanesslighthouse 4z &-3-45-2-3.2-4.5
 Etwall 4z &-34-4-5-3-4-5
+Europapointlighthouse 4z &-3-45-2-3.2-34.1
 Euston b &3-3.4-5-3.2-34.5
 Euximoordrove 4z &-3-4-2-23.2-2.3
 Everton 2z &-5-4-2-23-2-5
@@ -549,11 +572,14 @@ Fabiochiarvesio 2z &3-5.4-5-23-4-5
 Fabis 2z &5-3.4-5-3-34-1
 Fairdinkumaussie m &-5-45-25-3-34-1
 Fairisle 6z &-3-45-5-3.4-2.5
+Fairislenorthlighthouse 4z &-3-45-2-3.4-2.3
+Fairislesouthlighthouse 6z &-3-45-2-3.4-2.3
 Falstuff f &-3-4-2.2.3.2.4-1
 Fambridge z +-34-4-2-3.34.234-25-234.34.23-2-4-34-2
 Farcotton f &-34-4-5.25.23.4-34.5
 Farewell 2z &5-5.4-2-23-4-5
 Farmborough g &-5-45-2-23-4-3
+Farneislandlighthouse 4z &-3-45-2-3.4-4.3
 Farsan 4z &-34-45-5-23-4-1
 Farthingstone e &-3-4-2-3.2.234.2.3
 Fatherblackadder 2z &5-3.4-5-3.4-2.3
@@ -561,6 +587,7 @@ Faulkbourne 4z &-3-4-2-23-34-5
 Fawley 2z &-3-4-2-23-4-1
 Fetlar 4z &3-5.4-5-3-4-5
 Fiddlershamlet z +-34-4.2-2.3-234.34.25.34.234-23.2-2.4-34-2
+Fidralighthouse 4z &-3-45-2-3.4-34.1
 Fincham a &3-5.4-2-23-2-3
 Finchampstead g &3-3.4-2-3-2-3
 Finningham 4z &-3-45-2-3-2-5
@@ -580,6 +607,7 @@ Forteyers 2z &-34-4-2-3.34-2.5
 Fourteenforty 6z &-5-45-2-3-4-5
 Foxley 2z &34-5.4-5-23-2-5
 Frating 2z &-34-4-2-3-34.234.5
+Freshwater b &-3-4.5-5.23-4-5
 Freston 2z &34-34.4-2-23-2-3
 Friaryschool 4z &-5-4-2-3-34-5
 Fridaythe13th f &3-3.4-5-23-2-1
@@ -652,6 +680,7 @@ Greatgransden 6z &-3-45-2-3.4-4.5
 Greatlongstone g &3-3.4-2-23-2-3
 Greatryburgh z +-34-4-2-3-34.2.25-234.2.3-2-4-34-2
 Greatwratting l &-34-4.2-2.23.34-4.5
+Greenapple l &-5-4.5.2-3-34-5
 Greenfroggreen e &-34-4.2-2.3.234.4-1
 Greenpark 2z &5-3.4-5-3.2-2.3
 Greywell 2z &-34-45.5-2.3-34-5
@@ -726,6 +755,7 @@ Holkham f &-5-45-5-3.2-2.3
 Hollandfen 6z &-3-4-2-23.2-2.3
 Hollingbourne 2z &34-5.4-2-23-4-5
 Holloway 2z &-3-45-5-3.2-34.5
+Holmer 4z &-3-45-5-23-34-1
 Holmeschapel f &-5-45-2-3.4-4.5
 Holmesdaleroad m &-34-45-25-3-34-1
 Holybrook a &3-5.4.2-5.3-2-5
@@ -736,7 +766,7 @@ Horblingfen h &-3-4-2-23.34-2.3
 Horningsailingclub m &-5-45-2-3.4-2.3
 Horningtoftheritage 6z &-34-45-5-3-4-3
 Horsey 4z &34-5.4-2-3-4-5
-Horseyisalnd z +-34-4-2-3.2.34.234.25.234.34.2.23-2-4-34-2
+Horseyisland z +-34-4-2-3.2.34.234.25.234.34.2.23-2-4-34-2
 Horton h &-5-4.5-2.3-2-1
 Houchensroad f &-3-4.2-2.3.2.4-1
 Hoveringham 6z &-3-45-5-23-2-3
@@ -785,6 +815,7 @@ Jelita 2z &-34-4.5-2.3.4-34.1
 Jerpoint 4z &3-3.4-2-23-34-3
 Johnalexis 2z &3-5.4-2-23-4-1
 Johncalvin 2z &34-5.4.5-2.3-4-1
+Johnnyjohnson e &-3-4---23-34-3
 Jonesthecat 2z &5-5.4.5-2.3.2-34.5
 Jotunheimen f &34-3.4-5-3-34-3
 Juryhill z +-34-4.2-2.23-234-25-234-3.2-2.4-34-2
@@ -821,6 +852,7 @@ Kroy 4z &3-3.4-5-3-4-5
 Kt 6z &-3-4-5-23-4-1
 Kwekwe b &-3-4-2-3.4.234.34.5
 Kynochtown a +-34-4-2-23.2-2.23-2-23-2-4-34-
+Laboheme 2z &3-3.4-2-3.4-34.5
 Ladharbheinn f &-34-45-25-23-4-5
 Lakeerie 4z &5-5.4-5-3-34-5
 Lakehuron 4z &-3-4-5-3-34-1
@@ -889,6 +921,7 @@ Lochcam 2z &-3-4-25-3-4-5
 Lochdearg 2z &-3-45-25-3-2-5
 Lochearn 4z &34-3.4-25-23-4-5
 Lochfyne 2z &34-3.4-25-3-4-5
+Lochgarry l &-5-4-25-3-2-5
 Lochgarve m &-34-4-25-3.4-2.3
 Lochgorm 6z &-34-4-25-3.4-2.5
 Lochhope 2z &-3-4-25-3.4-2.5
@@ -900,20 +933,24 @@ Lochlomondii 4z &5-3.4-25-3.2-4.5
 Lochmaree 2z &-3-4-25-3.4-34.5
 Lochnevis 2z &34-3.4-25-3.4-34.5
 Lochoich b &3-3.4-25-3-2-5
+Lochossian l &-5-4-25-3.2-2.5
 Lochpattack 4z &3-5.4-25-23-4-5
 Lochquie a &3-5.4-25-3-2-5
 Lochrannoch 4z &3-5.4-25-3.4-34.5
 Lochshin 2z &-34-45-25-3-2-5
 Lochtay f &-34-45-25-3.2-4.5
+Lochtreig l &-5-4-25-3-34-5
 Lochuaine 4z &-3-4-25-23-2-5
 Lochvaa 4z &-3-4-25-3.2-2.5
 Lochwatten 4z &5-5.4-25-3.4-34.5
 Lochyucal f &-5-4-25-3-2-5
+Lodestar 2z &3-3.4-2-3.4-2.5
 Lodsworth 2z &-3-4-2-23-34-1
 Loisweedon a &-3-4.2-2.23.4-4.3
 London f &3-3.4-2-3.4-4.3
 Longcot f &5-5.4-2-3.2-34.5
 Longdon 2z &-34-45-2-23-4-5
+Longis a &-345-4-2-3.2-2.5
 Longsutton 2z &-34-4-5-3.4-2.5
 Longton 2z &34-5.4.5-2.3.2-34.5
 Lopham a &-34-4.5-2.3-2-5
@@ -996,6 +1033,7 @@ Mork e &5-3.4-5-3.4-2.5
 Morpeth h &34-3.4-2-3.4-34.1
 Morrellroding l &-34-4.2-2.3-4-5
 Mortoncastle a &-34-4-25-3.4-4.5
+Mountdoom g &3-3.4-25-3-2-5
 Mountleinster 6z &34-3.4-25-3.2-34.5
 Mountnessing a &-34-4.2-2.23.2-2.3
 Muchcowarne 2z &-3-4-2-23.4-4.5
@@ -1045,6 +1083,7 @@ Netherstoweschool 4z &-5-4-2-3-2-5
 Netherstowey 2z &-3-4.5-2.3.4-2.5
 Netherwood 2z &34-3.4-2-3.4-4.5
 Netteswell a &3-3.4.2-2.23-4-3
+Nettle a &-34-4.5.2-3.2-2.5
 Nevendon z +-34-4-2-23-2.34.25.34.2-3-2-4-34-2
 Newarkcastle 2z &-3-45-25-3.4-4.5
 Newbourne 2z &34-34.4-2-3-4-3
@@ -1098,6 +1137,7 @@ Ongar 2z &-34-4.2-2.23-34-5
 Onionbhaji 4z &-3-45-2-23-2-1
 Oozedam z +-34-4-2-3.34.2.34.25.34.2.34.23-2-4-34-2
 Opengardens l &-34-4.2-2.3.4-2.5
+Orangecream l &-5-4.5.2-3-2-5
 Ordovices a &3-34.4-2-23.4-34.5
 Orsett 2z &34-3.4-2-23-2-5
 Osea 4z &34-3.4-2-3.2-4.5
@@ -1141,6 +1181,7 @@ Pippshill 2z &-34-4.2-2.23-2-5
 Pitcherplant 6z &-3-45-5-23-4-3
 Pitsligocastle 2z &3-3.4-25-3.2-4.5
 Pityme 2z &-3-4-2-3.4-34.3
+Platinumjubilee 2z &-3-45-25-3-34-23
 Pleasance h &-3-4-2-3.2.34-3
 Plumtree 2z &-5-45-5-3-34-5
 Poplar a &34.5-4-2-3-2-5
@@ -1162,6 +1203,7 @@ Princesshay g &3-5.4-5-3.2-4.1
 Princessofwales m &-5-4-2-3-34-1
 Pulham a &34-5.4-2-3-34-5
 Purleigh 2z &3-3.4-2-23-2-5
+Purpleblossom l &-5-4.5.2-3.2-2.5
 Pythagoras f &5-3.4-2-3.4-34.5
 Quadringlowfen 6z &-3-4.2-2.3.4-2.5
 Queenelizabethii m &-34-4.5-2.3.4-2.3
@@ -1193,7 +1235,9 @@ Rebellion 2z &34-3.4-5-3-4-3
 Redbourn b &3-3.4-2-23-2-3
 Redcar 2z &-3-4-2-3.2-2.5
 Redding a &-34-4-5-3-34-5
+Redlandsroad b &3-5.4.5-2.3.2-34.1
 Redmarley 2z &-34-45-2-3.4-4.3
+Redrhino f &-5-4.5.2-3-2-5
 Reepham 6z &-5-4-5-23-34-3
 Remembrance 2z &5-3.4-2-23-34-1
 Resurrection a &3-3.4-5-3-4-3
@@ -1248,13 +1292,16 @@ Santa 4z &-34-45-2-3.4-2.5
 Sappertontunnel a &5-3.4-5-3.2-34.3
 Saskia 6z &-3-45-5-23-34-1
 Saundby l &-5-4-2-23-2-3
+Savethechildren g &-3-45-5-3.2-4.5
 Saxonstreet 2z &-3-4-2-23.34-2.5
 Saxthorpe h &-3-4.5-2.3-34-3
+Saye a &-345-4-2-3-34-5
 Scafellpike a &-34-4-25-3.2-34.5
 Scaftworth l &-5-45-2-3.2-34.5
 Scalby h &3-3.4-2-3.2-4.5
 Scallowaycastle 2z &3-5.4-2-3.2-34.3
 Scalpay m &3-3.4.5-2.3.4-2.3
+Scampton e &-3-4---3-34-3
 Scarba 4z &5-5.4-5-23-4-5
 Scarning h &-3-45-2-3-34-3
 Scarrington 2z &3-3.4-5-3-2-3
@@ -1346,6 +1393,7 @@ Somershamhighnorthfen 6z &-3-4.2-2.3.4-34.5
 Somerville b &3-5.4-2-3.2-4.3
 Sophie f &34-3.4-2-23-234-3
 Sopley 2z &5-3.4.5-2.3.2-4.3
+Sorrel g &-34-4.5.2-3-2-1
 Southernhay e &3-34.4-5-3.34-4.5
 Southharting 6z &-5-4.5-2.3.4-4.3
 Southminster a &-34-4.2-2.3-2-3
@@ -1425,10 +1473,12 @@ Stpeter 4z &-34-4-2-23-4-1
 Strattonstrawless z +-34-4-2-3.2.234-25.2.34-3-2-4-34-2
 Streatley a &3-5.4-5-3-34-5
 Strensham 2z &34-3.4-2-23-34-1
+Stthomas 2z &-34-4-2-3-4-5
 Studley f &-5-4-5-3-34-5
 Sturtonlesteeple f &-5-45-2-3.2-34.5
 Stutton 6z &34-34.4-2-3.4-2.5
 Suckley 2z &-34-45-5-23-4-1
+Suepacey 2z &-34-45-2-3-4-23
 Sully m &-34-45-2-3.4-2.3
 Sundew l &-3-45-5-23-4-1
 Sunningwell a &3-5.4-2-3-2-3
@@ -1457,10 +1507,12 @@ Tattingstone f &34-34.4-2-23-34-5
 Tattingstonewhitehorse 2z &34-34.4.2-2.3.2-2.3
 Tattingstonewonder f &34-34.4-2-3-34-5
 Taylor g &-5-4-2-3-4-3
+Ted f &-3-4-2-23.4-34.3
 Tedeum a &5.345.5.4.5.25.2.3.2.234.2.5
 Teresa 6z &34-3.4-2-3.2-4.3
 Terling 2z &-3-4-2-23-34-5
 Terringtonmarsh 4z &-3-4-2-23.2-34.1
+Tesla 2z &-34-45-2-3-4-5
 Tewinbury e &5-5.4-2-3-2-1
 Teynham 4z &3-3.4-2-23-2-1
 Theale a &34-5.4-5-3-2-3
@@ -1476,6 +1528,7 @@ Thestumbles z +34-3.4-2-23-2-25-2-23.2-2.4.3-34.2
 Thethumb 4z &-3-4.5-2.3-34-5
 Thewickedplan l &34-34.4-2-3-2-5
 Thirlestanecastle 6z &-34-45-25-3-4-5
+Thistle a &-34-4.5.2-3.2-34.5
 Thisyear e &3-5.4-2-3.4-2.5
 Thomascrapper m &-5-4-5-3.2-34.1
 Thomasthetankengine 6z &3-5.4-2-3.4-4.3
@@ -1503,6 +1556,7 @@ Togodumnus f &3-34.4-2-23.34-34.1
 Tokyo a &-34-4-5-3.4-4.5
 Tolworth e &3-3.4-5-23-4-1
 Torworth l &-5-4-5-3-2-5
+Tostock a &34-3.4-2-3-4.34.5
 Tottington 2z &-3-45-2-3-2-3
 Towednak m &-5-45-2-3-34-1
 Tranquillity a &-34-4-5-3.2-34.5
@@ -1540,6 +1594,7 @@ Urquhartcastle 6z &-34-45-25-3.4-34.5
 Ursamajor b &3-5.4.5-2.3.2-4.3
 Uttapam 4z &-3-45-2-3-34-1
 Uttoxeter 6z &-3-4.5-2.3-34-1
+Vaccinationheroes m &-3-4-2-3.34-34.1
 Valiants z +-34-4-2-23.34.2.34.25.34.2.34.23.2-2.4-34-2
 Varrichcastle 4z &-3-4-25-23-34-5
 Varuval 4z &-3-45-5-23-2-1
@@ -1579,6 +1634,7 @@ Wayletts z +-34-4-2-23-2.34.25.234-2.23-2-4-34-2
 Wealdside l &34-3.4-5-23-34-3
 Wearmouth b &-34-4-2-3.4-34.1
 Wearyfriarning 2z &-34-4-2-23-2-23
+Wellcombebottom 2z &-34-4-2-3.4-34.5
 Wells f &3-3.4-2-3.4-34.1
 Wemysscastle 4z &-3-4-25-3.4-4.5
 Wendensambo g &-3-4.2-2.23-4-5
@@ -1596,6 +1652,7 @@ Westmill 4z &3-3.4-5-3.4-34.5
 Westminster a &-34-4-2-3-2-3
 Westmonkton 2z &-3-45-5-3.4-4.5
 Weston 6z &-3-45-2-23-34-5
+Westsidestory 2z &-34-4-2-3.4-2.5
 Westtarring m &-34-4-5-3.2-4.3
 Westwinch 4z &-3-4.2-2.3-2-5
 Westwood b &-5-45-2-23-4-3
@@ -1632,6 +1689,7 @@ Wisboroughgreen b &-3-45-2-23-4-1
 Wiseton l &-5-45-5-3.2-2.3
 Wiston 2z &34-3.4-2-3.2-34.1
 Witefelle f &-5-4-5-3.34-2.5
+Withington 4z &-3-45-5-23-34-5
 Witten l &-34-4-2-3.34-4.5
 Wolford 2z &-34-45-5-23-34-5
 Wolverstone 2z &34-34.4-2-3-2-3
@@ -1663,6 +1721,7 @@ Xton f &-5-45-2-23-34.234.5
 Xylocopa 2z &-34-45-5-3.4-4.5
 Yang 4z &5-3.4-2-3.2-4.5
 Yaxham a &34-5.4-2-3.2-34.5
+Yellowdragon f &-5-4.5.2-3-34-5
 Yelumincham 4z &-3-45-5-23-4-1
 Yesittiz a &-3-4.5-2.3-2-1
 Yestercastle 2z &-5-4-25-23-4-5

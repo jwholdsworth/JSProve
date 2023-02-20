@@ -25,6 +25,6 @@
     "cypress": "^4.6.0",
     "eslint": "8.34.0",
     "eslint-config-google": "0.14.0",
-    "serve": "^11.2.0"
+    "serve": "^14.2.0"
   }
 }

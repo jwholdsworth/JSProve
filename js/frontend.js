@@ -185,7 +185,7 @@ function checkMethodLetterIsUnique(letter, methodName, methodSymbol) {
       }
     }
     if (isUnique === false) {
-      displayMessage('A method with shortcut <strong>' + letter + '</strong> already exists. ' + methodName + ' has not been added.');
+      displayMessage('That letter has already been used for a method. Please choose a different one.');
       return isUnique;
     }
   }

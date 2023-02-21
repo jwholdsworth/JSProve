@@ -13,12 +13,12 @@ context('Actions', () => {
         multiple: true,
       });
       cy.get('#method0')
-          .should('not.exist');
+        .should('not.exist');
     });
 
     it('Adds Methods to the method selector', () => {
       cy.get('#searchMethod').click();
-      cy.get('#methodDropDown .bs-searchbox input:first').type('Jovium', {'force': true});
+      cy.get('#methodDropDown .bs-searchbox input:first').type('Jovium', { 'force': true });
       cy.get('#methodDropDown li.active a').click();
       cy.get('#insertMethod').click();
       cy.get('#notation10').should('have.value', 'd &-3-4-2.5.6-34-5-6-5');
@@ -26,12 +26,12 @@ context('Actions', () => {
 
     it('Keeps the letters unique', () => {
       cy.get('#searchMethod').click();
-      cy.get('#methodDropDown .bs-searchbox input:first').type('Belfast', {'force': true});
+      cy.get('#methodDropDown .bs-searchbox input:first').type('Belfast', { 'force': true });
       cy.get('#methodDropDown li.active a').click();
       cy.get('#insertMethod').click();
       cy.get('#notation10').should('not.exist');
       cy.get('#alert')
-          .should('contain.text', 'A method with shortcut B already exists');
+        .should('contain.text', 'That letter has already been used for a method. Please choose a different one.');
     });
   });
 
@@ -50,25 +50,25 @@ context('Actions', () => {
       cy.get('#shorthand').type('hhshhhsh');
       cy.get('#generateShorthand').click();
       cy.get('#composition')
-          .should('have.value',
-              'AAAAAAA/\nAAAAAAA/\nAAAAAAA;\nAAAAAAA/\nAAAAAAA/\nAAAAAAA;\n'
-          );
+        .should('have.value',
+          'AAAAAAA/\nAAAAAAA/\nAAAAAAA;\nAAAAAAA/\nAAAAAAA/\nAAAAAAA;\n'
+        );
       cy.get('#results')
-          .should('have.class', 'text-danger')
-          .should('contain.text', 'Touch is false');
+        .should('have.class', 'text-danger')
+        .should('contain.text', 'Touch is false');
     });
 
     it('Can handle multiple methods using a collection', () => {
       cy.get('#collectionChoice select').select('Pitman\'s 4');
       const composition = 'LSL/\nL/B/B/S/CSC/\nLSCSC/\nL/B/B/S/CSC/\nLCL/\nL/BBBBBBB/\nCS/CS\nSSS/B/S/CSC/\nLS/L\nL/B/LLLLL/B/L\nL/SL/\nCSC/S/B/SSS\nSC/SC/\nBBBBBBB/L/\nLCL/\nCSC/S/B/B/L/\nCSCSL/\nCSC/S/B/B/L/\nLS/L/B/B/\nLC/SSS\nLC/L/\nLC/B/B/L/\nCSC/CL \nCSC/SL/\nCS/BBBB/\nBBBB/SC/\nLS/CSC\nLC/CSC/\nL/B/B/CL/';
       cy.get('#composition')
-          .clear()
-          .type(composition);
+        .clear()
+        .type(composition);
       cy.get('#results')
-          .should('have.class', 'text-success')
-          .should('contain.text', '5024 changes');
+        .should('have.class', 'text-success')
+        .should('contain.text', '5024 changes');
       cy.get('#com')
-          .should('contain.text', '109 changes of method');
+        .should('contain.text', '109 changes of method');
     });
   });
 
@@ -84,7 +84,7 @@ context('Actions', () => {
         multiple: true,
       });
       cy.get('#searchMethod').click();
-      cy.get('#methodDropDown .bs-searchbox input:first').type('Madurai', {'force': true});
+      cy.get('#methodDropDown .bs-searchbox input:first').type('Madurai', { 'force': true });
       cy.get('#methodDropDown li.active a').click();
       cy.get('#insertMethod').click();
       cy.get('#shorthand').clear().type('oooi8oi768is3s3ivvvs4s7iiis6vs2ooos2vvs4o64i');
@@ -96,8 +96,8 @@ context('Actions', () => {
       // Assert
       cy.get('#results').should('have.class', 'text-success');
       cy.get('#music')
-          .should('contain.text', '21\t8765****')
-          .should('contain.text', '24\t****5678');
+        .should('contain.text', '21\t8765****')
+        .should('contain.text', '24\t****5678');
     });
 
     it('Can handle more than 2 call types', () => {
@@ -118,8 +118,8 @@ context('Actions', () => {
 
       // Assert
       cy.get('#results')
-          .should('contain.text', 'Touch is true: 1344 changes')
-          .should('have.class', 'text-success');
+        .should('contain.text', 'Touch is true: 1344 changes')
+        .should('have.class', 'text-success');
     });
   });
 });

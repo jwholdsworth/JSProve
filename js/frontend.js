@@ -75,7 +75,7 @@ $('#generateShorthand').click(function () {
     autosize.update($('#composition'));
     prove();
   } catch (e) {
-    displayMessage(e, 'danger');
+    displayMessage(e.toString(), 'danger');
   }
 });
 
@@ -276,7 +276,7 @@ function prove() {
     $('#atw pre').html(res.atw);
     $('#com').html(res.com + ' changes of method');
   } catch (e) {
-    displayMessage(e, 'danger');
+    displayMessage(e.toString(), 'danger');
   }
 }
 
@@ -315,7 +315,7 @@ function loadMethods(file) {
  * @param timeout
  */
 function displayMessage(message, level, timeout) {
-  console.log(message);
+  console.warn(message);
   if (level === undefined) {
     level = 'danger';
   }

@@ -21,18 +21,28 @@ context('Actions', () => {
 
     it('Adds Methods to the method selector', () => {
       cy.get('#searchMethod').click();
-      cy.get('#methodDropDown button.dropdown-toggle').click();
-      cy.get('#methodDropDown .bs-searchbox input').type('Jovium');
-      cy.contains('#methodDropDown .dropdown-menu a', 'Jovium').click();
+      cy.get('#methodSearch').type('Jovium');
+      cy.get('#methodSelect').find('option:selected').should('contain.text', 'Jovium');
       cy.get('#insertMethod').click();
+      cy.get('#notation10').should('have.value', 'd &-3-4-2.5.6-34-5-6-5');
+    });
+
+    it('Handles an empty search result and keyboard selection', () => {
+      cy.get('#searchMethod').click();
+      cy.get('#methodSearch').should('be.focused').type('zzzz-no-such-method');
+      cy.get('#methodSelect option').should('not.exist');
+      cy.get('#insertMethod').should('be.disabled');
+      cy.get('#methodSearch').clear().type('Jovium');
+      cy.get('#insertMethod').should('be.enabled');
+      cy.get('#methodSearch').type('{downarrow}');
+      cy.get('#methodSelect').should('be.focused').type('{enter}');
       cy.get('#notation10').should('have.value', 'd &-3-4-2.5.6-34-5-6-5');
     });
 
     it('Keeps the letters unique', () => {
       cy.get('#searchMethod').click();
-      cy.get('#methodDropDown button.dropdown-toggle').click();
-      cy.get('#methodDropDown .bs-searchbox input').type('Belfast');
-      cy.contains('#methodDropDown .dropdown-menu a', 'Belfast').click();
+      cy.get('#methodSearch').type('Belfast');
+      cy.get('#methodSelect').find('option:selected').should('contain.text', 'Belfast');
       cy.get('#insertMethod').click();
       cy.get('#notation10').should('not.exist');
       cy.get('#alert')
@@ -92,9 +102,8 @@ context('Actions', () => {
       });
       cy.get('.removeMethod').should('not.exist');
       cy.get('#searchMethod').click();
-      cy.get('#methodDropDown button.dropdown-toggle').click();
-      cy.get('#methodDropDown .bs-searchbox input').type('Madurai');
-      cy.contains('#methodDropDown .dropdown-menu a', 'Madurai').click();
+      cy.get('#methodSearch').type('Madurai');
+      cy.get('#methodSelect').find('option:selected').should('contain.text', 'Madurai');
       cy.get('#insertMethod').click();
       cy.get('#shorthand').clear().type('oooi8oi768is3s3ivvvs4s7iiis6vs2ooos2vvs4o64i');
 

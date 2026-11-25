@@ -5,6 +5,8 @@
 // the number of method input boxes (i.e. methods in current composition)
 let numberOfMethods = 0;
 let numberOfCalls = 0;
+let alertTimer;
+let musicRequest = 0;
 let stage = document.getElementById('methodRank').value;
 
 /** *****************************************************************************
@@ -23,7 +25,8 @@ bootstrap.Tab.getOrCreateInstance(document.querySelector('#tabs a')).show();
 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((element) => new bootstrap.Tooltip(element));
 
 document.getElementById('closeAlert').addEventListener('click', function () {
-  $('#alert').stop(true, true).hide();
+  clearTimeout(alertTimer);
+  document.getElementById('alert').classList.remove('show');
 });
 
 /** *****************************************************************************
@@ -256,10 +259,18 @@ function loadCalls() {
 /**
  * Applies some default music for this stage
  */
-function loadMusicForStage(stage) {
-  $.get('music/' + stage, function (data) {
-    document.getElementById('userMusicList').value = data;
-  }, 'text');
+async function loadMusicForStage(stage) {
+  const request = ++musicRequest;
+  try {
+    const response = await fetch('music/' + stage);
+    if (!response.ok) throw new Error('Unable to load default music');
+    const data = await response.text();
+    if (request === musicRequest) {
+      document.getElementById('userMusicList').value = data;
+    }
+  } catch (error) {
+    if (request === musicRequest) displayMessage(error.message, 'danger');
+  }
 }
 
 /**
@@ -370,7 +381,9 @@ function displayMessage(message, level, timeout) {
   if (timeout === undefined) {
     timeout = 2000;
   }
-  document.getElementById('alert').className = 'alert alert-' + level;
+  const alert = document.getElementById('alert');
+  clearTimeout(alertTimer);
+  alert.className = 'alert alert-' + level + ' show';
   document.querySelector('#alert div').textContent = message;
-  $('#alert').fadeIn('slow').delay(timeout).fadeOut('slow');
+  alertTimer = setTimeout(() => alert.classList.remove('show'), timeout + 600);
 }

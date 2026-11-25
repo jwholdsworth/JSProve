@@ -734,34 +734,29 @@ function AtwChecker(comp) {
   };
 
   that.getAtw = function() {
-    for (let i=0; i < this.comp.methods.length; i++) {
-      // add the method symbol to the list
-      this.methodList += this.comp.methods[i].name;
-      this.positionsRung[this.comp.methods[i].name] = [];
-      // add the bell to the list
-      for (let j=0; j < this.comp.stage; j++) {
-        this.positionsRung[this.comp.methods[i].name][BELL_NAMES[j]] = [];
-        // add the bell's position to the list
-        for (let k=0; k < this.comp.stage; k++) {
-          this.positionsRung[this.comp.methods[i].name][BELL_NAMES[j]][BELL_NAMES[k]] = false;
-        }
-      }
-    }
+    this.positionsRung = [];
+    this.methodList = '';
+    this.com = 0;
+    const initialised = new Set();
+    const rounds = Array.from({length: this.comp.stage}, (_, i) => i);
 
-    // for each lead
-    for (let i=0; i < this.comp.methods.length; i++) {
-      // loop through the number of bells
-      for (let j=0; j < this.comp.stage; j++) {
-        // bell at this position in the lead
-        let leadend = this.comp.leadends[i-1];
-        // note we can't use leadend-1 for the first lead, so generate a lead of rounds and use that
-        if (leadend === undefined) {
-          leadend = [];// this.comp.leadends[this.comp.methods.length - 1];
-          for (let k=0; k < this.comp.stage; k++) {
-            leadend.push(k);
+    for (let i = 0; i < this.comp.methods.length; i++) {
+      const name = this.comp.methods[i].name;
+      this.methodList += name;
+      if (!initialised.has(name)) {
+        initialised.add(name);
+        this.positionsRung[name] = [];
+        for (let j = 0; j < this.comp.stage; j++) {
+          this.positionsRung[name][BELL_NAMES[j]] = [];
+          for (let k = 0; k < this.comp.stage; k++) {
+            this.positionsRung[name][BELL_NAMES[j]][BELL_NAMES[k]] = false;
           }
         }
-        this.positionsRung[this.comp.methods[i].name][BELL_NAMES[leadend[j]]][BELL_NAMES[j]] = true;
+      }
+
+      const leadHead = this.comp.leadends[i - 1] ?? rounds;
+      for (let j = 0; j < this.comp.stage; j++) {
+        this.positionsRung[name][BELL_NAMES[leadHead[j]]][BELL_NAMES[j]] = true;
       }
     }
 

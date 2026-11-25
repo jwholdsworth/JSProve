@@ -249,3 +249,12 @@ test('existing 5024 of Pitman’s four proves true with 109 changes of method', 
   assert.equal(result.status, 'Touch is true: 5024 changes');
   assert.equal(result.com, 109);
 });
+
+test('repeated Home calls from the existing false-touch fixture prove false', () => {
+  const method = {shorthand: 'A', notation: 'c &-5-4-56-36-4-5.36-36.1'};
+  const composition = 'AAAAAAA/\nAAAAAAA/\nAAAAAAA;\nAAAAAAA/\nAAAAAAA/\nAAAAAAA;\n';
+  const result = proveTouch(8, [method], composition);
+  assert.equal(result.trueTouch, false);
+  assert.equal(result.complete, true);
+  assert.match(result.status, /^Touch is false after /);
+});

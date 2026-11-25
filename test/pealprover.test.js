@@ -234,3 +234,40 @@ test('generateShorthand accepts a validated method without a DOM', () => {
   const method = validateMethod('P', plainBob(6).notation, 6);
   assert.equal(generateShorthand('h', method, ['/', '14'], [';', '1234']), 'PPPPP/\n');
 });
+
+test('prover retains the first occurrence of each row', () => {
+  const change = Change(6);
+  const prover = new Prover();
+  change.advance(0);
+  const first = change.row.join(',');
+  assert.equal(prover.checkRow(change), 0);
+  change.advance(33);
+  assert.equal(prover.checkRow(change), 0);
+  change.advance(33);
+  assert.equal(prover.checkRow(change), -1);
+  assert.equal(prover.changes.get(first), 1);
+  assert.equal(prover.changeNumber, 3);
+});
+
+test('first return to rounds is true but repeated rounds are false', () => {
+  const change = Change(6);
+  const prover = new Prover();
+  assert.equal(prover.checkRow(change), 1);
+  assert.equal(prover.checkRow(change), -1);
+  assert.equal(prover.changes.get(change.row.join(',')), 1);
+});
+
+test('distinct sixteen-bell rows do not collide through numerical rounding', () => {
+  const change = Change(16);
+  const prover = new Prover();
+  const first = Array.from({length: 16}, (_, i) => 15 - i);
+  const second = [...first];
+  [second[14], second[15]] = [second[15], second[14]];
+  change.setRow(first);
+  assert.equal(prover.checkRow(change), 0);
+  change.setRow(second);
+  assert.equal(prover.checkRow(change), 0);
+  change.setRow(first);
+  assert.equal(prover.checkRow(change), -1);
+  assert.equal(prover.changes.size, 2);
+});

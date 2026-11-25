@@ -10,7 +10,7 @@ const source = readFileSync(join(__dirname, '../js/pealprover.js'), 'utf8');
 function engine() {
   const context = vm.createContext({});
   vm.runInContext(source, context);
-  return vm.runInContext('({bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve})', context);
+  return vm.runInContext('({bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand})', context);
 }
 
 test('bell names round-trip from 1 to T', () => {
@@ -257,5 +257,11 @@ test('repeated Home calls from the existing false-touch fixture prove false', ()
 test('proving uses supplied composition lines and custom music without a DOM', () => {
   const result = proveTouch(6, [plainBob(6)], 'P\nPPPP', '123456');
   assert.equal(result.courses, '135264\n123456\n');
-  assert.match(result.music, /<strong>1<\/strong>\t123456/);
+  assert.equal(result.music.find(({pattern}) => pattern === '123456').count, 1);
+});
+
+test('generateShorthand accepts a validated method without a DOM', () => {
+  const {generateShorthand, validateMethod} = engine();
+  const method = validateMethod('P', plainBob(6).notation, 6);
+  assert.equal(generateShorthand('h', method, ['/', '14'], [';', '1234']), 'PPPPP/\n');
 });

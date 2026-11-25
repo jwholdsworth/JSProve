@@ -105,18 +105,21 @@ function insertCallBox(symbol, notation) {
     <div class="form-row mb-1 js-call" id="call${numberOfCalls}">
         <div class="col-2">
             <input class="form-control callSymbol" type="text" maxlength="1" name="symbol1"
-                id="symbol${numberOfCalls}" value="${symbol}" placeholder="Symbol" />
+                id="symbol${numberOfCalls}" placeholder="Symbol" />
         </div>
         <div class="col">
             <input class="form-control callNtn" type="text" name="callNtn${numberOfCalls}" id="callNtn${numberOfCalls}"
-                value="${notation}" placeholder="Notation" />
+                placeholder="Notation" />
         </div>
         <div class="col-1">
             <input type="button" value="&dash;" class="removeCall btn btn-danger" onclick="removeElement('call${numberOfCalls}');" />
         </div>
     </div>
   `;
-  $('#js-calls-form').append(callRow);
+  const $callRow = $(callRow);
+  $callRow.find('.callSymbol').val(symbol);
+  $callRow.find('.callNtn').val(notation);
+  $('#js-calls-form').append($callRow);
   numberOfCalls++;
 }
 
@@ -129,17 +132,20 @@ function insertMethodBox(code, pn) {
   const methodRow = `
     <div id="method${numberOfMethods}" class="form-row js-method mb-1">
       <div class="col-2">
-        <input type="text" class="js-shortcut form-control" id="shortcut${numberOfMethods}" maxlength="1" value="${code}" placeholder="Symbol" />
+        <input type="text" class="js-shortcut form-control" id="shortcut${numberOfMethods}" maxlength="1" placeholder="Symbol" />
       </div>
       <div class="col">
-        <input type="text" class="js-notation form-control" id="notation${numberOfMethods}" value="${pn}" placeholder="Notation" />
+        <input type="text" class="js-notation form-control" id="notation${numberOfMethods}" placeholder="Notation" />
       </div>
       <div class="col-1">
         <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeElement('method${numberOfMethods}');" />
       </div>
     </div>
   `;
-  $('#methodList').append(methodRow);
+  const $methodRow = $(methodRow);
+  $methodRow.find('.js-shortcut').val(code);
+  $methodRow.find('.js-notation').val(pn);
+  $('#methodList').append($methodRow);
   numberOfMethods++;
 }
 
@@ -270,11 +276,11 @@ function prove() {
       messageType = 'danger';
     }
 
-    $('#results').html(res.status).attr('class', 'text-' + messageType);
+    $('#results').text(res.status).attr('class', 'text-' + messageType);
     $('#music').html(res.music);
-    $('#courseEnds').html(res.courses);
-    $('#atw pre').html(res.atw);
-    $('#com').html(res.com + ' changes of method');
+    $('#courseEnds').text(res.courses);
+    $('#atw pre').text(res.atw);
+    $('#com').text(res.com + ' changes of method');
   } catch (e) {
     displayMessage(e.toString(), 'danger');
   }
@@ -293,16 +299,14 @@ function displayMethodLibraryPage() {
  */
 function loadMethods(file) {
   $.get('lib/' + file, function (data) {
-    let methods = '';
-    methods += '<select name="method" id="methodSelect" data-live-search="true" class="form-control">';
+    const methods = $('<select name="method" id="methodSelect" data-live-search="true" class="form-control">');
     const m = data.split('\n');
-    for (i = 1; i < m.length; i++) {
+    for (let i = 1; i < m.length; i++) {
       const n = m[i].split(' ');
-      methods += '<option value=\'' + n[1] + ' ' + n[2] + '\'>' + n[0] + '</option>';
+      methods.append($('<option>').val(n[1] + ' ' + n[2]).text(n[0]));
     }
-    methods += '</select>';
 
-    $('#methodDropDown').html(methods);
+    $('#methodDropDown').empty().append(methods);
     $('#popup').modal();
     $('#methodSelect').selectpicker();
   }, 'text');
@@ -323,6 +327,6 @@ function displayMessage(message, level, timeout) {
     timeout = 2000;
   }
   $('#alert').attr('class', 'alert alert-' + level);
-  $('#alert div').html(message);
+  $('#alert div').text(message);
   $('#alert').fadeIn('slow').delay(timeout).fadeOut('slow');
 }

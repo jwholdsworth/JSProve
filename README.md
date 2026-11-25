@@ -1,6 +1,6 @@
 JSProve
 =======
-JSProve is a web-based peal proving program for even bell methods (single methods and spliced) from Minor to Maximus.
+JSProve is a web-based peal proving program for even bell methods (single methods and spliced) from Minor to Sixteen.
 
 ## Features
 * Load methods in from the MicroSiril Libraries (or specify new methods yourself)
@@ -12,13 +12,13 @@ JSProve is a web-based peal proving program for even bell methods (single method
 
 ## Usage
 ### Getting JSProve
-Either visit http://james.theholdsworths.org.uk/projects/jsprove/ to use the online version, or download the source code as a Zip file (from the link above) and open 'index.html' in your favourite browser (NOT Internet Explorer please!).
+Either visit http://james.theholdsworths.org.uk/projects/jsprove/ to use the online version, or download the source code as a Zip file (from the link above) and serve it over HTTP (for example, run `npm install` and `npm run start:ci`, then open http://localhost:8080).
 
 ### Proving a Single Method
 On the 'Methods and Composition' tab:
 
 1. Remove any existing methods declared (the default ones are the methods in Mark Davies's 10-Spliced Surprise Major, though other collections are available too)
-1. Select the stage (i.e. Minor/Major/Royal/Maximus)
+1. Select the stage (i.e. Minor/Major/Royal/Maximus/Fourteen/Sixteen)
 1. Select the class (i.e. Surprise/Delight etc.)
 1. Click 'Load Method from Library' and find the method you want (hint: just start typing the name and it should appear)
 

@@ -12,17 +12,20 @@ let stage = $('#methodRank').val();
  *******************************************************************************/
 $(document).ready(function () {
   setup();
-  // Enable autosizing of all text areas
 
   // Enable as-you-type proving by adding a keyup event to the composition box
   $('#composition').trigger('keyup');
 });
 
 // set the "methods" tab as the default one
-$('#tabs a:first').trigger('click');
+bootstrap.Tab.getOrCreateInstance(document.querySelector('#tabs a')).show();
 
 // enable tooltips
-$('body').tooltip();
+document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((element) => new bootstrap.Tooltip(element));
+
+$('#closeAlert').click(function () {
+  $('#alert').stop(true, true).hide();
+});
 
 /** *****************************************************************************
  * EVENT HANDLERS
@@ -100,7 +103,7 @@ function setup() {
 
 function insertCallBox(symbol, notation) {
   const callRow = `
-    <div class="form-row mb-1 js-call" id="call${numberOfCalls}">
+    <div class="row g-2 mb-1 js-call" id="call${numberOfCalls}">
         <div class="col-2">
             <input class="form-control callSymbol" type="text" maxlength="1" name="symbol1"
                 id="symbol${numberOfCalls}" placeholder="Symbol" />
@@ -128,7 +131,7 @@ function insertCallBox(symbol, notation) {
  */
 function insertMethodBox(code, pn) {
   const methodRow = `
-    <div id="method${numberOfMethods}" class="form-row js-method mb-1">
+    <div id="method${numberOfMethods}" class="row g-2 js-method mb-1">
       <div class="col-2">
         <input type="text" class="js-shortcut form-control" id="shortcut${numberOfMethods}" maxlength="1" placeholder="Symbol" />
       </div>
@@ -160,7 +163,7 @@ function insertMethod() {
       insertMethodBox(methodSymbol, $('#methodSelect').val());
     }
   }
-  $('#popup').modal('hide');
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('popup')).hide();
 }
 
 /**
@@ -217,7 +220,7 @@ function getCollectionsForStage(stage) {
  */
 function loadCollectionsForStage(stage) {
   stageCollections = getCollectionsForStage(stage);
-  options = '<select name="collection" class="form-control">';
+  options = '<select name="collection" class="form-select">';
   for (let i = 0; i < stageCollections.length; i++) {
     options += '<option value="' + stageCollections[i].key + '">' + stageCollections[i].name + '</option>';
   }
@@ -303,9 +306,10 @@ function loadMethods(file) {
       methods.append($('<option>').val(n[1] + ' ' + n[2]).text(n[0]));
     }
 
+    $('#methodSelect').selectpicker('destroy');
     $('#methodDropDown').empty().append(methods);
-    $('#popup').modal();
     $('#methodSelect').selectpicker();
+    bootstrap.Modal.getOrCreateInstance(document.getElementById('popup')).show();
   }, 'text');
 }
 

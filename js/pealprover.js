@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 'use strict';
 
-const MAX_STAGE = 24;
-const BELL_NAMES = '1234567890ET';
+const MAX_STAGE = 16;
+const BELL_NAMES = '1234567890ETABCD';
 
 const createComposition = (userInput) => {
   const selectedMethods = {};
@@ -380,22 +380,7 @@ function Change(stage) {
  * @return {string} The bell index
  */
 function bellIndex(name) {
-  if (name >= '1' && name <= '9') {
-    return parseInt(name, 10) - 1;
-  }
-  if (name === '0') {
-    return 9;
-  }
-  if (name === 'E') {
-    return 10;
-  }
-  if (name === 'T') {
-    return 11;
-  }
-  if (name === '*') {
-    return -1;
-  }
-  return -1;
+  return typeof name === 'string' && name.length === 1 ? BELL_NAMES.indexOf(name) : -1;
 }
 
 /**
@@ -404,22 +389,8 @@ function bellIndex(name) {
  * @return {string} The bell name
  */
 function bellName(index) {
-  if (index === -1) {
-    return '*';
-  }
-  if (index > -1 && index < 9) {
-    return (index+1).toString();
-  }
-  if (index === 9) {
-    return '0';
-  }
-  if (index === 10) {
-    return 'E';
-  }
-  if (index === 11) {
-    return 'T';
-  }
-  return index;
+  if (index === -1) return '*';
+  return BELL_NAMES[index] ?? index;
 }
 
 /**
@@ -514,7 +485,7 @@ function parse_method_microsiril(stage, group, notation) {
   c = group.charAt(0);
   if (group.charAt(group.length - 1) === 'z') {
     res = parse_bell_list(stage, 0, group);
-    if (res.n !== res.length) {
+    if (res.n !== group.length - 1) {
       throw 'Bad method group: ' + group;
     }
     lead_end = res.mask;

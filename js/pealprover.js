@@ -100,16 +100,16 @@ function validate_method(id) {
   let method;
   let notation;
 
-  shortcut = $('#shortcut' + id).val();
+  shortcut = document.getElementById('shortcut' + id)?.value;
   if (shortcut == '') {
     return false;
   }
-  notation = $('#notation' + id).val();
+  notation = document.getElementById('notation' + id)?.value;
   notation = notation.replace(/x/gi, '-');
   if (notation == '') {
     return false;
   }
-  stage = parseInt($('#methodRank').val(), 10);
+  stage = parseInt(document.getElementById('methodRank').value, 10);
   if (stage <= 0 || stage > MAX_STAGE) {
     return false;
   }
@@ -162,7 +162,7 @@ function doProve(composition) {
   addFourBellRuns(comp.stage, music);
 
   // add user specific music patterns
-  const userInputPatterns = $('#userMusicList').val();
+  const userInputPatterns = document.getElementById('userMusicList').value;
   if (userInputPatterns.length != 0) {
     const userPatterns = readUserMusicPatterns(userInputPatterns);
     for (let i = 0; i < userPatterns.length; i++) {
@@ -177,7 +177,7 @@ function doProve(composition) {
   comp.run(test_row);
 
   // display course ends
-  let comptext = $('#composition').val();
+  let comptext = document.getElementById('composition').value;
 
   // now remove the calls from the comp text (look up from call list)
   // split the composition up at the carriage returns.
@@ -320,7 +320,7 @@ function readUserMusicPatterns(patternList) {
  */
 function generateShorthand(methodID, bob, single) {
   const vm = validate_method(methodID);
-  const s = Shorthand($('#shorthand').val(), vm[1]);
+  const s = Shorthand(document.getElementById('shorthand').value, vm[1]);
 
   s.run(nothing, bob, single);
 

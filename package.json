@@ -6,7 +6,7 @@
     "test": "npm run cypress",
     "cypress": "cypress run",
     "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
-    "lint": "eslint js/*.js --ignore-pattern '*.min.js'"
+    "lint": "eslint js"
   },
   "repository": {
     "type": "git",

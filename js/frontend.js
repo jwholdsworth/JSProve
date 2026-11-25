@@ -154,14 +154,13 @@ function insertMethodBox(code, pn) {
  * insert the selected method into the methods list
  */
 function insertMethod() {
-  const methodName = $('#methodSelect option:selected').text();
-  const methodSymbol = $('#methodSymbol').val();
+  const method = document.getElementById('methodSelect').selectedOptions[0];
+  if (!method) return;
+
+  const methodName = method.textContent;
+  const methodSymbol = document.getElementById('methodSymbol').value;
   if (checkMethodLetterIsUnique(methodName.charAt(0), methodName, methodSymbol)) {
-    if (methodSymbol === '') {
-      insertMethodBox(methodName.charAt(0), $('#methodSelect').val());
-    } else {
-      insertMethodBox(methodSymbol, $('#methodSelect').val());
-    }
+    insertMethodBox(methodSymbol || methodName.charAt(0), method.value);
   }
   bootstrap.Modal.getOrCreateInstance(document.getElementById('popup')).hide();
 }
@@ -297,20 +296,56 @@ function displayMethodLibraryPage() {
 /**
  * Display the Load Method from File box
  */
-function loadMethods(file) {
-  $.get('lib/' + file, function (data) {
-    const methods = $('<select name="method" id="methodSelect" data-live-search="true" class="form-control">');
-    const m = data.split('\n');
-    for (let i = 1; i < m.length; i++) {
-      const n = m[i].split(' ');
-      methods.append($('<option>').val(n[1] + ' ' + n[2]).text(n[0]));
-    }
+let libraryMethods = [];
 
-    $('#methodSelect').selectpicker('destroy');
-    $('#methodDropDown').empty().append(methods);
-    $('#methodSelect').selectpicker();
+const methodSearch = document.getElementById('methodSearch');
+const methodSelect = document.getElementById('methodSelect');
+const insertMethodButton = document.getElementById('insertMethod');
+
+methodSearch.addEventListener('input', filterMethods);
+methodSearch.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowDown' && methodSelect.options.length) {
+    event.preventDefault();
+    methodSelect.focus();
+  }
+});
+methodSelect.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    insertMethod();
+  }
+});
+document.getElementById('popup').addEventListener('shown.bs.modal', () => methodSearch.focus());
+
+function filterMethods() {
+  const query = methodSearch.value.trim().toLowerCase();
+  const matches = libraryMethods.filter((method) => method.name.toLowerCase().includes(query));
+  const options = document.createDocumentFragment();
+  for (const method of matches) {
+    options.append(new Option(method.name, method.notation));
+  }
+  methodSelect.replaceChildren(options);
+  methodSelect.selectedIndex = matches.length ? 0 : -1;
+  insertMethodButton.disabled = matches.length === 0;
+  document.getElementById('methodSearchStatus').textContent =
+    matches.length ? matches.length + ' matching methods' : 'No matching methods';
+}
+
+async function loadMethods(file) {
+  try {
+    const response = await fetch('lib/' + file);
+    if (!response.ok) throw new Error('Unable to load method library');
+    const data = await response.text();
+    libraryMethods = data.split('\n').slice(1).filter((line) => line.trim()).map((line) => {
+      const [name, group, notation] = line.trim().split(/\s+/);
+      return {name, notation: group + ' ' + notation};
+    });
+    methodSearch.value = '';
+    filterMethods();
     bootstrap.Modal.getOrCreateInstance(document.getElementById('popup')).show();
-  }, 'text');
+  } catch (error) {
+    displayMessage(error.message, 'danger');
+  }
 }
 
 /**

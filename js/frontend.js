@@ -338,6 +338,36 @@ function prove() {
     const results = document.getElementById('results');
     results.textContent = res.status;
     results.className = 'text-' + messageType;
+    const falseness = document.getElementById('falseness');
+    falseness.hidden = !res.falseness;
+    falseness.replaceChildren();
+    if (res.falseness) {
+      const repeatedRow = document.createElement('strong');
+      repeatedRow.textContent = res.falseness.row;
+      falseness.append('Repeated row: ', repeatedRow,
+        ` first rung at change ${res.falseness.firstChange}, repeated at change ${res.falseness.secondChange}.`);
+    }
+    const details = document.getElementById('falseLeadDetails');
+    details.hidden = !res.falseness;
+    const body = details.querySelector('tbody');
+    body.replaceChildren();
+    if (res.falseness) {
+      const {first, second} = res.falseness;
+      for (const [label, key] of [
+        ['Method symbol', 'method'],
+        ['Lead number', 'lead'],
+        ['Lead head', 'leadHead'],
+        ['Change within lead', 'changeInLead'],
+      ]) {
+        const row = body.insertRow();
+        const heading = document.createElement('th');
+        heading.scope = 'row';
+        heading.textContent = label;
+        row.append(heading);
+        row.insertCell().textContent = first[key];
+        row.insertCell().textContent = second[key];
+      }
+    }
     const musicOutput = document.createElement('pre');
     musicOutput.className = 'form-control output';
     for (const {count, pattern} of res.music) {

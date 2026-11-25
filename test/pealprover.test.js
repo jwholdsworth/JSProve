@@ -271,3 +271,39 @@ test('distinct sixteen-bell rows do not collide through numerical rounding', () 
   assert.equal(prover.checkRow(change), -1);
   assert.equal(prover.changes.size, 2);
 });
+
+test('false touch reports the repeated row and both change numbers', () => {
+  const change = Change(6);
+  const prover = new Prover();
+  change.advance(0);
+  assert.equal(prover.checkRow(change), 0);
+  change.advance(33);
+  assert.equal(prover.checkRow(change), 0);
+  change.advance(33);
+  assert.equal(prover.checkRow(change), -1);
+  assert.deepEqual(prover.falseness, {row: '214365', firstChange: 1, secondChange: 3});
+});
+
+test('proving reports falseness before rounds and clears it for true touches', () => {
+  const result = proveTouch(6, [{shorthand: 'P', notation: '-16.16'}], 'P');
+  assert.deepEqual(result.falseness, {
+    row: '214365', firstChange: 1, secondChange: 3,
+    first: {method: 'P', lead: 1, leadHead: '123456', changeInLead: 1},
+    second: {method: 'P', lead: 1, leadHead: '123456', changeInLead: 3},
+  });
+  assert.equal(result.status, 'Touch is false after 3 changes');
+  assert.equal(proveTouch(6, [plainBob(6)], 'PPPPP').falseness, null);
+  assert.equal(proveTouch(6, [plainBob(6)], 'P').falseness, null);
+});
+
+test('falseness locates repeated rows across methods of different lead lengths', () => {
+  const result = proveTouch(6, [
+    {shorthand: 'A', notation: '-16'},
+    {shorthand: 'B', notation: '16'},
+  ], 'AB');
+  assert.deepEqual(result.falseness, {
+    row: '214365', firstChange: 1, secondChange: 3,
+    first: {method: 'A', lead: 1, leadHead: '123456', changeInLead: 1},
+    second: {method: 'B', lead: 2, leadHead: '241635', changeInLead: 1},
+  });
+});

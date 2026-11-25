@@ -70,6 +70,7 @@ function doProve(composition, compositionText, userInputPatterns) {
   const music = MusicBox();
   const result = {
     trueTouch: false,
+    falseness: null,
     complete: false,
     length: 0,
     status: 'No touch entered',
@@ -94,6 +95,7 @@ function doProve(composition, compositionText, userInputPatterns) {
 
     if (r < 0) {
       rounds = -changes;
+      result.falseness = p.falseness;
     } else if (r == 1) {
       rounds = changes;
     }
@@ -115,6 +117,31 @@ function doProve(composition, compositionText, userInputPatterns) {
 
   music.setup(comp.stage);
   comp.run(test_row);
+
+  if (result.falseness) {
+    const describeChange = (changeNumber) => {
+      let offset = 0;
+      for (const [index, method] of comp.methods.entries()) {
+        const length = method.rows.length + 1;
+        if (changeNumber <= offset + length) {
+          return {
+            method: method.name,
+            lead: index + 1,
+            leadHead: index === 0
+              ? BELL_NAMES.slice(0, comp.stage)
+              : comp.leadends[index - 1].map(bellName).join(''),
+            changeInLead: changeNumber - offset,
+          };
+        }
+        offset += length;
+      }
+    };
+    result.falseness = {
+      ...result.falseness,
+      first: describeChange(result.falseness.firstChange),
+      second: describeChange(result.falseness.secondChange),
+    };
+  }
 
   // display course ends
   let comptext = compositionText;
@@ -760,6 +787,7 @@ class Prover {
   constructor() {
     this.changes = new Map();
     this.changeNumber = 0;
+    this.falseness = null;
   }
 
   /**
@@ -772,6 +800,11 @@ class Prover {
     // Delimit bell indices so that the key remains unambiguous above ten bells.
     const key = c.row.join(',');
     if (this.changes.has(key)) {
+      this.falseness ??= {
+        row: c.pp(),
+        firstChange: this.changes.get(key),
+        secondChange: this.changeNumber,
+      };
       return -1;
     }
     this.changes.set(key, this.changeNumber);

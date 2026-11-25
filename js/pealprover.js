@@ -118,6 +118,31 @@ function doProve(composition, compositionText, userInputPatterns) {
   music.setup(comp.stage);
   comp.run(test_row);
 
+  if (result.falseness) {
+    const describeChange = (changeNumber) => {
+      let offset = 0;
+      for (const [index, method] of comp.methods.entries()) {
+        const length = method.rows.length + 1;
+        if (changeNumber <= offset + length) {
+          return {
+            method: method.name,
+            lead: index + 1,
+            leadHead: index === 0
+              ? BELL_NAMES.slice(0, comp.stage)
+              : comp.leadends[index - 1].map(bellName).join(''),
+            changeInLead: changeNumber - offset,
+          };
+        }
+        offset += length;
+      }
+    };
+    result.falseness = {
+      ...result.falseness,
+      first: describeChange(result.falseness.firstChange),
+      second: describeChange(result.falseness.secondChange),
+    };
+  }
+
   // display course ends
   let comptext = compositionText;
 

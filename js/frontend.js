@@ -340,9 +340,13 @@ function prove() {
     results.className = 'text-' + messageType;
     const falseness = document.getElementById('falseness');
     falseness.hidden = !res.falseness;
-    falseness.textContent = res.falseness
-      ? `Repeated row: ${res.falseness.row} first rung at change ${res.falseness.firstChange}, repeated at change ${res.falseness.secondChange}.`
-      : '';
+    falseness.replaceChildren();
+    if (res.falseness) {
+      const repeatedRow = document.createElement('strong');
+      repeatedRow.textContent = res.falseness.row;
+      falseness.append('Repeated row: ', repeatedRow,
+        ` first rung at change ${res.falseness.firstChange}, repeated at change ${res.falseness.secondChange}.`);
+    }
     const details = document.getElementById('falseLeadDetails');
     details.hidden = !res.falseness;
     const body = details.querySelector('tbody');

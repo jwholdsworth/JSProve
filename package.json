@@ -2,7 +2,7 @@
   "name": "jsprove",
   "type": "module",
   "version": "1.0.0",
-  "description": "Browser-based peal proving for even bell methods from Minor to Maximus.",
+  "description": "Browser-based peal proving for even bell methods from Minor to Sixteen.",
   "scripts": {
     "test": "npm run test:unit && npm run cypress",
     "test:unit": "node --test test/*.test.js",

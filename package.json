@@ -1,15 +1,12 @@
 {
   "name": "jsprove",
   "version": "1.0.0",
-  "description": "JSProve ======= JSProve is a web-based peal proving program for even bell methods (single methods and spliced) from Minor to Maximus.",
-  "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "description": "Browser-based peal proving for even bell methods from Minor to Maximus.",
   "scripts": {
-    "test": "nyc mocha -w",
+    "test": "npm run cypress",
     "cypress": "cypress run",
-    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}"
+    "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
+    "lint": "eslint js/*.js --ignore-pattern '*.min.js'"
   },
   "repository": {
     "type": "git",
@@ -26,5 +23,6 @@
     "eslint": "8.41.0",
     "eslint-config-google": "0.14.0",
     "serve": "^14.2.0"
-  }
+  },
+  "private": true
 }

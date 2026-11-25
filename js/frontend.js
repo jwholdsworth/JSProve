@@ -338,6 +338,11 @@ function prove() {
     const results = document.getElementById('results');
     results.textContent = res.status;
     results.className = 'text-' + messageType;
+    const falseness = document.getElementById('falseness');
+    falseness.hidden = !res.falseness;
+    falseness.textContent = res.falseness
+      ? `Repeated row: ${res.falseness.row} — first rung at change ${res.falseness.firstChange}, repeated at change ${res.falseness.secondChange}.`
+      : '';
     const musicOutput = document.createElement('pre');
     musicOutput.className = 'form-control output';
     for (const {count, pattern} of res.music) {

@@ -45,3 +45,17 @@ pre {
         resize: vertical;
     }
 }
+
+#stagePrepend,
+#classPrepend {
+    width: 5rem;
+    padding-inline: 1rem;
+}
+
+.text-info {
+    --bs-info-rgb: 8, 121, 144;
+}
+
+.text-success {
+    --bs-success-rgb: 20, 108, 67;
+}

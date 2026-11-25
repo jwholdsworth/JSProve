@@ -10,11 +10,10 @@ let stage = $('#methodRank').val();
 /** *****************************************************************************
  * ONLOAD FUNCTION
  *******************************************************************************/
-$(document).ready(function () {
+document.addEventListener('DOMContentLoaded', function () {
   setup();
 
-  // Enable as-you-type proving by adding a keyup event to the composition box
-  $('#composition').trigger('keyup');
+  prove();
 });
 
 // set the "methods" tab as the default one
@@ -23,7 +22,7 @@ bootstrap.Tab.getOrCreateInstance(document.querySelector('#tabs a')).show();
 // enable tooltips
 document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((element) => new bootstrap.Tooltip(element));
 
-$('#closeAlert').click(function () {
+document.getElementById('closeAlert').addEventListener('click', function () {
   $('#alert').stop(true, true).hide();
 });
 
@@ -31,48 +30,50 @@ $('#closeAlert').click(function () {
  * EVENT HANDLERS
  *******************************************************************************/
 // Reset the user interface when stage changes
-$('#methodRank').change(function () {
+document.getElementById('methodRank').addEventListener('change', function () {
   setup();
 });
 
-$('#collectionChoice').change(function () {
-  insertCollection(stage, $('option:selected', this).val());
+document.getElementById('collectionChoice').addEventListener('change', function () {
+  insertCollection(stage, this.querySelector('select').value);
 });
 
 // add a new method event handler
-$('#searchMethod').click(displayMethodLibraryPage);
+document.getElementById('searchMethod').addEventListener('click', displayMethodLibraryPage);
 
 // Load the 'Insert new Method' menu
-$('#moreMethods').click(function () {
+document.getElementById('moreMethods').addEventListener('click', function () {
   insertMethodBox('', '');
 });
 
 // add the method to the UI
-$('#insertMethod').click(insertMethod);
+document.getElementById('insertMethod').addEventListener('click', insertMethod);
 
 // Display a warning when you try to use half lead calls (not implemented yet)
-$('.callLocation').change(function () {
-  displayMessage('Half-lead calls are not implemented yet');
+document.querySelectorAll('.callLocation').forEach((element) => {
+  element.addEventListener('change', function () {
+    displayMessage('Half-lead calls are not implemented yet');
+  });
 });
 
 // add event handler to composition box - on change, prove the composition
-$('#composition').keyup(function () {
+document.getElementById('composition').addEventListener('keyup', function () {
   prove();
 });
 
 // generate the composition from the shorthand
-$('#generateShorthand').click(function () {
+document.getElementById('generateShorthand').addEventListener('click', function () {
   // select the first method from the method list to be used for the shorthand
   const firstMethod = $('#methodList').children(':first-child');
   const mid = $(firstMethod[0]).attr('id');
 
   if (!mid) {
     displayMessage('No methods defined.');
-    return false;
+    return;
   }
 
   try {
-    comp = generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
+    const comp = generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
     $('#composition').val(comp);
     prove();
   } catch (e) {
@@ -81,7 +82,7 @@ $('#generateShorthand').click(function () {
 });
 
 // add more call fields
-$('#btnAddMoreCalls').click(function () {
+document.getElementById('btnAddMoreCalls').addEventListener('click', function () {
   insertCallBox('', '');
 });
 

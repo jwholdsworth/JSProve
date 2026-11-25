@@ -891,3 +891,5 @@ function MusicBox() {
 
   return that;
 }
+
+export {bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand};

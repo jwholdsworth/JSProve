@@ -2,8 +2,8 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import {bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand} from '../js/pealprover.js';
 
-test('bell names round-trip from 1 to T', () => {
-  for (const [index, name] of [...'1234567890ET'].entries()) {
+test('bell names round-trip from 1 to D', () => {
+  for (const [index, name] of [...'1234567890ETABCD'].entries()) {
     assert.equal(bellIndex(name), index);
     assert.equal(bellName(index), name);
   }
@@ -85,10 +85,10 @@ test('music matches exact and wildcard patterns', () => {
   assert.deepEqual(Array.from(music.counts), [1, 2]);
 });
 
-const plainBob = (stage) => ({shorthand: 'P', notation: ('-1' + '1234567890ET'[stage - 1]).repeat(stage / 2) + ',12'});
+const plainBob = (stage) => ({shorthand: 'P', notation: ('-1' + '1234567890ETABCD'[stage - 1]).repeat(stage / 2) + ',12'});
 const calls = [{symbol: '/', notation: '14'}, {symbol: ';', notation: '1234'}];
 
-for (const stage of [8, 10, 12]) {
+for (const stage of [8, 10, 12, 14, 16]) {
   test('Plain Bob plain course on ' + stage + ' bells', () => {
     const {comp} = createComposition({stage, methods: [plainBob(stage)], calls: [], composition: 'P'.repeat(stage - 1)});
     const prover = new Prover();
@@ -101,7 +101,7 @@ for (const stage of [8, 10, 12]) {
     const length = 2 * stage * (stage - 1);
     assert.equal(rows.length, length);
     assert.equal(new Set(rows).size, length);
-    assert.equal(rows.at(-1), '1234567890ET'.slice(0, stage));
+    assert.equal(rows.at(-1), '1234567890ETABCD'.slice(0, stage));
     assert.deepEqual(truth, [...Array(length - 1).fill(0), 1]);
   });
 }
@@ -332,5 +332,31 @@ test('ATW retains positions across repeated and interleaved methods', () => {
         }
       }
     }
+  }
+});
+
+for (const stage of [14, 16]) {
+  test('higher-stage Plain Bob full prove on ' + stage + ' bells', () => {
+    const rounds = '1234567890ETABCD'.slice(0, stage);
+    const result = proveTouch(stage, [plainBob(stage)], 'P'.repeat(stage - 1), rounds);
+    assert.equal(result.status, 'Touch is true: ' + 2 * stage * (stage - 1) + ' changes');
+    assert.equal(result.courses, rounds + '\n');
+    assert.equal(result.music.find(({pattern}) => pattern === rounds).count, 1);
+    assert.equal(result.falseness, null);
+  });
+}
+test('higher-stage place notation supports A through D and explicit lead ends', () => {
+  assert.equal(parse_bell_list(16, 0, '1D').mask, 32769);
+  assert.equal(parse_bell_list(16, 0, 'ABCD').mask, 61440);
+  assert.equal(parse_method(14, 'Bz &-1').at(-1), 8193);
+});
+test('Cambridge Surprise Fourteen and Sixteen library notation proves a plain course', () => {
+  for (const [stage, notation] of [
+    [14, 'b &-3-4-25-36-47-58-69-70-8E-9T-0-E-T-A'],
+    [16, 'b &-3-4-25-36-47-58-69-70-8E-9T-0A-EB-T-A-B-C'],
+  ]) {
+    const result = proveTouch(stage, [{shorthand: 'C', notation}], 'C'.repeat(stage - 1));
+    assert.equal(result.status, 'Touch is true: ' + 4 * stage * (stage - 1) + ' changes');
+    assert.equal(result.courses, '1234567890ETABCD'.slice(0, stage) + '\n');
   }
 });

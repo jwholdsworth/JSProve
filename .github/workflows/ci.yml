@@ -22,6 +22,7 @@ jobs:
           node-version: '24'
           cache: npm
       - run: npm ci
+      - run: npm run lint
       - name: Run Cypress
         run: |
           npm run start:ci &

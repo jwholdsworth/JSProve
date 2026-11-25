@@ -7,10 +7,10 @@ const vm = require('node:vm');
 // Load the browser script unchanged, without a DOM. Lexical declarations
 // (including classes and const functions) are accessible inside the context.
 const source = readFileSync(join(__dirname, '../js/pealprover.js'), 'utf8');
-function engine() {
-  const context = vm.createContext({});
+function engine(globals = {}) {
+  const context = vm.createContext(globals);
   vm.runInContext(source, context);
-  return vm.runInContext('({bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox})', context);
+  return vm.runInContext('({bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve})', context);
 }
 
 test('bell names round-trip from 1 to T', () => {
@@ -102,4 +102,150 @@ test('music matches exact and wildcard patterns', () => {
   change.advance(0);
   music.match_row(change);
   assert.deepEqual(Array.from(music.counts), [1, 2]);
+});
+
+const plainBob = (stage) => ({shorthand: 'P', notation: ('-1' + '1234567890ET'[stage - 1]).repeat(stage / 2) + ',12'});
+const calls = [{symbol: '/', notation: '14'}, {symbol: ';', notation: '1234'}];
+
+for (const stage of [8, 10, 12]) {
+  test('Plain Bob plain course on ' + stage + ' bells', () => {
+    const {createComposition, Prover} = engine();
+    const {comp} = createComposition({stage, methods: [plainBob(stage)], calls: [], composition: 'P'.repeat(stage - 1)});
+    const prover = new Prover();
+    const rows = [];
+    const truth = [];
+    comp.run((change) => {
+      rows.push(change.pp());
+      truth.push(prover.checkRow(change));
+    });
+    const length = 2 * stage * (stage - 1);
+    assert.equal(rows.length, length);
+    assert.equal(new Set(rows).size, length);
+    assert.equal(rows.at(-1), '1234567890ET'.slice(0, stage));
+    assert.deepEqual(truth, [...Array(length - 1).fill(0), 1]);
+  });
+}
+
+test('Cambridge and Bristol Surprise Major have 32-change leads', () => {
+  const {validateMethod, Change} = engine();
+  for (const [notation, expected] of [
+    ['b &-3-4-25-36-4-5-6-7', '15738264'],
+    ['m &-5-4.5-5.36.4-4.5-4-1', '14263857'],
+  ]) {
+    const method = validateMethod('M', notation, 8);
+    const change = Change(8);
+    let count = 0;
+    change.advance_lead(method, -1, () => count++);
+    assert.equal(count, 32);
+    assert.equal(change.pp(), expected);
+  }
+});
+
+test('asymmetric notation preserves the supplied sequence', () => {
+  const {parse_method} = engine();
+  assert.deepEqual(Array.from(parse_method(6, 'a +-16-')), [0, 33, 0, 3]);
+});
+
+test('invalid notation and invalid stage are rejected', () => {
+  const {validateMethod} = engine();
+  assert.throws(() => validateMethod('P', '-Z', 6), /Bad place notation/);
+  assert.equal(validateMethod('P', '-16,12', 0), false);
+  assert.equal(validateMethod('P', '-16,12', 6.5), false);
+});
+
+test('composition parser associates calls with the preceding method', () => {
+  const {createComposition} = engine();
+  const {comp} = createComposition({
+    stage: 6, methods: [plainBob(6), {shorthand: 'L', notation: '-16-16-16,16'}],
+    calls, composition: 'P/L;\nP',
+  });
+  assert.deepEqual(Array.from(comp.methods, (method) => method.name), ['P', 'L', 'P']);
+  assert.deepEqual(Array.from(comp.calls), [9, 15, -1]);
+});
+
+test('shorthand expands a bob at Home in Plain Bob Minor', () => {
+  const {Shorthand, validateMethod} = engine();
+  const method = validateMethod('P', plainBob(6).notation, 6);
+  const shorthand = Shorthand('h', method);
+  shorthand.run(() => {}, ['/', '14'], [';', '1234']);
+  assert.equal(shorthand.compText, 'PPPPP/\n');
+});
+
+test('four-bell runs match at both ends of a row', () => {
+  const {MusicBox, Change, addFourBellRuns} = engine();
+  const music = MusicBox();
+  addFourBellRuns(8, music);
+  music.setup(8);
+  music.match_row(Change(8));
+  assert.equal(music.patterns.length, 20);
+  assert.equal(music.counts[0], 1);
+  assert.equal(music.counts[18], 1);
+  assert.equal(music.counts.reduce((a, b) => a + b, 0), 2);
+});
+
+test('user music parses queens, tittums and wildcards', () => {
+  const {readUserMusicPatterns} = engine();
+  const patterns = readUserMusicPatterns('13572468\n15263748\n****5678');
+  assert.deepEqual(Array.from(patterns, (p) => Array.from(p)), [
+    [0, 2, 4, 6, 1, 3, 5, 7], [0, 4, 1, 5, 2, 6, 3, 7], [-1, -1, -1, -1, 4, 5, 6, 7],
+  ]);
+});
+
+test('Plain Bob Minor plain course covers every working lead-head position', () => {
+  const {createComposition, AtwChecker} = engine();
+  const {comp} = createComposition({stage: 6, methods: [plainBob(6)], calls: [], composition: 'PPPPP'});
+  comp.run(() => {});
+  const atw = AtwChecker(comp);
+  atw.getAtw();
+  for (const bell of '23456') {
+    for (const position of '23456') assert.equal(atw.positionsRung.P[bell][position], true);
+  }
+  assert.equal(atw.com, 0);
+});
+
+test('changes of method count transitions between successive leads', () => {
+  const {createComposition, AtwChecker} = engine();
+  const {comp} = createComposition({stage: 6, methods: [plainBob(6), {shorthand: 'L', notation: '-16-16-16,16'}], calls: [], composition: 'PPLLP'});
+  comp.run(() => {});
+  const atw = AtwChecker(comp);
+  atw.getAtw();
+  assert.equal(atw.com, 2);
+});
+
+// Only the legacy doProve entry point needs these two DOM values.
+// Keep the stub here rather than introducing a browser or DOM dependency.
+function proveTouch(stage, methods, composition, music = '') {
+  const values = {composition, userMusicList: music};
+  const {createComposition, doProve} = engine({
+    document: {getElementById: (id) => ({value: values[id]})},
+  });
+  return doProve(createComposition({stage, methods, calls, composition}));
+}
+
+test('complete and incomplete Plain Bob Minor touches report their status', () => {
+  const complete = proveTouch(6, [plainBob(6)], 'PPPPP');
+  assert.equal(complete.trueTouch, true);
+  assert.equal(complete.complete, true);
+  assert.equal(complete.status, 'Touch is true: 60 changes');
+  assert.equal(complete.courses, '123456\n');
+  const incomplete = proveTouch(6, [plainBob(6)], 'P');
+  assert.equal(incomplete.trueTouch, true);
+  assert.equal(incomplete.complete, false);
+  assert.equal(incomplete.length, 12);
+  assert.equal(incomplete.status, 'Incomplete touch (12 changes)');
+});
+
+test('existing 5024 of Pitman’s four proves true with 109 changes of method', () => {
+  const methods = [
+    {shorthand: 'B', notation: 'm &-5-4.5-5.36.4-4.5-4-1'},
+    {shorthand: 'C', notation: 'b &-3-4-25-36-4-5-6-7'},
+    {shorthand: 'L', notation: 'f &3-3.4-2-3.4-4.5.6-6.5'},
+    {shorthand: 'S', notation: 'b &-36-4-5-36-4-5-36-7'},
+  ];
+  const composition = 'LSL/\nL/B/B/S/CSC/\nLSCSC/\nL/B/B/S/CSC/\nLCL/\nL/BBBBBBB/\nCS/CS\nSSS/B/S/CSC/\nLS/L\nL/B/LLLLL/B/L\nL/SL/\nCSC/S/B/SSS\nSC/SC/\nBBBBBBB/L/\nLCL/\nCSC/S/B/B/L/\nCSCSL/\nCSC/S/B/B/L/\nLS/L/B/B/\nLC/SSS\nLC/L/\nLC/B/B/L/\nCSC/CL\nCSC/SL/\nCS/BBBB/\nBBBB/SC/\nLS/CSC\nLC/CSC/\nL/B/B/CL/';
+  const result = proveTouch(8, methods, composition);
+  assert.equal(result.trueTouch, true);
+  assert.equal(result.complete, true);
+  assert.equal(result.status, 'Touch is true: 5024 changes');
+  assert.equal(result.com, 109);
 });

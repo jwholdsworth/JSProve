@@ -120,9 +120,11 @@ function validate_method(id) {
 }
 
 /**
- * @param {Composition} composition The composition
+ * @param {object} composition The parsed composition and calls
+ * @param {string} compositionText The original composition text
+ * @param {string} userInputPatterns User-defined music patterns
  */
-function doProve(composition) {
+function doProve(composition, compositionText, userInputPatterns) {
   const p = new Prover();
   let changes = 0;
   let rounds = 0;
@@ -162,7 +164,6 @@ function doProve(composition) {
   addFourBellRuns(comp.stage, music);
 
   // add user specific music patterns
-  const userInputPatterns = document.getElementById('userMusicList').value;
   if (userInputPatterns.length != 0) {
     const userPatterns = readUserMusicPatterns(userInputPatterns);
     for (let i = 0; i < userPatterns.length; i++) {
@@ -177,7 +178,7 @@ function doProve(composition) {
   comp.run(test_row);
 
   // display course ends
-  let comptext = document.getElementById('composition').value;
+  let comptext = compositionText;
 
   // now remove the calls from the comp text (look up from call list)
   // split the composition up at the carriage returns.

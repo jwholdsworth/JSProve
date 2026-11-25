@@ -70,6 +70,7 @@ function doProve(composition, compositionText, userInputPatterns) {
   const music = MusicBox();
   const result = {
     trueTouch: false,
+    falseness: null,
     complete: false,
     length: 0,
     status: 'No touch entered',
@@ -94,6 +95,7 @@ function doProve(composition, compositionText, userInputPatterns) {
 
     if (r < 0) {
       rounds = -changes;
+      result.falseness = p.falseness;
     } else if (r == 1) {
       rounds = changes;
     }
@@ -760,6 +762,7 @@ class Prover {
   constructor() {
     this.changes = new Map();
     this.changeNumber = 0;
+    this.falseness = null;
   }
 
   /**
@@ -772,6 +775,11 @@ class Prover {
     // Delimit bell indices so that the key remains unambiguous above ten bells.
     const key = c.row.join(',');
     if (this.changes.has(key)) {
+      this.falseness ??= {
+        row: c.pp(),
+        firstChange: this.changes.get(key),
+        secondChange: this.changeNumber,
+      };
       return -1;
     }
     this.changes.set(key, this.changeNumber);

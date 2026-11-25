@@ -758,43 +758,24 @@ function AtwChecker(comp) {
  */
 class Prover {
   constructor() {
-    this.changes = {};
+    this.changes = new Map();
+    this.changeNumber = 0;
   }
 
   /**
-   * Checks the row
-   * @param {Composition} c The composition
-   * @return {number} Whether the row has been seen before or not
+   * Check a row and retain the change number of its first occurrence.
+   * @param {object} c The current change
+   * @return {number} -1 for a repeat, 1 for rounds, 0 otherwise
    */
   checkRow(c) {
-    let val = 0;
-    const row = new Array(c.stage);
-    let i;
-    let j;
-    let bell;
-    let seen = false;
-
-    for (i = 0; i < c.stage; i++) {
-      row[i] = c.row[i];
-    }
-    for (i = 0; i < c.stage; i++) {
-      bell = row[i];
-      for (j = i + 1; j < c.stage; j++) {
-        if (row[j] > bell) {
-          row[j]--;
-        }
-      }
-      val = val * c.stage + bell;
-    }
-    seen = this.changes[val] === true;
-    this.changes[val] = true;
-    if (seen) {
+    this.changeNumber++;
+    // Delimit bell indices so that the key remains unambiguous above ten bells.
+    const key = c.row.join(',');
+    if (this.changes.has(key)) {
       return -1;
     }
-    if (val === 0) {
-      return 1;
-    }
-    return 0;
+    this.changes.set(key, this.changeNumber);
+    return c.row.every((bell, index) => bell === index) ? 1 : 0;
   }
 }
 

@@ -307,3 +307,30 @@ test('falseness locates repeated rows across methods of different lead lengths',
     second: {method: 'B', lead: 2, leadHead: '241635', changeInLead: 1},
   });
 });
+
+test('ATW retains positions across repeated and interleaved methods', () => {
+  const {comp} = createComposition({
+    stage: 6,
+    methods: [plainBob(6), {shorthand: 'L', notation: '-16-16-16,16'}],
+    calls: [],
+    composition: 'PLP',
+  });
+  comp.run(() => {});
+  const atw = AtwChecker(comp);
+  const bells = '123456';
+  const heads = ['123456', ...comp.leadends.slice(0, -1).map((row) => row.map(bellName).join(''))];
+  for (let run = 0; run < 2; run++) {
+    atw.getAtw();
+    assert.equal(atw.methodList, 'PLP');
+    assert.equal(atw.com, 2);
+    for (const name of ['P', 'L']) {
+      for (const bell of bells) {
+        for (const position of bells) {
+          const expected = heads.some((head, i) =>
+            comp.methods[i].name === name && head[Number(position) - 1] === bell);
+          assert.equal(atw.positionsRung[name][bell][position], expected);
+        }
+      }
+    }
+  }
+});

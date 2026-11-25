@@ -1,20 +1,8 @@
-const {test} = require('node:test');
-const assert = require('node:assert/strict');
-const {readFileSync} = require('node:fs');
-const {join} = require('node:path');
-const vm = require('node:vm');
-
-// Load the browser script unchanged, without a DOM. Lexical declarations
-// (including classes and const functions) are accessible inside the context.
-const source = readFileSync(join(__dirname, '../js/pealprover.js'), 'utf8');
-function engine() {
-  const context = vm.createContext({});
-  vm.runInContext(source, context);
-  return vm.runInContext('({bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand})', context);
-}
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand} from '../js/pealprover.js';
 
 test('bell names round-trip from 1 to T', () => {
-  const {bellIndex, bellName} = engine();
   for (const [index, name] of [...'1234567890ET'].entries()) {
     assert.equal(bellIndex(name), index);
     assert.equal(bellName(index), name);
@@ -24,14 +12,12 @@ test('bell names round-trip from 1 to T', () => {
 });
 
 test('place notation includes implicit external places', () => {
-  const {parse_bell_list} = engine();
   assert.equal(parse_bell_list(6, 0, '4').mask, 9); // 14
   assert.equal(parse_bell_list(6, 0, '3').mask, 36); // 36
   assert.equal(parse_bell_list(6, 0, '12').mask, 3);
 });
 
 test('cross and 16 advance a Minor row correctly', () => {
-  const {Change} = engine();
   const change = Change(6);
   assert.equal(change.pp(), '123456');
   change.advance(0);
@@ -41,14 +27,12 @@ test('cross and 16 advance a Minor row correctly', () => {
 });
 
 test('symmetric and MicroSIRIL Plain Bob Minor notation agree', () => {
-  const {parse_method} = engine();
   const expected = [0, 33, 0, 33, 0, 33, 0, 33, 0, 33, 0, 3];
   assert.deepEqual(Array.from(parse_method(6, '-16-16-16,12')), expected);
   assert.deepEqual(Array.from(parse_method(6, 'a &-16-16-16')), expected);
 });
 
 test('Plain Bob Minor plain lead, bob and single have known lead heads', () => {
-  const {Change, validateMethod, parse_bell_list} = engine();
   const method = validateMethod('P', 'x16x16x16,12', 6);
   for (const [call, expected] of [[-1, '135264'], [parse_bell_list(6, 0, '14').mask, '123564'], [parse_bell_list(6, 0, '1234').mask, '132564']]) {
     const change = Change(6);
@@ -60,7 +44,6 @@ test('Plain Bob Minor plain lead, bob and single have known lead heads', () => {
 });
 
 test('Plain Bob Minor plain course has 60 distinct rows and comes round', () => {
-  const {createComposition, Prover} = engine();
   const {comp} = createComposition({
     stage: 6,
     methods: [{shorthand: 'P', notation: '-16-16-16,12'}],
@@ -81,7 +64,6 @@ test('Plain Bob Minor plain course has 60 distinct rows and comes round', () => 
 });
 
 test('prover detects a repeated non-rounds row', () => {
-  const {Change, Prover} = engine();
   const change = Change(6);
   const prover = new Prover();
   change.advance(0);
@@ -90,7 +72,6 @@ test('prover detects a repeated non-rounds row', () => {
 });
 
 test('music matches exact and wildcard patterns', () => {
-  const {Change, MusicBox} = engine();
   const music = MusicBox();
   music.addPattern([0, 1, 2, 3, 4, 5]);
   music.addPattern([0, 1, 2, 3, -1, -1]);
@@ -109,7 +90,6 @@ const calls = [{symbol: '/', notation: '14'}, {symbol: ';', notation: '1234'}];
 
 for (const stage of [8, 10, 12]) {
   test('Plain Bob plain course on ' + stage + ' bells', () => {
-    const {createComposition, Prover} = engine();
     const {comp} = createComposition({stage, methods: [plainBob(stage)], calls: [], composition: 'P'.repeat(stage - 1)});
     const prover = new Prover();
     const rows = [];
@@ -127,7 +107,6 @@ for (const stage of [8, 10, 12]) {
 }
 
 test('Cambridge and Bristol Surprise Major have 32-change leads', () => {
-  const {validateMethod, Change} = engine();
   for (const [notation, expected] of [
     ['b &-3-4-25-36-4-5-6-7', '15738264'],
     ['m &-5-4.5-5.36.4-4.5-4-1', '14263857'],
@@ -142,19 +121,16 @@ test('Cambridge and Bristol Surprise Major have 32-change leads', () => {
 });
 
 test('asymmetric notation preserves the supplied sequence', () => {
-  const {parse_method} = engine();
   assert.deepEqual(Array.from(parse_method(6, 'a +-16-')), [0, 33, 0, 3]);
 });
 
 test('invalid notation and invalid stage are rejected', () => {
-  const {validateMethod} = engine();
   assert.throws(() => validateMethod('P', '-Z', 6), /Bad place notation/);
   assert.equal(validateMethod('P', '-16,12', 0), false);
   assert.equal(validateMethod('P', '-16,12', 6.5), false);
 });
 
 test('composition parser associates calls with the preceding method', () => {
-  const {createComposition} = engine();
   const {comp} = createComposition({
     stage: 6, methods: [plainBob(6), {shorthand: 'L', notation: '-16-16-16,16'}],
     calls, composition: 'P/L;\nP',
@@ -164,7 +140,6 @@ test('composition parser associates calls with the preceding method', () => {
 });
 
 test('shorthand expands a bob at Home in Plain Bob Minor', () => {
-  const {Shorthand, validateMethod} = engine();
   const method = validateMethod('P', plainBob(6).notation, 6);
   const shorthand = Shorthand('h', method);
   shorthand.run(() => {}, ['/', '14'], [';', '1234']);
@@ -172,7 +147,6 @@ test('shorthand expands a bob at Home in Plain Bob Minor', () => {
 });
 
 test('four-bell runs match at both ends of a row', () => {
-  const {MusicBox, Change, addFourBellRuns} = engine();
   const music = MusicBox();
   addFourBellRuns(8, music);
   music.setup(8);
@@ -184,7 +158,6 @@ test('four-bell runs match at both ends of a row', () => {
 });
 
 test('user music parses queens, tittums and wildcards', () => {
-  const {readUserMusicPatterns} = engine();
   const patterns = readUserMusicPatterns('13572468\n15263748\n****5678');
   assert.deepEqual(Array.from(patterns, (p) => Array.from(p)), [
     [0, 2, 4, 6, 1, 3, 5, 7], [0, 4, 1, 5, 2, 6, 3, 7], [-1, -1, -1, -1, 4, 5, 6, 7],
@@ -192,7 +165,6 @@ test('user music parses queens, tittums and wildcards', () => {
 });
 
 test('Plain Bob Minor plain course covers every working lead-head position', () => {
-  const {createComposition, AtwChecker} = engine();
   const {comp} = createComposition({stage: 6, methods: [plainBob(6)], calls: [], composition: 'PPPPP'});
   comp.run(() => {});
   const atw = AtwChecker(comp);
@@ -204,7 +176,6 @@ test('Plain Bob Minor plain course covers every working lead-head position', () 
 });
 
 test('changes of method count transitions between successive leads', () => {
-  const {createComposition, AtwChecker} = engine();
   const {comp} = createComposition({stage: 6, methods: [plainBob(6), {shorthand: 'L', notation: '-16-16-16,16'}], calls: [], composition: 'PPLLP'});
   comp.run(() => {});
   const atw = AtwChecker(comp);
@@ -213,7 +184,6 @@ test('changes of method count transitions between successive leads', () => {
 });
 
 function proveTouch(stage, methods, composition, music = '') {
-  const {createComposition, doProve} = engine();
   return doProve(createComposition({stage, methods, calls, composition}), composition, music);
 }
 
@@ -261,7 +231,6 @@ test('proving uses supplied composition lines and custom music without a DOM', (
 });
 
 test('generateShorthand accepts a validated method without a DOM', () => {
-  const {generateShorthand, validateMethod} = engine();
   const method = validateMethod('P', plainBob(6).notation, 6);
   assert.equal(generateShorthand('h', method, ['/', '14'], [';', '1234']), 'PPPPP/\n');
 });

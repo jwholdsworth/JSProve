@@ -341,7 +341,7 @@ function prove() {
     const falseness = document.getElementById('falseness');
     falseness.hidden = !res.falseness;
     falseness.textContent = res.falseness
-      ? `Repeated row: ${res.falseness.row} — first rung at change ${res.falseness.firstChange}, repeated at change ${res.falseness.secondChange}.`
+      ? `Repeated row: ${res.falseness.row} first rung at change ${res.falseness.firstChange}, repeated at change ${res.falseness.secondChange}.`
       : '';
     const musicOutput = document.createElement('pre');
     musicOutput.className = 'form-control output';

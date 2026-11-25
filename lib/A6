@@ -1,9 +1,10 @@
-*** A6 Wed,20 Jul 2022.00:05:11 ***
+*** A6 Tue,24 Nov 2026.10:31:23 ***
 Adwick l &34-34.1-3.2.3
 Albury g &-4-1.34-4.3
 Alderbourne f &-1-2-23-2-3
 Alford l &-4-2-3-34-5
 Algarkirk h &-1-2-1-34-3
+Allale a &-34-4-3.2-2.3
 Allesley e &34.1-3.4-2.5
 Alperton g &-4-3-4-3
 Alwoodley 6z &-1-2-3.2-2.5
@@ -30,11 +31,13 @@ Belton a &3.4-2-3.4-4.5
 Beltoninrutland f &-4-23.2-2.5
 Beltring m &34.1-3.4-34.1
 Benington f &-4-2-3.2-34.5
+Bevy b &-3-4-23.4-34.5
 Bicker h &34.1-2-1.34-2.5
 Biddenham e &-1-2-3.2-34.1
 Bigby l &-4-2-1-4-5
 Blaxhall l &-4-3.2-34.5
 Bodenham g &-1-2-3-4-5
+Boneidle e &-3-4-23-34-3
 Bozeat f &-4-3.34-2.5
 Brailes 2z &-1-2-1-2-5
 Bramfield f &-4-3.4-4.5
@@ -48,6 +51,7 @@ Burpham a &3.4-23-34-5
 Burstow e &-1-3.4-2.3
 Butterwick f &-4-2-3-2-5
 Buxton f &-1-3-2-3
+Cadge b &-3-4-23-4-5
 Calverleigh e &34.1-3-4-5
 Candlesby l &-4-2-3.2-2.5
 Carrgate l &-1-5-3-2-5
@@ -114,6 +118,7 @@ Foxhill f &34-34.1-2-3-3
 Foxley 6z &-4-23-23-5
 Frampton f &-4-2-3-34-5
 Freiston f &-4-2-3.2-2.5
+Fryingtonight a &-34-4-23-2-3
 Fulmer b &-1-1.34-2.5
 Gamston a &-4-2-3-4-1
 Gedney h &34.1-2-1-2-5
@@ -144,7 +149,9 @@ Holbeton h &-1-3-34-1
 Holywell a &3.4-2-1-4-5
 Honington 2z &-1-2-1.34-2.5
 Hudson a &-1-1-4-34-2-1
+Ipich f &-3-4-23-4-1
 Isham e &3.4-1-2-3
+Islandbay f &-34-4-2-3-4-25-4-5
 Iver f &-1-3.2-2.3
 Kelling f &-1-3-23-3-3
 Kelly a &34.1-3-34-3
@@ -166,13 +173,16 @@ Lavington m &-4-1.34-2.3
 Leake h &-4-2-3-2-1
 Leapyearsday f &-1-5-3-2-5
 Lechlade f &-4-5-3-2-3
+Leconfield 2z &-1-1-1-5
 Leyland h &-1-3.4-2.3
 Liden l &34-34.1-23-3
 Limpsfield e &-1-2-3.2-4.3
 Littledunhamlittle a &-34-1.34
 Llanelly g &34.1-2-3-2-1
+Lolastreat e &-1-1-1-1-3
 Londonovers2differentiallittle z +3-3.4-2-3-345-25
 Londonovers6differentiallittle z +3-3.4-2-23-345-5
+Loon f &3-3.4-23.4-4.3
 Lupset l &-45-5-3-2-5
 Lyddington f &-4-23-2.234.5
 Lytchett f &3.4-2-1.34-34.1
@@ -192,6 +202,7 @@ Mitcham l &-4-3.2-2.5
 Molloy m &-3-3-4-2-3-34-1
 Monkfryston 6z &-1-2-23-2-5
 Morland b &-1-2-3-4-5
+Nethale e &-34-4-23-4-3
 Newburn b &3.4-2-1.34-2.3
 Newcentury l &-1-3-25-3-34
 Newmillennium f &-1-3-25-3-34
@@ -215,8 +226,10 @@ Pinchbeck e &34.1-2-1.34-34.5
 Poynton l &-1-2-3.2-2.3
 Preshute 2z &-4-23-2-3
 Preston 2z &34.1-1.34-2.5
+Prose g &-3-4-23-4-5
 Quintus b &-1-1-25.5
 Ramsbury f &-1-23-2-3
+Raton 2z &-34-4-23-4-1
 Renhold f &-1-1.234.4-3
 Ringstead f &-4-3.2-2.5
 Riverweylittle a &-34-1-34
@@ -226,6 +239,7 @@ Rougham 6z &34.1-1-34-5
 Rushmere 6z &34.1-1-2-1
 Saltwood f &-4-2-23-2-5
 Seafield e &-3-4-3-34-3
+Semiquincentenary b &-3-4-2-3-4.5
 Severn 2z &34-3.4-23-5
 Sharlston 6z &-1-5-23-2-3
 Sharnbrook f &-4-3-2-5
@@ -234,6 +248,7 @@ Shere a &3.4-23-2-5
 Sibsey m &34.1-2-1-2-1
 Silkwilloughby m &-4-2-3.4-2.3
 Skelwithbridge l &-45-5-3.2-34.5
+Sleet b &-3-4-23.4-2.5
 Snodland h &34.1-3.4-2.5
 Snydale 6z &-1-5-3-2-3
 Somerley 2z &-4-23-234-2-4-1

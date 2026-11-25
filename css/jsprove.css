@@ -36,3 +36,11 @@ pre {
     width: 50%;
     left: 25%;
 }
+
+@supports (field-sizing: content) {
+    textarea.form-control {
+        field-sizing: content;
+        min-height: calc(15em + 0.75rem + 2px);
+        resize: vertical;
+    }
+}

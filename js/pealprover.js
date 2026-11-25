@@ -93,7 +93,6 @@ const validateMethod = (shortcut, notation, stage) => {
   return Method(stage, shortcut, rows);
 };
 
-// eslint-disable-next-line require-jsdoc
 function validate_method(id) {
   let shortcut;
   let rows;
@@ -625,7 +624,6 @@ class Composition {
     this.stage = 0;
   }
 
-  // eslint-disable-next-line require-jsdoc
   appendLead(method, call) {
     this.methods.push(method);
     this.calls.push(call);
@@ -634,7 +632,6 @@ class Composition {
     }
   }
 
-  // eslint-disable-next-line require-jsdoc
   run(fn) {
     const ch = Change(this.stage);
     let method;
@@ -823,7 +820,6 @@ function AtwChecker(comp) {
  * @author Paul Brook
  */
 class Prover {
-  // eslint-disable-next-line require-jsdoc
   constructor() {
     this.changes = {};
   }

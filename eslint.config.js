@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     ignores: ['**/*.min.js'],
   },
@@ -6,7 +6,7 @@ module.exports = [
     files: ['js/**/*.js'],
     languageOptions: {
       ecmaVersion: 'latest',
-      sourceType: 'script',
+      sourceType: 'module',
     },
     rules: {
       'no-dupe-args': 'error',

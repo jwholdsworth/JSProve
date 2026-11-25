@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Browser-based peal proving for even bell methods from Minor to Maximus.",
   "scripts": {
-    "test": "npm run cypress",
+    "test": "npm run test:unit && npm run cypress",
+    "test:unit": "node --test test/*.test.js",
     "cypress": "cypress run",
     "start:ci": "serve --no-clipboard --listen ${PORT:-8080}",
     "lint": "eslint js"

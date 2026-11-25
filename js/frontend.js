@@ -5,7 +5,7 @@
 // the number of method input boxes (i.e. methods in current composition)
 let numberOfMethods = 0;
 let numberOfCalls = 0;
-let stage = $('#methodRank').val();
+let stage = document.getElementById('methodRank').value;
 
 /** *****************************************************************************
  * ONLOAD FUNCTION
@@ -64,8 +64,7 @@ document.getElementById('composition').addEventListener('keyup', function () {
 // generate the composition from the shorthand
 document.getElementById('generateShorthand').addEventListener('click', function () {
   // select the first method from the method list to be used for the shorthand
-  const firstMethod = $('#methodList').children(':first-child');
-  const mid = $(firstMethod[0]).attr('id');
+  const mid = document.getElementById('methodList').firstElementChild?.id;
 
   if (!mid) {
     displayMessage('No methods defined.');
@@ -73,8 +72,8 @@ document.getElementById('generateShorthand').addEventListener('click', function 
   }
 
   try {
-    const comp = generateShorthand(mid.substr(6), [$('#symbol0').val(), $('#callNtn0').val()], [$('#symbol1').val(), $('#callNtn1').val()]);
-    $('#composition').val(comp);
+    const comp = generateShorthand(mid.substr(6), [document.getElementById('symbol0').value, document.getElementById('callNtn0').value], [document.getElementById('symbol1').value, document.getElementById('callNtn1').value]);
+    document.getElementById('composition').value = comp;
     prove();
   } catch (e) {
     displayMessage(e.toString(), 'danger');
@@ -94,12 +93,12 @@ document.getElementById('btnAddMoreCalls').addEventListener('click', function ()
  * Writes the DOM
  */
 function setup() {
-  $('#methodList').html(''); // remove the method boxes
-  stage = $('#methodRank').val();
+  document.getElementById('methodList').replaceChildren(); // remove the method boxes
+  stage = document.getElementById('methodRank').value;
   loadCollectionsForStage(stage);
   loadMusicForStage(stage);
   loadCalls();
-  insertCollection(stage, $('#collectionChoice option:selected').val());
+  insertCollection(stage, document.querySelector('#collectionChoice select').value);
 }
 
 function insertCallBox(symbol, notation) {
@@ -118,10 +117,12 @@ function insertCallBox(symbol, notation) {
         </div>
     </div>
   `;
-  const $callRow = $(callRow);
-  $callRow.find('.callSymbol').val(symbol);
-  $callRow.find('.callNtn').val(notation);
-  $('#js-calls-form').append($callRow);
+  const template = document.createElement('template');
+  template.innerHTML = callRow.trim();
+  const row = template.content.firstElementChild;
+  row.querySelector('.callSymbol').value = symbol ?? '';
+  row.querySelector('.callNtn').value = notation ?? '';
+  document.getElementById('js-calls-form').append(row);
   numberOfCalls++;
 }
 
@@ -144,10 +145,12 @@ function insertMethodBox(code, pn) {
       </div>
     </div>
   `;
-  const $methodRow = $(methodRow);
-  $methodRow.find('.js-shortcut').val(code);
-  $methodRow.find('.js-notation').val(pn);
-  $('#methodList').append($methodRow);
+  const template = document.createElement('template');
+  template.innerHTML = methodRow.trim();
+  const row = template.content.firstElementChild;
+  row.querySelector('.js-shortcut').value = code ?? '';
+  row.querySelector('.js-notation').value = pn ?? '';
+  document.getElementById('methodList').append(row);
   numberOfMethods++;
 }
 
@@ -183,11 +186,11 @@ function checkMethodLetterIsUnique(letter, methodName, methodSymbol) {
   let isUnique = true;
   for (let i = 0; i < numberOfMethods; i++) {
     if (methodSymbol == '') {
-      if ($('#shortcut' + i).val() === letter) {
+      if (document.getElementById('shortcut' + i)?.value === letter) {
         isUnique = false;
       }
     } else {
-      if ($('#shortcut' + i).val() === methodSymbol) {
+      if (document.getElementById('shortcut' + i)?.value === methodSymbol) {
         isUnique = false;
       }
     }
@@ -219,21 +222,22 @@ function getCollectionsForStage(stage) {
  * @param {string} stage
  */
 function loadCollectionsForStage(stage) {
-  stageCollections = getCollectionsForStage(stage);
-  options = '<select name="collection" class="form-select">';
-  for (let i = 0; i < stageCollections.length; i++) {
-    options += '<option value="' + stageCollections[i].key + '">' + stageCollections[i].name + '</option>';
+  const stageCollections = getCollectionsForStage(stage);
+  const select = document.createElement('select');
+  select.name = 'collection';
+  select.className = 'form-select';
+  for (const collection of stageCollections) {
+    select.add(new Option(collection.name, collection.key));
   }
-  options += '</select>';
-  $('#collectionChoice').html(options);
+  document.getElementById('collectionChoice').replaceChildren(select);
 }
 
 /**
  * Adds the methods associated with a particular 'collection', e.g. std 8
  */
 function insertCollection(stage, key) {
-  stageCollections = getCollectionsForStage(stage);
-  $('#methodList').html('');
+  const stageCollections = getCollectionsForStage(stage);
+  document.getElementById('methodList').replaceChildren();
   for (let i = 0; i < stageCollections.length; i++) {
     if (stageCollections[i].key === key) {
       for (let j = 0; j < stageCollections[i].methods.length; j++) {
@@ -254,7 +258,7 @@ function loadCalls() {
  */
 function loadMusicForStage(stage) {
   $.get('music/' + stage, function (data) {
-    $('#userMusicList').val(data);
+    document.getElementById('userMusicList').value = data;
   }, 'text');
 }
 
@@ -264,7 +268,8 @@ function loadMusicForStage(stage) {
 function prove() {
   try {
     const composition = get_composition();
-    res = doProve(composition);
+    const res = doProve(composition);
+    let messageType;
 
     if (res.trueTouch === true) {
       if (res.complete === true) {
@@ -276,11 +281,13 @@ function prove() {
       messageType = 'danger';
     }
 
-    $('#results').text(res.status).attr('class', 'text-' + messageType);
-    $('#music').html(res.music);
-    $('#courseEnds').text(res.courses);
-    $('#atw pre').text(res.atw);
-    $('#com').text(res.com + ' changes of method');
+    const results = document.getElementById('results');
+    results.textContent = res.status;
+    results.className = 'text-' + messageType;
+    document.getElementById('music').innerHTML = res.music;
+    document.getElementById('courseEnds').textContent = res.courses;
+    document.querySelector('#atw pre').textContent = res.atw;
+    document.getElementById('com').textContent = res.com + ' changes of method';
   } catch (e) {
     displayMessage(e.toString(), 'danger');
   }
@@ -290,7 +297,7 @@ function prove() {
  * Load the methods from the method file
  */
 function displayMethodLibraryPage() {
-  const method_file = $('#class').val() + $('#methodRank').val();
+  const method_file = document.getElementById('class').value + document.getElementById('methodRank').value;
   loadMethods(method_file);
 }
 
@@ -363,7 +370,7 @@ function displayMessage(message, level, timeout) {
   if (timeout === undefined) {
     timeout = 2000;
   }
-  $('#alert').attr('class', 'alert alert-' + level);
-  $('#alert div').text(message);
+  document.getElementById('alert').className = 'alert alert-' + level;
+  document.querySelector('#alert div').textContent = message;
   $('#alert').fadeIn('slow').delay(timeout).fadeOut('slow');
 }

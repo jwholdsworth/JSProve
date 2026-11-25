@@ -9,9 +9,12 @@ context('Actions', () => {
 
   describe('UI Components for adding methods', () => {
     it('Remove Methods from the method selector', () => {
-      cy.get('.removeMethod').click({
-        multiple: true,
+      cy.get('.removeMethod').then(($buttons) => {
+        for (let i = 0; i < $buttons.length; i++) {
+          cy.get('.removeMethod').first().click();
+        }
       });
+      cy.get('.removeMethod').should('not.exist');
       cy.get('#method0')
         .should('not.exist');
     });
@@ -80,9 +83,12 @@ context('Actions', () => {
       cy.get('#callNtn1').clear().type('1678');
       cy.get('#methodsTab').click();
 
-      cy.get('.removeMethod').click({
-        multiple: true,
+      cy.get('.removeMethod').then(($buttons) => {
+        for (let i = 0; i < $buttons.length; i++) {
+          cy.get('.removeMethod').first().click();
+        }
       });
+      cy.get('.removeMethod').should('not.exist');
       cy.get('#searchMethod').click();
       cy.get('#methodDropDown .bs-searchbox input:first').type('Madurai', { 'force': true });
       cy.get('#methodDropDown li.active a').click();

@@ -1,4 +1,8 @@
 /* eslint-disable no-undef */
+import {createComposition, doProve, generateShorthand, validateMethod} from './pealprover.js';
+import {collections} from './collections.js';
+import {calls} from './calls.js';
+
 /** *****************************************************************************
  * DECLARE FRONT-END VARIABLES
  *******************************************************************************/
@@ -129,7 +133,7 @@ function insertCallBox(symbol, notation) {
                 placeholder="Notation" />
         </div>
         <div class="col-1">
-            <input type="button" value="&dash;" class="removeCall btn btn-danger" onclick="removeElement('call${numberOfCalls}');" />
+            <input type="button" value="&dash;" class="removeCall btn btn-danger" />
         </div>
     </div>
   `;
@@ -138,6 +142,7 @@ function insertCallBox(symbol, notation) {
   const row = template.content.firstElementChild;
   row.querySelector('.callSymbol').value = symbol ?? '';
   row.querySelector('.callNtn').value = notation ?? '';
+  row.querySelector('.removeCall').addEventListener('click', () => row.remove());
   document.getElementById('js-calls-form').append(row);
   numberOfCalls++;
 }
@@ -157,7 +162,7 @@ function insertMethodBox(code, pn) {
         <input type="text" class="js-notation form-control" id="notation${numberOfMethods}" placeholder="Notation" />
       </div>
       <div class="col-1">
-        <input type="button" value="&dash;" class="removeMethod btn btn-danger" onclick="removeElement('method${numberOfMethods}');" />
+        <input type="button" value="&dash;" class="removeMethod btn btn-danger" />
       </div>
     </div>
   `;
@@ -166,6 +171,7 @@ function insertMethodBox(code, pn) {
   const row = template.content.firstElementChild;
   row.querySelector('.js-shortcut').value = code ?? '';
   row.querySelector('.js-notation').value = pn ?? '';
+  row.querySelector('.removeMethod').addEventListener('click', () => row.remove());
   document.getElementById('methodList').append(row);
   numberOfMethods++;
 }
@@ -183,14 +189,6 @@ function insertMethod() {
     insertMethodBox(methodSymbol || methodName.charAt(0), method.value);
   }
   bootstrap.Modal.getOrCreateInstance(document.getElementById('popup')).hide();
-}
-
-/**
- * Removes a method from the Method List
- * @param {string} domId
- */
-function removeElement(domId) {
-  document.getElementById(domId).remove();
 }
 
 /**

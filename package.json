@@ -1,5 +1,6 @@
 {
   "name": "jsprove",
+  "type": "module",
   "version": "1.0.0",
   "description": "Browser-based peal proving for even bell methods from Minor to Maximus.",
   "scripts": {

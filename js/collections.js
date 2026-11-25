@@ -1,4 +1,4 @@
-collections = {
+export const collections = {
     "collections": [
         {
             "stage": "8",

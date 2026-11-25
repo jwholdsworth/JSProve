@@ -7,10 +7,10 @@ const vm = require('node:vm');
 // Load the browser script unchanged, without a DOM. Lexical declarations
 // (including classes and const functions) are accessible inside the context.
 const source = readFileSync(join(__dirname, '../js/pealprover.js'), 'utf8');
-function engine(globals = {}) {
-  const context = vm.createContext(globals);
+function engine() {
+  const context = vm.createContext({});
   vm.runInContext(source, context);
-  return vm.runInContext('({bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve})', context);
+  return vm.runInContext('({bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand})', context);
 }
 
 test('bell names round-trip from 1 to T', () => {
@@ -212,14 +212,9 @@ test('changes of method count transitions between successive leads', () => {
   assert.equal(atw.com, 2);
 });
 
-// Only the legacy doProve entry point needs these two DOM values.
-// Keep the stub here rather than introducing a browser or DOM dependency.
 function proveTouch(stage, methods, composition, music = '') {
-  const values = {composition, userMusicList: music};
-  const {createComposition, doProve} = engine({
-    document: {getElementById: (id) => ({value: values[id]})},
-  });
-  return doProve(createComposition({stage, methods, calls, composition}));
+  const {createComposition, doProve} = engine();
+  return doProve(createComposition({stage, methods, calls, composition}), composition, music);
 }
 
 test('complete and incomplete Plain Bob Minor touches report their status', () => {
@@ -257,4 +252,16 @@ test('repeated Home calls from the existing false-touch fixture prove false', ()
   assert.equal(result.trueTouch, false);
   assert.equal(result.complete, true);
   assert.match(result.status, /^Touch is false after /);
+});
+
+test('proving uses supplied composition lines and custom music without a DOM', () => {
+  const result = proveTouch(6, [plainBob(6)], 'P\nPPPP', '123456');
+  assert.equal(result.courses, '135264\n123456\n');
+  assert.equal(result.music.find(({pattern}) => pattern === '123456').count, 1);
+});
+
+test('generateShorthand accepts a validated method without a DOM', () => {
+  const {generateShorthand, validateMethod} = engine();
+  const method = validateMethod('P', plainBob(6).notation, 6);
+  assert.equal(generateShorthand('h', method, ['/', '14'], [';', '1234']), 'PPPPP/\n');
 });

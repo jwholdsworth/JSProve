@@ -75,7 +75,20 @@ document.getElementById('generateShorthand').addEventListener('click', function 
   }
 
   try {
-    const comp = generateShorthand(mid.substr(6), [document.getElementById('symbol0').value, document.getElementById('callNtn0').value], [document.getElementById('symbol1').value, document.getElementById('callNtn1').value]);
+    const id = mid.substr(6);
+    const shortcut = document.getElementById('shortcut' + id).value;
+    const notation = document.getElementById('notation' + id).value;
+    const method = shortcut && notation && validateMethod(shortcut, notation, parseInt(document.getElementById('methodRank').value, 10));
+    if (!method) {
+      displayMessage('Invalid method.');
+      return;
+    }
+    const comp = generateShorthand(
+      document.getElementById('shorthand').value,
+      method,
+      [document.getElementById('symbol0').value, document.getElementById('callNtn0').value],
+      [document.getElementById('symbol1').value, document.getElementById('callNtn1').value]
+    );
     document.getElementById('composition').value = comp;
     prove();
   } catch (e) {
@@ -276,10 +289,42 @@ async function loadMusicForStage(stage) {
 /**
  * Prove the composition
  */
+const loadUserInput = () => {
+  const input = {
+    composition: '',
+    methods: [],
+    stage: 0,
+    calls: [],
+  };
+
+  input.composition = document.getElementById('composition').value;
+  input.stage = parseInt(document.getElementById('methodRank').value, 10);
+
+  const htmlMethods = document.getElementsByClassName('js-method')
+  for (let element of htmlMethods) {
+    input.methods.push({
+      shorthand: element.getElementsByClassName('js-shortcut')[0].value,
+      notation: element.getElementsByClassName('js-notation')[0].value,
+    });
+  }
+
+  const htmlCalls = Array.from(document.getElementsByClassName('js-call'));
+  input.calls = htmlCalls.map((element) => {
+    return {
+      symbol: element.getElementsByClassName('callSymbol')[0].value,
+      notation: element.getElementsByClassName('callNtn')[0].value,
+    };
+  });
+
+  return input;
+};
+
 function prove() {
   try {
-    const composition = get_composition();
-    const res = doProve(composition);
+    const input = loadUserInput();
+    const composition = createComposition(input);
+    const musicPatterns = document.getElementById('userMusicList').value;
+    const res = doProve(composition, input.composition, musicPatterns);
     let messageType;
 
     if (res.trueTouch === true) {
@@ -295,7 +340,14 @@ function prove() {
     const results = document.getElementById('results');
     results.textContent = res.status;
     results.className = 'text-' + messageType;
-    document.getElementById('music').innerHTML = res.music;
+    const musicOutput = document.createElement('pre');
+    musicOutput.className = 'form-control output';
+    for (const {count, pattern} of res.music) {
+      const countElement = document.createElement('strong');
+      countElement.textContent = count;
+      musicOutput.append(countElement, '\t' + pattern + '\n');
+    }
+    document.getElementById('music').replaceChildren(musicOutput);
     document.getElementById('courseEnds').textContent = res.courses;
     document.querySelector('#atw pre').textContent = res.atw;
     document.getElementById('com').textContent = res.com + ' changes of method';

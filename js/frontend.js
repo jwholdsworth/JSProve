@@ -278,8 +278,10 @@ async function loadMusicForStage(stage) {
  */
 function prove() {
   try {
-    const composition = get_composition();
-    const res = doProve(composition);
+    const input = loadUserInput();
+    const composition = createComposition(input);
+    const musicPatterns = document.getElementById('userMusicList').value;
+    const res = doProve(composition, input.composition, musicPatterns);
     let messageType;
 
     if (res.trueTouch === true) {

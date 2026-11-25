@@ -4,36 +4,6 @@
 const MAX_STAGE = 24;
 const BELL_NAMES = '1234567890ET';
 
-const loadUserInput = () => {
-  const input = {
-    composition: '',
-    methods: [],
-    stage: 0,
-    calls: [],
-  };
-
-  input.composition = document.getElementById('composition').value;
-  input.stage = parseInt(document.getElementById('methodRank').value, 10);
-
-  const htmlMethods = document.getElementsByClassName('js-method')
-  for (let element of htmlMethods) {
-    input.methods.push({
-      shorthand: element.getElementsByClassName('js-shortcut')[0].value,
-      notation: element.getElementsByClassName('js-notation')[0].value,
-    });
-  }
-
-  const htmlCalls = Array.from(document.getElementsByClassName('js-call'));
-  input.calls = htmlCalls.map((element) => {
-    return {
-      symbol: element.getElementsByClassName('callSymbol')[0].value,
-      notation: element.getElementsByClassName('callNtn')[0].value,
-    };
-  });
-
-  return input;
-};
-
 const createComposition = (userInput) => {
   const selectedMethods = {};
   const comp = new Composition();
@@ -74,11 +44,6 @@ const createComposition = (userInput) => {
   };
 };
 
-function get_composition() {
-  const input = loadUserInput();
-  return createComposition(input);
-}
-
 const validateMethod = (shortcut, notation, stage) => {
   const parsedNotation = notation.replace(/x/gi, '-');
   if (!Number.isInteger(stage)) {
@@ -92,32 +57,6 @@ const validateMethod = (shortcut, notation, stage) => {
 
   return Method(stage, shortcut, rows);
 };
-
-function validate_method(id) {
-  let shortcut;
-  let rows;
-  let stage;
-  let method;
-  let notation;
-
-  shortcut = document.getElementById('shortcut' + id)?.value;
-  if (shortcut == '') {
-    return false;
-  }
-  notation = document.getElementById('notation' + id)?.value;
-  notation = notation.replace(/x/gi, '-');
-  if (notation == '') {
-    return false;
-  }
-  stage = parseInt(document.getElementById('methodRank').value, 10);
-  if (stage <= 0 || stage > MAX_STAGE) {
-    return false;
-  }
-  rows = parse_method(stage, notation);
-  method = Method(stage, shortcut, rows);
-
-  return [shortcut, method];
-}
 
 /**
  * @param {object} composition The parsed composition and calls
@@ -135,7 +74,7 @@ function doProve(composition, compositionText, userInputPatterns) {
     length: 0,
     status: 'No touch entered',
     courses: '',
-    music: '',
+    music: [],
     atw: '',
     com: 0,
   };
@@ -229,7 +168,6 @@ function doProve(composition, compositionText, userInputPatterns) {
     result.status = 'Incomplete touch (' + changes + ' changes)';
   }
 
-  result.music = '<pre class="form-control output">';
   for (let i = 0; i < music.counts.length; i++) {
     let pattern = '';
     // add run count to music output array only if those runs exist
@@ -237,10 +175,9 @@ function doProve(composition, compositionText, userInputPatterns) {
       for (let j=0; j < music.patterns[i].length; j++) {
         pattern += bellName(music.patterns[i][j]);
       }
-      result.music += '<strong>' + music.counts[i] + '</strong>\t' + pattern + '\n';
+      result.music.push({count: music.counts[i], pattern});
     }
   }
-  result.music += '</pre>';
 
   const atw = AtwChecker(comp);
   atw.getAtw();
@@ -317,11 +254,10 @@ function readUserMusicPatterns(patternList) {
 }
 
 /**
- * Convert the user's shorthand into JSProve input format, and update the text box
+ * Convert the user's shorthand into JSProve input format
  */
-function generateShorthand(methodID, bob, single) {
-  const vm = validate_method(methodID);
-  const s = Shorthand(document.getElementById('shorthand').value, vm[1]);
+function generateShorthand(shorthand, method, bob, single) {
+  const s = Shorthand(shorthand, method);
 
   s.run(nothing, bob, single);
 

@@ -3,7 +3,8 @@
 }
 
 .navbar {
-    margin: 0 -15px;
+    margin: 0 -12px;
+    padding-inline: 12px;
 }
 
 .small {
@@ -32,7 +33,7 @@ pre {
 .alert {
     display: none;
     position: fixed;
-    z-index: 3;
+    z-index: 1090;
     width: 50%;
     left: 25%;
 }
@@ -43,4 +44,18 @@ pre {
         min-height: calc(15em + 0.75rem + 2px);
         resize: vertical;
     }
+}
+
+#stagePrepend,
+#classPrepend {
+    width: 5rem;
+    padding-inline: 1rem;
+}
+
+.text-info {
+    --bs-info-rgb: 8, 121, 144;
+}
+
+.text-success {
+    --bs-success-rgb: 20, 108, 67;
 }

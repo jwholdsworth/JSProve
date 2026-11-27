@@ -694,7 +694,13 @@ function Shorthand(shorthand, method) {
     if (tenorPosition >= this.stage) {
       throw 'Tenor doesn\'t get to this position in a '+this.stage+'-bell method';
     }
+    const visitedPositions = new Set();
     while (moreLeads === true) {
+      const position = c.row.indexOf(this.stage - 1);
+      if (visitedPositions.has(position)) {
+        throw new Error('Calling position ' + call + ' cannot be reached with this method and call');
+      }
+      visitedPositions.add(position);
       const previousLeadHead = c.row.slice(0);
       c.advance_lead(this.method, callType.mask, fn);
       const thisLeadhead = c.row.slice(0);

@@ -219,6 +219,14 @@ export const collections = {
                             ]
                     }
                 ]
-        }
+        },
+        ...[14, 16].map((stage) => ({
+            stage: String(stage),
+            collections: [{
+                key: 'pb',
+                name: 'Plain Bob',
+                methods: [{key: 'P', notation: 'a &' + '-1'.repeat(stage / 2)}],
+            }],
+        }))
     ]
 }

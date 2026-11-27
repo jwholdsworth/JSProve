@@ -355,13 +355,9 @@ function Change(stage) {
     fn(this);
   };
 
-  that.toString = function() {
-    return this.row.join('');
-  };
+  that.toString = () => that.row.join('');
 
-  that.setRow = function(newRow) {
-    this.row = newRow;
-  };
+  that.setRow = (newRow) => that.row = newRow;
 
   return that;
 }
@@ -371,48 +367,7 @@ function Change(stage) {
  * @param {string} name The bell name
  * @return {string} The bell index
  */
-function bellIndex(name) {
-  if (name >= '1' && name <= '9') {
-    return parseInt(name, 10) - 1;
-  }
-  if (name === '0') {
-    return 9;
-  }
-  if (name === 'E') {
-    return 10;
-  }
-  if (name === 'T') {
-    return 11;
-  }
-  if (name === '*') {
-    return -1;
-  }
-  return -1;
-}
-
-/**
- * Maps bell indeces to human names
- * @param {number} index The bell index
- * @return {string} The bell name
- */
-function bellName(index) {
-  if (index === -1) {
-    return '*';
-  }
-  if (index > -1 && index < 9) {
-    return (index+1).toString();
-  }
-  if (index === 9) {
-    return '0';
-  }
-  if (index === 10) {
-    return 'E';
-  }
-  if (index === 11) {
-    return 'T';
-  }
-  return index;
-}
+const bellIndex = (name) => ROUNDS.indexOf(name);
 
 /**
  * Generate a row
@@ -898,4 +853,4 @@ function MusicBox() {
   return that;
 }
 
-export {bellIndex, bellName, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand};
+export {bellIndex, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand};

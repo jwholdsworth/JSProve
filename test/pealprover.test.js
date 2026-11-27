@@ -14,12 +14,22 @@ import {
   readUserMusicPatterns,
   doProve,
   generateShorthand,
+  bellIndex
 } from '../js/pealprover.js';
 
 test('place notation includes implicit external places', () => {
   assert.equal(parse_bell_list(6, 0, '4').mask, 9); // 14
   assert.equal(parse_bell_list(6, 0, '3').mask, 36); // 36
   assert.equal(parse_bell_list(6, 0, '12').mask, 3);
+});
+
+test('bell symbols map to their correct positions', () => {
+  [...'1234567890ET'].forEach((bell, index) => {
+    assert.equal(bellIndex(bell), index);
+  });
+
+  assert.equal(bellIndex('*'), -1);
+  assert.equal(bellIndex('B'), -1);
 });
 
 test('cross and 16 advance a Minor row correctly', () => {

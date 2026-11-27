@@ -2,6 +2,7 @@
 import {createComposition, doProve, generateShorthand, validateMethod} from './pealprover.js';
 import {collections} from './collections.js';
 import {calls} from './calls.js';
+import {music} from './music.js';
 import {createMethodLibraryCache} from './method-library.js';
 
 /** *****************************************************************************
@@ -11,7 +12,6 @@ import {createMethodLibraryCache} from './method-library.js';
 let numberOfMethods = 0;
 let numberOfCalls = 0;
 let alertTimer;
-let musicRequest = 0;
 let libraryRequest = 0;
 const getMethodLibrary = createMethodLibraryCache();
 let stage = document.getElementById('methodRank').value;
@@ -232,7 +232,7 @@ function getCollectionsForStage(stage) {
     }
   }
 
-  return false;
+  return [];
 }
 
 /**
@@ -274,18 +274,8 @@ function loadCalls() {
 /**
  * Applies some default music for this stage
  */
-async function loadMusicForStage(stage) {
-  const request = ++musicRequest;
-  try {
-    const response = await fetch('music/' + stage);
-    if (!response.ok) throw new Error('Unable to load default music');
-    const data = await response.text();
-    if (request === musicRequest) {
-      document.getElementById('userMusicList').value = data;
-    }
-  } catch (error) {
-    if (request === musicRequest) displayMessage(error.message, 'danger');
-  }
+function loadMusicForStage(stage) {
+  document.getElementById('userMusicList').value = (music[stage] ?? []).join('\n') + '\n';
 }
 
 /**

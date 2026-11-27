@@ -88,6 +88,19 @@ context('Actions', () => {
   });
 
   describe('Calls and Music', () => {
+    it('Loads the original default music immediately for each stage', () => {
+      cy.get('#userMusicList').should('have.value', "87654321\n13572468\n15263748\n75312468\n12753468\n****7568\n****6578\n****2468\n");
+      for (const [stage, expected] of [
+        ["6", "\n"],
+        ["10", "0987654321\n3216549870\n1357924680\n"],
+        ["12", "TE0987654321\n32147658E09T\n13579E24680T\n"],
+        ["8", "87654321\n13572468\n15263748\n75312468\n12753468\n****7568\n****6578\n****2468\n"],
+      ]) {
+        cy.get('#methodRank').select(stage);
+        cy.get('#userMusicList').should('have.value', expected);
+      }
+    });
+
     it('Preserves calls without duplicating them when changing stage', () => {
       cy.get('#callsTab').click();
       cy.get('.js-call').should('have.length', 2);

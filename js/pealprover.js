@@ -2,7 +2,7 @@
 'use strict';
 
 const MAX_STAGE = 12;
-const ROUNDS = '1234567890ET';
+const ROUNDS = '1234567890ETABCD';
 
 const createComposition = (userInput) => {
   const selectedMethods = {};
@@ -129,7 +129,7 @@ function doProve(composition, compositionText, userInputPatterns) {
             lead: index + 1,
             leadHead: index === 0
               ? ROUNDS.slice(0, comp.stage)
-              : comp.leadends[index - 1].map(bellName).join(''),
+              : comp.leadends[index - 1].join(''),
             changeInLead: changeNumber - offset,
           };
         }
@@ -158,7 +158,7 @@ function doProve(composition, compositionText, userInputPatterns) {
   for (let i=0; i<comp.leadends.length; i++) {
     let lead = '';
     for (let j=0; j<comp.leadends[i].length; j++) {
-      lead += bellName(comp.leadends[i][j]);
+      lead += comp.leadends[i][j];
     }
     leads[i] = lead;
   }
@@ -200,7 +200,7 @@ function doProve(composition, compositionText, userInputPatterns) {
     // add run count to music output array only if those runs exist
     if (music.counts[i] != 0 ) {
       for (let j=0; j < music.patterns[i].length; j++) {
-        pattern += bellName(music.patterns[i][j]);
+        pattern += music.patterns[i][j];
       }
       result.music.push({count: music.counts[i], pattern});
     }
@@ -219,10 +219,10 @@ function doProve(composition, compositionText, userInputPatterns) {
  */
 function addFourBellRuns(stage, music) {
   for (let i = 0; i <= stage - 4; i++) {
-    // fill up the rest of the music array with the correct number of -1's
-    const spareBells = Array.from({length: stage - 4}, () => -1);
-    const forwardRun = [i, i+1, i+2, i+3];
-    const backwardRun = [i+3, i+2, i+1, i];
+    // fill up the rest of the music array with the correct number of wildcards
+    const spareBells = Array.from({length: stage - 4}, () => '*');
+    const forwardRun = ROUNDS.slice(i, i + 4).split('');
+    const backwardRun = [...forwardRun].reverse();
 
     // forward run off the front (ie 1234.... etc)
     music.addPattern([].concat(forwardRun, spareBells));
@@ -272,8 +272,8 @@ function readUserMusicPatterns(patternList) {
   for (let j=0; j < patternList.length; j++) {
     const pattern = patternList[j].split('');
     for (let i=0; i < pattern.length; i++) {
-      // do the opposite of what we do in do_prove() - convert bell numbers into array items
-      pattern[i] = bellIndex(pattern[i]);
+      // do the opposite of what we do in do_prove() - retain printable bell symbols and wildcards
+      pattern[i] = ROUNDS.includes(pattern[i]) ? pattern[i] : '*';
     }
     patternList[j] = pattern;
   }
@@ -315,14 +315,10 @@ function Method(stage, name, rows) {
  * @author Paul Brook
  */
 function Change(stage) {
-  let i;
   const that = {
     stage: stage,
+    row: ROUNDS.slice(0, stage).split(''),
   };
-  that.row = new Array(stage);
-  for (i = 0; i < stage; i++) {
-    that.row[i] = i;
-  }
 
   that.advance = function(mask) {
     let i = 0;
@@ -359,12 +355,8 @@ function Change(stage) {
     fn(this);
   };
 
-  that.pp = function() {
-    let s = '';
-    for (i = 0; i < this.stage; i++) {
-      s += ROUNDS[this.row[i]];
-    }
-    return s;
+  that.toString = function() {
+    return this.row.join('');
   };
 
   that.setRow = function(newRow) {
@@ -696,7 +688,7 @@ function Shorthand(shorthand, method) {
     }
     const visitedPositions = new Set();
     while (moreLeads === true) {
-      const position = c.row.indexOf(this.stage - 1);
+      const position = c.row.indexOf(ROUNDS[this.stage - 1]);
       if (visitedPositions.has(position)) {
         throw new Error('Calling position ' + call + ' cannot be reached with this method and call');
       }
@@ -706,7 +698,7 @@ function Shorthand(shorthand, method) {
       const thisLeadhead = c.row.slice(0);
       this.compText += this.method.name;
       // if tenor's in that position with a call
-      if (thisLeadhead[tenorPosition] === (this.stage-1)) {
+      if (thisLeadhead[tenorPosition] === ROUNDS[this.stage - 1]) {
         moreLeads = false;
         if (isSingle === false) {
           this.compText += this.bob[0];
@@ -718,7 +710,7 @@ function Shorthand(shorthand, method) {
         c.advance_lead(this.method, this.method.lead_end, fn);
       }
       // if the tenor's home, put a line break in
-      if (c.row.indexOf(this.stage-1) === (this.stage-1)) {
+      if (c.row.indexOf(ROUNDS[this.stage - 1]) === (this.stage-1)) {
         this.compText += '\n';
       }
     }
@@ -744,7 +736,7 @@ function AtwChecker(comp) {
     this.methodList = '';
     this.com = 0;
     const initialised = new Set();
-    const rounds = Array.from({length: this.comp.stage}, (_, i) => i);
+    const rounds = ROUNDS.slice(0, this.comp.stage).split('');
 
     for (let i = 0; i < this.comp.methods.length; i++) {
       const name = this.comp.methods[i].name;
@@ -762,7 +754,7 @@ function AtwChecker(comp) {
 
       const leadHead = this.comp.leadends[i - 1] ?? rounds;
       for (let j = 0; j < this.comp.stage; j++) {
-        this.positionsRung[name][ROUNDS[leadHead[j]]][ROUNDS[j]] = true;
+        this.positionsRung[name][leadHead[j]][ROUNDS[j]] = true;
       }
     }
 
@@ -793,23 +785,22 @@ class Prover {
 
   /**
    * Check a row and retain the change number of its first occurrence.
-   * @param {object} c The current change
+   * @param {object} change The current change
    * @return {number} -1 for a repeat, 1 for rounds, 0 otherwise
    */
-  checkRow(c) {
+  checkRow(change) {
     this.changeNumber++;
-    // Delimit bell indices so that the key remains unambiguous above ten bells.
-    const key = c.row.join(',');
+    const key = change.toString();
     if (this.changes.has(key)) {
       this.falseness ??= {
-        row: c.pp(),
+        row: key,
         firstChange: this.changes.get(key),
         secondChange: this.changeNumber,
       };
       return -1;
     }
     this.changes.set(key, this.changeNumber);
-    return c.row.every((bell, index) => bell === index) ? 1 : 0;
+    return key === ROUNDS.slice(0, change.stage) ? 1 : 0;
   }
 }
 
@@ -868,14 +859,14 @@ function MusicBox() {
 
     i = 0;
     node = objtree;
-    nodeDone[0] = !(-1 in node);
+    nodeDone[0] = !('*' in node);
     while (true) {
       // walk left along exact matches
       while (c.row[i] in node) {
         stack[i] = node;
         node = node[c.row[i]];
         i++;
-        nodeDone[i] = !(-1 in node);
+        nodeDone[i] = !('*' in node);
       }
       // Check if this is an end node
       if (i == stage) {
@@ -885,9 +876,9 @@ function MusicBox() {
       if (!nodeDone[i]) {
         stack[i] = node;
         nodeDone[i] = true;
-        node = node[-1];
+        node = node['*'];
         i++;
-        nodeDone[i] = !(-1 in node);
+        nodeDone[i] = !('*' in node);
       } else {
         // backtrack until we find another right branch
         while (i > 0 && nodeDone[i]) {
@@ -897,9 +888,9 @@ function MusicBox() {
           break;
         }
         nodeDone[i] = true;
-        node = stack[i][-1];
+        node = stack[i]['*'];
         i++;
-        nodeDone[i] = !(-1 in node);
+        nodeDone[i] = !('*' in node);
       }
     }
   };

@@ -219,7 +219,7 @@ function doProve(composition, compositionText, userInputPatterns) {
  */
 function addFourBellRuns(stage, music) {
   for (let i = 0; i <= stage - 4; i++) {
-    // fill up the rest of the music array with the correct number of -1's
+    // fill up the rest of the music array with the correct number of wildcards
     const spareBells = Array.from({length: stage - 4}, () => '*');
     const forwardRun = ROUNDS.slice(i, i + 4).split('');
     const backwardRun = [...forwardRun].reverse();
@@ -272,8 +272,8 @@ function readUserMusicPatterns(patternList) {
   for (let j=0; j < patternList.length; j++) {
     const pattern = patternList[j].split('');
     for (let i=0; i < pattern.length; i++) {
-      // do the opposite of what we do in do_prove() - convert bell numbers into array items
-      pattern[i] = bellIndex(pattern[i]) === -1 ? '*' : pattern[i];
+      // do the opposite of what we do in do_prove() - retain printable bell symbols and wildcards
+      pattern[i] = ROUNDS.includes(pattern[i]) ? pattern[i] : '*';
     }
     patternList[j] = pattern;
   }

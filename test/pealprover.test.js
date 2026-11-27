@@ -1,9 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  parse_bell_list,
-  parse_method,
-  validateMethod,
+  parsePlaces,
+  parseMethod,
+  createMethod,
   Change,
   createComposition,
   Prover,
@@ -18,9 +18,9 @@ import {
 } from '../js/pealprover.js';
 
 test('place notation includes implicit external places', () => {
-  assert.equal(parse_bell_list(6, 0, '4').mask, 9); // 14
-  assert.equal(parse_bell_list(6, 0, '3').mask, 36); // 36
-  assert.equal(parse_bell_list(6, 0, '12').mask, 3);
+  assert.equal(parsePlaces(6, 0, '4').mask, 9); // 14
+  assert.equal(parsePlaces(6, 0, '3').mask, 36); // 36
+  assert.equal(parsePlaces(6, 0, '12').mask, 3);
 });
 
 test('bell symbols map to their correct positions', () => {
@@ -33,7 +33,7 @@ test('bell symbols map to their correct positions', () => {
 });
 
 test('cross and 16 advance a Minor row correctly', () => {
-  const change = Change(6);
+  const change = new Change(6);
   assert.equal(change.toString(), '123456');
   change.advance(0);
   assert.equal(change.toString(), '214365');
@@ -43,20 +43,20 @@ test('cross and 16 advance a Minor row correctly', () => {
 
 test('symmetric and MicroSIRIL Plain Bob Minor notation agree', () => {
   const expected = [0, 33, 0, 33, 0, 33, 0, 33, 0, 33, 0, 3];
-  assert.deepEqual(Array.from(parse_method(6, '-16-16-16,12')), expected);
-  assert.deepEqual(Array.from(parse_method(6, 'a &-16-16-16')), expected);
+  assert.deepEqual(Array.from(parseMethod(6, '-16-16-16,12')), expected);
+  assert.deepEqual(Array.from(parseMethod(6, 'a &-16-16-16')), expected);
 });
 
 test('Plain Bob Minor plain lead, bob and single have known lead heads', () => {
-  const method = validateMethod('P', 'x16x16x16,12', 6);
+  const method = createMethod('P', 'x16x16x16,12', 6);
   for (const [call, expected] of [
     [-1, '135264'],
-    [parse_bell_list(6, 0, '14').mask, '123564'],
-    [parse_bell_list(6, 0, '1234').mask, '132564'],
+    [parsePlaces(6, 0, '14').mask, '123564'],
+    [parsePlaces(6, 0, '1234').mask, '132564'],
   ]) {
-    const change = Change(6);
+    const change = new Change(6);
     let count = 0;
-    change.advance_lead(method, call, () => count++);
+    change.advanceLead(method, call, () => count++);
     assert.equal(count, 12);
     assert.equal(change.toString(), expected);
   }
@@ -83,7 +83,7 @@ test('Plain Bob Minor plain course has 60 distinct rows and comes round', () => 
 });
 
 test('prover detects a repeated non-rounds row', () => {
-  const change = Change(6);
+  const change = new Change(6);
   const prover = new Prover();
   change.advance(0);
   assert.equal(prover.checkRow(change), 0);
@@ -91,16 +91,16 @@ test('prover detects a repeated non-rounds row', () => {
 });
 
 test('music matches exact and wildcard patterns', () => {
-  const music = MusicBox();
+  const music = new MusicBox();
   music.addPattern([...'123456']);
   music.addPattern([...'1234**']);
   music.setup(6);
-  const change = Change(6);
-  music.match_row(change);
+  const change = new Change(6);
+  music.matchRow(change);
   change.setRow([...'123465']);
-  music.match_row(change);
+  music.matchRow(change);
   change.advance(0);
-  music.match_row(change);
+  music.matchRow(change);
   assert.deepEqual(Array.from(music.counts), [1, 2]);
 });
 
@@ -141,23 +141,23 @@ test('Cambridge and Bristol Surprise Major have 32-change leads', () => {
     ['b &-3-4-25-36-4-5-6-7', '15738264'],
     ['m &-5-4.5-5.36.4-4.5-4-1', '14263857'],
   ]) {
-    const method = validateMethod('M', notation, 8);
-    const change = Change(8);
+    const method = createMethod('M', notation, 8);
+    const change = new Change(8);
     let count = 0;
-    change.advance_lead(method, -1, () => count++);
+    change.advanceLead(method, -1, () => count++);
     assert.equal(count, 32);
     assert.equal(change.toString(), expected);
   }
 });
 
 test('asymmetric notation preserves the supplied sequence', () => {
-  assert.deepEqual(Array.from(parse_method(6, 'a +-16-')), [0, 33, 0, 3]);
+  assert.deepEqual(Array.from(parseMethod(6, 'a +-16-')), [0, 33, 0, 3]);
 });
 
 test('invalid notation and invalid stage are rejected', () => {
-  assert.throws(() => validateMethod('P', '-Z', 6), /Bad place notation/);
-  assert.equal(validateMethod('P', '-16,12', 0), false);
-  assert.equal(validateMethod('P', '-16,12', 6.5), false);
+  assert.throws(() => createMethod('P', '-Z', 6), /Bad place notation/);
+  assert.equal(createMethod('P', '-16,12', 0), false);
+  assert.equal(createMethod('P', '-16,12', 6.5), false);
 });
 
 test('composition parser associates calls with the preceding method', () => {
@@ -175,17 +175,17 @@ test('composition parser associates calls with the preceding method', () => {
 });
 
 test('shorthand expands a bob at Home in Plain Bob Minor', () => {
-  const method = validateMethod('P', plainBob(6).notation, 6);
-  const shorthand = Shorthand('h', method);
-  shorthand.run(() => {}, ['/', '14'], [';', '1234']);
-  assert.equal(shorthand.compText, 'PPPPP/\n');
+  const method = createMethod('P', plainBob(6).notation, 6);
+  const shorthand = new Shorthand('h', method);
+  shorthand.run(['/', '14'], [';', '1234']);
+  assert.equal(shorthand.expandedComposition, 'PPPPP/\n');
 });
 
 test('four-bell runs match at both ends of a row', () => {
-  const music = MusicBox();
+  const music = new MusicBox();
   addFourBellRuns(8, music);
   music.setup(8);
-  music.match_row(Change(8));
+  music.matchRow(new Change(8));
   assert.equal(music.patterns.length, 20);
   assert.equal(music.counts[0], 1);
   assert.equal(music.counts[18], 1);
@@ -211,7 +211,7 @@ test('Plain Bob Minor plain course covers every working lead-head position', () 
     composition: 'PPPPP',
   });
   comp.run(() => {});
-  const atw = AtwChecker(comp);
+  const atw = new AtwChecker(comp);
   atw.getAtw();
   for (const bell of '23456') {
     for (const position of '23456') assert.equal(atw.positionsRung.P[bell][position], true);
@@ -227,7 +227,7 @@ test('changes of method count transitions between successive leads', () => {
     composition: 'PPLLP',
   });
   comp.run(() => {});
-  const atw = AtwChecker(comp);
+  const atw = new AtwChecker(comp);
   atw.getAtw();
   assert.equal(atw.com, 2);
 });
@@ -281,12 +281,12 @@ test('proving uses supplied composition lines and custom music without a DOM', (
 });
 
 test('generateShorthand accepts a validated method without a DOM', () => {
-  const method = validateMethod('P', plainBob(6).notation, 6);
+  const method = createMethod('P', plainBob(6).notation, 6);
   assert.equal(generateShorthand('h', method, ['/', '14'], [';', '1234']), 'PPPPP/\n');
 });
 
 test('prover retains the first occurrence of each row', () => {
-  const change = Change(6);
+  const change = new Change(6);
   const prover = new Prover();
   change.advance(0);
   const first = change.toString();
@@ -300,7 +300,7 @@ test('prover retains the first occurrence of each row', () => {
 });
 
 test('first return to rounds is true but repeated rounds are false', () => {
-  const change = Change(6);
+  const change = new Change(6);
   const prover = new Prover();
   assert.equal(prover.checkRow(change), 1);
   assert.equal(prover.checkRow(change), -1);
@@ -308,7 +308,7 @@ test('first return to rounds is true but repeated rounds are false', () => {
 });
 
 test('distinct sixteen-bell rows do not collide through numerical rounding', () => {
-  const change = Change(16);
+  const change = new Change(16);
   const prover = new Prover();
   const first = [...'DCBATE0987654321'];
   const second = [...first];
@@ -323,7 +323,7 @@ test('distinct sixteen-bell rows do not collide through numerical rounding', () 
 });
 
 test('false touch reports the repeated row and both change numbers', () => {
-  const change = Change(6);
+  const change = new Change(6);
   const prover = new Prover();
   change.advance(0);
   assert.equal(prover.checkRow(change), 0);
@@ -374,9 +374,9 @@ test('ATW retains positions across repeated and interleaved methods', () => {
     composition: 'PLP',
   });
   comp.run(() => {});
-  const atw = AtwChecker(comp);
+  const atw = new AtwChecker(comp);
   const bells = '123456';
-  const heads = ['123456', ...comp.leadends.slice(0, -1).map((row) => row.join(''))];
+  const heads = ['123456', ...comp.leadHeads.slice(0, -1).map((row) => row.join(''))];
   for (let run = 0; run < 2; run++) {
     atw.getAtw();
     assert.equal(atw.methodList, 'PLP');
@@ -396,7 +396,7 @@ test('ATW retains positions across repeated and interleaved methods', () => {
 
 test('shorthand rejects an unreachable calling position', () => {
   // A complete plain hunt course returns the tenor to sixths every lead.
-  const method = validateMethod('P', '-16'.repeat(6), 6);
+  const method = createMethod('P', '-16'.repeat(6), 6);
   assert.throws(
     () => generateShorthand('2', method, ['/', '16'], [';', '1234']),
     /Calling position 2 cannot be reached/,
@@ -404,12 +404,12 @@ test('shorthand rejects an unreachable calling position', () => {
 });
 
 test('shorthand can reuse a calling position in successive calls', () => {
-  const method = validateMethod('P', plainBob(6).notation, 6);
+  const method = createMethod('P', plainBob(6).notation, 6);
   assert.equal(generateShorthand('hh', method, ['/', '14'], [';', '1234']), 'PPPPP/\nPPPPP/\n');
 });
 
 test('rows store printable bell symbols and truth keys are readable', () => {
-  const change = Change(12);
+  const change = new Change(12);
   assert.deepEqual(change.row, [...'1234567890ET']);
   change.advance(0);
   const prover = new Prover();

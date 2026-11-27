@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { createComposition, doProve, generateShorthand, validateMethod } from './pealprover.js';
+import { createComposition, doProve, generateShorthand, createMethod } from './pealprover.js';
 import { collections } from './collections.js';
 import { calls } from './calls.js';
 import { music } from './music.js';
@@ -92,7 +92,7 @@ document.getElementById('generateShorthand').addEventListener('click', function 
     const method =
       shortcut &&
       notation &&
-      validateMethod(shortcut, notation, parseInt(document.getElementById('methodRank').value, 10));
+      createMethod(shortcut, notation, parseInt(document.getElementById('methodRank').value, 10));
     if (!method) {
       displayMessage('Invalid method.');
       return;

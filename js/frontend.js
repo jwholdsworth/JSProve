@@ -1,9 +1,9 @@
 /* eslint-disable no-undef */
-import {createComposition, doProve, generateShorthand, validateMethod} from './pealprover.js';
-import {collections} from './collections.js';
-import {calls} from './calls.js';
-import {music} from './music.js';
-import {createMethodLibraryCache} from './method-library.js';
+import { createComposition, doProve, generateShorthand, validateMethod } from './pealprover.js';
+import { collections } from './collections.js';
+import { calls } from './calls.js';
+import { music } from './music.js';
+import { createMethodLibraryCache } from './method-library.js';
 
 /** *****************************************************************************
  * DECLARE FRONT-END VARIABLES
@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
 bootstrap.Tab.getOrCreateInstance(document.querySelector('#tabs a')).show();
 
 // enable tooltips
-document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach((element) => new bootstrap.Tooltip(element));
+document
+  .querySelectorAll('[data-bs-toggle="tooltip"]')
+  .forEach((element) => new bootstrap.Tooltip(element));
 
 document.getElementById('closeAlert').addEventListener('click', function () {
   clearTimeout(alertTimer);
@@ -87,7 +89,10 @@ document.getElementById('generateShorthand').addEventListener('click', function 
     const id = mid.substr(6);
     const shortcut = document.getElementById('shortcut' + id).value;
     const notation = document.getElementById('notation' + id).value;
-    const method = shortcut && notation && validateMethod(shortcut, notation, parseInt(document.getElementById('methodRank').value, 10));
+    const method =
+      shortcut &&
+      notation &&
+      validateMethod(shortcut, notation, parseInt(document.getElementById('methodRank').value, 10));
     if (!method) {
       displayMessage('Invalid method.');
       return;
@@ -96,7 +101,7 @@ document.getElementById('generateShorthand').addEventListener('click', function 
       document.getElementById('shorthand').value,
       method,
       [document.getElementById('symbol0').value, document.getElementById('callNtn0').value],
-      [document.getElementById('symbol1').value, document.getElementById('callNtn1').value]
+      [document.getElementById('symbol1').value, document.getElementById('callNtn1').value],
     );
     document.getElementById('composition').value = comp;
     prove();
@@ -213,7 +218,9 @@ function checkMethodLetterIsUnique(letter, methodName, methodSymbol) {
       }
     }
     if (isUnique === false) {
-      displayMessage('That letter has already been used for a method. Please choose a different one.');
+      displayMessage(
+        'That letter has already been used for a method. Please choose a different one.',
+      );
       return isUnique;
     }
   }
@@ -259,7 +266,10 @@ function insertCollection(stage, key) {
   for (let i = 0; i < stageCollections.length; i++) {
     if (stageCollections[i].key === key) {
       for (let j = 0; j < stageCollections[i].methods.length; j++) {
-        insertMethodBox(stageCollections[i].methods[j].key, stageCollections[i].methods[j].notation);
+        insertMethodBox(
+          stageCollections[i].methods[j].key,
+          stageCollections[i].methods[j].notation,
+        );
       }
     }
   }
@@ -292,7 +302,7 @@ const loadUserInput = () => {
   input.composition = document.getElementById('composition').value;
   input.stage = parseInt(document.getElementById('methodRank').value, 10);
 
-  const htmlMethods = document.getElementsByClassName('js-method')
+  const htmlMethods = document.getElementsByClassName('js-method');
   for (let element of htmlMethods) {
     input.methods.push({
       shorthand: element.getElementsByClassName('js-shortcut')[0].value,
@@ -338,15 +348,18 @@ function prove() {
     if (res.falseness) {
       const repeatedRow = document.createElement('strong');
       repeatedRow.textContent = res.falseness.row;
-      falseness.append('Repeated row: ', repeatedRow,
-        ` first rung at change ${res.falseness.firstChange}, repeated at change ${res.falseness.secondChange}.`);
+      falseness.append(
+        'Repeated row: ',
+        repeatedRow,
+        ` first rung at change ${res.falseness.firstChange}, repeated at change ${res.falseness.secondChange}.`,
+      );
     }
     const details = document.getElementById('falseLeadDetails');
     details.hidden = !res.falseness;
     const body = details.querySelector('tbody');
     body.replaceChildren();
     if (res.falseness) {
-      const {first, second} = res.falseness;
+      const { first, second } = res.falseness;
       for (const [label, key] of [
         ['Method symbol', 'method'],
         ['Lead number', 'lead'],
@@ -364,7 +377,7 @@ function prove() {
     }
     const musicOutput = document.createElement('pre');
     musicOutput.className = 'form-control output';
-    for (const {count, pattern} of res.music) {
+    for (const { count, pattern } of res.music) {
       const countElement = document.createElement('strong');
       countElement.textContent = count;
       musicOutput.append(countElement, '\t' + pattern + '\n');
@@ -382,7 +395,8 @@ function prove() {
  * Load the methods from the method file
  */
 function displayMethodLibraryPage() {
-  const method_file = document.getElementById('class').value + document.getElementById('methodRank').value;
+  const method_file =
+    document.getElementById('class').value + document.getElementById('methodRank').value;
   loadMethods(method_file);
 }
 
@@ -420,8 +434,9 @@ function filterMethods() {
   methodSelect.replaceChildren(options);
   methodSelect.selectedIndex = matches.length ? 0 : -1;
   insertMethodButton.disabled = matches.length === 0;
-  document.getElementById('methodSearchStatus').textContent =
-    matches.length ? matches.length + ' matching methods' : 'No matching methods';
+  document.getElementById('methodSearchStatus').textContent = matches.length
+    ? matches.length + ' matching methods'
+    : 'No matching methods';
 }
 
 async function loadMethods(file) {

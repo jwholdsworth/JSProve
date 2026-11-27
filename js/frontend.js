@@ -64,9 +64,7 @@ document.querySelectorAll('.callLocation').forEach((element) => {
 });
 
 // add event handler to composition box - on change, prove the composition
-document.getElementById('composition').addEventListener('keyup', function () {
-  prove();
-});
+document.getElementById('composition').addEventListener('input', prove);
 
 // generate the composition from the shorthand
 document.getElementById('generateShorthand').addEventListener('click', function () {

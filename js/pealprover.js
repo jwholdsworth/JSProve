@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 'use strict';
 
-const MAX_STAGE = 24;
-const BELL_NAMES = '1234567890ET';
+const MAX_STAGE = 12;
+const ROUNDS = '1234567890ET';
 
 const createComposition = (userInput) => {
   const selectedMethods = {};
@@ -128,7 +128,7 @@ function doProve(composition, compositionText, userInputPatterns) {
             method: method.name,
             lead: index + 1,
             leadHead: index === 0
-              ? BELL_NAMES.slice(0, comp.stage)
+              ? ROUNDS.slice(0, comp.stage)
               : comp.leadends[index - 1].map(bellName).join(''),
             changeInLead: changeNumber - offset,
           };
@@ -248,11 +248,11 @@ function formatAtw(atw) {
     output += i + ':\n';
     // output the bell number
     for (let j=0; j < atw.comp.stage; j++) {
-      output += '  ' + BELL_NAMES.charAt(j) + ': ';
+      output += '  ' + ROUNDS.charAt(j) + ': ';
       // find which positions it rings
       for (let k=0; k < atw.comp.stage; k++) {
-        if (atw.positionsRung[i][BELL_NAMES.charAt(j)][BELL_NAMES.charAt(k)] == true) {
-          output += BELL_NAMES.charAt(k);
+        if (atw.positionsRung[i][ROUNDS.charAt(j)][ROUNDS.charAt(k)] == true) {
+          output += ROUNDS.charAt(k);
         } else {
           output += ' ';
         }
@@ -362,7 +362,7 @@ function Change(stage) {
   that.pp = function() {
     let s = '';
     for (i = 0; i < this.stage; i++) {
-      s += BELL_NAMES[this.row[i]];
+      s += ROUNDS[this.row[i]];
     }
     return s;
   };
@@ -753,16 +753,16 @@ function AtwChecker(comp) {
         initialised.add(name);
         this.positionsRung[name] = [];
         for (let j = 0; j < this.comp.stage; j++) {
-          this.positionsRung[name][BELL_NAMES[j]] = [];
+          this.positionsRung[name][ROUNDS[j]] = [];
           for (let k = 0; k < this.comp.stage; k++) {
-            this.positionsRung[name][BELL_NAMES[j]][BELL_NAMES[k]] = false;
+            this.positionsRung[name][ROUNDS[j]][ROUNDS[k]] = false;
           }
         }
       }
 
       const leadHead = this.comp.leadends[i - 1] ?? rounds;
       for (let j = 0; j < this.comp.stage; j++) {
-        this.positionsRung[name][BELL_NAMES[leadHead[j]]][BELL_NAMES[j]] = true;
+        this.positionsRung[name][ROUNDS[leadHead[j]]][ROUNDS[j]] = true;
       }
     }
 

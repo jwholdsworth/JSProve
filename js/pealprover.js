@@ -566,16 +566,7 @@ class Composition {
  * @todo Remove hard coding of symbols
  */
 function Shorthand(shorthand, method) {
-  const that = {
-    shorthandCalls: shorthand,
-    stage: method.stage,
-    compText: '',
-    method: method,
-    bob: null,
-    single: null,
-  };
-
-  that.run = function (fn, b, s) {
+  const run = function (fn, b, s) {
     this.bob = b;
     this.single = s;
     const bob = parse_bell_list(this.stage, 0, b[1]);
@@ -594,7 +585,7 @@ function Shorthand(shorthand, method) {
   };
 
   // returns number of leads until you insert the next call
-  that.ringToNextCall = function (call, callType, fn, isSingle, c) {
+  const ringToNextCall = function (call, callType, fn, isSingle, c) {
     let moreLeads = true;
     let tenorPosition = bellIndex(call);
     // couldn't find index
@@ -677,7 +668,17 @@ function Shorthand(shorthand, method) {
       }
     }
   };
-  return that;
+
+  return {
+    shorthandCalls: shorthand,
+    stage: method.stage,
+    compText: '',
+    method,
+    bob: null,
+    single: null,
+    run,
+    ringToNextCall,
+  };
 }
 
 /**
@@ -685,15 +686,7 @@ function Shorthand(shorthand, method) {
  * @param {Composition} comp The composition
  */
 function AtwChecker(comp) {
-  // build an array like Method[bellNo][position] = true
-  const that = {
-    comp: comp,
-    positionsRung: [],
-    methodList: '',
-    com: 0,
-  };
-
-  that.getAtw = function () {
+  const getAtw = function () {
     this.positionsRung = [];
     this.methodList = '';
     this.com = 0;
@@ -731,7 +724,13 @@ function AtwChecker(comp) {
     }
   };
 
-  return that;
+  return {
+    comp: comp,
+    positionsRung: [],
+    methodList: '',
+    com: 0,
+    getAtw,
+  };
 }
 
 /**
@@ -771,20 +770,16 @@ class Prover {
  * @author Paul Brook
  */
 function MusicBox() {
-  const that = {
-    patterns: [],
-    counts: [],
-  };
   let nodeDone;
   let stack;
   let objtree;
 
-  that.addPattern = function (pattern) {
+  const addPattern = function (pattern) {
     this.patterns.push(pattern);
     this.counts.push(0);
   };
 
-  that.setup = function (stage) {
+  const setup = function (stage) {
     let pattern;
     let node;
     let bell;
@@ -814,7 +809,7 @@ function MusicBox() {
     }
   };
 
-  that.match_row = function (c) {
+  const match_row = function (c) {
     const stage = c.stage;
     let i;
     let node;
@@ -857,7 +852,13 @@ function MusicBox() {
     }
   };
 
-  return that;
+  return {
+    patterns: [],
+    counts: [],
+    addPattern,
+    match_row,
+    setup,
+  };
 }
 
 export {

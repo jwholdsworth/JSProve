@@ -1,25 +1,20 @@
 JSProve
 =======
-
 JSProve is a web-based peal proving program for even bell methods (single methods and spliced) from Minor to Maximus.
 
 ## Features
-
-- Load methods in from the MicroSiril Libraries (or specify new methods yourself)
-- Shorthand generator for single methods
-- All the work checker and change of method counter
-- Detailed music output
-- Music can be specified, if the particular row or row type is not already included by JSProve
-- Works in most modern browsers
+* Load methods in from the MicroSiril Libraries (or specify new methods yourself)
+* Shorthand generator for single methods
+* All the work checker and change of method counter
+* Detailed music output
+* Music can be specified, if the particular row or row type is not already included by JSProve
+* Works in most modern browsers
 
 ## Usage
-
 ### Getting JSProve
-
 Either visit http://james.theholdsworths.org.uk/projects/jsprove/ to use the online version, or download the source code as a Zip file (from the link above) and open 'index.html' in your favourite browser (NOT Internet Explorer please!).
 
 ### Proving a Single Method
-
 On the 'Methods and Composition' tab:
 
 1. Remove any existing methods declared (the default ones are the methods in Mark Davies's 10-Spliced Surprise Major, though other collections are available too)
@@ -34,7 +29,6 @@ OK, now you're all set to start proving. Notice that the method you have selecte
 I'll leave you to play with that for a bit. Note that you can manually tinker withe the composition in the main box below. Indeed, that's how you will need to prove spliced, which leads me nicely on to...
 
 ### Proving Spliced
-
 Much like proving single methods, except that the Shorthand facility isn't of much use here (unless all your methods are in the same group, in which case you could use it to build the composition template, before swapping the methods in).
 
 1. Start by adding methods using the 'Load Method from Library' tool. Note that all the method symbols must be unique, so if you're proving a composition which has two methods starting with the same letter (London and Lincolnshire for example), denote a different letter to one of them, otherwise you'll get an error.
@@ -52,11 +46,9 @@ etc.
 JSProve will prove the composition as you type.
 
 ### Specifying your own calls
-
 You may wish to change the default call type (from Plain Bob bobs and singles) or add your own. To do this, click the Calls tab. If you wish to continue using the Shorthand tool, make sure that you assign `/` for your bob and `;` for the single. You can have as many call types as you wish; though be sure to use unique symbols for them.
 
 ### Specifying your own music
-
 JSProve will, by default, tell you all the 4-bell runs contained in the composition (both off the front and at the back) in a format like:
 
 ```
@@ -74,5 +66,4 @@ Of course, you will want to specify your own tastes in music, rather than just s
 1. At present, there is no save functionality within JSProve, so if you want to keep your music preferences, I would suggest copying them and pasting them into a text file somewhere on your machine, and then load them in from that when you use JSProve.
 
 ## Participating
-
 Please fork the code from the GitHub repository (https://github.com/jwholdsworth/JSProve) and submit a pull request, specifiying what your change does.

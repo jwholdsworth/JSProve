@@ -17,6 +17,7 @@ let stage = document.getElementById('methodRank').value;
  * ONLOAD FUNCTION
  *******************************************************************************/
 document.addEventListener('DOMContentLoaded', function () {
+  loadCalls();
   setup();
 
   prove();
@@ -115,7 +116,6 @@ function setup() {
   stage = document.getElementById('methodRank').value;
   loadCollectionsForStage(stage);
   loadMusicForStage(stage);
-  loadCalls();
   insertCollection(stage, document.querySelector('#collectionChoice select').value);
 }
 

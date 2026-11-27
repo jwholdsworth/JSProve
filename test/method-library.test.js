@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {createMethodLibraryCache} from '../js/method-library.js';
+import { createMethodLibraryCache } from '../js/method-library.js';
 
 const response = () => ({
   ok: true,
@@ -16,7 +16,7 @@ test('library requests share pending and cached results by filename', async () =
   const first = load('S8');
   assert.equal(load('S8'), first);
   const methods = await first;
-  assert.deepEqual(methods, [{name: 'Cambridge', notation: 'b &-3-4'}]);
+  assert.deepEqual(methods, [{ name: 'Cambridge', notation: 'b &-3-4' }]);
   assert.equal(await load('S8'), methods);
   await load('S10');
   await load('P8');
@@ -28,7 +28,7 @@ test('failed library requests can be retried', async () => {
   const load = createMethodLibraryCache(async () => {
     attempts++;
     if (attempts === 1) throw new Error('Network failure');
-    if (attempts === 2) return {ok: false};
+    if (attempts === 2) return { ok: false };
     return response();
   });
   await assert.rejects(load('S8'), /Network failure/);

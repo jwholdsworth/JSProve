@@ -8,13 +8,13 @@ updates:
     groups:
       npm-minor-patch:
         patterns:
-          - "*"
+          - '*'
         update-types:
           - minor
           - patch
       npm-major:
         patterns:
-          - "*"
+          - '*'
         update-types:
           - major
   - package-ecosystem: github-actions
@@ -25,4 +25,4 @@ updates:
     groups:
       github-actions:
         patterns:
-          - "*"
+          - '*'

@@ -1,10 +1,10 @@
 export const calls = [
-    {
-        "symbol": "/",
-        "notation": "14"
-    },
-    {
-        "symbol": ";",
-        "notation": "1234"
-    }
-]
+  {
+    symbol: '/',
+    notation: '14',
+  },
+  {
+    symbol: ';',
+    notation: '1234',
+  },
+];

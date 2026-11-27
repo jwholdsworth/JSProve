@@ -88,6 +88,30 @@ context('Actions', () => {
   });
 
   describe('Calls and Music', () => {
+    it('Preserves calls without duplicating them when changing stage', () => {
+      cy.get('#callsTab').click();
+      cy.get('.js-call').should('have.length', 2);
+      cy.get('#symbol0').should('have.value', '/');
+      cy.get('#symbol1').should('have.value', ';');
+      cy.get('#callNtn0').clear().type('16');
+      cy.get('#btnAddMoreCalls').click();
+      cy.get('#symbol2').type('#');
+      cy.get('#callNtn2').type('18');
+
+      for (const stage of ['Royal', 'Maximus', 'Major', 'Royal', 'Major']) {
+        cy.get('#methodsTab').click();
+        cy.get('#methodRank').select(stage);
+        cy.get('#callsTab').click();
+        cy.get('.js-call').should('have.length', 3);
+        cy.get('#symbol0').should('have.value', '/');
+        cy.get('#callNtn0').should('have.value', '16');
+        cy.get('#symbol1').should('have.value', ';');
+        cy.get('#callNtn1').should('have.value', '1234');
+        cy.get('#symbol2').should('have.value', '#');
+        cy.get('#callNtn2').should('have.value', '18');
+      }
+    });
+
     it('Can handle different calls in the shorthand', () => {
       // Arrange
       cy.get('#callsTab').click();

@@ -8,7 +8,9 @@
     "cypress": "cypress run",
     "start": "serve --no-clipboard --listen ${PORT:-8080}",
     "lint": "eslint js",
-    "benchmark": "node benchmark/proving.mjs"
+    "benchmark": "node benchmark/proving.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
   "devDependencies": {
     "cypress": "^16.3.0",
     "eslint": "^10.15.0",
+    "prettier": "^3.6.2",
     "serve": "^14.2.8"
   },
   "private": true

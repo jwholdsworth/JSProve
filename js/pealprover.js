@@ -136,7 +136,8 @@ function doProve(composition, compositionText, userInputPatterns) {
           return {
             method: method.name,
             lead: index + 1,
-            leadHead: index === 0 ? ROUNDS.slice(0, comp.stage) : comp.leadHeads[index - 1].join(''),
+            leadHead:
+              index === 0 ? ROUNDS.slice(0, comp.stage) : comp.leadHeads[index - 1].join(''),
             changeInLead: changeNumber - offset,
           };
         }

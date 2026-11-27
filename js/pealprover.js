@@ -67,6 +67,10 @@ function doProve(composition, compositionText, userInputPatterns) {
   const p = new Prover();
   let changes = 0;
   let rounds = 0;
+
+  let roundsAt = null;
+  let falseAt = null;
+
   const music = MusicBox();
   const result = {
     trueTouch: false,
@@ -83,21 +87,23 @@ function doProve(composition, compositionText, userInputPatterns) {
   const comp = composition.comp;
   const txtCalls = composition.calls;
 
-  function test_row(c, le) {
-    let r;
-
+  function processRow(change) {
     changes++;
-    if (rounds !== 0) {
+
+    if (roundsAt !== null || falseAt !== null) {
+      console.debug('Composition has reached rounds or is false', {roundsAt, falseAt});
       return;
     }
-    music.match_row(c);
-    r = p.checkRow(c);
 
-    if (r < 0) {
-      rounds = -changes;
+    music.match_row(change);
+
+    const rowStatus = p.checkRow(change);
+
+    if (rowStatus === -1) {
+      falseAt = changes;
       result.falseness = p.falseness;
-    } else if (r == 1) {
-      rounds = changes;
+    } else if (rowStatus === 1) {
+      roundsAt = changes;
     }
   }
 
@@ -116,7 +122,7 @@ function doProve(composition, compositionText, userInputPatterns) {
   }
 
   music.setup(comp.stage);
-  comp.run(test_row);
+  comp.run(processRow);
 
   if (result.falseness) {
     const describeChange = (changeNumber) => {

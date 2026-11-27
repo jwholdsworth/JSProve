@@ -81,8 +81,13 @@ function distinctRows(stage, count) {
   return rows;
 }
 for (const stage of [8, 12]) {
-  const rows = distinctRows(stage, stage === 8 ? 40000 : 100000);
   const change = engine.Change(stage);
+  const rows = distinctRows(stage, stage === 8 ? 40000 : 100000);
+  if (typeof change.row[0] === 'string') {
+    for (const row of rows) {
+      for (let i = 0; i < row.length; i++) row[i] = '1234567890ETABCD'[row[i]];
+    }
+  }
   results.push(measure('Truth only ' + stage + ' (' + rows.length + ' rows)', () => {
     const prover = new engine.Prover();
     let repeats = 0;

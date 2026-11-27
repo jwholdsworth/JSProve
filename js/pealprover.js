@@ -66,7 +66,6 @@ const validateMethod = (shortcut, notation, stage) => {
 function doProve(composition, compositionText, userInputPatterns) {
   const p = new Prover();
   let changes = 0;
-  let rounds = 0;
 
   let roundsAt = null;
   let falseAt = null;
@@ -91,7 +90,6 @@ function doProve(composition, compositionText, userInputPatterns) {
     changes++;
 
     if (roundsAt !== null || falseAt !== null) {
-      console.debug('Composition has reached rounds or is false', {roundsAt, falseAt});
       return;
     }
 
@@ -179,27 +177,28 @@ function doProve(composition, compositionText, userInputPatterns) {
     result.courses += '\n';
   }
 
-  if (rounds > 0) {
-    result.trueTouch = true;
-    result.length = (changes - rounds);
-    result.complete = true;
+  if (roundsAt !== null) {
+  result.trueTouch = true;
+  result.length = changes - roundsAt;
+  result.complete = true;
 
-    if (rounds != changes) {
-      result.status = 'Touch is true: ' + rounds + ' changes (' + (changes - rounds) + ' before last course end)';
-    } else {
-      result.status = 'Touch is true: ' + rounds + ' changes';
-    }
-  } else if (rounds < 0) {
-    result.complete = true;
-    result.trueTouch = false;
-    result.length = (-rounds);
-    result.status = 'Touch is false after ' + (-rounds) + ' changes';
+  if (roundsAt !== changes) {
+    result.status = 'Touch is true: ' + roundsAt +
+      ' changes (' + (changes - roundsAt) + ' before last course end)';
   } else {
-    result.complete = false;
-    result.trueTouch = true;
-    result.length = changes;
-    result.status = 'Incomplete touch (' + changes + ' changes)';
+    result.status = 'Touch is true: ' + roundsAt + ' changes';
   }
+} else if (falseAt !== null) {
+  result.complete = true;
+  result.trueTouch = false;
+  result.length = falseAt;
+  result.status = 'Touch is false after ' + falseAt + ' changes';
+} else {
+  result.complete = false;
+  result.trueTouch = true;
+  result.length = changes;
+  result.status = 'Incomplete touch (' + changes + ' changes)';
+}
 
   for (let i = 0; i < music.counts.length; i++) {
     let pattern = '';
@@ -373,7 +372,7 @@ function Change(stage) {
  * @param {string} name The bell name
  * @return {string} The bell index
  */
-const bellIndex = (name) => ROUNDS.indexOf(name);
+const bellIndex = (name) => ROUNDS.slice(0, MAX_STAGE).indexOf(name);
 
 /**
  * Generate a row

@@ -19,11 +19,11 @@ test('place notation includes implicit external places', () => {
 
 test('cross and 16 advance a Minor row correctly', () => {
   const change = Change(6);
-  assert.equal(change.pp(), '123456');
+  assert.equal(change.toString(), '123456');
   change.advance(0);
-  assert.equal(change.pp(), '214365');
+  assert.equal(change.toString(), '214365');
   change.advance(33);
-  assert.equal(change.pp(), '241635');
+  assert.equal(change.toString(), '241635');
 });
 
 test('symmetric and MicroSIRIL Plain Bob Minor notation agree', () => {
@@ -39,7 +39,7 @@ test('Plain Bob Minor plain lead, bob and single have known lead heads', () => {
     let count = 0;
     change.advance_lead(method, call, () => count++);
     assert.equal(count, 12);
-    assert.equal(change.pp(), expected);
+    assert.equal(change.toString(), expected);
   }
 });
 
@@ -54,7 +54,7 @@ test('Plain Bob Minor plain course has 60 distinct rows and comes round', () => 
   const rows = [];
   const truth = [];
   comp.run((change) => {
-    rows.push(change.pp());
+    rows.push(change.toString());
     truth.push(prover.checkRow(change));
   });
   assert.equal(rows.length, 60);
@@ -73,12 +73,12 @@ test('prover detects a repeated non-rounds row', () => {
 
 test('music matches exact and wildcard patterns', () => {
   const music = MusicBox();
-  music.addPattern([0, 1, 2, 3, 4, 5]);
-  music.addPattern([0, 1, 2, 3, -1, -1]);
+  music.addPattern([...'123456']);
+  music.addPattern([...'1234**']);
   music.setup(6);
   const change = Change(6);
   music.match_row(change);
-  change.setRow([0, 1, 2, 3, 5, 4]);
+  change.setRow([...'123465']);
   music.match_row(change);
   change.advance(0);
   music.match_row(change);
@@ -95,7 +95,7 @@ for (const stage of [8, 10, 12]) {
     const rows = [];
     const truth = [];
     comp.run((change) => {
-      rows.push(change.pp());
+      rows.push(change.toString());
       truth.push(prover.checkRow(change));
     });
     const length = 2 * stage * (stage - 1);
@@ -116,7 +116,7 @@ test('Cambridge and Bristol Surprise Major have 32-change leads', () => {
     let count = 0;
     change.advance_lead(method, -1, () => count++);
     assert.equal(count, 32);
-    assert.equal(change.pp(), expected);
+    assert.equal(change.toString(), expected);
   }
 });
 
@@ -160,7 +160,7 @@ test('four-bell runs match at both ends of a row', () => {
 test('user music parses queens, tittums and wildcards', () => {
   const patterns = readUserMusicPatterns('13572468\n15263748\n****5678');
   assert.deepEqual(Array.from(patterns, (p) => Array.from(p)), [
-    [0, 2, 4, 6, 1, 3, 5, 7], [0, 4, 1, 5, 2, 6, 3, 7], [-1, -1, -1, -1, 4, 5, 6, 7],
+    [...'13572468'], [...'15263748'], [...'****5678'],
   ]);
 });
 
@@ -239,7 +239,7 @@ test('prover retains the first occurrence of each row', () => {
   const change = Change(6);
   const prover = new Prover();
   change.advance(0);
-  const first = change.row.join(',');
+  const first = change.toString();
   assert.equal(prover.checkRow(change), 0);
   change.advance(33);
   assert.equal(prover.checkRow(change), 0);
@@ -254,13 +254,13 @@ test('first return to rounds is true but repeated rounds are false', () => {
   const prover = new Prover();
   assert.equal(prover.checkRow(change), 1);
   assert.equal(prover.checkRow(change), -1);
-  assert.equal(prover.changes.get(change.row.join(',')), 1);
+  assert.equal(prover.changes.get(change.toString()), 1);
 });
 
 test('distinct sixteen-bell rows do not collide through numerical rounding', () => {
   const change = Change(16);
   const prover = new Prover();
-  const first = Array.from({length: 16}, (_, i) => 15 - i);
+  const first = [...'DCBATE0987654321'];
   const second = [...first];
   [second[14], second[15]] = [second[15], second[14]];
   change.setRow(first);
@@ -318,7 +318,7 @@ test('ATW retains positions across repeated and interleaved methods', () => {
   comp.run(() => {});
   const atw = AtwChecker(comp);
   const bells = '123456';
-  const heads = ['123456', ...comp.leadends.slice(0, -1).map((row) => row.map(bellName).join(''))];
+  const heads = ['123456', ...comp.leadends.slice(0, -1).map((row) => row.join(''))];
   for (let run = 0; run < 2; run++) {
     atw.getAtw();
     assert.equal(atw.methodList, 'PLP');
@@ -346,4 +346,13 @@ test('shorthand can reuse a calling position in successive calls', () => {
   const method = validateMethod('P', plainBob(6).notation, 6);
   assert.equal(generateShorthand('hh', method, ['/', '14'], [';', '1234']),
     'PPPPP/\nPPPPP/\n');
+});
+
+test('rows store printable bell symbols and truth keys are readable', () => {
+  const change = Change(12);
+  assert.deepEqual(change.row, [...'1234567890ET']);
+  change.advance(0);
+  const prover = new Prover();
+  assert.equal(prover.checkRow(change), 0);
+  assert.equal(prover.changes.get('2143658709TE'), 1);
 });

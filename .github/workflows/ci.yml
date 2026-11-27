@@ -23,10 +23,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run lint
-      - run: npm run test:unit
+      - run: npm test
       - name: Run Cypress
         run: |
-          npm run start:ci &
+          npm run start &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           for attempt in $(seq 1 30); do

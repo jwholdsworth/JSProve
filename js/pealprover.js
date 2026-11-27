@@ -176,27 +176,31 @@ function doProve(composition, compositionText, userInputPatterns) {
   }
 
   if (roundsAt !== null) {
-  result.trueTouch = true;
-  result.length = changes - roundsAt;
-  result.complete = true;
+    result.trueTouch = true;
+    result.length = changes - roundsAt;
+    result.complete = true;
 
-  if (roundsAt !== changes) {
-    result.status = 'Touch is true: ' + roundsAt +
-      ' changes (' + (changes - roundsAt) + ' before last course end)';
+    if (roundsAt !== changes) {
+      result.status =
+        'Touch is true: ' +
+        roundsAt +
+        ' changes (' +
+        (changes - roundsAt) +
+        ' before last course end)';
+    } else {
+      result.status = 'Touch is true: ' + roundsAt + ' changes';
+    }
+  } else if (falseAt !== null) {
+    result.complete = true;
+    result.trueTouch = false;
+    result.length = falseAt;
+    result.status = 'Touch is false after ' + falseAt + ' changes';
   } else {
-    result.status = 'Touch is true: ' + roundsAt + ' changes';
+    result.complete = false;
+    result.trueTouch = true;
+    result.length = changes;
+    result.status = 'Incomplete touch (' + changes + ' changes)';
   }
-} else if (falseAt !== null) {
-  result.complete = true;
-  result.trueTouch = false;
-  result.length = falseAt;
-  result.status = 'Touch is false after ' + falseAt + ' changes';
-} else {
-  result.complete = false;
-  result.trueTouch = true;
-  result.length = changes;
-  result.status = 'Incomplete touch (' + changes + ' changes)';
-}
 
   for (let i = 0; i < music.counts.length; i++) {
     let pattern = '';
@@ -359,7 +363,7 @@ function Change(stage) {
 
   that.toString = () => that.row.join('');
 
-  that.setRow = (newRow) => that.row = newRow;
+  that.setRow = (newRow) => (that.row = newRow);
 
   return that;
 }
@@ -856,4 +860,19 @@ function MusicBox() {
   return that;
 }
 
-export {bellIndex, parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand};
+export {
+  bellIndex,
+  parse_bell_list,
+  parse_method,
+  validateMethod,
+  Change,
+  createComposition,
+  Prover,
+  MusicBox,
+  Shorthand,
+  AtwChecker,
+  addFourBellRuns,
+  readUserMusicPatterns,
+  doProve,
+  generateShorthand,
+};

@@ -1,6 +1,20 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import {parse_bell_list, parse_method, validateMethod, Change, createComposition, Prover, MusicBox, Shorthand, AtwChecker, addFourBellRuns, readUserMusicPatterns, doProve, generateShorthand} from '../js/pealprover.js';
+import {
+  parse_bell_list,
+  parse_method,
+  validateMethod,
+  Change,
+  createComposition,
+  Prover,
+  MusicBox,
+  Shorthand,
+  AtwChecker,
+  addFourBellRuns,
+  readUserMusicPatterns,
+  doProve,
+  generateShorthand,
+} from '../js/pealprover.js';
 
 test('place notation includes implicit external places', () => {
   assert.equal(parse_bell_list(6, 0, '4').mask, 9); // 14

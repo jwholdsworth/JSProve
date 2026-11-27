@@ -66,7 +66,10 @@ const validateMethod = (shortcut, notation, stage) => {
 function doProve(composition, compositionText, userInputPatterns) {
   const p = new Prover();
   let changes = 0;
-  let rounds = 0;
+
+  let roundsAt = null;
+  let falseAt = null;
+
   const music = MusicBox();
   const result = {
     trueTouch: false,
@@ -83,21 +86,22 @@ function doProve(composition, compositionText, userInputPatterns) {
   const comp = composition.comp;
   const txtCalls = composition.calls;
 
-  function test_row(c, le) {
-    let r;
-
+  function processRow(change) {
     changes++;
-    if (rounds !== 0) {
+
+    if (roundsAt !== null || falseAt !== null) {
       return;
     }
-    music.match_row(c);
-    r = p.checkRow(c);
 
-    if (r < 0) {
-      rounds = -changes;
+    music.match_row(change);
+
+    const rowStatus = p.checkRow(change);
+
+    if (rowStatus === -1) {
+      falseAt = changes;
       result.falseness = p.falseness;
-    } else if (r == 1) {
-      rounds = changes;
+    } else if (rowStatus === 1) {
+      roundsAt = changes;
     }
   }
 
@@ -116,7 +120,7 @@ function doProve(composition, compositionText, userInputPatterns) {
   }
 
   music.setup(comp.stage);
-  comp.run(test_row);
+  comp.run(processRow);
 
   if (result.falseness) {
     const describeChange = (changeNumber) => {
@@ -171,22 +175,26 @@ function doProve(composition, compositionText, userInputPatterns) {
     result.courses += '\n';
   }
 
-  if (rounds > 0) {
+  if (roundsAt !== null) {
     result.trueTouch = true;
-    result.length = changes - rounds;
+    result.length = changes - roundsAt;
     result.complete = true;
 
-    if (rounds != changes) {
+    if (roundsAt !== changes) {
       result.status =
-        'Touch is true: ' + rounds + ' changes (' + (changes - rounds) + ' before last course end)';
+        'Touch is true: ' +
+        roundsAt +
+        ' changes (' +
+        (changes - roundsAt) +
+        ' before last course end)';
     } else {
-      result.status = 'Touch is true: ' + rounds + ' changes';
+      result.status = 'Touch is true: ' + roundsAt + ' changes';
     }
-  } else if (rounds < 0) {
+  } else if (falseAt !== null) {
     result.complete = true;
     result.trueTouch = false;
-    result.length = -rounds;
-    result.status = 'Touch is false after ' + -rounds + ' changes';
+    result.length = falseAt;
+    result.status = 'Touch is false after ' + falseAt + ' changes';
   } else {
     result.complete = false;
     result.trueTouch = true;
@@ -353,13 +361,9 @@ function Change(stage) {
     fn(this);
   };
 
-  that.toString = function () {
-    return this.row.join('');
-  };
+  that.toString = () => that.row.join('');
 
-  that.setRow = function (newRow) {
-    this.row = newRow;
-  };
+  that.setRow = (newRow) => (that.row = newRow);
 
   return that;
 }
@@ -369,48 +373,7 @@ function Change(stage) {
  * @param {string} name The bell name
  * @return {string} The bell index
  */
-function bellIndex(name) {
-  if (name >= '1' && name <= '9') {
-    return parseInt(name, 10) - 1;
-  }
-  if (name === '0') {
-    return 9;
-  }
-  if (name === 'E') {
-    return 10;
-  }
-  if (name === 'T') {
-    return 11;
-  }
-  if (name === '*') {
-    return -1;
-  }
-  return -1;
-}
-
-/**
- * Maps bell indeces to human names
- * @param {number} index The bell index
- * @return {string} The bell name
- */
-function bellName(index) {
-  if (index === -1) {
-    return '*';
-  }
-  if (index > -1 && index < 9) {
-    return (index + 1).toString();
-  }
-  if (index === 9) {
-    return '0';
-  }
-  if (index === 10) {
-    return 'E';
-  }
-  if (index === 11) {
-    return 'T';
-  }
-  return index;
-}
+const bellIndex = (name) => ROUNDS.slice(0, MAX_STAGE).indexOf(name);
 
 /**
  * Generate a row
@@ -899,7 +862,6 @@ function MusicBox() {
 
 export {
   bellIndex,
-  bellName,
   parse_bell_list,
   parse_method,
   validateMethod,

@@ -14,7 +14,7 @@ import {
   readUserMusicPatterns,
   doProve,
   generateShorthand,
-  bellIndex
+  bellIndex,
 } from '../js/pealprover.js';
 
 test('place notation includes implicit external places', () => {

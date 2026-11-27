@@ -336,7 +336,8 @@ test('ATW retains positions across repeated and interleaved methods', () => {
 });
 
 test('shorthand rejects an unreachable calling position', () => {
-  const method = validateMethod('P', plainBob(6).notation, 6);
+  // A complete plain hunt course returns the tenor to sixths every lead.
+  const method = validateMethod('P', '-16'.repeat(6), 6);
   assert.throws(() => generateShorthand('2', method, ['/', '16'], [';', '1234']),
     /Calling position 2 cannot be reached/);
 });

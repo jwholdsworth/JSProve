@@ -2,6 +2,7 @@
 import {createComposition, doProve, generateShorthand, validateMethod} from './pealprover.js';
 import {collections} from './collections.js';
 import {calls} from './calls.js';
+import {createMethodLibraryCache} from './method-library.js';
 
 /** *****************************************************************************
  * DECLARE FRONT-END VARIABLES
@@ -11,6 +12,8 @@ let numberOfMethods = 0;
 let numberOfCalls = 0;
 let alertTimer;
 let musicRequest = 0;
+let libraryRequest = 0;
+const getMethodLibrary = createMethodLibraryCache();
 let stage = document.getElementById('methodRank').value;
 
 /** *****************************************************************************
@@ -39,8 +42,11 @@ document.getElementById('closeAlert').addEventListener('click', function () {
  *******************************************************************************/
 // Reset the user interface when stage changes
 document.getElementById('methodRank').addEventListener('change', function () {
+  libraryRequest++;
   setup();
 });
+
+document.getElementById('class').addEventListener('change', () => libraryRequest++);
 
 document.getElementById('collectionChoice').addEventListener('change', function () {
   insertCollection(stage, this.querySelector('select').value);
@@ -429,19 +435,16 @@ function filterMethods() {
 }
 
 async function loadMethods(file) {
+  const request = ++libraryRequest;
   try {
-    const response = await fetch('lib/' + file);
-    if (!response.ok) throw new Error('Unable to load method library');
-    const data = await response.text();
-    libraryMethods = data.split('\n').slice(1).filter((line) => line.trim()).map((line) => {
-      const [name, group, notation] = line.trim().split(/\s+/);
-      return {name, notation: group + ' ' + notation};
-    });
+    const methods = await getMethodLibrary(file);
+    if (request !== libraryRequest) return;
+    libraryMethods = methods;
     methodSearch.value = '';
     filterMethods();
     bootstrap.Modal.getOrCreateInstance(document.getElementById('popup')).show();
   } catch (error) {
-    displayMessage(error.message, 'danger');
+    if (request === libraryRequest) displayMessage(error.message, 'danger');
   }
 }
 
